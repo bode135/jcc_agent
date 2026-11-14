@@ -115,6 +115,50 @@ def _find_bars_template(arr: np.ndarray, region: tuple) -> list[tuple[int, int, 
     return bars
 
 
+BAR_MERGE_DY = 4        # 同一条(被分隔符切碎)的血条, 各碎片的竖向中心偏差上限
+BAR_MERGE_GAP = 12      # 碎片之间的横向空隙上限 (分隔符约 2~6px)
+
+
+def _merge_bar_pieces(bars: list[tuple[int, int, int, int]]) -> list[tuple[int, int, int, int]]:
+    """把**同一条血条被分隔符切成的多段**合回一根 (2026-11-14).
+
+    战斗/野怪血条是**分段渲染**的 (每格之间有深色分隔符), 颜色法会沿分隔符把它切成几十片:
+    `board_green_model.png` 一根野怪大血条被切成 **25 片**, 每片都不带徽记, 于是全被
+    "无徽记即误检"规则丢掉 —— 一根真血条都没留下。合并后再判定, 徽记就在合并后血条的左端。
+    相邻两只棋子的血条横向间距 >= 40px (格宽 78), 不会被误合并。
+    """
+    if not bars:
+        return []
+    out: list[tuple[int, int, int, int]] = []
+    for b in sorted(bars, key=lambda t: ((t[1] + t[3]) // 2, t[0])):
+        cy = (b[1] + b[3]) // 2
+        for i, o in enumerate(out):
+            if (abs((o[1] + o[3]) // 2 - cy) <= BAR_MERGE_DY
+                    and -BAR_MERGE_GAP <= b[0] - o[2] <= BAR_MERGE_GAP):
+                out[i] = (min(o[0], b[0]), min(o[1], b[1]), max(o[2], b[2]), max(o[3], b[3]))
+                break
+        else:
+            out.append(b)
+    # 合并可能让 A 同时贴住 B 和 C: 再来一两轮收敛 (碎片数量级很小, 代价可忽略)
+    for _ in range(3):
+        merged_any = False
+        again: list[tuple[int, int, int, int]] = []
+        for b in out:
+            cy = (b[1] + b[3]) // 2
+            for i, o in enumerate(again):
+                if (abs((o[1] + o[3]) // 2 - cy) <= BAR_MERGE_DY
+                        and -BAR_MERGE_GAP <= b[0] - o[2] <= BAR_MERGE_GAP):
+                    again[i] = (min(o[0], b[0]), min(o[1], b[1]), max(o[2], b[2]), max(o[3], b[3]))
+                    merged_any = True
+                    break
+            else:
+                again.append(b)
+        out = again
+        if not merged_any:
+            break
+    return out
+
+
 def _find_bars(arr: np.ndarray, region: tuple,
                method: str | None = None,
                include_enemy_color: bool = False) -> list[tuple[int, int, int, int]]:
@@ -130,9 +174,9 @@ def _find_bars(arr: np.ndarray, region: tuple,
     """
     method = (method or default_config.BAR_DETECT_METHOD or "union").lower()
     if method == "template":
-        return _find_bars_template(arr, region)
+        return _merge_bar_pieces(_find_bars_template(arr, region))
     if method == "color":
-        return _find_bars_color(arr, region, include_enemy_color)
+        return _merge_bar_pieces(_find_bars_color(arr, region, include_enemy_color))
     # union / both / 其它未知值 -> 并集 (最稳)
     merged: list[tuple[int, int, int, int]] = []
     for one in (_find_bars_color(arr, region, include_enemy_color),
@@ -142,7 +186,7 @@ def _find_bars(arr: np.ndarray, region: tuple,
             if not any(abs((m[0] + m[2]) / 2 - cx) <= 20 and abs((m[1] + m[3]) / 2 - cy) <= 20
                        for m in merged):
                 merged.append(b)
-    return merged
+    return _merge_bar_pieces(merged)
 
 
 def _has_name_text(arr: np.ndarray, bar: tuple[int, int, int, int]) -> bool:
