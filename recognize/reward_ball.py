@@ -28,9 +28,20 @@ COLORS: dict[str, tuple[tuple, tuple]] = {
 # 真球是发光体 (高亮占比实测 0.29-0.67), 蓝色小怪身体 0.18, 以此排除.
 BRIGHT_CHECK: dict[str, tuple[int, float]] = {"blue": (190, 0.25)}
 AREA_RANGE = {"blue": (1000, 12000), "silver": (500, 6000), "gold": (1500, 12000)}
-BOARD_REGION = (250, 85, 1510, 710)  # 棋盘活动区: 避开顶栏/商店/右缘火把装饰(x>1510)/备战席(y>710)
+# 棋盘活动区。y 上界取 150: 顶部 HUD 的物品槽 (x1150-1340, y40-110) 是低饱和浅色块,
+# 实测被 silver 阈值整块吃进来 (2026-11-14 用户指出示例图里的"球"离谱, 逐候选裁图确认:
+# board_ingame.png 的 4 个球全是误检 = 2 个 HUD 物品槽 + "6人口"按钮高光 + 小小英雄高光)。
+BOARD_REGION = (250, 150, 1510, 710)  # 棋盘活动区: 避开顶栏/商店/右缘火把装饰(x>1510)/备战席(y>710)
 ASPECT_RANGE = (0.55, 1.8)           # 包围盒宽高比 (圆形)
 MIN_FILL = {"blue": 0.4, "silver": 0.4, "gold": 0.45}  # 包围盒填充率; 金色与装备散件同色系, 圆形度加严  # 0.62 -> 0.45 (2026-10-13 实测校准, 见下)
+
+# **亮度/饱和度二次核验 (2026-11-14 实测标定)**: 球是"被场景照亮的发光体", 而误检源是
+# 界面高光与小小英雄身上的青色高亮, 两者的 V/S 分布明显不同 —— 用 blob 均值一刀切即可分开:
+#   银球 (4 个真样本) V=127-132 / S=60-61 ; 误检(HUD 物品槽 V=211, "6人口"按钮 V=191, 精灵光斑 V=183)
+#   蓝球 (5 个真样本) S=181-204, V=194-211 ; 误检(小小英雄高亮 S=166, V=181), 另有 S=226 的界面蓝光
+SILVER_V_MAX = 175     # 银球 V 上限 (真实样本最高 132, 误检最低 183 -> 取中值偏保守)
+BLUE_S_MIN = 175       # 蓝球 S 下限 (真实样本最低 181, 小小英雄高光 166)
+BLUE_V_MIN = 190       # 蓝球 V 下限 (真实样本最低 194, 小小英雄高光 181)
 
 # **金球阈值校准 (2026-10-13, 用户样例 images/examples/金色球和银色混合样本.png)**
 #   原金色范围 (12,140,130)~(40,255,255) 把**草地**一起吃进来 (该图草地区 2382 个"金色"像素) ->
@@ -157,9 +168,16 @@ def find_balls(img) -> list[dict]:
                 continue
             if area / (w * h) < MIN_FILL[color]:
                 continue
+            blob = hsv[y:y + h, x:x + w][labels[y:y + h, x:x + w] == i]
+            s_mean = float(blob[:, 1].mean())
+            v_mean = float(blob[:, 2].mean())
+            # 亮度/饱和度二次核验: 挡住界面高光与小小英雄身上的青色高亮 (见常量注释)
+            if color == "silver" and v_mean > SILVER_V_MAX:
+                continue
+            if color == "blue" and (s_mean < BLUE_S_MIN or v_mean < BLUE_V_MIN):
+                continue
             if color in BRIGHT_CHECK:
                 v_min, ratio_min = BRIGHT_CHECK[color]
-                blob = hsv[y:y + h, x:x + w][labels[y:y + h, x:x + w] == i]
                 if float((blob[:, 2] >= v_min).mean()) < ratio_min:
                     continue
             result.append({"color": color,
