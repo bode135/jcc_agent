@@ -49,6 +49,24 @@ PHASE_CN = {"prep": "准备", "combat": "战斗", "augment": "海克斯", "draft
             "unknown": "非对局"}
 
 # 各识别项的重算间隔 (秒): 按实测热态耗时定, 详见模块 docstring
+# 只在"对局画面"里有意义的识别项。大厅/登录/选英雄等非对局画面上跑这些,
+# 会把界面美术当目标 (实测大厅 K/DA 补给站帧刷出 23 个假球、满地假球框)。
+# 判据用 phase.detect: 只有 prep / combat / augment / draft 才算对局。
+IN_GAME_ONLY = {"units", "bars", "balls", "yolo_balls", "legend", "heroes",
+                "equip_bar", "board_equips", "game", "augment"}
+IN_GAME_PHASES = {"prep", "combat", "augment", "draft"}
+
+
+def _in_game(phase_state) -> bool:
+    """phase 状态 -> 是否对局画面; 还没算过 phase 时保守返回 True (先算一轮再说)。"""
+    if not phase_state:
+        return True
+    ph = (phase_state or {}).get("phase")
+    if ph is None:
+        return True
+    return str(ph) in IN_GAME_PHASES
+
+
 ITEM_INTERVAL = {
     "units": 0.5,        # YOLO 棋子 (7ms)
     "bars": 0.5,         # 血条/星数/小小英雄名牌 (51ms)
@@ -232,6 +250,16 @@ class Observer:
         if force:
             self.errors.clear()
             keys.sort(key=lambda k: 0 if k == "phase" else 1)
+        # 非对局画面 (大厅/登录/选英雄/结算) 只跑 phase, 其余项跳过并把缓存清空,
+        # 免得把界面美术画成球/棋子 (实测大厅帧 23 个假球)。
+        if not _in_game(self.cache.get("phase")):
+            skipped = [k for k in keys if k in IN_GAME_ONLY]
+            keys = [k for k in keys if k not in IN_GAME_ONLY]
+            for k in skipped:
+                self.cache[k] = None if k in ("game", "augment") else []
+            if skipped:
+                print(f"[!] 非对局画面: 跳过 {len(skipped)} 项 ({', '.join(skipped)})",
+                      flush=True)
         t0 = time.monotonic()
         for key in keys:
             self._run(key, img)
