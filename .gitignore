@@ -22,5 +22,17 @@ dist/
 models/*.onnx
 models/*.pt
 models/*.part
-# workspace/scrape_info/ 仍入库 (4.9MB, 识别可直接跑)
 # 拉权重: python -m tools.fetch_models
+
+# ---- 爬虫产物: 只入库一份固定样本 v18.3b (识别层开箱即用), 其余不进 git ----
+# 重新抓最新赛季: python -m scrape_info   (输出 workspace/scrape_info/v{版本}/)
+# 抓单个阵容打法文档: python -m scrape_comp <阵容id>   (输出 workspace/scrape_comp/)
+workspace/scrape_comp/
+workspace/scrape_info/*
+!workspace/scrape_info/v18.3b/
+workspace/scrape_info/v18.3b/*
+!workspace/scrape_info/v18.3b/chess_info/
+!workspace/scrape_info/v18.3b/comps/
+!workspace/scrape_info/v18.3b/images/
+# 棋盘装备模板库是识别层缓存: equipment.ensure_board_template_library() 缺失时自动重建 (~10ms)
+workspace/scrape_info/*/*.pkl

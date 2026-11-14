@@ -23,6 +23,7 @@
 | **抽取** | `scripts/extract_img_info.py` + `extract_info/` | 一张截图 → 结构化对局信息（回合/剩余时间/等级/经验/金币/阶段/海克斯/商店/玩家血量/小小英雄），可落 JSON、可表格、可循环 | 是 |
 | **操作** | `scripts/game.py` + `control/fallback.py` | 「看图 → 点哪里」的动作 CLI：买卡/卖卡/上场/交换/刷新/买经验/装备/合成/拆卸/选格/捡球/海克斯，**每次点击都走通道兜底 + 点后复核** | 否（可 `--dry-run`） |
 | **绘制** | `scripts/overlay_info.py` + `overlay/` | 被动观察器：每秒一帧，打印一行行中文决策消息，同时把识别框实时画到游戏窗口上方的透明叠加层 | 是（全文无任何 input 调用） |
+| **组合** | `scripts/frame_prompt.py` + `extract_info/prompt.py` | 一帧 → Agent prompt：商店 / 场上棋子 / 备战席 / 装备栏四张 Markdown 表 + 阶段金钱等级 | 是（只读） |
 
 三者共用同一套识别核心：`recognize/`（YOLO 棋子 + 模板血条 + 装备图标库 + 球 HSV + 阶段/海克斯判定 + OCR）。
 
@@ -93,7 +94,10 @@ python -X utf8 -u -m scripts.game equip-to --item 无用大棒 --row 2 --col 4 -
 python -X utf8 -u -m scripts.overlay_info --img tests/images/board_ingame.png
 #    -> tempdir/overlay_info_board_ingame.png 与 *_mix.png
 
-# 5) 全量自测 (四个功能自测, 约 100s)
+# 5) 一帧 -> Agent prompt (四张 Markdown 表, 不操作游戏)
+python -X utf8 -u -m scripts.frame_prompt --img tests/images/board_ingame.png
+
+# 6) 全量自测 (五个功能自测, 约 115s)
 python -X utf8 -u tools/selfcheck.py --full
 ```
 
@@ -183,6 +187,59 @@ python -X utf8 -u -m scripts.game buy --slot 1
 | `--show a,b,c` 与逐项 `--show-units --show-bars …` | 选择绘制项（`units,bars,balls,yolo_balls,shop,equip,bequips`；顶部状态栏与小英雄框随 units/bars 一起画） |
 
 每帧消息首行会明说「本帧重算: …」，其余项来自缓存（分项降频：棋子/血条/球 0.5s、阶段 0.5s、装备栏 2s、棋子携带装备 3s、经济/商店 5s）。
+
+### 6.4 `scripts/frame_prompt.py`（一帧 → Agent prompt）
+
+把一帧画面组合成 **Agent 可直接喂的 Markdown 四表**（商店 / 场上棋子 / 备战席棋子 / 装备栏），
+外加阶段、金钱、等级、各玩家血量。只读不操作。口径与父项目 `trae_agent/prompt.py` 的段落一致。
+
+```bash
+python -X utf8 -u -m scripts.frame_prompt --img tempdir/frame_4-5.png            # 打到终端
+python -X utf8 -u -m scripts.frame_prompt --img frame.png --no-players --out prompt.md
+python -X utf8 -u -m scripts.frame_prompt --ld-index 0 --format json             # 实机截一帧（只读）
+python -X utf8 -u -m scripts.frame_prompt --img frame.png --only shop,board --timings
+```
+
+| 参数 | 说明 |
+| --- | --- |
+| `--img PATH` | 离线图（非 1920×1080 先等比缩放到基准） |
+| `--ld-index N` | 实机：雷电模拟器序号，截一帧（与 `--img` 互斥，只读） |
+| `--format md\|json` | 输出 Markdown（默认）或 JSON |
+| `--out PATH` | 写到文件而不是 stdout |
+| `--only a,b,c` | 只输出部分段落：`shop/board/bench/equip_bar/players` |
+| `--no-players` | 不带玩家血量（省 token） |
+| `--timings` | 打印每步耗时 |
+
+热帧约 **4~6s**（整图 OCR 1.8~2.2s 占大头）。`?` 表示名字没认出来（不是没棋子），
+同格位重复检测只留置信度最高的那个；细节与字段来源见 [`docs/prompt组合.md`](docs/prompt组合.md)。
+
+### 6.5 爬虫工具（可选，为识别层生产数据）
+
+两个包都只用 `requests` 读站点公开数据，**不碰游戏、不需要游戏在跑**，与三个脚手架完全解耦。组装思路是把站点数据变成识别层的"字典 + 图标库"，以及把某个阵容页变成一份能照着打的打法文档。
+
+```bash
+# 抓赛季基础库（棋子/装备/羁绊/热门阵容 + 图标） -> workspace/scrape_info/v{版本}/
+python -m scrape_info                    # 自动探测最新版本
+python -m scrape_info --list-versions    # 只看站点有哪些版本
+python -m scrape_info --no-images        # 只抓 json, 跳过图片
+python -m scrape_info --recipes-only     # 不联网, 用已有 items.json 重生成装备合成表
+
+# 抓单个阵容页 -> 解密棋盘 -> 生成中文打法文档 -> workspace/scrape_comp/<id>-<纹章id>-<标题>/
+python -m scrape_comp 16278
+python -m scrape_comp "https://jcc.datatft.com/comp/rank#16278-33039-凯特琳-主宰"
+python -m scrape_comp 16278 --json       # 只打印分析 JSON, 不落文件
+```
+
+数据分层（为什么有的进 git、有的不进）：
+
+| 路径 | 进 git | 说明 |
+| --- | --- | --- |
+| `workspace/scrape_info/v18.3b/` | **是**（约 1.9MB） | 随仓库附带的固定样本，clone 即可离线跑识别，不用跑爬虫 |
+| `workspace/scrape_info/*/*.pkl` | 否 | 棋盘装备模板库是**识别缓存**，缺失时 `equipment.ensure_board_template_library()` 自动重建（实测 150 模板：冷建 164ms / 热加载 7ms） |
+| `workspace/scrape_info/v19` 等新赛季 | 否 | 数据可复现（`python -m scrape_info`），赛季更迭不应让 git 无限膨胀 |
+| `workspace/scrape_comp/` | 否 | 按阵容 id 无限增长的抓取产出，随时可重抓 |
+
+抓取链、`teamUrl` 密文格式、棋盘坐标口径、已知局限都写在 [`scrape_comp/README.md`](scrape_comp/README.md) 里。
 
 ---
 
@@ -334,9 +391,11 @@ jcc_robot_by_img/
 ├── utils/            # template_match / overlay_draw / portrait_match / reward_ball(捡球) / show_img / tt_log …
 ├── overlay/          # debug_overlay.py 分层透明窗+draw_frame 纯函数 / live_draw.py 节拍调度 / mouse_icon.py
 ├── scripts/          # game.py / extract_img_info.py / overlay_info.py + README_ops.md
-├── tools/            # selfcheck.py 一键自检 + 四个 selftest + config_audit + import_closure
+├── tools/            # selfcheck.py 一键自检 + 四个 selftest + config_audit + import_closure + fetch_models
+├── scrape_info/      # 爬虫: 抓站点基础库(棋子/装备/羁绊/阵容 + 图标) -> workspace/scrape_info/v{版本}/
+├── scrape_comp/      # 爬虫: 抓单个阵容页 -> 解密棋盘 -> 生成打法文档(抓取链/密文格式见其 README)
 ├── models/           # 权重不进 git（Release 附件）: yolo_v2.1_balls.onnx（球/小小英雄/调试）, yolo_v4.1_units_11n.onnx（棋子）
-├── workspace/        # scrape_info/v18.3b: 棋子/装备/羁绊数据 json + 150 装备图标 + 装备模板缓存
+├── workspace/        # scrape_info/v18.3b: 随仓库附带的固定样本(约 1.9MB); 模板缓存 *.pkl 与其它赛季不进 git
 ├── tests/images/     # 5 张真实对局截图（离线自测用）
 └── tempdir/          # 运行产物（gitignore）
 ```
@@ -372,6 +431,7 @@ jcc_robot_by_img/
 | `tools/selftest_extract.py` | 抽取链路 + JSON 落盘断言（3 图，约 14s） |
 | `tools/selftest_ops.py` | 操作链路 5 组 63 项（api/parse/dryrun/offline/live，约 61s） |
 | `tools/selftest_overlay.py` | 绘制链路 5 组（画框纯函数/节拍/离线图/贴屏探针），校验 1s 节拍跟得住 |
+| `tools/selftest_prompt.py` | prompt 组合 34 项（干净帧四表 + 4-5 战斗帧去重/装备挂载/--only，约 14s） |
 | `tools/config_audit.py` | 统计 config 里哪些键真被代码读取（输出 96 在用 / 322 遗留） |
 | `tools/probe_star_badge.py` | 星级徽记探针：打印每根血条左侧徽记的色相/白像素/几何，用来标定 1★/2★/**3★** 区间（`--crop` 放大落图） |
 | `tools/import_closure.py` | AST 分析入口脚本的模块级/惰性 import 闭包（裁剪与迁移时用） |
