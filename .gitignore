@@ -18,10 +18,9 @@ dist/
 .idea/
 .vscode/
 
-# 说明:
-# models/*.onnx 与 workspace/scrape_info/ 默认入库 (合计约 26MB, 让克隆即可跑)。
-# 如果你的仓库策略不希望提交大文件, 可改成 Git LFS:
-#   git lfs track "models/*.onnx"
-# 或在 .gitignore 里取消下面两行注释, 并让使用者自行下载权重 (README 第三节已说明)。
-# models/*.onnx
-# models/*.pt
+# ---- 权重不进 git, 走 Release 附件 (见 models/README.md) ----
+models/*.onnx
+models/*.pt
+models/*.part
+# workspace/scrape_info/ 仍入库 (4.9MB, 识别可直接跑)
+# 拉权重: python -m tools.fetch_models

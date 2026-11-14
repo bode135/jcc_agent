@@ -46,7 +46,7 @@ def warn(msg: str) -> None:
 # ---------------------------------------------------------------- [1] 完整性
 REQUIRED_FILES = [
     "config/config.py",
-    "models/yolo_v2_1.onnx",
+    "models/yolo_v2.1_balls.onnx",
     "models/yolo_v4.1_units_11n.onnx",
     "train_yolo/classes.json",
     "recognize/templates/health_bar.png",
@@ -96,15 +96,17 @@ def check_assets() -> None:
             bad(f"空目录 {rel}")
     if not FAILS:
         ok(f"完整性: {len(REQUIRED_FILES)} 个关键文件 + {len(REQUIRED_DIRS)} 个资源目录齐全")
-    # 权重文件大小粗检 (防止 git LFS 指针文件冒充模型)
-    for rel, min_mb in (("models/yolo_v2_1.onnx", 8.0), ("models/yolo_v4.1_units_11n.onnx", 8.0)):
+    # 权重不在 git 里 (走 Release 附件, 见 models/README.md), 缺了要指路怎么拉
+    for rel, min_mb in (("models/yolo_v2.1_balls.onnx", 8.0), ("models/yolo_v4.1_units_11n.onnx", 8.0)):
         p = PROJECT_ROOT / rel
-        if p.is_file():
-            mb = p.stat().st_size / 1024 / 1024
-            if mb < min_mb:
-                bad(f"{rel} 只有 {mb:.1f}MB (< {min_mb}MB), 疑似 LFS 指针/下载不完整")
-            else:
-                ok(f"权重 {rel} = {mb:.1f}MB")
+        if not p.is_file():
+            bad(f"缺权重 {rel} —— 跑 python -m tools.fetch_models (权重走 Release 附件, 不进 git)")
+            continue
+        mb = p.stat().st_size / 1024 / 1024
+        if mb < min_mb:
+            bad(f"{rel} 只有 {mb:.1f}MB (< {min_mb}MB), 疑似 LFS 指针/下载不完整")
+        else:
+            ok(f"权重 {rel} = {mb:.1f}MB")
 
 
 # ---------------------------------------------------------------- [2] 干净度

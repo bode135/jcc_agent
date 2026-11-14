@@ -431,7 +431,7 @@ def decode(raw: np.ndarray, scale: float, pad_x: int, pad_y: int, size: tuple[in
         _WARNED["nc"] = True
         # **2026-10-22 更正**: classes.json 的约定是"新类别只往**表尾追加**"(见 _comment),
         #   所以 n_cls < 冻结表类数时**类别号并不错位** —— 模型只是不认识表尾新增的那几类
-        #   (当前 yolo_v2_1.onnx 70 类 vs 表 73 类: 缺 其他小小英雄/石皮树/生命花)。
+        #   (当前 yolo_v2.1_balls.onnx 70 类 vs 表 73 类: 缺 其他小小英雄/石皮树/生命花)。
         #   只有 n_cls > 表类数 或表被重排过才是真错位。这里按实际情况分两句话打, 免误导。
         if n_cls < class_table.num_classes():
             print(f"[yolo] [!] ONNX 有 {n_cls} 类 < 冻结表 {class_table.num_classes()} 类 → "

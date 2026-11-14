@@ -550,16 +550,16 @@ class DefaultConfig:
     # 背景: 冻结类别表 train_yolo/classes.json 共 73 类, 表尾依次是
     #   ... 基础装备锻造器, 成装锻造器, ball, 小小英雄, unknown, 其他小小英雄, 石皮树, 生命花
     # yolo_v4.1_units_11s 只有 67 类 → **缺表尾 6 类 (含 ball、小小英雄)**, 既不认球也不认小小英雄;
-    # yolo_v2_1 有 70 类 → 缺最后 3 类 (其他小小英雄/石皮树/生命花), **ball 与 小小英雄 都有**。
+    # yolo_v2.1_balls 有 70 类 → 缺最后 3 类 (其他小小英雄/石皮树/生命花), **ball 与 小小英雄 都有**。
     # 读取入口统一走 `recognize.yolo_units.model_for("<功能点>")`, 不要在业务代码里直接写路径。
     #   功能点     常量                 默认模型
     #   units      YOLO_UNITS_ONNX      11s  认奕子/上阵单位名单 (精度最高, 见上一行)
     #   legend     YOLO_LEGEND_ONNX     v2.1 认小小英雄 (捡球排序用, 11s 缺这个类)
     #   ball       YOLO_BALL_ONNX       v2.1 认奖励球 (捡球用, 11s 缺这个类)
     #   debug      YOLO_DEBUG_ONNX      v2.1 采集/调试图框选 (球 + 小小英雄, 一次推理同时拿到)
-    YOLO_LEGEND_ONNX = PROJECT_ROOT / "models" / "yolo_v2_1.onnx"   # 认"小小英雄" (11s 缺这个类)
-    YOLO_BALL_ONNX = PROJECT_ROOT / "models" / "yolo_v2_1.onnx"     # 认"奖励球 ball" (11s 缺这个类)
-    YOLO_DEBUG_ONNX = PROJECT_ROOT / "models" / "yolo_v2_1.onnx"    # 调试图: 球+小小英雄 (11s 两个都缺)
+    YOLO_LEGEND_ONNX = PROJECT_ROOT / "models" / "yolo_v2.1_balls.onnx"   # 认"小小英雄" (11s 缺这个类)
+    YOLO_BALL_ONNX = PROJECT_ROOT / "models" / "yolo_v2.1_balls.onnx"     # 认"奖励球 ball" (11s 缺这个类)
+    YOLO_DEBUG_ONNX = PROJECT_ROOT / "models" / "yolo_v2.1_balls.onnx"    # 调试图: 球+小小英雄 (11s 两个都缺)
     YOLO_UNITS_IMGSZ = 1280           # 必须与导出 ONNX 时的 imgsz 一致
     YOLO_UNITS_CONF = 0.35            # 检出置信度阈值
     YOLO_UNITS_IOU = 0.5              # NMS IoU 阈值

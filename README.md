@@ -52,14 +52,18 @@
   ```
 
 - 需要放在 **1920×1080** 的游戏窗口上（识别区域、坐标常量都按这个基准标定；离线图不是基准尺寸时会先等比 `LANCZOS` 缩放到基准）。
-- 模型与素材已随仓库提供（`models/*.onnx` 21MB、`workspace/scrape_info/` 数据 5MB、`recognize/templates/` 0.6MB、`units/templates_alpha/` 1.9MB）。
-  若第一次克隆发现 `models/*.onnx` 只有几 KB，那是 Git LFS 指针，需要 `git lfs pull` 或手动下载权重。
+- 素材随仓库提供（`workspace/scrape_info/` 数据 4.9MB、`recognize/templates/` 0.6MB、`units/templates_alpha/` 1.9MB、`tests/images/` 测试帧）。
+- **模型权重不进 git**：两个 `.onnx` 合计 21.3MB，走「发行版 / Release」附件分发，克隆后用一条命令拉取并校验 SHA256
+  （`--check-only` 只校验、`--proxy` 走代理），详见 [`models/README.md`](models/README.md)。
 
 ```powershell
 # 安装 (示例用 conda, venv 同理)
 conda create -n jcc_img python=3.11 -y
 conda activate jcc_img
 pip install -r requirements.txt
+
+# 拉权重 (缺什么下什么 + SHA256 校验; 已就绪自动跳过; 国内可加 --proxy http://127.0.0.1:7890)
+python -X utf8 -u -m tools.fetch_models
 
 # 一键自检 (完整性/干净度/可导入, 约 10s)
 python -X utf8 -u tools/selfcheck.py
@@ -330,7 +334,7 @@ jcc_robot_by_img/
 ├── overlay/          # debug_overlay.py 分层透明窗+draw_frame 纯函数 / live_draw.py 节拍调度 / mouse_icon.py
 ├── scripts/          # game.py / extract_img_info.py / overlay_info.py + README_ops.md
 ├── tools/            # selfcheck.py 一键自检 + 四个 selftest + config_audit + import_closure
-├── models/           # yolo_v2_1.onnx（球/小小英雄/调试）, yolo_v4.1_units_11n.onnx（棋子）
+├── models/           # 权重不进 git（Release 附件）: yolo_v2.1_balls.onnx（球/小小英雄/调试）, yolo_v4.1_units_11n.onnx（棋子）
 ├── workspace/        # scrape_info/v18.3b: 棋子/装备/羁绊数据 json + 150 装备图标 + 装备模板缓存
 ├── tests/images/     # 5 张真实对局截图（离线自测用）
 └── tempdir/          # 运行产物（gitignore）
@@ -346,7 +350,7 @@ jcc_robot_by_img/
 | 键 | 默认 | 说明 |
 | --- | --- | --- |
 | `YOLO_UNITS_ONNX` | `models/yolo_v4.1_units_11n.onnx` | 棋子模型（想更准可换 `yolo_v4.1_units_11s.onnx`，38MB 未随仓库提供） |
-| `YOLO_BALL_ONNX` / `YOLO_LEGEND_ONNX` / `YOLO_DEBUG_ONNX` | `models/yolo_v2_1.onnx` | 球 / 小小英雄 / 调试共用 |
+| `YOLO_BALL_ONNX` / `YOLO_LEGEND_ONNX` / `YOLO_DEBUG_ONNX` | `models/yolo_v2.1_balls.onnx` | 球 / 小小英雄 / 调试共用 |
 | `YOLO_UNITS_CONF` / `YOLO_UNITS_IOU` / `YOLO_UNITS_IMGSZ` | `0.35 / 0.5 / 1280` | 置信度 / NMS / 输入尺寸 |
 | `BACKGROUND_INPUT` | `True` | True=后台 `PostMessage` 点击 |
 | `ALLOW_FOREGROUND_FALLBACK` | `False` | 兜底是否允许升级到前台真鼠标 |
