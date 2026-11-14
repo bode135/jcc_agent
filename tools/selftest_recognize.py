@@ -149,6 +149,25 @@ def run_one(path: Path, *, use_yolo: bool = True, rows: bool = True) -> dict:
         out["legends"] = len(legends)
         print(f"     include_legend=True -> legends={len(legends)} "
               f"(已知: 白色名牌召回低, 只当参考)", flush=True)
+        # ---- 星级徽记 (2026-11-14 用户口径: 棋子血条左侧必有星级, 小英雄左侧是等级数字) ----
+        st = board.last_stats()
+        dropped = st.get("dropped_no_badge") or []
+        print(f"[badge] 星级徽记: 无徽记丢弃 {len(dropped)} 根 · require_badge={st.get('require_badge')}",
+              flush=True)
+        for d in dropped[:5]:
+            print(f"     丢弃 bar={d['bar']} (颜色法星级={d.get('stars_color')}) -- 不是棋子血条",
+                  flush=True)
+        badge_stars = [u.get("stars") for u in b["board"] + b["bench"]]
+        print(f"[badge] 星级分布: {badge_stars}", flush=True)
+        bad_legend = [u for u in legends if u.get("stars")]
+        if bad_legend:
+            print(f"[X] 小小英雄被当成棋子星级: {[(u['bar'], u['stars']) for u in bad_legend]}",
+                  flush=True)
+            out["failures"].append("legend_stars")
+        missing = [u["bar"] for u in b["board"] + b["bench"] if u.get("stars") is None]
+        if missing and st.get("require_badge"):
+            print(f"[X] 有血条但读不到星级徽记: {missing}", flush=True)
+            out["failures"].append("badge_stars")
         names = [u["name"] for u in b["board"] + b["bench"] if u.get("name")]
         print(f"[matcher] 库={matcher.library_source()} names={matcher.library_size()} "
               f"variants={matcher.variants()}", flush=True)
@@ -289,6 +308,37 @@ def run_one(path: Path, *, use_yolo: bool = True, rows: bool = True) -> dict:
     return out
 
 
+def check_badge_gate() -> list[str]:
+    """星级徽记门禁的回归用例 (2026-11-14).
+
+    非对局帧 `board_green_model.png` 曾经被颜色法刷出 **25 根假血条**;
+    加"无徽记即非棋子血条"规则后必须 0 根。这一项只依赖纯图色, 不计入单图耗时统计。
+    """
+    fails: list[str] = []
+    p = PROJECT_ROOT / "tests" / "images" / "board_green_model.png"
+    if not p.exists():
+        print("[!] 跳过徽记门禁回归: 缺 tests/images/board_green_model.png", flush=True)
+        return fails
+    _sec("4. 星级徽记门禁 (非对局帧必须 0 根)")
+    try:
+        img = phase.normalize_1080(Image.open(p))
+        t = time.time()
+        res = board.extract_units(img, include_legend=True)
+        st = board.last_stats()
+        n = len(res["board"]) + len(res["bench"])
+        dropped = len(st.get("dropped_no_badge") or [])
+        print(f"[OK] board_green_model: 保留 {n} 根, 无徽记丢弃 {dropped} 根 "
+              f"({time.time() - t:.2f}s)", flush=True)
+        if n != 0:
+            print(f"[X] 非对局帧仍检出 {n} 根血条 (徽记门禁失效)", flush=True)
+            fails.append("badge_gate")
+    except Exception as exc:                                  # noqa: BLE001
+        print(f"[X] 徽记门禁用例异常: {type(exc).__name__}: {exc}", flush=True)
+        traceback.print_exc()
+        fails.append("badge_gate")
+    return fails
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="纯图色识别核心自测 (OCR/YOLO/血条/装备/球/阶段/海克斯)")
     ap.add_argument("--img", action="append", default=None,
@@ -310,6 +360,7 @@ def main(argv=None) -> int:
     for p in imgs:
         if p.exists():
             results.append(run_one(p, use_yolo=not args.no_yolo, rows=not args.no_rows))
+    gate_fails = check_badge_gate()
 
     # ---- 汇总 ---------------------------------------------------------
     print("\n" + "=" * 72, flush=True)
@@ -326,6 +377,9 @@ def main(argv=None) -> int:
               f"augment={r.get('is_augment')} chosen={r.get('chosen')} "
               f"failures={r['failures'] or '无'}", flush=True)
     print(f"总计: {len(results) - bad}/{len(results)} 张无失败段", flush=True)
+    if gate_fails:
+        print(f"[X] 星级徽记门禁: {'/'.join(gate_fails)}", flush=True)
+        bad += len(gate_fails)
     return 0 if bad == 0 else 1
 
 

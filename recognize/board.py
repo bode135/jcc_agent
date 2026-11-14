@@ -202,6 +202,8 @@ def extract_units(img, bar_method: str | None = None,
         include_enemy_color = bool(getattr(default_config, "BAR_INCLUDE_ENEMY_COLOR", False))
     arr = np.array(img.convert("RGB"))
     result = {}
+    #: 被"无星级徽记"规则丢掉的候选血条 (诊断用; 真棋子血条不会进这里)
+    dropped_no_badge: list[dict] = []
     #: 本帧全部血条按区域收集 (全局最优分配需要"看到整帧的血条再决定谁归哪格")。
     bars_of: dict[str, list[tuple]] = {}
     for region_name, region in BAR_REGIONS.items():
@@ -230,11 +232,23 @@ def extract_units(img, bar_method: str | None = None,
         units = []
         for bi, bar in enumerate(bars_of[region_name]):
             x1, y1, x2, y2 = bar
-            rank = bar_stars(arr, bar)
+            # 星级徽记 = 血条定位的正样本锚点 (2026-11-14): 棋子血条左侧必有徽记,
+            # 有徽记就读它的颜色定星级 (比数血条条纹稳), 没徽记也不是小小英雄 -> 误检丢弃。
+            badge_stars, badge_box = star_badge(arr, bar)
+            rank = badge_stars if badge_stars is not None else bar_stars(arr, bar)
+            # 小小英雄的左侧是**等级数字**(白字), 不是星级 chevron —— 徽记框里白像素多就是数字。
+            level_number = badge_box is not None and badge_white_count(arr, badge_box) >= BADGE_NUMBER_WHITE
+            if level_number:
+                badge_stars = None          # 数字不是星级, 别把小小英雄当 2 星棋子
+                rank = None                 # 小小英雄没有星级
             # 竖向堆叠时上方棋子白色模型可能落进名牌窗；有星级徽记的是真棋子。
-            legend = _has_name_text(arr, bar) and rank is None
+            # 等级数字框本身就是小小英雄的铁证 (不必再靠名牌, 名牌在战斗帧常被遮)。
+            legend = (_has_name_text(arr, bar) and (badge_stars is None or level_number)) or level_number
             if legend and not include_legend:
                 continue  # 小小英雄名牌
+            if badge_stars is None and not legend and BAR_REQUIRE_BADGE:
+                dropped_no_badge.append({"bar": list(bar), "stars_color": rank})
+                continue        # 无星级徽记: 不是棋子血条 (草地/顶栏/HUD 装饰被当成血条)
             cx = (x1 + x2) // 2
             portrait = img.crop((cx - PORTRAIT_HALF_W, y2 + 3,
                                  cx + PORTRAIT_HALF_W, y2 + PORTRAIT_H))
@@ -297,7 +311,18 @@ def extract_units(img, bar_method: str | None = None,
     # 精确判重 —— 同 slot 只留优先级最高的一条。相邻行的两只真奕子 slot 不同, 不会被误合并。
     for area in ("board", "bench"):
         result[area] = _dedupe_units(result.get(area) or [])
+    # 诊断信息放模块级 (不能塞进 result: 下游 `extract_board_equips(units=result)` 会
+    # 把 result 当"区域 -> 单位列表"遍历, 多一个非列表键就会炸)。
+    _LAST_STATS.clear()
+    _LAST_STATS.update({"dropped_no_badge": dropped_no_badge,
+                        "require_badge": BAR_REQUIRE_BADGE})
     return result
+
+
+def last_stats() -> dict:
+    """最近一次 `extract_units` 的徽记诊断 (被"无星级徽记"规则丢掉的候选血条等)."""
+    return {"dropped_no_badge": list(_LAST_STATS.get("dropped_no_badge") or []),
+            "require_badge": _LAST_STATS.get("require_badge", BAR_REQUIRE_BADGE)}
 
 
 def _slot_key(u: dict) -> tuple | None:
@@ -363,6 +388,109 @@ def bar_stars(arr, bar) -> int | None:
         if int(mask.sum()) >= 12:
             return stars
     return None
+
+
+# ---- 星级徽记定位 (2026-11-14 用户口径) -----------------------------------
+# 用户给的三个模板: 1星=铜色 chevron(21×22) / 2星=银蓝菱形(19×17) / 3星=金色 chevron(25×18),
+# 原件存 `templates/star/star_{1,2,3}.png`。口径: **每个棋子血条左侧必定有星级徽记**
+# (小小英雄左侧则是等级数字, 不是 chevron), 所以徽记可以作为血条定位的"正样本锚点":
+#   有徽记 -> 一定是棋子血条, 星级直接读徽记颜色;
+#   没徽记也不是小小英雄 -> 这根"血条"是误检 (草地色块/顶栏装饰/HUD 元素),
+#   实测 bench_forge.png 里 (1124,84) 那根就是一片绿色藤蔓被 color 法当成血条。
+BADGE_WIN = (-40, -12, 2, 12)      # 相对血条 (x1,y1,x2,y2) 的搜索窗: (左, 上, 右, 下)
+BADGE_AREA_RANGE = (40, 600)       # 彩色 chevron 像素面积 (实测 1★ 48~128, 2★ 193~215)
+BADGE_H_RANGE = (8, 30)
+BADGE_W_RANGE = (6, 32)
+BADGE_DY_MAX = 12                  # 徽记竖向中心与血条竖向中心的最大偏差 (实测 0~6)
+#: 血条必须带星级徽记才算真棋子血条 (关掉就回到"有绿条就认"的旧宽松口径, 易误检)。
+BAR_REQUIRE_BADGE = True
+
+#: 最近一次 extract_units 的徽记诊断 (模块级, 见 last_stats())
+_LAST_STATS: dict = {}
+#: 颜色类 -> HSV 上下界 (OpenCV H 0-179)。金色优先级最高 (与铜色色相相邻, 靠 S/V 拉开)。
+#: [!] 3 星金徽记**本机测试帧里没有样本**, 区间是按用户模板 + 游戏内金色 UI 推断的
+#: (H 26~42 偏黄, 与铜色 H 8~25 分开); 拿到真实 3★ 帧后请用
+#: `python -X utf8 -u tools/probe_star_badge.py --img <帧>` 复核并微调。
+BADGE_COLORS: tuple[tuple[int, tuple, tuple], ...] = (
+    (3, (26, 140, 110), (42, 255, 255)),
+    (2, (85, 20, 120), (118, 120, 255)),
+    (1, (8, 90, 110), (25, 255, 255)),
+)
+
+
+def badge_white_count(arr: np.ndarray, bbox: tuple) -> int:
+    """徽记框内的白色像素数 (V≥195 且 S≤45).
+
+    用来把**小小英雄的等级数字**和**棋子的星级 chevron**分开 (2026-11-14 用户口径:
+    "hero 的血条左边就一定是代表等级的数字"):
+      实测 等级数字框 white=52~73 (数字本身是白的),
+           1★ 铜 chevron white=0, 2★ 银蓝 chevron white=0 (银蓝 S 中位 87, 不算白)。
+    """
+    x, y, w, h = bbox
+    sub = cv2.cvtColor(arr[y:y + h, x:x + w], cv2.COLOR_RGB2HSV)
+    s = sub[:, :, 1].astype(int)
+    v = sub[:, :, 2].astype(int)
+    return int(((v >= 195) & (s <= 45)).sum())
+
+
+#: 徽记框白色像素达到这个数 -> 认定是等级数字框 (小小英雄), 而不是星级 chevron
+BADGE_NUMBER_WHITE = 25
+
+
+def star_badge(arr: np.ndarray, bar) -> tuple[int | None, tuple | None]:
+    """在血条左侧窗口找**星级徽记** (1/2/3 星 chevron).
+
+    Returns:
+        (stars, bbox): stars 为 1/2/3; 没找到返回 (None, None)。
+        bbox 为徽记彩色部分的整帧坐标 (x, y, w, h)。
+
+    定位口径 (2026-11-14): 徽记是 UI 元素, 形状/色相/尺寸都固定, 比"绿色长条"稳定得多;
+    因此它既能**判定这根是不是真血条** (棋子血条必有徽记), 又能**直接给出星级**
+    (借此取代按血条条纹数星级的旧做法 —— 条纹在战斗帧被分段/被特效压盖时会数错)。
+    """
+    x1, y1, x2, y2 = bar
+    dl, du, dr, dd = BADGE_WIN
+    wx1, wy1 = max(0, x1 + dl), max(0, y1 + du)
+    wx2, wy2 = x1 + dr, y2 + dd
+    if wx2 <= wx1 or wy2 <= wy1:
+        return None, None
+    win = arr[wy1:wy2, wx1:wx2]
+    hsv = cv2.cvtColor(win, cv2.COLOR_RGB2HSV)
+    bar_cy = (y1 + y2) / 2
+    best = None
+    for stars, lo, hi in BADGE_COLORS:
+        mask = cv2.inRange(hsv, np.array(lo), np.array(hi))
+        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))
+        n, _labels, stats, _ = cv2.connectedComponentsWithStats(mask)
+        for i in range(1, n):
+            x, y, w, h, area = (int(v) for v in stats[i])
+            if not (BADGE_AREA_RANGE[0] <= area <= BADGE_AREA_RANGE[1]):
+                continue
+            if not (BADGE_H_RANGE[0] <= h <= BADGE_H_RANGE[1]):
+                continue
+            if not (BADGE_W_RANGE[0] <= w <= BADGE_W_RANGE[1]):
+                continue
+            cy = wy1 + y + h / 2
+            if abs(cy - bar_cy) > BADGE_DY_MAX:
+                continue
+            # 徽记必须在血条**左侧**: 右边界不越过血条左沿太多 (留 4px 容差)
+            if wx1 + x + w > x1 + 4:
+                continue
+            cand = (stars, (wx1 + x, wy1 + y, w, h), area)
+            if best is None or area > best[2]:
+                best = cand
+    if best is None:
+        return None, None
+    return best[0], best[1]
+
+
+def bar_stars_hybrid(arr: np.ndarray, bar) -> int | None:
+    """星级读取: 先读徽记 (准), 徽记没读出来再退回旧的颜色计数法。"""
+    stars, _bbox = star_badge(arr, bar)
+    if stars is not None:
+        return stars
+    return bar_stars(arr, bar)
+
 
 
 BENCH_ICON_SCALES = tuple(round(0.7 + 0.05 * i, 2) for i in range(12))  # 格内图标渲染有轻微缩放抖动

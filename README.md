@@ -229,7 +229,14 @@ text  = ocr.recognize(img)                                    # 整图 OCR（rap
 - 奖励球恒 **60×60** 圆形（蓝/银/金三色），HSV 阈值即可，不必进 YOLO。**注意三处界面高光会冒充球**
   （顶部 HUD 物品槽 / "6人口"按钮 / 小小英雄的青色高光），已用「区域 y 上界 150 + 银球 V≤175 + 蓝球 S≥175 且 V≥190」三道闸清掉：
   `board_ingame.png` 从 4 个误检 → 0，`reward_balls.png` 从 12 → 真值 9（蓝 5 + 银 4），详见 [`docs/图色口径.md`](docs/图色口径.md) 5.1 节。
-- 小小英雄框约 **123×94**，靠血条上方白色名牌 `_has_name_text` 判定（**召回很低**，见限制）。
+- 小小英雄框约 **123×94**，靠血条上方白色名牌 `_has_name_text` 判定（**召回很低**，见限制）；
+  更稳的判据是**血条左侧是等级数字**（徽记框内白像素 ≥25，见下一条）。
+- **血条左侧必定挂徽记**：棋子挂星级 chevron（1★铜 / 2★银蓝 / 3★金），小小英雄挂等级数字。
+  所以徽记是血条定位的**正样本锚点**（`recognize/board.py::star_badge` + `BAR_REQUIRE_BADGE=True`）：
+  有 chevron → 真棋子血条且星级直接读颜色；有白数字 → 小小英雄；**两者都没有 → 这根"血条"是误检，直接丢**。
+  实测收益（同一批测试帧，`include_legend=False` 的棋子血条数）：非对局帧假血条 **25 → 0**（`board_green_model.png`）、
+  海克斯遮罩帧 **5 → 1**、战斗帧误检的绿色藤蔓 **1 → 0**，而真对局帧一根不少（`board_ingame.png` 8 根、`reward_balls.png` 7 根）。
+  详见 [`docs/图色口径.md`](docs/图色口径.md) 2.1 节；复核工具 `tools/probe_star_badge.py`。
 
 ---
 
@@ -273,11 +280,12 @@ res = click_with_fallback(
 | 小小英雄名牌识别 | 召回极低（血条单位 258 个里只认出 1 个名字）；靠 YOLO `legend` 框 + 血条名牌两路互补 |
 | 模板血条路径的棋子名 | 置信度 0.4~0.6、常为 `None` → **身份以 YOLO 为准**，模板路径只做交叉校验 |
 | 头像匹配（`units/matcher.py`） | 138 变体里命中率约 3/8、准确率约 67%（含 1 个张冠李戴）→ 不建议单独用作身份源 |
-| 非对局帧 | `board.extract_units` 会误检几十根血条、`extract_board_equips` 可达 7s → 下游一律先用 `phase.detect` 过滤 |
+| 非对局帧 | 徽记门禁已经把假血条全丢（`board_green_model.png` 25 → 0），但 `extract_board_equips` 仍可达 7s → 下游一律先用 `phase.detect` 过滤 |
 | 玩家列表第 5 行 | 名字框未检出（rect 只有 54px 宽），`players` 该行 name 为 None |
 | 真对局实时叠加 | 本机测试时游戏停在非对局画面，**叠加层在真实对局中的效果尚未目视验证**（离线落图与"贴屏可见"探针均已通过） |
 | `fg` 通道 | `ALLOW_FOREGROUND_FALLBACK=False` 时与 `adb` 等价；要真前台鼠标需置 True |
-| 战斗帧星级 | 依赖血条条纹，战斗帧备战席单位常显示 `-` |
+| 战斗帧星级 | 改读血条左侧徽记后，战斗帧也能读到星级（实测 2★ 战斗血条全部正确）；但战斗帧备战席单位本来就没血条，仍是 `-` |
+| 3★ 金徽记 | 测试帧里没有 3★ 样本，`BADGE_COLORS` 金色区间（H 26~42）是推断值，拿到真帧需用 `tools/probe_star_badge.py` 复核 |
 | 海克斯阶段经济 | 画面被遮罩，`level/gold` 如实给 `None`（不猜） |
 
 ---
@@ -333,11 +341,12 @@ jcc_robot_by_img/
 | 工具 | 用途 |
 | --- | --- |
 | `tools/selfcheck.py` | 一键自检：完整性（文件/目录/权重非 LFS 指针）、干净度（import 行无内存/frida/sam3 残留）、可导入（37 模块）；`--full` 追加跑四个功能自测 |
-| `tools/selftest_recognize.py` | 7 段识别自测（OCR/YOLO/血条+小小英雄/装备/球/阶段/海克斯）+ 头像匹配交叉校验；`--img` 可重复、`--no-yolo`、`--no-rows` |
+| `tools/selftest_recognize.py` | 8 段识别自测（OCR/YOLO/血条+小小英雄/装备/球/阶段/海克斯 + 星级徽记门禁回归）；`--img` 可重复、`--no-yolo`、`--no-rows` |
 | `tools/selftest_extract.py` | 抽取链路 + JSON 落盘断言（3 图，约 14s） |
 | `tools/selftest_ops.py` | 操作链路 5 组 63 项（api/parse/dryrun/offline/live，约 61s） |
 | `tools/selftest_overlay.py` | 绘制链路 5 组（画框纯函数/节拍/离线图/贴屏探针），校验 1s 节拍跟得住 |
 | `tools/config_audit.py` | 统计 config 里哪些键真被代码读取（输出 96 在用 / 322 遗留） |
+| `tools/probe_star_badge.py` | 星级徽记探针：打印每根血条左侧徽记的色相/白像素/几何，用来标定 1★/2★/**3★** 区间（`--crop` 放大落图） |
 | `tools/import_closure.py` | AST 分析入口脚本的模块级/惰性 import 闭包（裁剪与迁移时用） |
 
 实测基线（本机，全部通过）：`selfcheck.py` exit 0；`selftest_recognize` 16.1s（2/2 图无失败）；
