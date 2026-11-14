@@ -54,7 +54,7 @@ from config.config import InfoTypes, default_config
 from control.fallback import (ClickFailed, PixelDiffVerifier, click_with_fallback,
                               describe_verify, pixel_diff, region_around)
 from recognize import augment, board, equipment, extract, phase, regions
-from recognize.grid import board_cells
+from recognize import grid as grid_cells
 from utils.reward_ball import collect_balls, print_balls
 
 
@@ -321,23 +321,17 @@ def _check(value, lo: int, hi: int, name: str) -> int:
 
 
 def board_cell_center(row, column) -> tuple[int, int]:
-    """己方第 row(1-4) 行第 column(1-7) 列的中心坐标 (整盘第 row+4 行)."""
-    row = _check(row, 1, 4, "row")
-    column = _check(column, 1, default_config.BOARD_COLUMNS, "column")
-    cells = {(c["row"] - 4, c["column"]): tuple(c["cell_center"])
-             for c in board_cells() if c["row"] >= 5}
-    target = cells.get((row, column))
-    if target is None:
-        raise ValueError(f"棋盘格位 (己方 {row},{column}) 不在网格里")
-    return int(target[0]), int(target[1])
+    """己方第 row(1-4) 行第 column(1-7) 列的中心坐标.
+
+    几何口径**只有一份**: `recognize.grid.board_cell_center` (移植自源项目
+    `operations/units.py`, 整盘 8 行里己方 = 第 row+4 行)。这里只做转发, 不再复制公式。
+    """
+    return grid_cells.board_cell_center(row, column)
 
 
 def bench_slot_center(slot) -> tuple[int, int]:
-    """备战席第 slot 格 (1..9) 的中心坐标."""
-    slots = default_config.BENCH_SLOT_CENTERS
-    slot = _check(slot, 1, len(slots), "slot")
-    x, y = slots[slot - 1]
-    return int(x), int(y)
+    """备战席第 slot 格 (1..9) 的中心坐标 (口径同源项目 `bench_slot_center`)。"""
+    return grid_cells.bench_slot_center(slot)
 
 
 def shop_slot_center(index) -> tuple[int, int]:
@@ -363,36 +357,48 @@ def shop_center() -> tuple[int, int]:
 
 
 def parse_spec(text: str) -> tuple:
-    """位置描述 -> ("board", 行, 列) / ("bench", 格)."""
+    """位置描述 -> ("board", 己方行 1..4, 列) / ("bench", 格)。
+
+    吃两种写法, 都是源项目 `utils/unit_cell.py::parse_cell` 的亲戚:
+    * 人读标签 (用户口径 m01029): `r3c4` / `r1c7` / `slot5` / `board,r2c3` / `bench,7`;
+      带负号的 `-r2c1` 是**敌方半场**, 只用于展示, 这里直接报错 (不能放子/不能点);
+    * 逗号式: `board,行,列` / `棋盘,行,列` / `bench,格` / `备战席,格`。
+    """
     raw = str(text).strip()
+    parsed = grid_cells.parse_cell_label(raw)
+    if parsed is not None:
+        area, row, col = parsed
+        if area == "bench":
+            return ("bench", _check(col, 1, len(default_config.BENCH_SLOT_CENTERS), "格"))
+        if row <= grid_cells.BOARD_OWN_ROWS:
+            raise ValueError(f"{raw!r} 是敌方半场格位 (负号只用于展示), 不能放子/点击")
+        return ("board", row - grid_cells.BOARD_OWN_ROWS, _check(col, 1, default_config.BOARD_COLUMNS, "列"))
     parts = [p.strip() for p in raw.split(",")]
     if parts and parts[0].lower() in ("board", "棋盘"):
         if len(parts) != 3:
-            raise ValueError(f"位置描述 {text!r} 格式应为 board,行,列 或 bench,格")
+            raise ValueError(f"位置描述 {text!r} 格式应为 board,行,列 / r3c4 / bench,格 / slot3")
         return ("board", _check(parts[1], 1, 4, "行"), _check(parts[2], 1, 7, "列"))
     if parts and parts[0].lower() in ("bench", "备战席"):
         if len(parts) != 2:
-            raise ValueError(f"位置描述 {text!r} 格式应为 board,行,列 或 bench,格")
+            raise ValueError(f"位置描述 {text!r} 格式应为 board,行,列 / bench,格")
         return ("bench", _check(parts[1], 1, len(default_config.BENCH_SLOT_CENTERS), "格"))
-    raise ValueError(f"位置描述 {text!r} 格式应为 board,行,列 或 bench,格")
+    raise ValueError(f"位置描述 {text!r} 格式应为 r3c4 / slot3 / board,行,列 / bench,格")
 
 
 def resolve_center(spec) -> tuple[int, int]:
     if isinstance(spec, str):
         spec = parse_spec(spec)
-    if spec[0] == "board":
-        return board_cell_center(spec[1], spec[2])
-    if spec[0] == "bench":
-        return bench_slot_center(spec[1])
-    raise ValueError(f"未知位置类型 {spec[0]!r}")
+    return grid_cells.resolve_center(spec)
 
 
 def _spec_label(spec) -> str:
+    """位置描述的人读文本 (用户口径 m01029: 我方 r1~r4cN / 备战席 slotN)。"""
     if isinstance(spec, str):
         spec = parse_spec(spec)
     if spec[0] == "board":
-        return f"己方棋盘({spec[1]},{spec[2]})"
-    return f"备战席第{spec[1]}格"
+        label = grid_cells.cell_label(spec[1] + grid_cells.BOARD_OWN_ROWS, spec[2])
+        return f"棋盘 {label}"
+    return f"备战席 slot{spec[1]}"
 
 
 # ---------------------------------------------------------------------------

@@ -852,7 +852,11 @@ class DefaultConfig:
     OVERLAY_SHOW_BLOOD_BAR = False      # 血条识别结果 (深灰框) —— 默认关: board.extract_units 较慢
     OVERLAY_SHOW_BALLS_YOLO = False     # balls-yolo: 用 YOLO 检索场上球 (浅蓝框) —— 用户 m00656, 默认开
     OVERLAY_SHOW_BALLS_COLOR = False    # balls-color: 用 HSV 颜色法找奖励球 (浅蓝框) —— 用户 m00656, 默认关
-    OVERLAY_SHOW_MEM_GT = False         # 内存 GT: 内存真值棋子的格位框 (黄框黄字) —— 用户 m00656, 默认开
+    OVERLAY_SHOW_STAR_BADGE = True      # 血条左侧星级徽记框 + 大号 ★×N (用户 m01029: 星级要看得出对错)
+    # 注: 下面的 OVERLAY_SHOW_MEM_GT / OVERLAY_SHOW_DRAFT / OVERLAY_MEM_GT_INTERVAL /
+    # OVERLAY_DRAFT_INTERVAL / OVERLAY_GT_* 是父项目"内存 GT + 选秀轮盘"遗留键, 纯图色工程
+    # 已删掉那两条链路, 这里保留只为不影响既有调用方 (tools/config_audit.py 会列出未用键)。
+    OVERLAY_SHOW_MEM_GT = False         # (遗留) 内存 GT 格位框
     # ---- 分项降频 (用户 m00532) ---- 各项识别耗时差异极大 (实测 YOLO 棋子 66ms / 装备栏 475ms /
     # 商店 1003ms), 全项每拍都跑会到 2.2~2.8s 一帧。故各项各有独立刷新间隔 (秒, float):
     # 线程节拍自动取**启用项里的最小值**(下限 0.2s), 每拍只跑到期项, 未到期项复用上次结果重画,

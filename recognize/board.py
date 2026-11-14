@@ -337,6 +337,13 @@ def extract_units(img, bar_method: str | None = None,
                 unit["location"] = bench_position(unit["center"])
                 unit["cell_source"] = "nearest"
             unit["stars"] = rank if not legend else None
+            # 徽记框 (血条左侧那枚锚点) 一并带出: overlay 要把它画出来, 用户才好核对
+            # "这根血条判给的星级对不对" (用户 m01029: 星级得能一眼看出对错)。
+            if badge_box is not None:
+                # star_badge 给的是 cv2 口径 (x, y, w, h); 画布/下游统一用 (x1,y1,x2,y2)
+                _bx, _by, _bw, _bh = (int(v) for v in badge_box)
+                unit["badge_box"] = [_bx, _by, _bx + _bw, _by + _bh]
+            unit["stars_source"] = "badge" if badge_stars is not None else ("stripes" if rank is not None else None)
             if legend:
                 unit["legend"] = True
             units.append(unit)

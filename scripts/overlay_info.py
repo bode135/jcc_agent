@@ -79,14 +79,41 @@ def _ms(t0: float) -> float:
 
 
 def _cell_of(unit: dict) -> str:
-    """棋子位置的人读标签: 场上 r{row}c{col}, 备战席 slot{N}, 未映射 -."""
+    """棋子位置的人读标签 (用户口径 m01029): 我方 `r1~r4c1~c7`, 敌方 `-r1~-r4`, 备战席 `slot{N}`。
+
+    绝对行 (`location["row"]`, 1..8 从远到近) 只在几何运算里用, 这里交给
+    `recognize.grid.cell_label` 翻译——**和源项目 `utils/unit_cell.py` 的口径一致**:
+    己方第 1 行 = 自己最底那排 (绝对行 8), 敌方 `-r1` = 对面最靠中线那排 (绝对行 4)。
+    """
+    from recognize.grid import cell_label
     loc = unit.get("location") or {}
     if loc.get("slot"):
         return f"slot{int(loc['slot'])}"
     row, col = loc.get("row"), loc.get("column")
     if row and col:
-        return f"r{int(row)}c{int(col)}"
+        return cell_label(int(row), int(col))
     return "-"
+
+
+def _pos_of_center(center) -> str:
+    """任意点 -> 人读格位标签 (棋盘 `r1c1`, 备战席 `slot5`); 不在棋盘/备战席内返回 ""。
+
+    走 `recognize.grid` 的正式几何 (棋盘先试, 再试备战席), 供"只有 center、
+    没有 location 字段"的场景使用 (如 `extract_board_equips` 的分组)。
+    """
+    from recognize.grid import board_position, bench_position, cell_label
+    if not center:
+        return ""
+    try:
+        cell = board_position(tuple(center))
+        return cell_label(int(cell["row"]), int(cell["column"]))
+    except Exception:
+        pass
+    try:
+        slot = bench_position(tuple(center))
+        return f"slot{int(slot)}"
+    except Exception:
+        return ""
 
 
 def _stars_label(stars) -> str:
@@ -351,9 +378,18 @@ class Observer:
                 loc = grp.get("location") or {}
                 nm = grp.get("unit_name")
                 if not nm:
-                    where = (f"slot{int(loc['slot'])}" if loc.get("slot")
-                             else (f"r{int(loc.get('row', 0))}c{int(loc.get('column', 0))}"
-                                   if loc.get("row") and loc.get("column") else "未命名单位"))
+                    from recognize.grid import cell_label
+                    if loc.get("slot"):
+                        where = f"slot{int(loc['slot'])}"
+                    elif loc.get("row") and loc.get("column"):
+                        # 绝对行 (1..8) -> 人读标签: 我方 r1~r4 / 敌方 -r1~-r4
+                        where = cell_label(int(loc["row"]), int(loc["column"]))
+                    else:
+                        bar = grp.get("bar") or ()
+                        ctr = None
+                        if len(bar) == 4:
+                            ctr = ((bar[0] + bar[2]) / 2.0, (bar[1] + bar[3]) / 2.0 + 105)
+                        where = _pos_of_center(ctr) or "未命名单位"
                     nm = f"{grp.get('region') or '?'} {where}"
                 eqs = "、".join(e.get("name") or "?" for e in grp.get("equips") or [])
                 parts.append(f"{nm}: {eqs}")

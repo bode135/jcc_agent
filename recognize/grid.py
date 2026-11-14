@@ -57,7 +57,119 @@ def board_position(point) -> dict | None:
     if error > default_config.BOARD_CELL_MAX_DISTANCE:
         return None
     return {**cell, "own_row": cell["row"] - 4 if cell["row"] >= 5 else None,
+            "cell_label": cell_label(cell["row"], cell["column"]),
             "position_error": round(error, 3)}
+
+
+#: 棋盘 8 行 = 敌方 4 行 + 我方 4 行 (`BOARD_GRID_ROWS` 从远到近: 行 1 最远, 行 8 最近)。
+BOARD_ROWS = len(default_config.BOARD_GRID_ROWS)
+BOARD_OWN_ROWS = BOARD_ROWS // 2
+
+
+def cell_label(row: int, column: int, area: str = "board") -> str:
+    """格位的人读标签 (用户口径 2026-11-14)。
+
+    * 我方半场 (绝对行 >= 5):  `r{1..4}c{1..7}`   —— 从自己最底那排往上数;
+    * 敌方半场 (绝对行 <= 4):  `-r{1..4}c{1..7}`  —— **负号表示对面**, `-r1` 是敌方最靠近中线那一排;
+    * 备战席:                `slot{1..9}`。
+
+    内部一律用绝对行 (1..8) 做几何运算, 只有"给人看/给人输"的地方才转成这个标签。
+    """
+    row, column = int(row), int(column)
+    if area == "bench":
+        return f"slot{column}"
+    if row > BOARD_OWN_ROWS:
+        return f"r{row - BOARD_OWN_ROWS}c{column}"
+    return f"-r{BOARD_OWN_ROWS + 1 - row}c{column}"
+
+
+def parse_cell_label(text: str) -> tuple[str, int, int] | None:
+    """把 `r3c4` / `-r2c1` / `slot5` / `board,r3c4` / `board,-r2c1` 解析成 (区域, 绝对行, 列)。
+
+    负号在**解析时**换成绝对行: `-r1c1` == 绝对行 4 (敌方最靠中线的一排), `-r4c1` == 绝对行 1 (敌方最远排)。
+    """
+    import re
+    s = str(text or "").strip().lower().replace(" ", "")
+    if not s:
+        return None
+    area = "board"
+    for pref, a in (("board,", "board"), ("bench,", "bench"), ("board:", "board"), ("bench:", "bench")):
+        if s.startswith(pref):
+            area, s = a, s[len(pref):]
+            break
+    if area == "bench" or s.startswith("slot"):
+        m = re.fullmatch(r"slot(\d{1,2})", s) or re.fullmatch(r"(\d{1,2})", s)
+        return ("bench", int(m.group(1)), int(m.group(1))) if m else None
+    m = re.fullmatch(r"(-?)r(\d{1,2})c(\d{1,2})", s)
+    if not m:
+        return None
+    neg, r, c = bool(m.group(1)), int(m.group(2)), int(m.group(3))
+    if not (1 <= r <= BOARD_OWN_ROWS and 1 <= c <= default_config.BOARD_COLUMNS):
+        return None
+    row = (BOARD_OWN_ROWS + 1 - r) if neg else (BOARD_OWN_ROWS + r)
+    return ("board", row, c)
+
+
+#: 备战席格数 (源项目 `operations.units.BENCH_SLOTS` 口径)
+BENCH_SLOTS = len(default_config.BENCH_SLOT_CENTERS)
+
+
+def _check_range(value: int, lo: int, hi: int, name: str) -> None:
+    if not lo <= value <= hi:
+        raise ValueError(f"{name}={value} 超出范围 [{lo}, {hi}]")
+
+
+def board_cell_center(row: int, column: int) -> tuple[int, int]:
+    """己方第 row(1-4) 行第 column(1-7) 列的格心坐标.
+
+    移植自源项目 `operations/units.py::board_cell_center` —— 网格按整盘 8 行存储,
+    己方第 r 行 = 整盘第 r+4 行。**敌方行请用负数解析 (见 `parse_cell_label`), 不进这里。**
+    """
+    _check_range(int(row), 1, BOARD_OWN_ROWS, "row")
+    _check_range(int(column), 1, default_config.BOARD_COLUMNS, "column")
+    cells = {(c["row"] - BOARD_OWN_ROWS, c["column"]): tuple(c["cell_center"])
+             for c in board_cells() if c["row"] > BOARD_OWN_ROWS}
+    return cells[(int(row), int(column))]
+
+
+def bench_slot_center(slot: int) -> tuple[int, int]:
+    """备战席第 slot(1-9) 格的中心坐标 (移植自源项目同名函数)。"""
+    _check_range(int(slot), 1, BENCH_SLOTS, "slot")
+    x, y = default_config.BENCH_SLOT_CENTERS[int(slot) - 1]
+    return int(x), int(y)
+
+
+def resolve_center(spec) -> tuple[int, int]:
+    """位置描述解析为坐标: ("board", 己方行, 列) 或 ("bench", slot)。
+
+    与源项目 `operations.units.resolve_center` 同口径 (己方行 1-4, 不是绝对行)。
+    `parse_cell_label("r3c4")` 给的是绝对行, 转这里前要减 `BOARD_OWN_ROWS`。
+    """
+    kind, *args = spec
+    if kind == "board":
+        row, column = args
+        if row > BOARD_OWN_ROWS:          # 传了绝对行 (5..8) 时自动折成己方行
+            row -= BOARD_OWN_ROWS
+        return board_cell_center(row, column)
+    if kind == "bench":
+        return bench_slot_center(args[0])
+    raise ValueError(f"未知位置类型: {kind!r} (应为 board/bench)")
+
+
+def label_to_center(text: str) -> tuple[int, int] | None:
+    """人读标签 -> 屏幕坐标: `r3c4` / `-r2c1` / `slot5` / `board,r1c7` 都吃。"""
+    parsed = parse_cell_label(text)
+    if parsed is None:
+        return None
+    area, row, column = parsed
+    if area == "board" and row <= BOARD_OWN_ROWS:
+        return None                       # 敌方半场 (带负号) 只用于展示, 不可点击
+    try:
+        if area == "bench":
+            return bench_slot_center(column)
+        return board_cell_center(row - BOARD_OWN_ROWS, column)
+    except ValueError:
+        return None
 
 
 def bar_to_cell_candidates(cx: int, y2: int) -> list[dict]:

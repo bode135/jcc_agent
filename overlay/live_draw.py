@@ -275,23 +275,25 @@ def collect(img: Image.Image, *, cache: dict | None = None, due: set[str] | None
 
 
 def merge_stars(data: dict) -> dict:
-    """把血条口径给的星数 (bars) 按最近中心对齐到 YOLO 棋子 (units) 上, 便于画/打印星级.
+    """把血条口径给的星级/徽记锚点 (bars) 按最近中心对齐到 YOLO 棋子 (units) 上。
 
-    YOLO 只给名字, 星数只能来自血条条纹 (board.extract_units 的 unit["stars"]); 血条不可用时
-    保持 None, 上层显示 "-" / 不画星, 绝不猜。
+    YOLO 只给名字, 星数只能来自血条左侧徽记 (`board.extract_units` 的 `unit["stars"]` /
+    `unit["badge_box"]`, 徽记读不到时退回数血条条纹); 血条不可用时保持 None, 上层显示 "-"
+    且不画星, 绝不猜。
+
+    除了 `stars`, 还把 `badge_box`(徽记框) 与 `stars_source`("badge"/"stripes") 一起搬到
+    YOLO 棋子上 —— overlay 要把那枚锚点框画出来, 用户才能一眼核对星级判得对不对 (m01029)。
     """
     units = data.get("units") or _EMPTY_UNITS
     bars = data.get("bars") or _EMPTY_UNITS
     pool = []
     for area in ("board", "bench"):
         for b in bars.get(area) or []:
-            c = b.get("center") or b.get("bar")
-            st = b.get("stars")
-            if not c or st is None:
+            c = b.get("center")
+            if not c:
                 continue
-            cx = float(c[0]) if len(c) > 2 else float(c[0])
-            cy = float(c[1]) if len(c) > 2 else float(c[1])
-            pool.append((area, cx, cy, int(st)))
+            pool.append((area, float(c[0]), float(c[1]), b.get("stars"),
+                         b.get("badge_box"), b.get("stars_source"), bool(b.get("legend"))))
     out = {"board": [], "bench": []}
     for area in ("board", "bench"):
         for u in units.get(area) or []:
@@ -301,14 +303,18 @@ def merge_stars(data: dict) -> dict:
             if c and len(c) >= 2:
                 ux, uy = float(c[0]), float(c[1])
                 best = None
-                for (barea, bx, by, st) in pool:
+                for (barea, bx, by, st, bbox, src, is_legend) in pool:
                     if barea != area:
                         continue
                     d = ((bx - ux) ** 2 + (by - uy) ** 2) ** 0.5
                     if d <= 70.0 and (best is None or d < best[0]):
-                        best = (d, st)
+                        best = (d, st, bbox, src, is_legend)
                 if best is not None:
                     nd["stars"] = best[1]
+                    nd["badge_box"] = best[2]
+                    nd["stars_source"] = best[3]
+                    if best[4]:
+                        nd["legend"] = True
             out[area].append(nd)
     return out
 

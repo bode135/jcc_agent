@@ -8,7 +8,8 @@
 
 ![overlay 叠加示例](docs/images/overlay_board_ingame.jpg)
 
-上图是 `scripts/overlay_info.py` 的一帧产物：顶栏状态（回合 / 剩余时间 / 阶段 / 等级 / 金币）、棋盘棋子框+名字+星级、
+上图是 `scripts/overlay_info.py` 的一帧产物：顶栏状态（回合 / 剩余时间 / 阶段 / 等级 / 金币）、棋盘棋子框+名字+置信度、
+**每根血条左侧星级徽记的金框 + 大号 ★×N**（星级就看这一处，判错了立刻能看出是哪根血条）、
 血条、小小英雄、奖励球、商店卡、装备栏（左侧）、棋子携带装备，全部由识别结果实时绘制在游戏窗口上方的透明窗口里。
 
 ---
@@ -144,7 +145,7 @@ python -X utf8 -u -m scripts.game buy --slot 1
 | `extract [--info-types a,b]` | 指定信息组（不写子命令时等价本命令） |
 | `units --ocr\|--bench\|--board` | 场上/备战席棋子（身份优先 YOLO，模板血条做交叉校验） |
 | `shop` / `equip` / `bench` | 商店 5 卡 / 左侧装备栏 / 备战席空位 |
-| `cell board,行,列 \| bench,格` | 某格中心坐标 + 该格棋子身份 |
+| `cell r3c4 \| slot5 \| board,行,列 \| bench,格` | 某格中心坐标 + 该格棋子身份（我方 `r1~r4c1~c7`、备战席 `slot1~9`；敌方 `-r1~-r4` 负号只用于展示，不能放子/点击） |
 | `hex [--refresh N\|--pick N]` / `balls [--rounds N]` | 海克斯卡面 / 奖励球 |
 
 | 动作类 | 复核判据（点完怎么算生效） |
@@ -199,6 +200,17 @@ text  = ocr.recognize(img)                                    # 整图 OCR（rap
 
 坐标一律是 **1920×1080 基准**；换屏幕尺寸请先 `resize()` 到基准再识别，否则区域常量全部错位。
 
+格位工具**只有一份实现**，在 `recognize.grid`（口径移植自源项目 `utils/unit_cell.py` / `operations/units.py`）：
+
+```python
+from recognize import grid
+grid.cell_label(8, 4)           # 'r1c4'          绝对行 -> 人读标签（我方 r1~r4 / 敌方 -r1~-r4）
+grid.parse_cell_label('-r2c1')  # ('board', 3, 1)  敌方负号 -> 绝对行
+grid.board_cell_center(1, 4)    # (960, 435)       己方第 1 行第 4 列格心
+grid.bench_slot_center(5)       # (958, 754)       备战席第 5 格
+grid.label_to_center('r3c4')    # (960, 584)       标签 -> 坐标，一步到位
+```
+
 ---
 
 ## 八、性能实测（`tests/images/board_ingame.png`，单帧，本机）
@@ -237,6 +249,9 @@ text  = ocr.recognize(img)                                    # 整图 OCR（rap
   实测收益（同一批测试帧，`include_legend=False` 的棋子血条数）：非对局帧假血条 **25 → 0**（`board_green_model.png`）、
   海克斯遮罩帧 **5 → 1**、战斗帧误检的绿色藤蔓 **1 → 0**，而真对局帧一根不少（`board_ingame.png` 8 根、`reward_balls.png` 7 根）。
   详见 [`docs/图色口径.md`](docs/图色口径.md) 2.1 节；复核工具 `tools/probe_star_badge.py`。
+- **overlay 把星级标出来**：`board.extract_units` 给每根血条附 `badge_box`，`overlay_info` 用金框套住徽记、
+  上方画黑底 **★×N**（`OVERLAY_SHOW_STAR_BADGE=True`，`draw_frame` 的 `font 20` 大字）。判位错了 → 框不套血条；
+  星级错了 → 框对了但 ★ 数量不对，一眼能分。详见 [`docs/图色口径.md`](docs/图色口径.md) 2.1.2 节。
 
 ---
 
