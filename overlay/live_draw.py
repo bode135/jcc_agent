@@ -36,6 +36,7 @@ _ITEMS = {
     "shop":         ("OVERLAY_SHOW_SHOP",         "OVERLAY_SHOP_INTERVAL"),
     "equip_bar":    ("OVERLAY_SHOW_EQUIP_BAR",    "OVERLAY_EQUIP_BAR_INTERVAL"),
     "board_equips": ("OVERLAY_SHOW_BOARD_EQUIPS", "OVERLAY_BOARD_EQUIPS_INTERVAL"),
+    "heroes":       ("OVERLAY_SHOW_HERO",         "OVERLAY_HERO_INTERVAL"),
 }
 _ITEM_KEYS = tuple(_ITEMS)
 
@@ -48,6 +49,7 @@ _MIN_ITEM_INTERVAL = {
     "shop": 1.0,
     "equip_bar": 1.5,
     "board_equips": 2.5,
+    "heroes": 0.3,
 }
 
 _EMPTY_UNITS = {"board": [], "bench": []}
@@ -170,7 +172,7 @@ def collect(img: Image.Image, *, cache: dict | None = None, due: set[str] | None
         {"units","bars","balls_yolo","legends","balls_color","shop","equip_bar",
          "board_equips","errors","fresh"}
     """
-    from recognize import board, equipment, extract as rex, reward_ball, yolo_units
+    from recognize import board, equipment, extract as rex, hero, reward_ball, yolo_units
 
     store = cache if cache is not None else {}
     ts = store.setdefault("_ts", {})
@@ -208,6 +210,15 @@ def collect(img: Image.Image, *, cache: dict | None = None, due: set[str] | None
                       None, "小小英雄(YOLO)", err)
         if _lpred is not None:
             store["legends"] = yolo_units.last_legends()
+        new_errors.update(err)
+
+    if want("heroes"):
+        err = {}
+        # 小小英雄 (用户 m01362/m01364): 等级数字块 + 右侧红/绿小血段, 8~18ms;
+        # 战斗帧也能认, 还能给出"几级/我方敌方"。名字仍以 YOLO legend 路为补充。
+        v = _try(lambda: hero.detect(img), None, "小小英雄(等级块)", err)
+        if v is not None:
+            store["heroes"] = v
         new_errors.update(err)
 
     if want("balls_color"):
@@ -269,6 +280,7 @@ def collect(img: Image.Image, *, cache: dict | None = None, due: set[str] | None
         "shop": store.get("shop") or [],
         "equip_bar": store.get("equip_bar") or [],
         "board_equips": store.get("board_equips") or [],
+        "heroes": store.get("heroes") or [],
         "errors": dict(store.get("_errors") or {}),
         "fresh": sorted(due_set),
     }

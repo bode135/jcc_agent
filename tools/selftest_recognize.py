@@ -20,7 +20,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from PIL import Image                                     # noqa: E402
-from recognize import augment, board, equipment, ocr, phase, reward_ball   # noqa: E402
+from recognize import augment, board, equipment, hero, ocr, phase, reward_ball   # noqa: E402
 from recognize import yolo_units                          # noqa: E402
 from units import matcher                                 # noqa: E402
 
@@ -304,6 +304,27 @@ def run_one(path: Path, *, use_yolo: bool = True, rows: bool = True) -> dict:
         print(f"[X] 海克斯异常: {type(exc).__name__}: {exc}", flush=True)
         traceback.print_exc()
         out["failures"].append("augment")
+
+    # ---- 8. 小小英雄 (等级数字块 + 右侧红/绿小血段) ----------------------
+    _sec("8. 小小英雄 (等级块法, 用户 m01362)")
+    t = time.time()
+    try:
+        hs = hero.detect(img)
+        out["timings"]["hero"] = round(time.time() - t, 3)
+        out["heroes"] = len(hs)
+        print(f"[OK] 英雄 {len(hs)} 处 ({out['timings']['hero']}s)", flush=True)
+        for h in hs:
+            who = "我方" if h.get("kind") == "mine" else "敌方"
+            print(f"     {who} Lv{h.get('level')} score={h.get('level_score')} "
+                  f"numblk={tuple(int(v) for v in h.get('numblk') or ())} "
+                  f"落点=({h.get('x'):.1f},{h.get('y'):.1f})", flush=True)
+        lv_bad = [h for h in hs if h.get("level") is None]
+        if lv_bad:
+            print(f"[!] {len(lv_bad)} 处英雄没读到等级 (模板缺失/遮挡)", flush=True)
+    except Exception as exc:                                  # noqa: BLE001
+        print(f"[X] 英雄定位异常: {type(exc).__name__}: {exc}", flush=True)
+        traceback.print_exc()
+        out["failures"].append("hero")
 
     return out
 

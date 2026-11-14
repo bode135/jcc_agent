@@ -190,6 +190,7 @@ img = resize(capture_game())            # -> PIL.Image, 1920x1080
 from recognize import yolo_units, board, equipment, reward_ball, phase, augment, ocr
 units = yolo_units.extract_units(img)    # 棋子: name/star/cell/center/score，速度 ~0.26s/帧
 bars  = board.extract_units(img, include_legend=True)         # 血条+星级+小小英雄判定
+heroes = hero.detect(img)      # 小小英雄: 等级数字块 + 右侧红/绿小血段 (8~19ms)
 slots = equipment.extract_equipment(img)                      # 左侧装备栏（图标库匹配）
 carry = equipment.extract_board_equips(img, units=units)      # 棋子身上携带的装备
 balls = reward_ball.find_balls(img)                           # 奖励球（HSV 三色）
@@ -221,6 +222,7 @@ grid.label_to_center('r3c4')    # (960, 584)       标签 -> 坐标，一步到�
 | YOLO 棋子（11n，imgsz 1280） | 0.26s | pre 20ms / infer 152ms / post 17ms |
 | 血条+星级（`match_cells=set()`，跳过身份匹配） | 0.05s | 带全库身份匹配版 1.66s（8 探针 × 138 变体） |
 | 球 HSV / 球 YOLO / 小小英雄 YOLO | 0.02s / 0.01s | 球恒 60×60，HSV 足够（界面高光误检见第九节） |
+| 小小英雄等级块法 `hero.detect` | **8~19ms** | 等级数字块 + 右侧红/绿小血段（6.1 节） |
 | 阶段判定（扫剑/选卡模板） | 0.25s | |
 | 海克斯三选一 | 0.04s | 卡名靠 OCR 小区域 |
 | 装备栏（图标库匹配） | 0.5 ~ 1.1s | 依赖 `items.json` + 150 张图标 |
@@ -244,6 +246,7 @@ grid.label_to_center('r3c4')    # (960, 584)       标签 -> 坐标，一步到�
 - 小小英雄框约 **123×94**，靠血条上方白色名牌 `_has_name_text` 判定（**召回很低**，见限制）；
   更稳的判据是**血条左侧是等级数字**（徽记框内白像素 ≥25，见下一条）。
 - **血条左侧必定挂徽记**：棋子挂星级 chevron（1★铜 / 2★银蓝 / 3★金），小小英雄挂等级数字。
+- **小小英雄主路 = 等级块法**（源项目 `draft_hero` 口径）：等级数字白块当锚点 → 右侧 `+4…+22px` 取色判绿（我方）/红（敌方）→ 16×22 模板余弦相似度读 Lv，**8~19ms/帧**；overlay 上绿框=我方、红框=敌方、框下写 `小小英雄 我方 Lv5`。详见 `docs/图色口径.md` 6.1 节。
   所以徽记是血条定位的**正样本锚点**（`recognize/board.py::star_badge` + `BAR_REQUIRE_BADGE=True`）：
   有 chevron → 真棋子血条且星级直接读颜色；有白数字 → 小小英雄；**两者都没有 → 这根"血条"是误检，直接丢**。
   实测收益（同一批测试帧，`include_legend=False` 的棋子血条数）：非对局帧假血条 **25 → 0**（`board_green_model.png`）、
@@ -292,7 +295,8 @@ res = click_with_fallback(
 | 项 | 现状 |
 | --- | --- |
 | `search-buy` / `start` / `exit` / `blessing` | 未实现（依赖父项目连续状态机/专用模块），命令返回中文 `[X]` + 退出码 2 |
-| 小小英雄名牌识别 | 召回极低（血条单位 258 个里只认出 1 个名字）；靠 YOLO `legend` 框 + 血条名牌两路互补 |
+| 小小英雄旧路 | 白色名牌 + YOLO `legend` 召回极低（血条单位 258 个里只认出 1 个名字），**现在只作备查**；主路是等级块法（见下条） |
+| 小小英雄等级块法 | 需「等级数字块 + 右侧红/绿小血段」两样都在才认；10 级模板没有 11 级以后样本，实机遮挡严重时 level 可能读成 `?` |
 | 模板血条路径的棋子名 | 置信度 0.4~0.6、常为 `None` → **身份以 YOLO 为准**，模板路径只做交叉校验 |
 | 头像匹配（`units/matcher.py`） | 138 变体里命中率约 3/8、准确率约 67%（含 1 个张冠李戴）→ 不建议单独用作身份源 |
 | 非对局帧 | 徽记门禁已经把假血条全丢（`board_green_model.png` 25 → 0），但 `extract_board_equips` 仍可达 7s → 下游一律先用 `phase.detect` 过滤 |

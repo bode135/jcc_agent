@@ -55,6 +55,7 @@ ITEM_INTERVAL = {
     "balls": 0.5,        # 奖励球(颜色法) (18ms)
     "yolo_balls": 0.5,   # 奖励球(YOLO 球权重, 常为空) (9ms)
     "legend": 0.5,       # 小小英雄(YOLO legend 权重) (7ms)
+    "heroes": 0.5,       # 小小英雄(等级数字块+红绿小血段) (8~18ms, 用户 m01362)
     "phase": 0.5,        # 阶段 (25-48ms 热态)
     "equip_bar": 2.0,    # 装备栏 (~500ms)
     "board_equips": 3.0, # 棋子携带装备 (~700ms)
@@ -71,6 +72,7 @@ DRAW_KEYS = {
     "shop": "OVERLAY_SHOW_SHOP",
     "equip": "OVERLAY_SHOW_EQUIP_BAR",
     "bequips": "OVERLAY_SHOW_BOARD_EQUIPS",
+    "heroes": "OVERLAY_SHOW_HERO",
 }
 
 
@@ -196,6 +198,9 @@ class Observer:
             from recognize import yolo_units
             yolo_units.predict(img, model=yolo_units.legend_onnx_path())
             return yolo_units.last_legends()
+        if key == "heroes":
+            from recognize import hero
+            return hero.detect(img)
         if key == "phase":
             from recognize import phase
             return phase.detect(img)
@@ -284,6 +289,7 @@ class Observer:
             "equip_bar": [e for e in (self.cache.get("equip_bar") or [])],
             "board_equips": [g for g in (self.cache.get("board_equips") or [])],
             "augment": self.cache.get("augment") or {},
+            "heroes": [h for h in (self.cache.get("heroes") or [])],
         }
 
     # ------------------------------------------------------------------ #
@@ -347,7 +353,37 @@ class Observer:
         lines.append(_units_line("棋盘", s.get("board") or [], True))
         lines.append(_units_line("备战席", s.get("bench") or [], True))
 
+        hs = s.get("heroes") or []
+        if hs:
+            parts = []
+            for h in hs:
+                who = "我方" if h.get("kind") == "mine" else "敌方"
+                lv = h.get("level")
+                pos = "(%.0f,%.0f)" % (h.get("x") or 0, h.get("y") or 0)
+                parts.append(f"{who}Lv{lv if lv is not None else '?'} {pos}")
+            lines.append(f" 小小英雄 {len(hs)} 处 (等级块法, 右侧小血段判敌我): " + " | ".join(parts))
+
         legs = s.get("legends") or []
+        # 英雄路 (等级块法) 已经报过的同一只英雄, 老路 (YOLO/名牌) 不再重复报:
+        # 两路的框中心相距 <40px 就认为是同一只 (用户 m01362 要求以等级块法为准)。
+        _hboxes = [h.get("numblk") for h in hs if h.get("numblk")]
+        if _hboxes:
+            _keep = []
+            for lg in legs:
+                b = lg.get("box") or lg.get("rect")
+                if not b:
+                    _keep.append(lg)
+                    continue
+                cx, cy = (b[0] + b[2]) / 2.0, (b[1] + b[3]) / 2.0
+                dup = False
+                for nb in _hboxes:
+                    nx, ny, nw, nh = nb[:4]
+                    if ((cx - (nx + nw / 2.0)) ** 2 + (cy - (ny + nh / 2.0)) ** 2) ** 0.5 < 40:
+                        dup = True
+                        break
+                if not dup:
+                    _keep.append(lg)
+            legs = _keep
         if legs:
             boxes = []
             for lg in legs:
@@ -355,9 +391,10 @@ class Observer:
                 boxes.append(str([int(v) for v in b]) if b else "-")
             yolo_n = len(s.get("legend_yolo") or [])
             bar_n = len(s.get("legend_bars") or [])
-            lines.append(f" 小小英雄 {len(legs)} 处 (YOLO {yolo_n} / 血条名牌 {bar_n}): "
+            tag = "旧路备查" if hs else "小小英雄"
+            lines.append(f" {tag} {len(legs)} 处 (YOLO {yolo_n} / 血条名牌 {bar_n}): "
                          + " | ".join(boxes))
-        else:
+        elif not hs:
             lines.append(" 小小英雄 未识别到")
 
         eq = s.get("equip_bar") or []
@@ -441,6 +478,11 @@ class Observer:
                        "slot": _cell_of(u), "score": u.get("score"),
                        "box": u.get("box")} for u in s["bench"]],
             "legends": [x.get("box") for x in s["legends"]],
+            "heroes": [{"kind": h.get("kind"), "level": h.get("level"),
+                         "level_score": h.get("level_score"),
+                         "center": [round(h.get("x") or 0), round(h.get("y") or 0)],
+                         "numblk": [int(v) for v in h.get("numblk") or []]}
+                        for h in (s.get("heroes") or [])],
             "equip_bar": [{"slot": e.get("slot"), "name": e.get("name"),
                            "count": e.get("count"), "rect": e.get("rect")}
                           for e in s["equip_bar"]],
@@ -478,6 +520,7 @@ class Observer:
             shop=s.get("shop") or [],
             equip_bar=s.get("equip_bar") or [],
             board_equips=s.get("board_equips") or [],
+            heroes=s.get("heroes") or [],
             show=self.show_dict(),
             header=self.header_text(s),
         )

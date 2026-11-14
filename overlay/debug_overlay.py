@@ -225,6 +225,10 @@ _C_EQUIP = (0, 180, 160);     _T_EQUIP = (170, 235, 225)     # 青绿框 + 浅�
 _C_BEQ = (230, 50, 150);      _T_BEQ = (255, 190, 220)       # 品红框 + 浅粉字
 _C_STAR = (255, 200, 40)      # 星级徽记: 金黄框 + 金星 (血条左侧那枚锚点)
 _C_STAR_TXT = (255, 235, 120) # 星级文字: 更亮的金黄, 压在实机上也能读
+_C_HERO_M = (60, 255, 120)    # 小小英雄(我方): 亮绿框 (用户 m01362/m01368: 右侧小血条绿=我方)
+_T_HERO_M = (190, 255, 205)
+_C_HERO_E = (255, 80, 80)     # 小小英雄(敌方): 亮红框 (红=敌方)
+_T_HERO_E = (255, 195, 195)
 _C_HEAD = (235, 235, 235)     # 顶部状态行 (白字黑描边, 压在实机画面上也能读)
 
 _FONT_CACHE: dict = {}
@@ -241,7 +245,7 @@ def _font(size: int = 14):
 
 def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
                shop=None, equip_bar=None, board_equips=None,
-               balls_yolo=None, balls_color=None, show=None,
+               balls_yolo=None, balls_color=None, heroes=None, show=None,
                header: str | None = None) -> Image.Image:
     """把各识别结果画到一张**全透明**的 size 画布上, 返回 PIL RGBA 图.
 
@@ -268,6 +272,15 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
     font_star = _font(20)        # 徽记星级用大一号字, 实机上才看得清"1★/2★/3★"
     font_cell = _font(12)        # 格位标签 (r1c4 / -r2c1 / slot3) 用小的, 别糊住棋子
 
+    def _overlap(a, b) -> bool:
+        """两个矩形是否相交 (坐标 [x1,y1,x2,y2]); 用来去重同一只英雄画两遍。"""
+        try:
+            ax1, ay1, ax2, ay2 = (float(v) for v in a)
+            bx1, by1, bx2, by2 = (float(v) for v in b)
+        except Exception:  # noqa: BLE001
+            return False
+        return not (ax2 < bx1 or bx2 < ax1 or ay2 < by1 or by2 < ay1)
+
     def _on(key: str) -> bool:
         if show is not None and key in show:
             return bool(show[key])
@@ -280,7 +293,7 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
 
     def _stroke(box, color, label: str = "", below: bool = False, *,
                 text_color=None, width: int = 3, label_y=None, font=None,
-                plate: bool = False) -> int:
+                plate: bool = False, stroke_width: int = 2) -> int:
         if not box:
             return 0
         try:
@@ -298,16 +311,30 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
             if plate:
                 # 半透明黑底牌: 星级要"一眼看得清", 压在花花绿绿的实机画面上纯描边字会糊
                 try:
-                    bx1, by1, bx2, by2 = pen.textbbox((tx, ty), label, font=_f, stroke_width=2)
-                    pen.rectangle([bx1 - 1, by1 - 1, bx2 + 1, by2 + 1], fill=(0, 0, 0, 170))
+                    bx1, by1, bx2, by2 = pen.textbbox((tx, ty), label, font=_f,
+                                                      stroke_width=stroke_width)
+                    pen.rectangle([bx1 - 2, by1 - 2, bx2 + 2, by2 + 2],
+                                  fill=(0, 0, 0, 210))
                 except Exception:  # noqa: BLE001
                     pass
             ty = max(0, min(ty, h - 4))
             pen.text((tx, ty), label, fill=_rgba(text_color or color), font=_f,
-                     stroke_width=2, stroke_fill=(0, 0, 0, 255))
+                     stroke_width=stroke_width, stroke_fill=(0, 0, 0, 255))
         return 1
 
     n_units = n_shop = n_equip = n_beq = n_bar = n_byolo = n_bcolor = n_badge = 0
+    n_hero = 0
+    # 英雄框位置先算出来: 后面的 YOLO legend 紫框与英雄框重叠时不再重复画
+    # (两条路指同一只英雄, 画两遍只会糊住判据)。
+    _hero_boxes = []
+    _hero_pts = []      # 英雄落点 (等级块中心 + DX/DY): YOLO legend 的紫框和它撞上就是同一只
+    for _hp in (heroes or []):
+        _nb = _hp.get("numblk")
+        if _nb:
+            _x, _y, _w, _h = (int(v) for v in _nb)
+            _hero_boxes.append([_x - 6, _y - 6, _x + _w + 8, _y + _h + 6])
+        if _hp.get("x") is not None and _hp.get("y") is not None:
+            _hero_pts.append((float(_hp["x"]), float(_hp["y"])))
 
     if _on("OVERLAY_SHOW_UNITS"):
         for area in ("board", "bench"):
@@ -346,7 +373,16 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
             n_byolo += _stroke(b.get("box"), _C_BALL_Y, b.get("name") or "ball",
                                below=True, text_color=_T_BALL_Y, width=2)
         for lg in legends or []:
-            n_byolo += _stroke(lg.get("box"), _C_LEGEND, lg.get("name") or "小小英雄",
+            lb = lg.get("box")
+            if not lb:
+                continue
+            if any(_overlap(lb, _hb) for _hb in _hero_boxes):
+                continue        # 已由英雄路画过 (等级块 + 红/绿小血段)
+            lcx, lcy = (lb[0] + lb[2]) / 2.0, (lb[1] + lb[3]) / 2.0
+            if any(((lcx - px) ** 2 + (lcy - py) ** 2) ** 0.5 < 70.0
+                   for px, py in _hero_pts):
+                continue        # 框中心离英雄落点很近 = 同一只, 交给英雄路画
+            n_byolo += _stroke(lb, _C_LEGEND, lg.get("name") or "小小英雄",
                                below=True, text_color=_T_LEGEND)
 
     if _on("OVERLAY_SHOW_BALLS_COLOR"):
@@ -395,6 +431,33 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
                          stroke_width=2, stroke_fill=(0, 0, 0, 255))
                 n_beq += 1
 
+    if _on("OVERLAY_SHOW_HERO"):
+        # 小小英雄 (用户 m01362): 等级数字块 + 右侧红/绿小血段 -> 绿=我方, 红=敌方.
+        # 框画在等级数字块上 (那是判据的锚点), 落点位置再点一个小圈, 方便核对
+        # "这个数字块确实属于这只英雄"。
+        for hp in heroes or []:
+            nb = hp.get("numblk")
+            if not nb:
+                continue
+            # 变量名别用 x/y/w/h: draw_frame 顶上的 w,h 是画布尺寸, 被同名覆盖会把
+            # 标签的 ty 钳到 h-4 (=块高-4) 上, 文字跑到画布左上角 (实测踩过)。
+            bx, by, bw, bh = (int(v) for v in nb)
+            box = [bx - 6, by - 6, bx + bw + 8, by + bh + 6]
+            mine = (hp.get("kind") == "mine")
+            col = _C_HERO_M if mine else _C_HERO_E
+            txt = _T_HERO_M if mine else _T_HERO_E
+            who = "我方" if mine else "敌方"
+            lv = hp.get("level")
+            # 标签只留"我方 Lv5"这种短串 (绿/红框本身已经说明敌我): 太长会糊住血条牌
+            label = who + (f" Lv{lv}" if lv is not None else "")
+            n_hero += _stroke(box, col, f"小小英雄 {label}", below=True, text_color=txt,
+                              width=3, font=_font(17), plate=True, stroke_width=1)
+            px, py = hp.get("x"), hp.get("y")
+            if px is not None and py is not None:
+                r = 7
+                pen.ellipse([px - r, py - r, px + r, py + r], outline=_rgba(col), width=2)
+                n_hero += 1
+
     if header is None:
         header = (f"[overlay] 棋子 {n_units} · 商店 {n_shop} · 装备栏 {n_equip} "
                   f"· 携带装备 {n_beq}")
@@ -404,6 +467,8 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
             header += f" · 球-y {n_byolo}"
         if _on("OVERLAY_SHOW_BALLS_COLOR"):
             header += f" · 球-色 {n_bcolor}"
+        if _on("OVERLAY_SHOW_HERO"):
+            header += f" · 英雄 {n_hero}"
     if header:
         pen.text((10, 8), header, fill=_rgba(_C_HEAD), font=font,
                  stroke_width=2, stroke_fill=(0, 0, 0, 255))

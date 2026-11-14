@@ -245,6 +245,15 @@ def extract_units(img, bar_method: str | None = None,
     if include_enemy_color is None:
         include_enemy_color = bool(getattr(default_config, "BAR_INCLUDE_ENEMY_COLOR", False))
     arr = np.array(img.convert("RGB"))
+    # 小小英雄锚点 (2026-11-14 用户 m01362/m01364): 等级数字块 + 右侧红/绿小血段。
+    # 战斗帧名牌常被遮、OCR 召回低, 所以"英雄"优先认这条 (8~18ms), 名牌只当补充。
+    try:
+        from recognize.hero import detect as _detect_hero
+        hero_hits: list[dict] = _detect_hero(arr)
+    except Exception as _e:      # noqa: BLE001 - 英雄路失败不许拖垮棋子识别
+        print(f"[英雄定位] 跳过: {_e!r}")
+        hero_hits = []
+
     result = {}
     #: 被"无星级徽记"规则丢掉的候选血条 (诊断用; 真棋子血条不会进这里)
     dropped_no_badge: list[dict] = []
@@ -282,12 +291,17 @@ def extract_units(img, bar_method: str | None = None,
             rank = badge_stars if badge_stars is not None else bar_stars(arr, bar)
             # 小小英雄的左侧是**等级数字**(白字), 不是星级 chevron —— 徽记框里白像素多就是数字。
             level_number = badge_box is not None and badge_white_count(arr, badge_box) >= BADGE_NUMBER_WHITE
-            if level_number:
+            # 英雄路兜底 (用户 m01362/m01364): 等级数字块 + 右侧红/绿小血段。血条左沿附近
+            # 挂着英雄等级数字块的, 这根血条就是小小英雄 —— 战斗帧名牌被遮也认得出,
+            # 还顺带把"几级 / 敌我"读出来。
+            hero_hit = _hero_near(bar, hero_hits)
+            if hero_hit is not None or level_number:
                 badge_stars = None          # 数字不是星级, 别把小小英雄当 2 星棋子
                 rank = None                 # 小小英雄没有星级
             # 竖向堆叠时上方棋子白色模型可能落进名牌窗；有星级徽记的是真棋子。
             # 等级数字框本身就是小小英雄的铁证 (不必再靠名牌, 名牌在战斗帧常被遮)。
-            legend = (_has_name_text(arr, bar) and (badge_stars is None or level_number)) or level_number
+            legend = (_has_name_text(arr, bar) and (badge_stars is None or level_number)) \
+                or level_number or hero_hit is not None
             if legend and not include_legend:
                 continue  # 小小英雄名牌
             if badge_stars is None and not legend and BAR_REQUIRE_BADGE:
@@ -344,6 +358,14 @@ def extract_units(img, bar_method: str | None = None,
                 _bx, _by, _bw, _bh = (int(v) for v in badge_box)
                 unit["badge_box"] = [_bx, _by, _bx + _bw, _by + _bh]
             unit["stars_source"] = "badge" if badge_stars is not None else ("stripes" if rank is not None else None)
+            if hero_hit is not None:
+                # 英雄路给出的等级/敌我/数字块 (overlay 画"小小英雄 Lv6"用, 抽取层判 little_legend 用)
+                unit["hero_kind"] = hero_hit.get("kind")
+                unit["hero_level"] = hero_hit.get("level")
+                unit["hero_level_score"] = hero_hit.get("level_score")
+                _hx, _hy, _hw, _hh = (int(v) for v in hero_hit["numblk"])
+                unit["hero_box"] = [_hx, _hy, _hx + _hw, _hy + _hh]
+                unit["hero_pos"] = [hero_hit.get("x"), hero_hit.get("y")]
             if legend:
                 unit["legend"] = True
             units.append(unit)
@@ -366,8 +388,37 @@ def extract_units(img, bar_method: str | None = None,
     # 把 result 当"区域 -> 单位列表"遍历, 多一个非列表键就会炸)。
     _LAST_STATS.clear()
     _LAST_STATS.update({"dropped_no_badge": dropped_no_badge,
-                        "require_badge": BAR_REQUIRE_BADGE})
+                        "require_badge": BAR_REQUIRE_BADGE,
+                        "heroes": list(hero_hits)})
     return result
+
+
+def _hero_near(bar, heroes, *, dx_left: int = 40, dx_right: int = 44,
+               dy: int = 16) -> dict | None:
+    """血条左沿附近挂着"英雄等级数字块"吗 -> 命中的 hero dict / None。
+
+    纯图色工程里小小英雄的血条就是数字块右边那一小段(不长), 所以判据只能按
+    "数字块右沿贴不贴血条左沿" + "竖向基本对齐"来配, 不要求整条血条对齐。
+    """
+    x1, y1, x2, y2 = bar[:4]
+    cy = (y1 + y2) / 2.0
+    best = None
+    best_dy = None
+    for h in heroes or ():
+        nb = h.get("numblk")
+        if not nb:
+            continue
+        bx, by, bw, bh = nb
+        bx2 = bx + bw
+        if not (x1 - dx_left <= bx2 <= x1 + dx_right):
+            continue
+        bcy = by + bh / 2.0
+        d = abs(bcy - cy)
+        if d > dy:
+            continue
+        if best_dy is None or d < best_dy:
+            best, best_dy = h, d
+    return best
 
 
 def last_stats() -> dict:

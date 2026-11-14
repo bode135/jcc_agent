@@ -853,6 +853,7 @@ class DefaultConfig:
     OVERLAY_SHOW_BALLS_YOLO = False     # balls-yolo: 用 YOLO 检索场上球 (浅蓝框) —— 用户 m00656, 默认开
     OVERLAY_SHOW_BALLS_COLOR = False    # balls-color: 用 HSV 颜色法找奖励球 (浅蓝框) —— 用户 m00656, 默认关
     OVERLAY_SHOW_STAR_BADGE = True      # 血条左侧星级徽记框 + 大号 ★×N (用户 m01029: 星级要看得出对错)
+    OVERLAY_SHOW_HERO = True            # 小小英雄: 等级数字块框 + "我方/敌方 · Lv6" 标签 (用户 m01362)
     # 注: 下面的 OVERLAY_SHOW_MEM_GT / OVERLAY_SHOW_DRAFT / OVERLAY_MEM_GT_INTERVAL /
     # OVERLAY_DRAFT_INTERVAL / OVERLAY_GT_* 是父项目"内存 GT + 选秀轮盘"遗留键, 纯图色工程
     # 已删掉那两条链路, 这里保留只为不影响既有调用方 (tools/config_audit.py 会列出未用键)。
@@ -870,6 +871,7 @@ class DefaultConfig:
     OVERLAY_BLOOD_BAR_INTERVAL = 2.0    # 血条刷新间隔 (默认关)
     OVERLAY_BALLS_YOLO_INTERVAL = 0.5   # balls-yolo 刷新间隔 (用户 m00656: 0.5s 一次; 跟随棋子识别结果)
     OVERLAY_BALLS_COLOR_INTERVAL = 0.5  # balls-color 刷新间隔 (用户 m00656: 0.5s 一次)
+    OVERLAY_HERO_INTERVAL = 0.5         # 小小英雄刷新间隔 (等级数字块 + 红/绿小血段, 实测 8~18ms)
     OVERLAY_MEM_GT_INTERVAL = 0.5       # 内存 GT 刷新间隔 (读的是主循环 TTL 缓存里的 state, 不额外读内存)
     OVERLAY_SHOW_DRAFT = True           # 选秀轮盘实时绘制 (椭圆轨道/装备图标虚线圆/棋子实心圆/小小英雄) —— 用户 m01507
     OVERLAY_DRAFT_INTERVAL = 0.5        # 选秀轮盘刷新间隔 (秒)
