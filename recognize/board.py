@@ -452,9 +452,10 @@ BAR_REQUIRE_BADGE = True
 #: 最近一次 extract_units 的徽记诊断 (模块级, 见 last_stats())
 _LAST_STATS: dict = {}
 #: 颜色类 -> HSV 上下界 (OpenCV H 0-179)。金色优先级最高 (与铜色色相相邻, 靠 S/V 拉开)。
-#: [!] 3 星金徽记**本机测试帧里没有样本**, 区间是按用户模板 + 游戏内金色 UI 推断的
-#: (H 26~42 偏黄, 与铜色 H 8~25 分开); 拿到真实 3★ 帧后请用
-#: `python -X utf8 -u tools/probe_star_badge.py --img <帧>` 复核并微调。
+#: 3 星金徽记区间按用户模板 + 游戏内金色 UI 定, **已于 2026-11-14 实机验证**:
+#: 一个 3★ 乐芙兰的徽记框实测 H=39 / S=158 / V=156 (落在 H 26~42、S>=140 内);
+#: 1★ 铜实测 H 15~16 / S 126~144、2★ 银蓝 H 104~105 / S 85~98。换分辨率后请用
+#: `python -X utf8 -u tools/probe_star_badge.py --img <帧>` 复核。
 BADGE_COLORS: tuple[tuple[int, tuple, tuple], ...] = (
     (3, (26, 140, 110), (42, 255, 255)),
     (2, (85, 20, 120), (118, 120, 255)),
