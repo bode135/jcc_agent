@@ -24,6 +24,8 @@ python -m tools.fetch_models --proxy http://127.0.0.1:7890
 `--base https://gitee.com/<owner>/<repo>/releases/download/v0.2.0`，或用环境变量
 `JCC_RELEASE_BASE`。
 
+发行版页面：<https://gitee.com/bode135/jcc_agent/releases/tag/v0.1.0>
+
 手动兜底：打开仓库的「发行版 / Release」页面，把两个 `.onnx` 下载到本目录即可 ——
 `tools/fetch_models.py --check-only` 会告诉你还缺哪个、SHA256 对不对。
 

@@ -55,6 +55,7 @@
 - 素材随仓库提供（`workspace/scrape_info/` 数据 4.9MB、`recognize/templates/` 0.6MB、`units/templates_alpha/` 1.9MB、`tests/images/` 测试帧）。
 - **模型权重不进 git**：两个 `.onnx` 合计 21.3MB，走「发行版 / Release」附件分发，克隆后用一条命令拉取并校验 SHA256
   （`--check-only` 只校验、`--proxy` 走代理），详见 [`models/README.md`](models/README.md)。
+  发行版页面：<https://gitee.com/bode135/jcc_agent/releases/tag/v0.1.0>（两个 `.onnx` 在「下载」区）。
 
 ```powershell
 # 安装 (示例用 conda, venv 同理)
