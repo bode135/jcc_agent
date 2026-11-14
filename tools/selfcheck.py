@@ -196,6 +196,7 @@ SELFTESTS = [
     ("tools.selftest_recognize", ["-m"]),
     ("tools.selftest_extract", []),
     ("tools.selftest_overlay", []),
+    ("tools.selftest_prompt", []),
     ("tools.selftest_ops", ["--live"]),
 ]
 
