@@ -1,0 +1,3524 @@
+{
+ "version": "18.3b",
+ "season": "18",
+ "tier": "challenger",
+ "timeDays": 5,
+ "source": "datatft.com",
+ "count": 30,
+ "comps": [
+  {
+   "id": 16219,
+   "title": "高野怪驻灵",
+   "titleApi": [
+    "DA_18_Sentry",
+    "DA_Riftbeast18"
+   ],
+   "tier": "C",
+   "difficulty": 2,
+   "tags": [],
+   "score": 174.0,
+   "playRate": 0.07,
+   "top4": 53.5,
+   "won": 7.9,
+   "place": 4.4314,
+   "heros": [
+    {
+     "chessId": "918997",
+     "key": "DA_Sentinel18",
+     "name": "苍蓝雕纹魔像",
+     "stars": null,
+     "equips": [
+      {
+       "id": 616,
+       "name": "圣盾使的誓约"
+      }
+     ]
+    },
+    {
+     "chessId": "918993",
+     "key": "DA_Krug18",
+     "name": "远古石甲虫",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918044",
+     "key": "DA_Taric18",
+     "name": "塔里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918994",
+     "key": "DA_Scuttlecrab18",
+     "name": "峡谷迅捷蟹",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918996",
+     "key": "DA_Brambleback18",
+     "name": "绯红印记树怪",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918998",
+     "key": "DA_18_ElderDragon",
+     "name": "远古巨龙",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918989",
+     "key": "DA_18_Sentry",
+     "name": "苍蓝哨戒",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 567,
+       "name": "蓝霸符"
+      },
+      {
+       "id": 565,
+       "name": "珠光护手"
+      },
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      }
+     ]
+    },
+    {
+     "chessId": "918991",
+     "key": "DA_Gromp18_AP",
+     "name": "魔沼蛙",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918992",
+     "key": "DA_Murkwolf18",
+     "name": "暗影狼",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918995",
+     "key": "DA_CrimsonRaptor18",
+     "name": "深红锋喙鸟",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "0242840f4304263f33fc429402419422TFTSet18"
+  },
+  {
+   "id": 16222,
+   "title": "森林天使",
+   "titleApi": [
+    "DA_18_Kayle",
+    "DA_18_Solar"
+   ],
+   "tier": "D",
+   "difficulty": 2,
+   "tags": [],
+   "score": 71.0,
+   "playRate": 0.03,
+   "top4": 45.0,
+   "won": 13.4,
+   "place": 4.7282,
+   "heros": [
+    {
+     "chessId": "918113",
+     "key": "DA_18_Sejuani",
+     "name": "瑟庄妮",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918516",
+     "key": "DA_18_Ornn",
+     "name": "奥恩",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918497",
+     "key": "DA_18_Rakan",
+     "name": "洛",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918089",
+     "key": "DA_18_Leona",
+     "name": "蕾欧娜",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918120",
+     "key": "DA_18_Hecarim",
+     "name": "赫卡里姆",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918010",
+     "key": "DA_18_Kayle",
+     "name": "凯尔",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 521,
+       "name": "巨人杀手"
+      },
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 565,
+       "name": "珠光护手"
+      }
+     ]
+    },
+    {
+     "chessId": "918498",
+     "key": "DA_18_Xayah",
+     "name": "霞",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 31010,
+       "name": "海妖之怒"
+      }
+     ]
+    },
+    {
+     "chessId": "918007",
+     "key": "DA_18_LeBlanc",
+     "name": "乐芙兰",
+     "stars": 3,
+     "equips": []
+    }
+   ],
+   "tftCode": "0242741f42041140340a439410000000TFTSet18"
+  },
+  {
+   "id": 16230,
+   "title": "花仙子小炮",
+   "titleApi": [
+    "DA_18_Tristana",
+    null
+   ],
+   "tier": "D",
+   "difficulty": 2,
+   "tags": [],
+   "score": 72.0,
+   "playRate": 0.09,
+   "top4": 40.9,
+   "won": 11.5,
+   "place": 4.9516,
+   "heros": [
+    {
+     "chessId": "918033",
+     "key": "DA_18_Rammus",
+     "name": "拉莫斯",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918876",
+     "key": "DA_18_Lillia",
+     "name": "莉莉娅",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918497",
+     "key": "DA_18_Rakan",
+     "name": "洛",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918012",
+     "key": "DA_18_Alistar",
+     "name": "阿利斯塔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918254",
+     "key": "DA_Vi18",
+     "name": "蔚",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918150",
+     "key": "DA_18_GnarSmall",
+     "name": "纳尔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918018",
+     "key": "DA_18_Tristana",
+     "name": "崔丝塔娜",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 610,
+       "name": "海克斯科技枪刃"
+      },
+      {
+       "id": 31010,
+       "name": "海妖之怒"
+      }
+     ]
+    },
+    {
+     "chessId": "918015",
+     "key": "DA_18_Sivir",
+     "name": "希维尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 33022,
+       "name": "花仙子纹章"
+      },
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    },
+    {
+     "chessId": "918498",
+     "key": "DA_18_Xayah",
+     "name": "霞",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "024214124203eb43740143342c439000TFTSet18"
+  },
+  {
+   "id": 16233,
+   "title": "高森林EZ",
+   "titleApi": [
+    "DA_18_Ezreal",
+    "DA_18_Elderwood"
+   ],
+   "tier": "A",
+   "difficulty": 2,
+   "tags": [],
+   "score": 391.0,
+   "playRate": 0.53,
+   "top4": 55.2,
+   "won": 15.0,
+   "place": 4.2118,
+   "heros": [
+    {
+     "chessId": "918120",
+     "key": "DA_18_Hecarim",
+     "name": "赫卡里姆",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918516",
+     "key": "DA_18_Ornn",
+     "name": "奥恩",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918044",
+     "key": "DA_Taric18",
+     "name": "塔里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918012",
+     "key": "DA_18_Alistar",
+     "name": "阿利斯塔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918085",
+     "key": "DA_18_Kennen",
+     "name": "凯南",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918150",
+     "key": "DA_18_GnarSmall",
+     "name": "纳尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 618,
+       "name": "斯特拉克的挑战护手"
+      }
+     ]
+    },
+    {
+     "chessId": "918081",
+     "key": "DA_18_Ezreal",
+     "name": "伊泽瑞尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 519,
+       "name": "死亡之刃"
+      },
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    },
+    {
+     "chessId": "918016",
+     "key": "DA_18_Soraka",
+     "name": "索拉卡",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918099",
+     "key": "DA_Lux18_Base",
+     "name": "拉克丝",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "0240341f4303eb40b4013ff42e405000TFTSet18"
+  },
+  {
+   "id": 16234,
+   "title": "黑荆棘裁决",
+   "titleApi": [
+    "DA_18_Soraka",
+    "DA_FloraFatalis18"
+   ],
+   "tier": "A",
+   "difficulty": 2,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 392.0,
+   "playRate": 0.89,
+   "top4": 52.9,
+   "won": 11.5,
+   "place": 4.3814,
+   "heros": [
+    {
+     "chessId": "918054",
+     "key": "DA_18_Malphite",
+     "name": "墨菲特",
+     "stars": null,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918085",
+     "key": "DA_18_Kennen",
+     "name": "凯南",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918032",
+     "key": "DA_Amumu18",
+     "name": "阿木木",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918083",
+     "key": "DA_18_Yorick",
+     "name": "约里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918009",
+     "key": "DA_Fiddlesticks18",
+     "name": "费德提克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918016",
+     "key": "DA_18_Soraka",
+     "name": "索拉卡",
+     "stars": null,
+     "equips": [
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      },
+      {
+       "id": 617,
+       "name": "强袭者的链枷"
+      }
+     ]
+    },
+    {
+     "chessId": "918081",
+     "key": "DA_18_Ezreal",
+     "name": "伊泽瑞尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 519,
+       "name": "死亡之刃"
+      },
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    },
+    {
+     "chessId": "918268",
+     "key": "DA_18_Azir",
+     "name": "阿兹尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 610,
+       "name": "海克斯科技枪刃"
+      },
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      }
+     ]
+    },
+    {
+     "chessId": "918143",
+     "key": "DA_18_Zyra",
+     "name": "婕拉",
+     "stars": null,
+     "equips": [
+      {
+       "id": 33027,
+       "name": "裁决使纹章"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      },
+      {
+       "id": 31008,
+       "name": "虚空之杖"
+      }
+     ]
+    }
+   ],
+   "tftCode": "0241440b3ed43a40042e3ff3f143c000TFTSet18"
+  },
+  {
+   "id": 16236,
+   "title": "重装厄斐琉斯",
+   "titleApi": [
+    "DA_18_Aphelios"
+   ],
+   "tier": "B",
+   "difficulty": 2,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 283.0,
+   "playRate": 1.23,
+   "top4": 51.4,
+   "won": 7.2,
+   "place": 4.501,
+   "heros": [
+    {
+     "chessId": "918044",
+     "key": "DA_Taric18",
+     "name": "塔里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918997",
+     "key": "DA_Sentinel18",
+     "name": "苍蓝雕纹魔像",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 616,
+       "name": "圣盾使的誓约"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918120",
+     "key": "DA_18_Hecarim",
+     "name": "赫卡里姆",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918131",
+     "key": "DA_18_Diana",
+     "name": "黛安娜",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918025",
+     "key": "DA_18_Morgana",
+     "name": "莫甘娜",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918996",
+     "key": "DA_Brambleback18",
+     "name": "绯红印记树怪",
+     "stars": null,
+     "equips": [
+      {
+       "id": 33030,
+       "name": "迅捷射手纹章"
+      },
+      {
+       "id": 615,
+       "name": "夜之锋刃"
+      },
+      {
+       "id": 595,
+       "name": "水银"
+      }
+     ]
+    },
+    {
+     "chessId": "918955",
+     "key": "DA_18_Alune",
+     "name": "拉露恩",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918995",
+     "key": "DA_CrimsonRaptor18",
+     "name": "深红锋喙鸟",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918523",
+     "key": "DA_18_Aphelios",
+     "name": "厄斐琉斯",
+     "stars": null,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 31010,
+       "name": "海妖之怒"
+      }
+     ]
+    }
+   ],
+   "tftCode": "024304284033fa4183f33ec4223ef000TFTSet18"
+  },
+  {
+   "id": 16241,
+   "title": "德莱文95",
+   "titleApi": [
+    "DA_Draven18"
+   ],
+   "tier": "A",
+   "difficulty": 2,
+   "tags": [],
+   "score": 389.0,
+   "playRate": 0.52,
+   "top4": 56.5,
+   "won": 25.6,
+   "place": 3.9934,
+   "heros": [
+    {
+     "chessId": "918032",
+     "key": "DA_Amumu18",
+     "name": "阿木木",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918044",
+     "key": "DA_Taric18",
+     "name": "塔里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918997",
+     "key": "DA_Sentinel18",
+     "name": "苍蓝雕纹魔像",
+     "stars": null,
+     "equips": [
+      {
+       "id": 616,
+       "name": "圣盾使的誓约"
+      }
+     ]
+    },
+    {
+     "chessId": "918057",
+     "key": "DA_18_Maokai",
+     "name": "茂凯",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918085",
+     "key": "DA_18_Kennen",
+     "name": "凯南",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918998",
+     "key": "DA_18_ElderDragon",
+     "name": "远古巨龙",
+     "stars": null,
+     "equips": [
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      },
+      {
+       "id": 618,
+       "name": "斯特拉克的挑战护手"
+      }
+     ]
+    },
+    {
+     "chessId": "918427",
+     "key": "DA_18_Ivern",
+     "name": "艾翁",
+     "stars": null,
+     "equips": [
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    },
+    {
+     "chessId": "918119",
+     "key": "DA_Draven18",
+     "name": "德莱文",
+     "stars": null,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 31010,
+       "name": "海妖之怒"
+      }
+     ]
+    }
+   ],
+   "tftCode": "023ed43042841540b3fc4043fb000000TFTSet18"
+  },
+  {
+   "id": 16242,
+   "title": "拉露恩95",
+   "titleApi": [
+    "DA_18_Alune"
+   ],
+   "tier": "A",
+   "difficulty": 2,
+   "tags": [],
+   "score": 387.0,
+   "playRate": 0.62,
+   "top4": 67.7,
+   "won": 21.6,
+   "place": 3.5544,
+   "heros": [
+    {
+     "chessId": "918032",
+     "key": "DA_Amumu18",
+     "name": "阿木木",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918044",
+     "key": "DA_Taric18",
+     "name": "塔里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918876",
+     "key": "DA_18_Lillia",
+     "name": "莉莉娅",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918131",
+     "key": "DA_18_Diana",
+     "name": "黛安娜",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918057",
+     "key": "DA_18_Maokai",
+     "name": "茂凯",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918009",
+     "key": "DA_Fiddlesticks18",
+     "name": "费德提克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918085",
+     "key": "DA_18_Kennen",
+     "name": "凯南",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918099",
+     "key": "DA_Lux18_Base",
+     "name": "拉克丝",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918955",
+     "key": "DA_18_Alune",
+     "name": "拉露恩",
+     "stars": null,
+     "equips": [
+      {
+       "id": 561,
+       "name": "莫雷洛秘典"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      },
+      {
+       "id": 31008,
+       "name": "虚空之杖"
+      }
+     ]
+    },
+    {
+     "chessId": "918427",
+     "key": "DA_18_Ivern",
+     "name": "艾翁",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "023ed4304123fa41540040b4053ec404TFTSet18"
+  },
+  {
+   "id": 16244,
+   "title": "4主宰艾希95",
+   "titleApi": [
+    "DA_18_Ashe"
+   ],
+   "tier": "A",
+   "difficulty": 2,
+   "tags": [],
+   "score": 390.0,
+   "playRate": 0.2,
+   "top4": 66.8,
+   "won": 22.2,
+   "place": 3.6047,
+   "heros": [
+    {
+     "chessId": "918254",
+     "key": "DA_Vi18",
+     "name": "蔚",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918994",
+     "key": "DA_Scuttlecrab18",
+     "name": "峡谷迅捷蟹",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918032",
+     "key": "DA_Amumu18",
+     "name": "阿木木",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918057",
+     "key": "DA_18_Maokai",
+     "name": "茂凯",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918998",
+     "key": "DA_18_ElderDragon",
+     "name": "远古巨龙",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918015",
+     "key": "DA_18_Sivir",
+     "name": "希维尔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918427",
+     "key": "DA_18_Ivern",
+     "name": "艾翁",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918022",
+     "key": "DA_18_Ashe",
+     "name": "艾希",
+     "stars": null,
+     "equips": [
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      },
+      {
+       "id": 624,
+       "name": "红霸符"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    }
+   ],
+   "tftCode": "024374263ed4153fc42c4043f0000000TFTSet18"
+  },
+  {
+   "id": 16247,
+   "title": "黑荆棘赌狼人",
+   "titleApi": [
+    "DA_18_Warwick",
+    "DA_18_Blackthorn"
+   ],
+   "tier": "C",
+   "difficulty": 2,
+   "tags": [
+    "6/7级追三星"
+   ],
+   "score": 176.0,
+   "playRate": 0.07,
+   "top4": 51.5,
+   "won": 8.1,
+   "place": 4.4186,
+   "heros": [
+    {
+     "chessId": "918992",
+     "key": "DA_Murkwolf18",
+     "name": "暗影狼",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918054",
+     "key": "DA_18_Malphite",
+     "name": "墨菲特",
+     "stars": null,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918421",
+     "key": "DA_18_RekSai",
+     "name": "雷克塞",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918019",
+     "key": "DA_18_Warwick",
+     "name": "沃里克",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      },
+      {
+       "id": 618,
+       "name": "斯特拉克的挑战护手"
+      },
+      {
+       "id": 613,
+       "name": "泰坦的坚决"
+      }
+     ]
+    },
+    {
+     "chessId": "918996",
+     "key": "DA_Brambleback18",
+     "name": "绯红印记树怪",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918993",
+     "key": "DA_Krug18",
+     "name": "远古石甲虫",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918268",
+     "key": "DA_18_Azir",
+     "name": "阿兹尔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918131",
+     "key": "DA_18_Diana",
+     "name": "黛安娜",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "024194144234383f340f3f13fa000000TFTSet18"
+  },
+  {
+   "id": 16253,
+   "title": "剑圣",
+   "titleApi": [
+    "DA_18_Adaptor",
+    "DA_18_MasterYi_AD"
+   ],
+   "tier": "B",
+   "difficulty": 1,
+   "tags": [],
+   "score": 282.0,
+   "playRate": 0.13,
+   "top4": 54.9,
+   "won": 10.5,
+   "place": 4.2592,
+   "heros": [
+    {
+     "chessId": "918875",
+     "key": "DA_18_Sett",
+     "name": "瑟提",
+     "stars": null,
+     "equips": [
+      {
+       "id": 583,
+       "name": "日炎斗篷"
+      }
+     ]
+    },
+    {
+     "chessId": "918254",
+     "key": "DA_Vi18",
+     "name": "蔚",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918011",
+     "key": "DA_18_MasterYi_AD",
+     "name": "易",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 33028,
+       "name": "斗士纹章"
+      },
+      {
+       "id": 615,
+       "name": "夜之锋刃"
+      },
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      }
+     ]
+    },
+    {
+     "chessId": "918993",
+     "key": "DA_Krug18",
+     "name": "远古石甲虫",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918083",
+     "key": "DA_18_Yorick",
+     "name": "约里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918096",
+     "key": "DA_KogMaw18_AD",
+     "name": "克格莫",
+     "stars": null,
+     "equips": [
+      {
+       "id": 624,
+       "name": "红霸符"
+      }
+     ]
+    },
+    {
+     "chessId": "918076",
+     "key": "DA_Nidalee18_AP",
+     "name": "奈德丽",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "0242a43741640f43a40e41b000000000TFTSet18"
+  },
+  {
+   "id": 16257,
+   "title": "赌芸阿娜",
+   "titleApi": [
+    "DA_18_Yunara",
+    "DA_18_Executioner"
+   ],
+   "tier": "B",
+   "difficulty": 1,
+   "tags": [
+    "6/7级追三星"
+   ],
+   "score": 279.0,
+   "playRate": 0.02,
+   "top4": 55.6,
+   "won": 12.4,
+   "place": 4.2368,
+   "heros": [
+    {
+     "chessId": "918875",
+     "key": "DA_18_Sett",
+     "name": "瑟提",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918012",
+     "key": "DA_18_Alistar",
+     "name": "阿利斯塔",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918085",
+     "key": "DA_18_Kennen",
+     "name": "凯南",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918804",
+     "key": "DA_18_Yunara",
+     "name": "芸阿娜",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 33025,
+       "name": "黑荆棘纹章"
+      },
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    },
+    {
+     "chessId": "918081",
+     "key": "DA_18_Ezreal",
+     "name": "伊泽瑞尔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918016",
+     "key": "DA_18_Soraka",
+     "name": "索拉卡",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918103",
+     "key": "DA_18_Ahri",
+     "name": "阿狸",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918007",
+     "key": "DA_18_LeBlanc",
+     "name": "乐芙兰",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "0242a3eb40b43b3ff42e3e9410000000TFTSet18"
+  },
+  {
+   "id": 16260,
+   "title": "世纪和解",
+   "titleApi": [
+    "DA_18_RivalsAugment",
+    "DA_18_Rengar",
+    "DA_18_KhaZix"
+   ],
+   "tier": "C",
+   "difficulty": 2,
+   "tags": [
+    "7/8级追三星"
+   ],
+   "score": 175.0,
+   "playRate": 0.03,
+   "top4": 43.4,
+   "won": 8.0,
+   "place": 4.8123,
+   "heros": [
+    {
+     "chessId": "918120",
+     "key": "DA_18_Hecarim",
+     "name": "赫卡里姆",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918131",
+     "key": "DA_18_Diana",
+     "name": "黛安娜",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 623,
+       "name": "薄暮法袍"
+      }
+     ]
+    },
+    {
+     "chessId": "918081",
+     "key": "DA_18_Ezreal",
+     "name": "伊泽瑞尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 624,
+       "name": "红霸符"
+      }
+     ]
+    },
+    {
+     "chessId": "918107",
+     "key": "DA_18_Rengar",
+     "name": "雷恩加尔",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 615,
+       "name": "夜之锋刃"
+      },
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 613,
+       "name": "泰坦的坚决"
+      }
+     ]
+    },
+    {
+     "chessId": "918523",
+     "key": "DA_18_Aphelios",
+     "name": "厄斐琉斯",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918121",
+     "key": "DA_18_KhaZix",
+     "name": "卡兹克",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 615,
+       "name": "夜之锋刃"
+      },
+      {
+       "id": 577,
+       "name": "正义之手"
+      },
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      }
+     ]
+    },
+    {
+     "chessId": "918007",
+     "key": "DA_18_LeBlanc",
+     "name": "乐芙兰",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "024033fa3ff4243ef40c410000000000TFTSet18"
+  },
+  {
+   "id": 16264,
+   "title": "6护卫蛇女",
+   "titleApi": [
+    "DA_18_Cassiopeia",
+    "DA_18_EmblemDefender"
+   ],
+   "tier": "B",
+   "difficulty": 2,
+   "tags": [
+    "7/8级追三星"
+   ],
+   "score": 285.0,
+   "playRate": 0.13,
+   "top4": 51.1,
+   "won": 9.1,
+   "place": 4.4624,
+   "heros": [
+    {
+     "chessId": "918089",
+     "key": "DA_18_Leona",
+     "name": "蕾欧娜",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918516",
+     "key": "DA_18_Ornn",
+     "name": "奥恩",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918098",
+     "key": "DA_18_Shen",
+     "name": "慎",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918876",
+     "key": "DA_18_Lillia",
+     "name": "莉莉娅",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918009",
+     "key": "DA_Fiddlesticks18",
+     "name": "费德提克",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 611,
+       "name": "离子火花"
+      },
+      {
+       "id": 583,
+       "name": "日炎斗篷"
+      },
+      {
+       "id": 613,
+       "name": "泰坦的坚决"
+      }
+     ]
+    },
+    {
+     "chessId": "918033",
+     "key": "DA_18_Rammus",
+     "name": "拉莫斯",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 611,
+       "name": "离子火花"
+      },
+      {
+       "id": 625,
+       "name": "坚定之心"
+      },
+      {
+       "id": 583,
+       "name": "日炎斗篷"
+      }
+     ]
+    },
+    {
+     "chessId": "918016",
+     "key": "DA_18_Soraka",
+     "name": "索拉卡",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918069",
+     "key": "DA_18_Cassiopeia",
+     "name": "卡西奥佩娅",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 555,
+       "name": "大天使之杖"
+      },
+      {
+       "id": 610,
+       "name": "海克斯科技枪刃"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    }
+   ],
+   "tftCode": "0241141f42b41240042142e3f6000000TFTSet18"
+  },
+  {
+   "id": 16265,
+   "title": "7野怪绯红树怪",
+   "titleApi": [
+    "DA_Cinderling18",
+    "DA_Riftbeast18"
+   ],
+   "tier": "D",
+   "difficulty": 1,
+   "tags": [
+    "6/7级追三星"
+   ],
+   "score": 70.0,
+   "playRate": 0.03,
+   "top4": 49.2,
+   "won": 4.4,
+   "place": 4.605,
+   "heros": [
+    {
+     "chessId": "918994",
+     "key": "DA_Scuttlecrab18",
+     "name": "峡谷迅捷蟹",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918997",
+     "key": "DA_Sentinel18",
+     "name": "苍蓝雕纹魔像",
+     "stars": null,
+     "equips": [
+      {
+       "id": 616,
+       "name": "圣盾使的誓约"
+      }
+     ]
+    },
+    {
+     "chessId": "918993",
+     "key": "DA_Krug18",
+     "name": "远古石甲虫",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918998",
+     "key": "DA_18_ElderDragon",
+     "name": "远古巨龙",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918497",
+     "key": "DA_18_Rakan",
+     "name": "洛",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918989",
+     "key": "DA_18_Sentry",
+     "name": "苍蓝哨戒",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 567,
+       "name": "蓝霸符"
+      },
+      {
+       "id": 521,
+       "name": "巨人杀手"
+      },
+      {
+       "id": 565,
+       "name": "珠光护手"
+      }
+     ]
+    },
+    {
+     "chessId": "918990",
+     "key": "DA_Cinderling18",
+     "name": "绯红树怪",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    }
+   ],
+   "tftCode": "0242642840f3fc4204293f7000000000TFTSet18"
+  },
+  {
+   "id": 16266,
+   "title": "神谕狐狸",
+   "titleApi": [
+    "DA_18_Ahri",
+    "DA_18_EmblemInvoker"
+   ],
+   "tier": "A",
+   "difficulty": 2,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 394.0,
+   "playRate": 0.53,
+   "top4": 53.2,
+   "won": 11.1,
+   "place": 4.3724,
+   "heros": [
+    {
+     "chessId": "918997",
+     "key": "DA_Sentinel18",
+     "name": "苍蓝雕纹魔像",
+     "stars": null,
+     "equips": [
+      {
+       "id": 616,
+       "name": "圣盾使的誓约"
+      }
+     ]
+    },
+    {
+     "chessId": "918044",
+     "key": "DA_Taric18",
+     "name": "塔里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918993",
+     "key": "DA_Krug18",
+     "name": "远古石甲虫",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918875",
+     "key": "DA_18_Sett",
+     "name": "瑟提",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918025",
+     "key": "DA_18_Morgana",
+     "name": "莫甘娜",
+     "stars": null,
+     "equips": [
+      {
+       "id": 561,
+       "name": "莫雷洛秘典"
+      },
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      },
+      {
+       "id": 31008,
+       "name": "虚空之杖"
+      }
+     ]
+    },
+    {
+     "chessId": "918103",
+     "key": "DA_18_Ahri",
+     "name": "阿狸",
+     "stars": null,
+     "equips": [
+      {
+       "id": 565,
+       "name": "珠光护手"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      },
+      {
+       "id": 617,
+       "name": "强袭者的链枷"
+      }
+     ]
+    },
+    {
+     "chessId": "918043",
+     "key": "DA_Karma18",
+     "name": "卡尔玛",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918989",
+     "key": "DA_18_Sentry",
+     "name": "苍蓝哨戒",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "0242843040f42a4183e9407429000000TFTSet18"
+  },
+  {
+   "id": 16269,
+   "title": "宝宝学院阿卡丽",
+   "titleApi": [
+    "DA_EarlyLearnings",
+    "DA_18_Akali_AD"
+   ],
+   "tier": "B",
+   "difficulty": 1,
+   "tags": [
+    "4/5级追三星"
+   ],
+   "score": 286.0,
+   "playRate": 0.03,
+   "top4": 49.5,
+   "won": 9.6,
+   "place": 4.5549,
+   "heros": [
+    {
+     "chessId": "918516",
+     "key": "DA_18_Ornn",
+     "name": "奥恩",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918084",
+     "key": "DA_18_Akali_AD",
+     "name": "阿卡丽",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 615,
+       "name": "夜之锋刃"
+      },
+      {
+       "id": 577,
+       "name": "正义之手"
+      },
+      {
+       "id": 565,
+       "name": "珠光护手"
+      }
+     ]
+    },
+    {
+     "chessId": "918164",
+     "key": "DA_18_Camille",
+     "name": "卡蜜尔",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 577,
+       "name": "正义之手"
+      },
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 618,
+       "name": "斯特拉克的挑战护手"
+      }
+     ]
+    },
+    {
+     "chessId": "918089",
+     "key": "DA_18_Leona",
+     "name": "蕾欧娜",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 623,
+       "name": "薄暮法袍"
+      }
+     ]
+    },
+    {
+     "chessId": "918113",
+     "key": "DA_18_Sejuani",
+     "name": "瑟庄妮",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918110",
+     "key": "DA_18_Varus",
+     "name": "韦鲁斯",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      }
+     ]
+    },
+    {
+     "chessId": "918010",
+     "key": "DA_18_Kayle",
+     "name": "凯尔",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "0241f3ea3f541142743540a000000000TFTSet18"
+  },
+  {
+   "id": 16270,
+   "title": "猎手豹女",
+   "titleApi": [
+    "DA_Nidalee18_AP",
+    "DA_18_Sivir"
+   ],
+   "tier": "C",
+   "difficulty": 1,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 177.0,
+   "playRate": 0.03,
+   "top4": 68.1,
+   "won": 10.1,
+   "place": 3.7711,
+   "heros": [
+    {
+     "chessId": "918054",
+     "key": "DA_18_Malphite",
+     "name": "墨菲特",
+     "stars": null,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918421",
+     "key": "DA_18_RekSai",
+     "name": "雷克塞",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918993",
+     "key": "DA_Krug18",
+     "name": "远古石甲虫",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918997",
+     "key": "DA_Sentinel18",
+     "name": "苍蓝雕纹魔像",
+     "stars": null,
+     "equips": [
+      {
+       "id": 616,
+       "name": "圣盾使的誓约"
+      }
+     ]
+    },
+    {
+     "chessId": "918076",
+     "key": "DA_Nidalee18_AP",
+     "name": "奈德丽",
+     "stars": null,
+     "equips": [
+      {
+       "id": 33033,
+       "name": "猎人纹章"
+      },
+      {
+       "id": 615,
+       "name": "夜之锋刃"
+      },
+      {
+       "id": 618,
+       "name": "斯特拉克的挑战护手"
+      }
+     ]
+    },
+    {
+     "chessId": "918990",
+     "key": "DA_Cinderling18",
+     "name": "绯红树怪",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918096",
+     "key": "DA_KogMaw18_AD",
+     "name": "克格莫",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918015",
+     "key": "DA_18_Sivir",
+     "name": "希维尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 624,
+       "name": "红霸符"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    }
+   ],
+   "tftCode": "0241442340f42841b3f740e42c000000TFTSet18"
+  },
+  {
+   "id": 16271,
+   "title": "高迅射厄斐",
+   "titleApi": [
+    "DA_18_Aphelios",
+    "DA_18_EmblemRapidfire"
+   ],
+   "tier": "B",
+   "difficulty": 1,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 284.0,
+   "playRate": 0.09,
+   "top4": 57.5,
+   "won": 10.1,
+   "place": 4.1961,
+   "heros": [
+    {
+     "chessId": "918032",
+     "key": "DA_Amumu18",
+     "name": "阿木木",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918997",
+     "key": "DA_Sentinel18",
+     "name": "苍蓝雕纹魔像",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 616,
+       "name": "圣盾使的誓约"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918131",
+     "key": "DA_18_Diana",
+     "name": "黛安娜",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918497",
+     "key": "DA_18_Rakan",
+     "name": "洛",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918996",
+     "key": "DA_Brambleback18",
+     "name": "绯红印记树怪",
+     "stars": null,
+     "equips": [
+      {
+       "id": 33030,
+       "name": "迅捷射手纹章"
+      },
+      {
+       "id": 615,
+       "name": "夜之锋刃"
+      },
+      {
+       "id": 595,
+       "name": "水银"
+      }
+     ]
+    },
+    {
+     "chessId": "918523",
+     "key": "DA_18_Aphelios",
+     "name": "厄斐琉斯",
+     "stars": null,
+     "equips": [
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 31010,
+       "name": "海妖之怒"
+      },
+      {
+       "id": 617,
+       "name": "强袭者的链枷"
+      }
+     ]
+    },
+    {
+     "chessId": "918995",
+     "key": "DA_CrimsonRaptor18",
+     "name": "深红锋喙鸟",
+     "stars": null,
+     "equips": [
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      }
+     ]
+    },
+    {
+     "chessId": "918498",
+     "key": "DA_18_Xayah",
+     "name": "霞",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918110",
+     "key": "DA_18_Varus",
+     "name": "韦鲁斯",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "023ed4283fa4203f33ef422439435000TFTSet18"
+  },
+  {
+   "id": 16280,
+   "title": "主宰女警",
+   "titleApi": [
+    "DA_18_Caitlyn",
+    "DA_Juggernaut18"
+   ],
+   "tier": "B",
+   "difficulty": 1,
+   "tags": [
+    "6/7级追三星"
+   ],
+   "score": 280.0,
+   "playRate": 0.1,
+   "top4": 47.9,
+   "won": 9.6,
+   "place": 4.5785,
+   "heros": [
+    {
+     "chessId": "918497",
+     "key": "DA_18_Rakan",
+     "name": "洛",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918113",
+     "key": "DA_18_Sejuani",
+     "name": "瑟庄妮",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918254",
+     "key": "DA_Vi18",
+     "name": "蔚",
+     "stars": null,
+     "equips": [
+      {
+       "id": 33033,
+       "name": "猎人纹章"
+      }
+     ]
+    },
+    {
+     "chessId": "918044",
+     "key": "DA_Taric18",
+     "name": "塔里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918994",
+     "key": "DA_Scuttlecrab18",
+     "name": "峡谷迅捷蟹",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918018",
+     "key": "DA_18_Tristana",
+     "name": "崔丝塔娜",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918015",
+     "key": "DA_18_Sivir",
+     "name": "希维尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      },
+      {
+       "id": 624,
+       "name": "红霸符"
+      }
+     ]
+    },
+    {
+     "chessId": "918022",
+     "key": "DA_18_Ashe",
+     "name": "艾希",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918051",
+     "key": "DA_18_Caitlyn",
+     "name": "凯特琳",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 610,
+       "name": "海克斯科技枪刃"
+      },
+      {
+       "id": 31010,
+       "name": "海妖之怒"
+      }
+     ]
+    }
+   ],
+   "tftCode": "0242042743743042643342c3f03f4000TFTSet18"
+  },
+  {
+   "id": 16281,
+   "title": "永森莲华ez",
+   "titleApi": [
+    "DA_18_Ezreal",
+    "DA_18_Elderwood"
+   ],
+   "tier": "B",
+   "difficulty": 2,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 278.0,
+   "playRate": 0.1,
+   "top4": 55.7,
+   "won": 9.1,
+   "place": 4.2754,
+   "heros": [
+    {
+     "chessId": "918012",
+     "key": "DA_18_Alistar",
+     "name": "阿利斯塔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918516",
+     "key": "DA_18_Ornn",
+     "name": "奥恩",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918875",
+     "key": "DA_18_Sett",
+     "name": "瑟提",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918009",
+     "key": "DA_Fiddlesticks18",
+     "name": "费德提克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918804",
+     "key": "DA_18_Yunara",
+     "name": "芸阿娜",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918016",
+     "key": "DA_18_Soraka",
+     "name": "索拉卡",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918103",
+     "key": "DA_18_Ahri",
+     "name": "阿狸",
+     "stars": null,
+     "equips": [
+      {
+       "id": 33027,
+       "name": "裁决使纹章"
+      },
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    },
+    {
+     "chessId": "918081",
+     "key": "DA_18_Ezreal",
+     "name": "伊泽瑞尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 519,
+       "name": "死亡之刃"
+      },
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    }
+   ],
+   "tftCode": "023eb41f42a40043b42e3e93ff000000TFTSet18"
+  },
+  {
+   "id": 16284,
+   "title": "日蚀芸阿娜",
+   "titleApi": [
+    "DA_18_Yunara",
+    "DA_18_Solar"
+   ],
+   "tier": "B",
+   "difficulty": 1,
+   "tags": [
+    "6级追三星"
+   ],
+   "score": 281.0,
+   "playRate": 0.06,
+   "top4": 51.0,
+   "won": 12.8,
+   "place": 4.4507,
+   "heros": [
+    {
+     "chessId": "918113",
+     "key": "DA_18_Sejuani",
+     "name": "瑟庄妮",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918083",
+     "key": "DA_18_Yorick",
+     "name": "约里克",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 583,
+       "name": "日炎斗篷"
+      }
+     ]
+    },
+    {
+     "chessId": "918804",
+     "key": "DA_18_Yunara",
+     "name": "芸阿娜",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 519,
+       "name": "死亡之刃"
+      },
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    },
+    {
+     "chessId": "918007",
+     "key": "DA_18_LeBlanc",
+     "name": "乐芙兰",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918043",
+     "key": "DA_Karma18",
+     "name": "卡尔玛",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918268",
+     "key": "DA_18_Azir",
+     "name": "阿兹尔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918010",
+     "key": "DA_18_Kayle",
+     "name": "凯尔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918089",
+     "key": "DA_18_Leona",
+     "name": "蕾欧娜",
+     "stars": 3,
+     "equips": []
+    }
+   ],
+   "tftCode": "0242743a43b4104073f140a411000000TFTSet18"
+  },
+  {
+   "id": 16285,
+   "title": "厄斐豹女",
+   "titleApi": [
+    "DA_18_Aphelios",
+    "DA_Nidalee18_AP"
+   ],
+   "tier": "A",
+   "difficulty": 1,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 388.0,
+   "playRate": 0.8,
+   "top4": 56.0,
+   "won": 6.9,
+   "place": 4.293,
+   "heros": [
+    {
+     "chessId": "918997",
+     "key": "DA_Sentinel18",
+     "name": "苍蓝雕纹魔像",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 616,
+       "name": "圣盾使的誓约"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918032",
+     "key": "DA_Amumu18",
+     "name": "阿木木",
+     "stars": null,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918254",
+     "key": "DA_Vi18",
+     "name": "蔚",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918131",
+     "key": "DA_18_Diana",
+     "name": "黛安娜",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918076",
+     "key": "DA_Nidalee18_AP",
+     "name": "奈德丽",
+     "stars": null,
+     "equips": [
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      },
+      {
+       "id": 618,
+       "name": "斯特拉克的挑战护手"
+      }
+     ]
+    },
+    {
+     "chessId": "918110",
+     "key": "DA_18_Varus",
+     "name": "韦鲁斯",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918096",
+     "key": "DA_KogMaw18_AD",
+     "name": "克格莫",
+     "stars": null,
+     "equips": [
+      {
+       "id": 502,
+       "name": "反曲之弓"
+      }
+     ]
+    },
+    {
+     "chessId": "918523",
+     "key": "DA_18_Aphelios",
+     "name": "厄斐琉斯",
+     "stars": null,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 535,
+       "name": "无尽之刃"
+      },
+      {
+       "id": 31010,
+       "name": "海妖之怒"
+      }
+     ]
+    }
+   ],
+   "tftCode": "024283ed4373fa41b43540e3ef000000TFTSet18"
+  },
+  {
+   "id": 16286,
+   "title": "森林小法",
+   "titleApi": [
+    "DA_18_Veigar",
+    "DA_18_Elderwood"
+   ],
+   "tier": "A",
+   "difficulty": 2,
+   "tags": [
+    "4/5级追三星"
+   ],
+   "score": 393.0,
+   "playRate": 0.38,
+   "top4": 64.1,
+   "won": 21.1,
+   "place": 3.7225,
+   "heros": [
+    {
+     "chessId": "918516",
+     "key": "DA_18_Ornn",
+     "name": "奥恩",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918012",
+     "key": "DA_18_Alistar",
+     "name": "阿利斯塔",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918421",
+     "key": "DA_18_RekSai",
+     "name": "雷克塞",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918009",
+     "key": "DA_Fiddlesticks18",
+     "name": "费德提克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918007",
+     "key": "DA_18_LeBlanc",
+     "name": "乐芙兰",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918045",
+     "key": "DA_18_Veigar",
+     "name": "维迦",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 567,
+       "name": "蓝霸符"
+      },
+      {
+       "id": 610,
+       "name": "海克斯科技枪刃"
+      },
+      {
+       "id": 565,
+       "name": "珠光护手"
+      }
+     ]
+    },
+    {
+     "chessId": "918069",
+     "key": "DA_18_Cassiopeia",
+     "name": "卡西奥佩娅",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "0241f3eb4234004104363f6000000000TFTSet18"
+  },
+  {
+   "id": 16287,
+   "title": "地狱火艾希",
+   "titleApi": [
+    "DA_18_Ashe",
+    "DA_18_EmblemInferno"
+   ],
+   "tier": "S",
+   "difficulty": 1,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 496.0,
+   "playRate": 0.19,
+   "top4": 57.8,
+   "won": 20.4,
+   "place": 3.9995,
+   "heros": [
+    {
+     "chessId": "918032",
+     "key": "DA_Amumu18",
+     "name": "阿木木",
+     "stars": null,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918997",
+     "key": "DA_Sentinel18",
+     "name": "苍蓝雕纹魔像",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918254",
+     "key": "DA_Vi18",
+     "name": "蔚",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918044",
+     "key": "DA_Taric18",
+     "name": "塔里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918085",
+     "key": "DA_18_Kennen",
+     "name": "凯南",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918022",
+     "key": "DA_18_Ashe",
+     "name": "艾希",
+     "stars": null,
+     "equips": [
+      {
+       "id": 33023,
+       "name": "地狱火纹章"
+      },
+      {
+       "id": 624,
+       "name": "红霸符"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      }
+     ]
+    },
+    {
+     "chessId": "918015",
+     "key": "DA_18_Sivir",
+     "name": "希维尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 551,
+       "name": "最后的轻语"
+      }
+     ]
+    },
+    {
+     "chessId": "918110",
+     "key": "DA_18_Varus",
+     "name": "韦鲁斯",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918099",
+     "key": "DA_Lux18_Base",
+     "name": "拉克丝",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "023ed42843743040b3f042c435405000TFTSet18"
+  },
+  {
+   "id": 16293,
+   "title": "赌沙皇",
+   "titleApi": [
+    "DA_18_KhaZix"
+   ],
+   "tier": "S",
+   "difficulty": 2,
+   "tags": [
+    "6/7级追三星"
+   ],
+   "score": 497.0,
+   "playRate": 0.03,
+   "top4": 51.8,
+   "won": 11.4,
+   "place": 4.4381,
+   "heros": [
+    {
+     "chessId": "918254",
+     "key": "DA_Vi18",
+     "name": "蔚",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918121",
+     "key": "DA_18_KhaZix",
+     "name": "卡兹克",
+     "stars": 3,
+     "equips": []
+    },
+    {
+     "chessId": "918083",
+     "key": "DA_18_Yorick",
+     "name": "约里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918019",
+     "key": "DA_18_Warwick",
+     "name": "沃里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918875",
+     "key": "DA_18_Sett",
+     "name": "瑟提",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 618,
+       "name": "斯特拉克的挑战护手"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918268",
+     "key": "DA_18_Azir",
+     "name": "阿兹尔",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 610,
+       "name": "海克斯科技枪刃"
+      },
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      }
+     ]
+    },
+    {
+     "chessId": "918804",
+     "key": "DA_18_Yunara",
+     "name": "芸阿娜",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918099",
+     "key": "DA_Lux18_Base",
+     "name": "拉克丝",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "0243740c43a43842a3f143b405000000TFTSet18"
+  },
+  {
+   "id": 16296,
+   "title": "6主宰婕拉",
+   "titleApi": [
+    "DA_Juggernaut18",
+    "DA_18_Zyra"
+   ],
+   "tier": "S",
+   "difficulty": 1,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 500.0,
+   "playRate": 0.53,
+   "top4": 61.6,
+   "won": 17.1,
+   "place": 3.8866,
+   "heros": [
+    {
+     "chessId": "918083",
+     "key": "DA_18_Yorick",
+     "name": "约里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918113",
+     "key": "DA_18_Sejuani",
+     "name": "瑟庄妮",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918994",
+     "key": "DA_Scuttlecrab18",
+     "name": "峡谷迅捷蟹",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918254",
+     "key": "DA_Vi18",
+     "name": "蔚",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918057",
+     "key": "DA_18_Maokai",
+     "name": "茂凯",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918032",
+     "key": "DA_Amumu18",
+     "name": "阿木木",
+     "stars": null,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918427",
+     "key": "DA_18_Ivern",
+     "name": "艾翁",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918143",
+     "key": "DA_18_Zyra",
+     "name": "婕拉",
+     "stars": null,
+     "equips": [
+      {
+       "id": 555,
+       "name": "大天使之杖"
+      },
+      {
+       "id": 555,
+       "name": "大天使之杖"
+      },
+      {
+       "id": 610,
+       "name": "海克斯科技枪刃"
+      }
+     ]
+    }
+   ],
+   "tftCode": "0243a4274264374153ed40443c000000TFTSet18"
+  },
+  {
+   "id": 16297,
+   "title": "森林螳螂",
+   "titleApi": [
+    "DA_18_KhaZix",
+    "DA_18_Elderwood"
+   ],
+   "tier": "A",
+   "difficulty": 2,
+   "tags": [
+    "7/8级追三星"
+   ],
+   "score": 395.0,
+   "playRate": 0.21,
+   "top4": 60.6,
+   "won": 17.8,
+   "place": 3.9107,
+   "heros": [
+    {
+     "chessId": "918121",
+     "key": "DA_18_KhaZix",
+     "name": "卡兹克",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 615,
+       "name": "夜之锋刃"
+      },
+      {
+       "id": 577,
+       "name": "正义之手"
+      },
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      }
+     ]
+    },
+    {
+     "chessId": "918120",
+     "key": "DA_18_Hecarim",
+     "name": "赫卡里姆",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 31012,
+       "name": "振奋盔甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918131",
+     "key": "DA_18_Diana",
+     "name": "黛安娜",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 611,
+       "name": "离子火花"
+      }
+     ]
+    },
+    {
+     "chessId": "918009",
+     "key": "DA_Fiddlesticks18",
+     "name": "费德提克",
+     "stars": null,
+     "equips": [
+      {
+       "id": 583,
+       "name": "日炎斗篷"
+      }
+     ]
+    },
+    {
+     "chessId": "918516",
+     "key": "DA_18_Ornn",
+     "name": "奥恩",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918268",
+     "key": "DA_18_Azir",
+     "name": "阿兹尔",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918081",
+     "key": "DA_18_Ezreal",
+     "name": "伊泽瑞尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 624,
+       "name": "红霸符"
+      }
+     ]
+    }
+   ],
+   "tftCode": "0240c4033fa40041f3f13ff000000000TFTSet18"
+  },
+  {
+   "id": 16298,
+   "title": "黑荆棘运营沙皇",
+   "titleApi": [
+    "DA_18_Azir",
+    "DA_18_EmblemBlackthorn"
+   ],
+   "tier": "S",
+   "difficulty": 1,
+   "tags": [
+    "速升8级"
+   ],
+   "score": 499.0,
+   "playRate": 0.19,
+   "top4": 60.5,
+   "won": 19.0,
+   "place": 3.9126,
+   "heros": [
+    {
+     "chessId": "918054",
+     "key": "DA_18_Malphite",
+     "name": "墨菲特",
+     "stars": null,
+     "equips": [
+      {
+       "id": 620,
+       "name": "冕卫"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918083",
+     "key": "DA_18_Yorick",
+     "name": "约里克",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918085",
+     "key": "DA_18_Kennen",
+     "name": "凯南",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918016",
+     "key": "DA_18_Soraka",
+     "name": "索拉卡",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918032",
+     "key": "DA_Amumu18",
+     "name": "阿木木",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918045",
+     "key": "DA_18_Veigar",
+     "name": "维迦",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918955",
+     "key": "DA_18_Alune",
+     "name": "拉露恩",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918143",
+     "key": "DA_18_Zyra",
+     "name": "婕拉",
+     "stars": null,
+     "equips": [
+      {
+       "id": 33025,
+       "name": "黑荆棘纹章"
+      },
+      {
+       "id": 525,
+       "name": "朔极之矛"
+      },
+      {
+       "id": 31008,
+       "name": "虚空之杖"
+      }
+     ]
+    },
+    {
+     "chessId": "918268",
+     "key": "DA_18_Azir",
+     "name": "阿兹尔",
+     "stars": null,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 610,
+       "name": "海克斯科技枪刃"
+      },
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      }
+     ]
+    }
+   ],
+   "tftCode": "0241443a40b42e3ed4363ec43c3f1000TFTSet18"
+  },
+  {
+   "id": 16299,
+   "title": "护卫沙皇拼多多",
+   "titleApi": [
+    "DA_18_Defender"
+   ],
+   "tier": "S",
+   "difficulty": 1,
+   "tags": [
+    "7/8级追三星"
+   ],
+   "score": 0.0,
+   "playRate": 0.02,
+   "top4": 53.2,
+   "won": 14.4,
+   "place": 4.3873,
+   "heros": [
+    {
+     "chessId": "918121",
+     "key": "DA_18_KhaZix",
+     "name": "卡兹克",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 33025,
+       "name": "黑荆棘纹章"
+      },
+      {
+       "id": 615,
+       "name": "夜之锋刃"
+      },
+      {
+       "id": 577,
+       "name": "正义之手"
+      }
+     ]
+    },
+    {
+     "chessId": "918033",
+     "key": "DA_18_Rammus",
+     "name": "拉莫斯",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 581,
+       "name": "石像鬼石板甲"
+      },
+      {
+       "id": 597,
+       "name": "狂徒铠甲"
+      }
+     ]
+    },
+    {
+     "chessId": "918009",
+     "key": "DA_Fiddlesticks18",
+     "name": "费德提克",
+     "stars": null,
+     "equips": [
+      {
+       "id": 583,
+       "name": "日炎斗篷"
+      }
+     ]
+    },
+    {
+     "chessId": "918143",
+     "key": "DA_18_Zyra",
+     "name": "婕拉",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918268",
+     "key": "DA_18_Azir",
+     "name": "阿兹尔",
+     "stars": 3,
+     "equips": [
+      {
+       "id": 539,
+       "name": "鬼索的狂暴之刃"
+      },
+      {
+       "id": 610,
+       "name": "海克斯科技枪刃"
+      },
+      {
+       "id": 553,
+       "name": "灭世者的死亡之帽"
+      }
+     ]
+    },
+    {
+     "chessId": "918016",
+     "key": "DA_18_Soraka",
+     "name": "索拉卡",
+     "stars": null,
+     "equips": []
+    },
+    {
+     "chessId": "918054",
+     "key": "DA_18_Malphite",
+     "name": "墨菲特",
+     "stars": null,
+     "equips": []
+    }
+   ],
+   "tftCode": "0240c42140043c3f142e414000000000TFTSet18"
+  }
+ ],
+ "fetchedAt": "2026-10-04 02:43:43"
+}

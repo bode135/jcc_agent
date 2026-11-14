@@ -1,0 +1,18 @@
+# 图色方案脚手架 —— 运行依赖 (仅 Windows: 依赖 pywin32 的窗口捕获 / 后台输入 / 分层叠加窗口)
+# 实测环境: Python 3.11 (conda), Windows 10/11
+
+# 图像 / 数值
+numpy==2.3.5
+pillow==12.3.0
+opencv-contrib-python==4.10.0.84
+
+# 推理: ONNX Runtime 跑 YOLO 权重, rapidocr 跑文字识别 (自带 PP-OCR 模型, 无需额外下载)
+onnxruntime==1.30.0
+rapidocr-onnxruntime==1.4.4
+
+# Windows 窗口 / 抓屏 / 后台点击 (win32gui / win32ui / win32process / win32con)
+pywin32==312
+psutil==7.2.2
+
+# 计时工具 (中日韩友好时间格式化, 源项目一直在用)
+bdtime==1.0.6

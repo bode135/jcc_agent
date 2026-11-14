@@ -1,0 +1,27 @@
+# 运行时产物
+tempdir/
+workspace/extract_info/
+workspace/captures/
+*.log
+*.png.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# 编辑器
+.idea/
+.vscode/
+
+# 说明:
+# models/*.onnx 与 workspace/scrape_info/ 默认入库 (合计约 26MB, 让克隆即可跑)。
+# 如果你的仓库策略不希望提交大文件, 可改成 Git LFS:
+#   git lfs track "models/*.onnx"
+# 或在 .gitignore 里取消下面两行注释, 并让使用者自行下载权重 (README 第三节已说明)。
+# models/*.onnx
+# models/*.pt

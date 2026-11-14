@@ -1,0 +1,5000 @@
+{
+ "version": "18.3b",
+ "source": "datatft.com",
+ "counts": {
+  "items": 151,
+  "components": 10,
+  "recipes": 55,
+  "noFormula": 86
+ },
+ "components": [
+  {
+   "equipId": 501,
+   "key": "DA_Component_BFSword",
+   "name": "暴风大剑",
+   "nickname": null,
+   "otherNames": [
+    "大剑"
+   ],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "【AD】+10%",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/501.png",
+   "icon": "../images/items/501.png",
+   "canMake": [
+    "夜之锋刃",
+    "巨人杀手",
+    "斯特拉克的挑战护手",
+    "无尽之刃",
+    "朔极之矛",
+    "死亡之刃",
+    "海克斯科技枪刃",
+    "猎人纹章",
+    "花仙子纹章",
+    "饮血剑"
+   ],
+   "canMakeCount": 10
+  },
+  {
+   "equipId": 502,
+   "key": "DA_Component_RecurveBow",
+   "name": "反曲之弓",
+   "nickname": null,
+   "otherNames": [
+    "弓",
+    "反曲弓"
+   ],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "【AS】+10%",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/502.png",
+   "icon": "../images/items/502.png",
+   "canMake": [
+    "地狱火纹章",
+    "巨人杀手",
+    "最后的轻语",
+    "泰坦的坚决",
+    "海妖之怒",
+    "红霸符",
+    "纳什之牙",
+    "虚空之杖",
+    "迅捷射手纹章",
+    "鬼索的狂暴之刃"
+   ],
+   "canMakeCount": 10
+  },
+  {
+   "equipId": 503,
+   "key": "DA_Component_NeedlesslyLargeRod",
+   "name": "无用大棒",
+   "nickname": null,
+   "otherNames": [
+    "大棒"
+   ],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "【AP】+10%",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/503.png",
+   "icon": "../images/items/503.png",
+   "canMake": [
+    "冕卫",
+    "大天使之杖",
+    "法师纹章",
+    "海克斯科技枪刃",
+    "灭世者的死亡之帽",
+    "灵魂莲华纹章",
+    "珠光护手",
+    "离子火花",
+    "莫雷洛秘典",
+    "鬼索的狂暴之刃"
+   ],
+   "canMakeCount": 10
+  },
+  {
+   "equipId": 504,
+   "key": "DA_Component_TearOfTheGoddess",
+   "name": "女神之泪",
+   "nickname": null,
+   "otherNames": [
+    "眼泪",
+    "水滴"
+   ],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "【MANAREGEN】+1",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/504.png",
+   "icon": "../images/items/504.png",
+   "canMake": [
+    "圣盾使的誓约",
+    "大天使之杖",
+    "振奋盔甲",
+    "月蚀骑士纹章",
+    "朔极之矛",
+    "正义之手",
+    "神谕纹章",
+    "蓝霸符",
+    "虚空之杖",
+    "适应性头盔"
+   ],
+   "canMakeCount": 10
+  },
+  {
+   "equipId": 505,
+   "key": "DA_Component_ChainVest",
+   "name": "锁子甲",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "【ARMOR】+20",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/505.png",
+   "icon": "../images/items/505.png",
+   "canMake": [
+    "冕卫",
+    "圣盾使的誓约",
+    "坚定之心",
+    "夜之锋刃",
+    "日炎斗篷",
+    "棘刺背心",
+    "永恒之森纹章",
+    "泰坦的坚决",
+    "石像鬼石板甲",
+    "重装战士纹章"
+   ],
+   "canMakeCount": 10
+  },
+  {
+   "equipId": 506,
+   "key": "DA_Component_NegatronCloak",
+   "name": "负极斗篷",
+   "nickname": null,
+   "otherNames": [
+    "斗篷"
+   ],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "【MR】+20",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/506.png",
+   "icon": "../images/items/506.png",
+   "canMake": [
+    "巨龙之爪",
+    "水银",
+    "海妖之怒",
+    "狂战士纹章",
+    "石像鬼石板甲",
+    "离子火花",
+    "约德尔人和朋友纹章",
+    "薄暮法袍",
+    "适应性头盔",
+    "饮血剑"
+   ],
+   "canMakeCount": 10
+  },
+  {
+   "equipId": 507,
+   "key": "DA_Component_GiantsBelt",
+   "name": "巨人腰带",
+   "nickname": null,
+   "otherNames": [
+    "腰带"
+   ],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "【HP】+150",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/507.png",
+   "icon": "../images/items/507.png",
+   "canMake": [
+    "强袭者的链枷",
+    "振奋盔甲",
+    "斗士纹章",
+    "斯特拉克的挑战护手",
+    "日炎斗篷",
+    "狂徒铠甲",
+    "纳什之牙",
+    "莫雷洛秘典",
+    "薄暮法袍",
+    "黑荆棘纹章"
+   ],
+   "canMakeCount": 10
+  },
+  {
+   "equipId": 508,
+   "key": "DA_Component_Spatula",
+   "name": "金铲铲",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/508.png",
+   "icon": "../images/items/508.png",
+   "canMake": [
+    "地狱火纹章",
+    "月蚀骑士纹章",
+    "永恒之森纹章",
+    "灵魂莲华纹章",
+    "约德尔人和朋友纹章",
+    "花仙子纹章",
+    "野兽之灵纹章",
+    "金铲铲冠冕",
+    "金锅铲冠冕",
+    "黑荆棘纹章"
+   ],
+   "canMakeCount": 10
+  },
+  {
+   "equipId": 509,
+   "key": "DA_Component_SparringGloves",
+   "name": "拳套",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "【CRIT】+20%",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/509.png",
+   "icon": "../images/items/509.png",
+   "canMake": [
+    "坚定之心",
+    "强袭者的链枷",
+    "无尽之刃",
+    "最后的轻语",
+    "正义之手",
+    "水银",
+    "珠光护手",
+    "窃贼手套",
+    "裁决使纹章",
+    "野兽之灵纹章"
+   ],
+   "canMakeCount": 10
+  },
+  {
+   "equipId": 31000,
+   "key": "DA_Component_FryingPan",
+   "name": "金锅锅",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "part",
+   "typeLabel": "基础装备(组件)",
+   "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/31000.png",
+   "icon": "../images/items/31000.png",
+   "canMake": [
+    "斗士纹章",
+    "法师纹章",
+    "狂战士纹章",
+    "猎人纹章",
+    "神谕纹章",
+    "裁决使纹章",
+    "迅捷射手纹章",
+    "重装战士纹章",
+    "金锅铲冠冕",
+    "金锅锅冠冕"
+   ],
+   "canMakeCount": 10
+  }
+ ],
+ "matrixOrder": [
+  501,
+  502,
+  503,
+  504,
+  505,
+  506,
+  507,
+  508,
+  509,
+  31000
+ ],
+ "recipes": [
+  {
+   "result": {
+    "equipId": 620,
+    "key": "DA_Crownguard",
+    "name": "冕卫",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "战斗开始时：获得持续8秒的相当于25%最大生命值的护盾值。在护盾到期时，获得25%法术加成。",
+    "effectAttr": "【HP】+100【DIST】【AP】+20【DIST】【ARMOR】+20",
+    "formula": "503,505",
+    "image": "images/items/620.png",
+    "icon": "../images/items/620.png"
+   },
+   "parts": [
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    },
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    }
+   ],
+   "partIds": [
+    503,
+    505
+   ],
+   "formula": "503,505"
+  },
+  {
+   "result": {
+    "equipId": 616,
+    "key": "DA_ProtectorsVow",
+    "name": "圣盾使的誓约",
+    "nickname": "冰甲",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "战斗开始时：获得20法力值。<br>生命值达到40%时，获得15法力值和相当于20%最大生命值的护盾值。",
+    "effectAttr": "【ARMOR】+25【DIST】【MR】+25【DIST】【MANAREGEN】+1",
+    "formula": "504,505",
+    "image": "images/items/616.png",
+    "icon": "../images/items/616.png"
+   },
+   "parts": [
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    },
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    }
+   ],
+   "partIds": [
+    504,
+    505
+   ],
+   "formula": "504,505"
+  },
+  {
+   "result": {
+    "equipId": 625,
+    "key": "DA_SteadfastHeart",
+    "name": "坚定之心",
+    "nickname": "心之刚",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "获得5%伤害减免。在高于50%生命值时，转而获得15%伤害减免。",
+    "effectAttr": "【ARMOR】+20【DIST】【CRIT】+20%【DIST】【HP】+250",
+    "formula": "509,505",
+    "image": "images/items/625.png",
+    "icon": "../images/items/625.png"
+   },
+   "parts": [
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    },
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    }
+   ],
+   "partIds": [
+    509,
+    505
+   ],
+   "formula": "509,505"
+  },
+  {
+   "result": {
+    "equipId": 615,
+    "key": "DA_EdgeOfNight",
+    "name": "夜之锋刃",
+    "nickname": null,
+    "otherNames": [
+     "夜刃",
+     "复活甲"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "在40%生命值时，短暂变为不可被选取状态、摆脱负面效果并回复15%已损失生命值。",
+    "effectAttr": "【AD】+10%【DIST】【AP】+10%【DIST】【AS】+15%【DIST】【ARMOR】+20",
+    "formula": "501,505",
+    "image": "images/items/615.png",
+    "icon": "../images/items/615.png"
+   },
+   "parts": [
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    },
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    }
+   ],
+   "partIds": [
+    501,
+    505
+   ],
+   "formula": "501,505"
+  },
+  {
+   "result": {
+    "equipId": 555,
+    "key": "DA_ArchangelsStaff",
+    "name": "大天使之杖",
+    "nickname": null,
+    "otherNames": [
+     "大天使"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "战斗开始：在战斗期间，每5秒获得20法术加成。",
+    "effectAttr": "【AP】+30%【DIST】【MANAREGEN】+1",
+    "formula": "503,504",
+    "image": "images/items/555.png",
+    "icon": "../images/items/555.png"
+   },
+   "parts": [
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    },
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    }
+   ],
+   "partIds": [
+    503,
+    504
+   ],
+   "formula": "503,504"
+  },
+  {
+   "result": {
+    "equipId": 521,
+    "key": "DA_GiantSlayer",
+    "name": "巨人杀手",
+    "nickname": "巨杀",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "对抗坦克时获得15%额外伤害增幅。",
+    "effectAttr": "【AD】+15%【DIST】【AP】+15%【DIST】【AS】+15%【DIST】【DA】+15%",
+    "formula": "501,502",
+    "image": "images/items/521.png",
+    "icon": "../images/items/521.png"
+   },
+   "parts": [
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    },
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    }
+   ],
+   "partIds": [
+    501,
+    502
+   ],
+   "formula": "501,502"
+  },
+  {
+   "result": {
+    "equipId": 609,
+    "key": "DA_DragonsClaw",
+    "name": "巨龙之爪",
+    "nickname": "龙牙",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "获得6%最大生命值。每2秒，回复2.5%最大生命值。",
+    "effectAttr": "【MR】+60",
+    "formula": "506,506",
+    "image": "images/items/609.png",
+    "icon": "../images/items/609.png"
+   },
+   "parts": [
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    },
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    }
+   ],
+   "partIds": [
+    506,
+    506
+   ],
+   "formula": "506,506"
+  },
+  {
+   "result": {
+    "equipId": 617,
+    "key": "DA_StrikersFlail",
+    "name": "强袭者的链枷",
+    "nickname": "破防者",
+    "otherNames": [
+     "破防"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "暴击提供持续5秒的5%伤害增幅，可叠加至多4次。",
+    "effectAttr": "【AS】+10%【DIST】【CRIT】+20%【DIST】【HP】+150【DIST】【DA】+10%",
+    "formula": "507,509",
+    "image": "images/items/617.png",
+    "icon": "../images/items/617.png"
+   },
+   "parts": [
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    },
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    }
+   ],
+   "partIds": [
+    507,
+    509
+   ],
+   "formula": "507,509"
+  },
+  {
+   "result": {
+    "equipId": 31012,
+    "key": "DA_SpiritVisage",
+    "name": "振奋盔甲",
+    "nickname": "绿甲",
+    "otherNames": [
+     "振奋"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "每秒回复2%已损失生命值。",
+    "effectAttr": "【HP】+300【DIST】【MANAREGEN】+2【DIST】【DR】+8%",
+    "formula": "504,507",
+    "image": "images/items/31012.png",
+    "icon": "../images/items/31012.png"
+   },
+   "parts": [
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    },
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    }
+   ],
+   "partIds": [
+    504,
+    507
+   ],
+   "formula": "504,507"
+  },
+  {
+   "result": {
+    "equipId": 618,
+    "key": "DA_SteraksGage",
+    "name": "斯特拉克的挑战护手",
+    "nickname": "血手",
+    "otherNames": [
+     "挑战护手"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "在60%生命值时，获得相当于携带者40%最大生命值的护盾值，在4秒内快速衰减。",
+    "effectAttr": "【AD】+45%【DIST】【HP】+300",
+    "formula": "501,507",
+    "image": "images/items/618.png",
+    "icon": "../images/items/618.png"
+   },
+   "parts": [
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    },
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    }
+   ],
+   "partIds": [
+    501,
+    507
+   ],
+   "formula": "501,507"
+  },
+  {
+   "result": {
+    "equipId": 535,
+    "key": "DA_InfinityEdge",
+    "name": "无尽之刃",
+    "nickname": null,
+    "otherNames": [
+     "无尽"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "获得<TFTKeyword>精准</TFTKeyword>。<br><tftitemrules>技能暴击：技能伤害可以造成暴击。额外的【技能暴击】提供10%暴击伤害。</tftitemrules>",
+    "effectAttr": "【AD】+35%【DIST】【CRIT】+35%",
+    "formula": "501,509",
+    "image": "images/items/535.png",
+    "icon": "../images/items/535.png"
+   },
+   "parts": [
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    },
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    }
+   ],
+   "partIds": [
+    501,
+    509
+   ],
+   "formula": "501,509"
+  },
+  {
+   "result": {
+    "equipId": 583,
+    "key": "DA_SunfireCape",
+    "name": "日炎斗篷",
+    "nickname": null,
+    "otherNames": [
+     "日炎"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "获得8%最大生命值。<br>每过2秒，对2格内的一名敌人施加持续10秒的1%<TFTKeyword>灼烧</TFTKeyword>效果和33%<TFTKeyword>重伤</TFTKeyword>效果。<br><tftitemrules>灼烧：每秒造成目标一部分最大生命值的真实伤害</tftitemrules><tftitemrules>重伤：降低受到的治疗效果。</tftitemrules>",
+    "effectAttr": "【ARMOR】+20【DIST】【HP】+150",
+    "formula": "505,507",
+    "image": "images/items/583.png",
+    "icon": "../images/items/583.png"
+   },
+   "parts": [
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    },
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    }
+   ],
+   "partIds": [
+    505,
+    507
+   ],
+   "formula": "505,507"
+  },
+  {
+   "result": {
+    "equipId": 551,
+    "key": "DA_LastWhisper",
+    "name": "最后的轻语",
+    "nickname": "破甲弓",
+    "otherNames": [
+     "轻语",
+     "穿甲弓"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "普攻和技能伤害都会对目标施加持续3秒的30%<TFTKeyword>护甲击碎</TFTKeyword>。这个效果不会叠加。<br><tftitemrules>护甲击碎：降低护甲值</tftitemrules>",
+    "effectAttr": "【AD】+15%【DIST】【AS】+20%【DIST】【CRIT】+20%",
+    "formula": "502,509",
+    "image": "images/items/551.png",
+    "icon": "../images/items/551.png"
+   },
+   "parts": [
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    },
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    }
+   ],
+   "partIds": [
+    502,
+    509
+   ],
+   "formula": "502,509"
+  },
+  {
+   "result": {
+    "equipId": 525,
+    "key": "DA_SpearOfShojin",
+    "name": "朔极之矛",
+    "nickname": "青龙刀",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "每次普攻提供5额外法力值。",
+    "effectAttr": "【AD】+15%【DIST】【AP】+15%【DIST】【MANAREGEN】+1",
+    "formula": "501,504",
+    "image": "images/items/525.png",
+    "icon": "../images/items/525.png"
+   },
+   "parts": [
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    },
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    }
+   ],
+   "partIds": [
+    501,
+    504
+   ],
+   "formula": "501,504"
+  },
+  {
+   "result": {
+    "equipId": 579,
+    "key": "DA_BrambleVest",
+    "name": "棘刺背心",
+    "nickname": "反甲",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "获得6%最大生命值。<br>减免来自攻击的5%伤害。在被任一攻击命中时，对邻格所有敌人造成100<magicDamage>魔法伤害</magicDamage>。<br><tftitemrules>冷却时间：</tftitemrules>2<tftitemrules>秒</tftitemrules>",
+    "effectAttr": "【ARMOR】+50",
+    "formula": "505,505",
+    "image": "images/items/579.png",
+    "icon": "../images/items/579.png"
+   },
+   "parts": [
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    },
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    }
+   ],
+   "partIds": [
+    505,
+    505
+   ],
+   "formula": "505,505"
+  },
+  {
+   "result": {
+    "equipId": 577,
+    "key": "DA_HandOfJustice",
+    "name": "正义之手",
+    "nickname": null,
+    "otherNames": [
+     "正义"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "获得2个效果：• 18%物理加成和18%法术加成。• 15%全能吸血。<br>生命值高于50%时，物理加成和法术加成翻倍。生命值低于50%时，全能吸血翻倍。",
+    "effectAttr": "【CRIT】+20%【DIST】【MANAREGEN】+1",
+    "formula": "504,509",
+    "image": "images/items/577.png",
+    "icon": "../images/items/577.png"
+   },
+   "parts": [
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    },
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    }
+   ],
+   "partIds": [
+    504,
+    509
+   ],
+   "formula": "504,509"
+  },
+  {
+   "result": {
+    "equipId": 519,
+    "key": "DA_Deathblade",
+    "name": "死亡之刃",
+    "nickname": "杀人剑",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "<tftitemrules>将完美的安宁和平静带给携带者——和所有面对它的人。</tftitemrules>",
+    "effectAttr": "【AD】+55%【DIST】【DA】+10%",
+    "formula": "501,501",
+    "image": "images/items/519.png",
+    "icon": "../images/items/519.png"
+   },
+   "parts": [
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    },
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    }
+   ],
+   "partIds": [
+    501,
+    501
+   ],
+   "formula": "501,501"
+  },
+  {
+   "result": {
+    "equipId": 595,
+    "key": "DA_Quicksilver",
+    "name": "水银",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "战斗开始时：获得持续18秒的控制免疫效果。<br>每秒获得3%可叠加的攻击速度。",
+    "effectAttr": "【AS】+15%【DIST】【CRIT】+20%【DIST】【MR】+20",
+    "formula": "506,509",
+    "image": "images/items/595.png",
+    "icon": "../images/items/595.png"
+   },
+   "parts": [
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    },
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    }
+   ],
+   "partIds": [
+    506,
+    509
+   ],
+   "formula": "506,509"
+  },
+  {
+   "result": {
+    "equipId": 613,
+    "key": "DA_TitansResolve",
+    "name": "泰坦的坚决",
+    "nickname": null,
+    "otherNames": [
+     "泰坦"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "在攻击或承受伤害时获得2%物理加成和法术加成，至多可叠加25次。<br>在叠满层数后，获得10%伤害增幅，并获得控制免疫效果。",
+    "effectAttr": "【AS】+10%【DIST】【ARMOR】+20",
+    "formula": "502,505",
+    "image": "images/items/613.png",
+    "icon": "../images/items/613.png"
+   },
+   "parts": [
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    },
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    }
+   ],
+   "partIds": [
+    502,
+    505
+   ],
+   "formula": "502,505"
+  },
+  {
+   "result": {
+    "equipId": 610,
+    "key": "DA_HextechGunblade",
+    "name": "海克斯科技枪刃",
+    "nickname": "科技枪",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "为生命值百分比最低的友军提供相当于造成伤害值20%的治疗。",
+    "effectAttr": "【AD】+20%【DIST】【AP】+20%【DIST】【MANAREGEN】+1【DIST】【SV】+15%",
+    "formula": "501,503",
+    "image": "images/items/610.png",
+    "icon": "../images/items/610.png"
+   },
+   "parts": [
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    },
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    }
+   ],
+   "partIds": [
+    501,
+    503
+   ],
+   "formula": "501,503"
+  },
+  {
+   "result": {
+    "equipId": 31010,
+    "key": "DA_KrakensFury",
+    "name": "海妖之怒",
+    "nickname": null,
+    "otherNames": [
+     "海妖"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "每次攻击提供3.5%可叠加物理加成，最多叠加15次。攻击15次后，获得15%攻击速度。",
+    "effectAttr": "【AD】+10%【DIST】【AS】+10%【DIST】【MR】+20",
+    "formula": "502,506",
+    "image": "images/items/31010.png",
+    "icon": "../images/items/31010.png"
+   },
+   "parts": [
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    },
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    }
+   ],
+   "partIds": [
+    502,
+    506
+   ],
+   "formula": "502,506"
+  },
+  {
+   "result": {
+    "equipId": 553,
+    "key": "DA_RabadonsDeathcap",
+    "name": "灭世者的死亡之帽",
+    "nickname": "帽子",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "<tftitemrules>这顶不起眼的帽子可以帮助你创造，或毁灭，这个世界本身。</tftitemrules>",
+    "effectAttr": "【AP】+55%【DIST】【DA】+15%",
+    "formula": "503,503",
+    "image": "images/items/553.png",
+    "icon": "../images/items/553.png"
+   },
+   "parts": [
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    },
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    }
+   ],
+   "partIds": [
+    503,
+    503
+   ],
+   "formula": "503,503"
+  },
+  {
+   "result": {
+    "equipId": 597,
+    "key": "DA_WarmogsArmor",
+    "name": "狂徒铠甲",
+    "nickname": null,
+    "otherNames": [
+     "狂徒"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "获得18%最大生命值。",
+    "effectAttr": "【HP】+500",
+    "formula": "507,507",
+    "image": "images/items/597.png",
+    "icon": "../images/items/597.png"
+   },
+   "parts": [
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    },
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    }
+   ],
+   "partIds": [
+    507,
+    507
+   ],
+   "formula": "507,507"
+  },
+  {
+   "result": {
+    "equipId": 565,
+    "key": "DA_JeweledGauntlet",
+    "name": "珠光护手",
+    "nickname": "法爆",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "获得<TFTKeyword>技能暴击</TFTKeyword>。<br><tftitemrules>技能暴击：技能伤害可以造成暴击。额外的【技能暴击】提供10%暴击伤害。</tftitemrules>",
+    "effectAttr": "【AP】+35%【DIST】【CRIT】+35%",
+    "formula": "503,509",
+    "image": "images/items/565.png",
+    "icon": "../images/items/565.png"
+   },
+   "parts": [
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    },
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    }
+   ],
+   "partIds": [
+    503,
+    509
+   ],
+   "formula": "503,509"
+  },
+  {
+   "result": {
+    "equipId": 581,
+    "key": "DA_GargoyleStoneplate",
+    "name": "石像鬼石板甲",
+    "nickname": "板甲",
+    "otherNames": [
+     "石像鬼"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "每有一个敌人以携带者为目标，携带者就会获得10护甲和10魔抗。",
+    "effectAttr": "【ARMOR】+25【DIST】【HP】+100【DIST】【MR】+25",
+    "formula": "505,506",
+    "image": "images/items/581.png",
+    "icon": "../images/items/581.png"
+   },
+   "parts": [
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    },
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    }
+   ],
+   "partIds": [
+    505,
+    506
+   ],
+   "formula": "505,506"
+  },
+  {
+   "result": {
+    "equipId": 611,
+    "key": "DA_IonicSpark",
+    "name": "离子火花",
+    "nickname": null,
+    "otherNames": [
+     "离子"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "对2格内的敌人们施加30%<TFTKeyword>魔抗击碎</TFTKeyword>。在敌人施放一次技能时，对该敌人造成相当于其150%法力值消耗的魔法伤害。<br><tftitemrules>魔抗击碎：降低魔法抗性</tftitemrules>",
+    "effectAttr": "【AP】+15%【DIST】【HP】+250【DIST】【MR】+35",
+    "formula": "503,506",
+    "image": "images/items/611.png",
+    "icon": "../images/items/611.png"
+   },
+   "parts": [
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    },
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    }
+   ],
+   "partIds": [
+    503,
+    506
+   ],
+   "formula": "503,506"
+  },
+  {
+   "result": {
+    "equipId": 607,
+    "key": "DA_ThiefsGloves",
+    "name": "窃贼手套",
+    "nickname": "偷偷",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "每一回合：装备2件随机装备。<br><tftitemrules>[需要用掉3个装备格。]</tftitemrules>",
+    "effectAttr": "【CRIT】+20%【DIST】【HP】+150",
+    "formula": "509,509",
+    "image": "images/items/607.png",
+    "icon": "../images/items/607.png"
+   },
+   "parts": [
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    },
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    }
+   ],
+   "partIds": [
+    509,
+    509
+   ],
+   "formula": "509,509"
+  },
+  {
+   "result": {
+    "equipId": 624,
+    "key": "DA_RedBuff",
+    "name": "红霸符",
+    "nickname": "红BUFF",
+    "otherNames": [
+     "红buff"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "攻击和技能的伤害对敌人们造成持续5秒的1%<TFTKeyword>灼烧</TFTKeyword>效果和33%<TFTKeyword>重伤</TFTKeyword>效果。<br><tftitemrules>灼烧：每秒造成目标一部分最大生命值的真实伤害</tftitemrules><tftitemrules>重伤：降低受到的治疗效果</tftitemrules>",
+    "effectAttr": "【AS】+45%【DIST】【DA】+3%",
+    "formula": "502,502",
+    "image": "images/items/624.png",
+    "icon": "../images/items/624.png"
+   },
+   "parts": [
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    },
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    }
+   ],
+   "partIds": [
+    502,
+    502
+   ],
+   "formula": "502,502"
+  },
+  {
+   "result": {
+    "equipId": 619,
+    "key": "DA_NashorsTooth",
+    "name": "纳什之牙",
+    "nickname": null,
+    "otherNames": [
+     "纳什"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "每次普攻提供2额外法力值，如果暴击则提升至4额外法力值。",
+    "effectAttr": "【AP】+15%【DIST】【AS】+10%【DIST】【CRIT】+20%【DIST】【HP】+150",
+    "formula": "502,507",
+    "image": "images/items/619.png",
+    "icon": "../images/items/619.png"
+   },
+   "parts": [
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    },
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    }
+   ],
+   "partIds": [
+    502,
+    507
+   ],
+   "formula": "502,507"
+  },
+  {
+   "result": {
+    "equipId": 561,
+    "key": "DA_Morellonomicon",
+    "name": "莫雷洛秘典",
+    "nickname": "鬼书",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "攻击和技能的伤害对敌人们造成持续10秒的1%<TFTKeyword>灼烧</TFTKeyword>效果和33%<TFTKeyword>重伤</TFTKeyword>效果。<br><tftitemrules>灼烧：每秒造成目标一部分最大生命值的真实伤害</tftitemrules><tftitemrules>重伤：降低受到的治疗效果</tftitemrules>",
+    "effectAttr": "【AP】+20%【DIST】【HP】+150【DIST】【MANAREGEN】+1",
+    "formula": "503,507",
+    "image": "images/items/561.png",
+    "icon": "../images/items/561.png"
+   },
+   "parts": [
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    },
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    }
+   ],
+   "partIds": [
+    503,
+    507
+   ],
+   "formula": "503,507"
+  },
+  {
+   "result": {
+    "equipId": 567,
+    "key": "DA_BlueBuff",
+    "name": "蓝霸符",
+    "nickname": "蓝BUFF",
+    "otherNames": [
+     "蓝buff"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "从所有来源中获得10%额外物理加成和法术加成。",
+    "effectAttr": "【AD】+15%【DIST】【AP】+15%【DIST】【MANAREGEN】+5",
+    "formula": "504,504",
+    "image": "images/items/567.png",
+    "icon": "../images/items/567.png"
+   },
+   "parts": [
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    },
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    }
+   ],
+   "partIds": [
+    504,
+    504
+   ],
+   "formula": "504,504"
+  },
+  {
+   "result": {
+    "equipId": 623,
+    "key": "DA_Evenshroud",
+    "name": "薄暮法袍",
+    "nickname": null,
+    "otherNames": [
+     "法袍",
+     "薄暮"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "2格内的敌人们会被施加30%<TFTKeyword>护甲击碎</TFTKeyword>。在战斗的最初15秒获得15护甲和魔抗。<br><tftitemrules>护甲击碎：降低护甲值</tftitemrules>",
+    "effectAttr": "【HP】+250【DIST】【MR】+20",
+    "formula": "506,507",
+    "image": "images/items/623.png",
+    "icon": "../images/items/623.png"
+   },
+   "parts": [
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    },
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    }
+   ],
+   "partIds": [
+    506,
+    507
+   ],
+   "formula": "506,507"
+  },
+  {
+   "result": {
+    "equipId": 31008,
+    "key": "DA_VoidStaff",
+    "name": "虚空之杖",
+    "nickname": "法穿棒",
+    "otherNames": [
+     "虚空杖",
+     "法穿"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "攻击和技能伤害都会对目标施加持续5秒的30%<TFTKeyword>魔抗击碎</TFTKeyword>。这个效果不会叠加。<br><tftitemrules>魔抗击碎：降低魔法抗性</tftitemrules>",
+    "effectAttr": "【AP】+35%【DIST】【AS】+15%【DIST】【MANAREGEN】+1",
+    "formula": "502,504",
+    "image": "images/items/31008.png",
+    "icon": "../images/items/31008.png"
+   },
+   "parts": [
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    },
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    }
+   ],
+   "partIds": [
+    502,
+    504
+   ],
+   "formula": "502,504"
+  },
+  {
+   "result": {
+    "equipId": 621,
+    "key": "DA_AdaptiveHelm",
+    "name": "适应性头盔",
+    "nickname": null,
+    "otherNames": [
+     "头盔"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "从所有来源中获得额外的15%法力值。携带者获得基于其角色定位的一个额外加成：<br>坦克和战士：获得30护甲和魔抗。<br>其它角色定位：获得10%物理加成和法术加成。",
+    "effectAttr": "【MR】+20【DIST】【MANAREGEN】+3",
+    "formula": "504,506",
+    "image": "images/items/621.png",
+    "icon": "../images/items/621.png"
+   },
+   "parts": [
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    },
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    }
+   ],
+   "partIds": [
+    504,
+    506
+   ],
+   "formula": "504,506"
+  },
+  {
+   "result": {
+    "equipId": 608,
+    "key": "DA_TacticiansCrown",
+    "name": "金铲铲冠冕",
+    "nickname": "自然之力",
+    "otherNames": [
+     "冠冕"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "你的队伍获得+1最大队伍规模。在你赢下战斗时，有10%几率掉落1金币。<br><tftitemrules>“……英雄的心……”</tftitemrules>",
+    "effectAttr": "",
+    "formula": "508,508",
+    "image": "images/items/608.png",
+    "icon": "../images/items/608.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    }
+   ],
+   "partIds": [
+    508,
+    508
+   ],
+   "formula": "508,508"
+  },
+  {
+   "result": {
+    "equipId": 31003,
+    "key": "DA_TacticiansCape",
+    "name": "金锅铲冠冕",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "你的队伍获得最大队伍规模+1。<br>在战斗10秒后，有10%几率掉落1金币。<br><tftitemrules>……外加几分运气。</tftitemrules>",
+    "effectAttr": "",
+    "formula": "508,31000",
+    "image": "images/items/31003.png",
+    "icon": "../images/items/31003.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    }
+   ],
+   "partIds": [
+    508,
+    31000
+   ],
+   "formula": "508,31000"
+  },
+  {
+   "result": {
+    "equipId": 31002,
+    "key": "DA_TacticiansShield",
+    "name": "金锅锅冠冕",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "你的队伍获得+1最大队伍规模。<br>在携带者阵亡时，有10%几率掉落1金币。<br><tftitemrules>充满了某位哲学家的智慧……</tftitemrules>",
+    "effectAttr": "",
+    "formula": "31000,31000",
+    "image": "images/items/31002.png",
+    "icon": "../images/items/31002.png"
+   },
+   "parts": [
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    },
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    }
+   ],
+   "partIds": [
+    31000,
+    31000
+   ],
+   "formula": "31000,31000"
+  },
+  {
+   "result": {
+    "equipId": 529,
+    "key": "DA_Bloodthirster",
+    "name": "饮血剑",
+    "nickname": null,
+    "otherNames": [
+     "饮血"
+    ],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "每场战斗仅触发一次：在50%生命值时，获得一个护盾，护盾值相当于携带者30%的最大生命值，至多持续5秒。",
+    "effectAttr": "【AD】+18%【DIST】【AP】+18%【DIST】【MR】+20【DIST】【SV】+20%",
+    "formula": "501,506",
+    "image": "images/items/529.png",
+    "icon": "../images/items/529.png"
+   },
+   "parts": [
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    },
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    }
+   ],
+   "partIds": [
+    501,
+    506
+   ],
+   "formula": "501,506"
+  },
+  {
+   "result": {
+    "equipId": 539,
+    "key": "DA_GuinsoosRageblade",
+    "name": "鬼索的狂暴之刃",
+    "nickname": "羊刀",
+    "otherNames": [],
+    "type2": "common",
+    "typeLabel": "普通装备",
+    "effect": "每秒获得7%可叠加的攻击速度。",
+    "effectAttr": "【AP】+10%【DIST】【AS】+10%",
+    "formula": "502,503",
+    "image": "images/items/539.png",
+    "icon": "../images/items/539.png"
+   },
+   "parts": [
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    },
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    }
+   ],
+   "partIds": [
+    502,
+    503
+   ],
+   "formula": "502,503"
+  },
+  {
+   "result": {
+    "equipId": 33023,
+    "key": "DA_18_EmblemInferno",
+    "name": "地狱火纹章",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "zhuanzhi",
+    "typeLabel": "转职纹章·金铲铲系",
+    "effect": "携带者获得【地狱火】羁绊。",
+    "effectAttr": "【AS】+40%",
+    "formula": "508,502",
+    "image": "images/items/33023.png",
+    "icon": "../images/items/33023.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    }
+   ],
+   "partIds": [
+    508,
+    502
+   ],
+   "formula": "508,502"
+  },
+  {
+   "result": {
+    "equipId": 33020,
+    "key": "DA_18_EmblemLunar",
+    "name": "月蚀骑士纹章",
+    "nickname": null,
+    "otherNames": [
+     "月蚀转"
+    ],
+    "type2": "zhuanzhi",
+    "typeLabel": "转职纹章·金铲铲系",
+    "effect": "携带者获得【月蚀骑士】羁绊。",
+    "effectAttr": "【AS】+20%【DIST】【MANAREGEN】+3",
+    "formula": "508,504",
+    "image": "images/items/33020.png",
+    "icon": "../images/items/33020.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    }
+   ],
+   "partIds": [
+    508,
+    504
+   ],
+   "formula": "508,504"
+  },
+  {
+   "result": {
+    "equipId": 33024,
+    "key": "DA_18_EmblemElderwood",
+    "name": "永恒之森纹章",
+    "nickname": null,
+    "otherNames": [
+     "森林转"
+    ],
+    "type2": "zhuanzhi",
+    "typeLabel": "转职纹章·金铲铲系",
+    "effect": "携带者获得【永恒之森】羁绊。",
+    "effectAttr": "【AS】+25%【DIST】【ARMOR】+35【DIST】【MR】+35",
+    "formula": "508,505",
+    "image": "images/items/33024.png",
+    "icon": "../images/items/33024.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    }
+   ],
+   "partIds": [
+    508,
+    505
+   ],
+   "formula": "508,505"
+  },
+  {
+   "result": {
+    "equipId": 33019,
+    "key": "DA_18_EmblemBlossom",
+    "name": "灵魂莲华纹章",
+    "nickname": null,
+    "otherNames": [
+     "莲花转",
+     "莲华转"
+    ],
+    "type2": "zhuanzhi",
+    "typeLabel": "转职纹章·金铲铲系",
+    "effect": "携带者获得【灵魂莲华】羁绊。",
+    "effectAttr": "【HP】+250【DIST】【AD】+10%【DIST】【AP】+10%",
+    "formula": "508,503",
+    "image": "images/items/33019.png",
+    "icon": "../images/items/33019.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    }
+   ],
+   "partIds": [
+    508,
+    503
+   ],
+   "formula": "508,503"
+  },
+  {
+   "result": {
+    "equipId": 33021,
+    "key": "DA_18_EmblemSprykin",
+    "name": "约德尔人和朋友纹章",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "zhuanzhi",
+    "typeLabel": "转职纹章·金铲铲系",
+    "effect": "携带者获得【约德尔人和朋友】羁绊。<br>如果携带者骑乘着【毛茸茸大朋友】，获得额外【AS】20%【ARMOR】15【MR】15",
+    "effectAttr": "【AS】+10%【DIST】【ARMOR】+15【DIST】【MR】+15",
+    "formula": "508,506",
+    "image": "images/items/33021.png",
+    "icon": "../images/items/33021.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    }
+   ],
+   "partIds": [
+    508,
+    506
+   ],
+   "formula": "508,506"
+  },
+  {
+   "result": {
+    "equipId": 33022,
+    "key": "DA_18_EmblemFae",
+    "name": "花仙子纹章",
+    "nickname": null,
+    "otherNames": [
+     "花仙转"
+    ],
+    "type2": "zhuanzhi",
+    "typeLabel": "转职纹章·金铲铲系",
+    "effect": "携带者获得【花仙子】羁绊。",
+    "effectAttr": "【HP】+200【DIST】【AD】+10%【DIST】【AP】+10%",
+    "formula": "508,501",
+    "image": "images/items/33022.png",
+    "icon": "../images/items/33022.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    }
+   ],
+   "partIds": [
+    508,
+    501
+   ],
+   "formula": "508,501"
+  },
+  {
+   "result": {
+    "equipId": 33026,
+    "key": "DA_18_EmblemPrimal",
+    "name": "野兽之灵纹章",
+    "nickname": null,
+    "otherNames": [
+     "野兽转"
+    ],
+    "type2": "zhuanzhi",
+    "typeLabel": "转职纹章·金铲铲系",
+    "effect": "携带者获得【野兽之灵】羁绊。",
+    "effectAttr": "【AS】+35%【DIST】【HP】+250【DIST】【CRIT】+20%",
+    "formula": "508,509",
+    "image": "images/items/33026.png",
+    "icon": "../images/items/33026.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    }
+   ],
+   "partIds": [
+    508,
+    509
+   ],
+   "formula": "508,509"
+  },
+  {
+   "result": {
+    "equipId": 33025,
+    "key": "DA_18_EmblemBlackthorn",
+    "name": "黑荆棘纹章",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "zhuanzhi",
+    "typeLabel": "转职纹章·金铲铲系",
+    "effect": "携带者获得【黑荆棘】羁绊。",
+    "effectAttr": "【HP】+250【DIST】【AD】+15%【DIST】【AP】+15%",
+    "formula": "508,507",
+    "image": "images/items/33025.png",
+    "icon": "../images/items/33025.png"
+   },
+   "parts": [
+    {
+     "equipId": 508,
+     "key": "DA_Component_Spatula",
+     "name": "金铲铲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>它必须做点什么...</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/508.png",
+     "icon": "../images/items/508.png"
+    },
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    }
+   ],
+   "partIds": [
+    508,
+    507
+   ],
+   "formula": "508,507"
+  },
+  {
+   "result": {
+    "equipId": 33028,
+    "key": "DA_18_EmblemBrawler",
+    "name": "斗士纹章",
+    "nickname": null,
+    "otherNames": [
+     "斗转"
+    ],
+    "type2": "zhuanzhiJgg",
+    "typeLabel": "转职纹章·金锅锅系",
+    "effect": "携带者获得【斗士】羁绊。<br>攻击造成携带者2.5%最大生命值的魔法伤害。",
+    "effectAttr": "【HP】+150",
+    "formula": "31000,507",
+    "image": "images/items/33028.png",
+    "icon": "../images/items/33028.png"
+   },
+   "parts": [
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    },
+    {
+     "equipId": 507,
+     "key": "DA_Component_GiantsBelt",
+     "name": "巨人腰带",
+     "nickname": null,
+     "otherNames": [
+      "腰带"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【HP】+150",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/507.png",
+     "icon": "../images/items/507.png"
+    }
+   ],
+   "partIds": [
+    31000,
+    507
+   ],
+   "formula": "31000,507"
+  },
+  {
+   "result": {
+    "equipId": 33031,
+    "key": "DA_18_EmblemSpellweaver",
+    "name": "法师纹章",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "zhuanzhiJgg",
+    "typeLabel": "转职纹章·金锅锅系",
+    "effect": "携带者获得【法师】羁绊。<br>每当1名友军施放其技能时，获得2法力值。",
+    "effectAttr": "【AP】+25%",
+    "formula": "31000,503",
+    "image": "images/items/33031.png",
+    "icon": "../images/items/33031.png"
+   },
+   "parts": [
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    },
+    {
+     "equipId": 503,
+     "key": "DA_Component_NeedlesslyLargeRod",
+     "name": "无用大棒",
+     "nickname": null,
+     "otherNames": [
+      "大棒"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AP】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/503.png",
+     "icon": "../images/items/503.png"
+    }
+   ],
+   "partIds": [
+    31000,
+    503
+   ],
+   "formula": "31000,503"
+  },
+  {
+   "result": {
+    "equipId": 33034,
+    "key": "DA_18_EmblemSlayer",
+    "name": "狂战士纹章",
+    "nickname": null,
+    "otherNames": [
+     "狂战转"
+    ],
+    "type2": "zhuanzhiJgg",
+    "typeLabel": "转职纹章·金锅锅系",
+    "effect": "携带者获得【狂战士】羁绊。<br>每回复300生命值，获得3%伤害增幅。",
+    "effectAttr": "【AD】+20%【DIST】【AP】+20%【DIST】【ARMOR】+20【DIST】【MR】+20",
+    "formula": "31000,506",
+    "image": "images/items/33034.png",
+    "icon": "../images/items/33034.png"
+   },
+   "parts": [
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    },
+    {
+     "equipId": 506,
+     "key": "DA_Component_NegatronCloak",
+     "name": "负极斗篷",
+     "nickname": null,
+     "otherNames": [
+      "斗篷"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/506.png",
+     "icon": "../images/items/506.png"
+    }
+   ],
+   "partIds": [
+    31000,
+    506
+   ],
+   "formula": "31000,506"
+  },
+  {
+   "result": {
+    "equipId": 33033,
+    "key": "DA_18_EmblemHunter",
+    "name": "猎人纹章",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "zhuanzhiJgg",
+    "typeLabel": "转职纹章·金锅锅系",
+    "effect": "携带者获得【猎人】羁绊。<br>参与击杀提供15%物理加成。",
+    "effectAttr": "【AD】+25%",
+    "formula": "31000,501",
+    "image": "images/items/33033.png",
+    "icon": "../images/items/33033.png"
+   },
+   "parts": [
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    },
+    {
+     "equipId": 501,
+     "key": "DA_Component_BFSword",
+     "name": "暴风大剑",
+     "nickname": null,
+     "otherNames": [
+      "大剑"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AD】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/501.png",
+     "icon": "../images/items/501.png"
+    }
+   ],
+   "partIds": [
+    31000,
+    501
+   ],
+   "formula": "31000,501"
+  },
+  {
+   "result": {
+    "equipId": 33029,
+    "key": "DA_18_EmblemInvoker",
+    "name": "神谕纹章",
+    "nickname": null,
+    "otherNames": [],
+    "type2": "zhuanzhiJgg",
+    "typeLabel": "转职纹章·金锅锅系",
+    "effect": "携带者获得【神谕】羁绊。<br>施放技能时，获得相当于8%消耗法力值的法术加成。",
+    "effectAttr": "【MANAREGEN】+2",
+    "formula": "31000,504",
+    "image": "images/items/33029.png",
+    "icon": "../images/items/33029.png"
+   },
+   "parts": [
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    },
+    {
+     "equipId": 504,
+     "key": "DA_Component_TearOfTheGoddess",
+     "name": "女神之泪",
+     "nickname": null,
+     "otherNames": [
+      "眼泪",
+      "水滴"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【MANAREGEN】+1",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/504.png",
+     "icon": "../images/items/504.png"
+    }
+   ],
+   "partIds": [
+    31000,
+    504
+   ],
+   "formula": "31000,504"
+  },
+  {
+   "result": {
+    "equipId": 33027,
+    "key": "DA_18_EmblemExecutioner",
+    "name": "裁决使纹章",
+    "nickname": null,
+    "otherNames": [
+     "裁决转"
+    ],
+    "type2": "zhuanzhiJgg",
+    "typeLabel": "转职纹章·金锅锅系",
+    "effect": "携带者获得【裁决使】羁绊。<br>伤害会处决最大生命值低于8%的敌人。",
+    "effectAttr": "【CRIT】+20%【DIST】【CRITMULT】+8%",
+    "formula": "31000,509",
+    "image": "images/items/33027.png",
+    "icon": "../images/items/33027.png"
+   },
+   "parts": [
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    },
+    {
+     "equipId": 509,
+     "key": "DA_Component_SparringGloves",
+     "name": "拳套",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【CRIT】+20%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/509.png",
+     "icon": "../images/items/509.png"
+    }
+   ],
+   "partIds": [
+    31000,
+    509
+   ],
+   "formula": "31000,509"
+  },
+  {
+   "result": {
+    "equipId": 33030,
+    "key": "DA_18_EmblemRapidfire",
+    "name": "迅捷射手纹章",
+    "nickname": null,
+    "otherNames": [
+     "迅捷转",
+     "迅射转",
+     "射手转"
+    ],
+    "type2": "zhuanzhiJgg",
+    "typeLabel": "转职纹章·金锅锅系",
+    "effect": "携带者获得【迅捷射手】羁绊。<br>攻击造成目标1%最大生命值的真实伤害",
+    "effectAttr": "【AS】+20%",
+    "formula": "31000,502",
+    "image": "images/items/33030.png",
+    "icon": "../images/items/33030.png"
+   },
+   "parts": [
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    },
+    {
+     "equipId": 502,
+     "key": "DA_Component_RecurveBow",
+     "name": "反曲之弓",
+     "nickname": null,
+     "otherNames": [
+      "弓",
+      "反曲弓"
+     ],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【AS】+10%",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/502.png",
+     "icon": "../images/items/502.png"
+    }
+   ],
+   "partIds": [
+    31000,
+    502
+   ],
+   "formula": "31000,502"
+  },
+  {
+   "result": {
+    "equipId": 33032,
+    "key": "DA_18_EmblemVanguard",
+    "name": "重装战士纹章",
+    "nickname": null,
+    "otherNames": [
+     "重装转"
+    ],
+    "type2": "zhuanzhiJgg",
+    "typeLabel": "转职纹章·金锅锅系",
+    "effect": "携带者获得【重装战士】羁绊。<br>如果携带者在玩家对战回合中，战斗开始后存活22秒及以上，获得1玩家生命值。",
+    "effectAttr": "【ARMOR】+25【DIST】【MR】+25",
+    "formula": "31000,505",
+    "image": "images/items/33032.png",
+    "icon": "../images/items/33032.png"
+   },
+   "parts": [
+    {
+     "equipId": 31000,
+     "key": "DA_Component_FryingPan",
+     "name": "金锅锅",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "<tftitemrules>.……不然它怎么会在这里？</tftitemrules>",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/31000.png",
+     "icon": "../images/items/31000.png"
+    },
+    {
+     "equipId": 505,
+     "key": "DA_Component_ChainVest",
+     "name": "锁子甲",
+     "nickname": null,
+     "otherNames": [],
+     "type2": "part",
+     "typeLabel": "基础装备(组件)",
+     "effect": "【ARMOR】+20",
+     "effectAttr": "",
+     "formula": null,
+     "image": "images/items/505.png",
+     "icon": "../images/items/505.png"
+    }
+   ],
+   "partIds": [
+    31000,
+    505
+   ],
+   "formula": "31000,505"
+  }
+ ],
+ "lookup": {
+  "501,501": 519,
+  "501,502": 521,
+  "501,503": 610,
+  "501,504": 525,
+  "501,505": 615,
+  "501,506": 529,
+  "501,507": 618,
+  "501,509": 535,
+  "502,502": 624,
+  "502,503": 539,
+  "502,504": 31008,
+  "502,505": 613,
+  "502,506": 31010,
+  "502,507": 619,
+  "502,509": 551,
+  "503,503": 553,
+  "503,504": 555,
+  "503,505": 620,
+  "503,506": 611,
+  "503,507": 561,
+  "503,509": 565,
+  "504,504": 567,
+  "504,505": 616,
+  "504,506": 621,
+  "504,507": 31012,
+  "504,509": 577,
+  "505,505": 579,
+  "505,506": 581,
+  "505,507": 583,
+  "505,509": 625,
+  "506,506": 609,
+  "506,507": 623,
+  "506,509": 595,
+  "507,507": 597,
+  "507,509": 617,
+  "509,509": 607,
+  "508,508": 608,
+  "31000,31000": 31002,
+  "508,31000": 31003,
+  "503,508": 33019,
+  "504,508": 33020,
+  "506,508": 33021,
+  "501,508": 33022,
+  "502,508": 33023,
+  "505,508": 33024,
+  "507,508": 33025,
+  "508,509": 33026,
+  "509,31000": 33027,
+  "507,31000": 33028,
+  "504,31000": 33029,
+  "502,31000": 33030,
+  "503,31000": 33031,
+  "505,31000": 33032,
+  "501,31000": 33033,
+  "506,31000": 33034
+ },
+ "byResult": {
+  "519": [
+   501,
+   501
+  ],
+  "521": [
+   501,
+   502
+  ],
+  "610": [
+   501,
+   503
+  ],
+  "525": [
+   501,
+   504
+  ],
+  "615": [
+   501,
+   505
+  ],
+  "529": [
+   501,
+   506
+  ],
+  "618": [
+   501,
+   507
+  ],
+  "535": [
+   501,
+   509
+  ],
+  "624": [
+   502,
+   502
+  ],
+  "539": [
+   502,
+   503
+  ],
+  "31008": [
+   502,
+   504
+  ],
+  "613": [
+   502,
+   505
+  ],
+  "31010": [
+   502,
+   506
+  ],
+  "619": [
+   502,
+   507
+  ],
+  "551": [
+   502,
+   509
+  ],
+  "553": [
+   503,
+   503
+  ],
+  "555": [
+   503,
+   504
+  ],
+  "620": [
+   503,
+   505
+  ],
+  "611": [
+   503,
+   506
+  ],
+  "561": [
+   503,
+   507
+  ],
+  "565": [
+   503,
+   509
+  ],
+  "567": [
+   504,
+   504
+  ],
+  "616": [
+   504,
+   505
+  ],
+  "621": [
+   504,
+   506
+  ],
+  "31012": [
+   504,
+   507
+  ],
+  "577": [
+   504,
+   509
+  ],
+  "579": [
+   505,
+   505
+  ],
+  "581": [
+   505,
+   506
+  ],
+  "583": [
+   505,
+   507
+  ],
+  "625": [
+   509,
+   505
+  ],
+  "609": [
+   506,
+   506
+  ],
+  "623": [
+   506,
+   507
+  ],
+  "595": [
+   506,
+   509
+  ],
+  "597": [
+   507,
+   507
+  ],
+  "617": [
+   507,
+   509
+  ],
+  "607": [
+   509,
+   509
+  ],
+  "608": [
+   508,
+   508
+  ],
+  "31002": [
+   31000,
+   31000
+  ],
+  "31003": [
+   508,
+   31000
+  ],
+  "33019": [
+   508,
+   503
+  ],
+  "33020": [
+   508,
+   504
+  ],
+  "33021": [
+   508,
+   506
+  ],
+  "33022": [
+   508,
+   501
+  ],
+  "33023": [
+   508,
+   502
+  ],
+  "33024": [
+   508,
+   505
+  ],
+  "33025": [
+   508,
+   507
+  ],
+  "33026": [
+   508,
+   509
+  ],
+  "33027": [
+   31000,
+   509
+  ],
+  "33028": [
+   31000,
+   507
+  ],
+  "33029": [
+   31000,
+   504
+  ],
+  "33030": [
+   31000,
+   502
+  ],
+  "33031": [
+   31000,
+   503
+  ],
+  "33032": [
+   31000,
+   505
+  ],
+  "33033": [
+   31000,
+   501
+  ],
+  "33034": [
+   31000,
+   506
+  ]
+ },
+ "noFormula": [
+  {
+   "equipId": 32345,
+   "key": "DA_Artifact_VoidGauntlet",
+   "name": "虚空护手",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "战斗开始时：储存30%最大生命值并且每秒储存额外的2.5%。阵亡时，释放相当于生命值储量的魔法伤害，分摊给4格内的敌人们。<br><tftitemrules>唯一 - 每个弈子仅可装备1件</tftitemrules>",
+   "effectAttr": "【HP】+300【DIST】【DR】+10%",
+   "formula": null,
+   "image": "images/items/32345.png",
+   "icon": "../images/items/32345.png"
+  },
+  {
+   "equipId": 32346,
+   "key": "DA_Artifact_AegisOfDawn",
+   "name": "黎明圣盾",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "每2.5秒，从1格内的敌人处偷取3护甲，并治疗相当于携带者20%护甲值的生命值。<br>如果还携带了【黄昏圣盾】，则转而每1.25秒触发这件装备的效果。<br><tftitemrules>治疗效果基于阶段提升。</tftitemrules>",
+   "effectAttr": "【ARMOR】+50【DIST】【HP】+400",
+   "formula": null,
+   "image": "images/items/32346.png",
+   "icon": "../images/items/32346.png"
+  },
+  {
+   "equipId": 32347,
+   "key": "DA_Artifact_HellfireHatchet",
+   "name": "恶火小斧",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "攻击造成相当于携带者最大生命值3%的额外物理伤害。每损失1%生命值，获得1.5%攻击速度。",
+   "effectAttr": "【HP】+400【DIST】【SV】+20%",
+   "formula": null,
+   "image": "images/items/32347.png",
+   "icon": "../images/items/32347.png"
+  },
+  {
+   "equipId": 32349,
+   "key": "DA_Artifact_AegisOfDusk",
+   "name": "黄昏圣盾",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "每2.5秒，从1格内的敌人处偷取3魔抗，并造成相当于携带者18%魔抗值的魔法伤害。<br>如果还携带了【黎明圣盾】，则转而每1.25秒触发这件装备的效果。<br><tftitemrules>造成的伤害基于阶段提升。</tftitemrules>",
+   "effectAttr": "【HP】+400【DIST】【MR】+70",
+   "formula": null,
+   "image": "images/items/32349.png",
+   "icon": "../images/items/32349.png"
+  },
+  {
+   "equipId": 32351,
+   "key": "DA_Artifact_EternalPact",
+   "name": "永恒契约",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "战斗开始时：与生命值最高的那个友方弈子形成一个契约，如果其阵亡，则获得10法力回复和40%法术强度。<br>当该友军使用其技能时，获得10法力值。每6秒，为该友军提供护盾值，数额相当于携带者的200%法术强度。",
+   "effectAttr": "【AP】+35%【DIST】【MANAREGEN】+1",
+   "formula": null,
+   "image": "images/items/32351.png",
+   "icon": "../images/items/32351.png"
+  },
+  {
+   "equipId": 20044,
+   "key": "DA_Artifact_Dawncore",
+   "name": "黎明核心",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "携带者的最大法力值缩减10。后续的技能施放会使最大法力值缩减5%，直至最小值15。",
+   "effectAttr": "【AD】+20%【DIST】【AP】+20%【DIST】【MANAREGEN】+1",
+   "formula": null,
+   "image": "images/items/20044.png",
+   "icon": "../images/items/20044.png"
+  },
+  {
+   "equipId": 31004,
+   "key": "DA_Artifact_NavoriFlickerblade",
+   "name": "纳沃利烁刃",
+   "nickname": null,
+   "otherNames": [
+    "迅刃"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "攻击提供4%可叠加的攻击速度。每3次攻击还会提供2%物理加成和2%法术加成。",
+   "effectAttr": "【AP】+10%【DIST】【AS】+20%",
+   "formula": null,
+   "image": "images/items/31004.png",
+   "icon": "../images/items/31004.png"
+  },
+  {
+   "equipId": 31005,
+   "key": "DA_Artifact_StatikkShiv",
+   "name": "斯塔缇克电刃",
+   "nickname": "电刀",
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "每第3次攻击对6名敌人造成15+携带者35%法术加成的额外魔法伤害。",
+   "effectAttr": "【AP】+25%【DIST】【AS】+40%",
+   "formula": null,
+   "image": "images/items/31005.png",
+   "icon": "../images/items/31005.png"
+  },
+  {
+   "equipId": 31006,
+   "key": "DA_Artifact_TitanicHydra",
+   "name": "巨型九头蛇",
+   "nickname": null,
+   "otherNames": [
+    "巨九"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "攻击对目标和邻格敌人造成相当于携带者最大生命值2%外加4%物理加成的额外物理伤害。",
+   "effectAttr": "【AD】+20%【DIST】【AS】+20%【DIST】【HP】+300",
+   "formula": null,
+   "image": "images/items/31006.png",
+   "icon": "../images/items/31006.png"
+  },
+  {
+   "equipId": 31007,
+   "key": "DA_Artifact_TheIndomitable",
+   "name": "顽强不屈",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "携带者的移动速度大幅降低。<br>获得15%最大生命值、不可阻挡效果，并将当前目标拉到近战距离。",
+   "effectAttr": "【ARMOR】+20【DIST】【HP】+500【DIST】【MR】+20",
+   "formula": null,
+   "image": "images/items/31007.png",
+   "icon": "../images/items/31007.png"
+  },
+  {
+   "equipId": 20002,
+   "key": "DA_Artifact_DeathsDefiance",
+   "name": "死亡蔑视",
+   "nickname": "死舞",
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "携带者受到伤害的50%会转而在4秒内逐渐承受。<br><tftitemrules>唯一 - 每个弈子仅可装备1件</tftitemrules><br><tftitemrules>该装备云顶已移除，金铲铲正常。</tftitemrules>",
+   "effectAttr": "【AD】+25%【DIST】【AS】+15%【DIST】【ARMOR】+40【DIST】【SV】+25%",
+   "formula": null,
+   "image": "images/items/20002.png",
+   "icon": "../images/items/20002.png"
+  },
+  {
+   "equipId": 20004,
+   "key": "DA_Artifact_InfinityForce",
+   "name": "三相之力",
+   "nickname": null,
+   "otherNames": [
+    "三相"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "<tftitemrules>成吨的一切！</tftitemrules>",
+   "effectAttr": "【AD】+30%【DIST】【AP】+30%【DIST】【AS】+30%【DIST】【ARMOR】+30【DIST】【HP】+300【DIST】【MR】+30",
+   "formula": null,
+   "image": "images/items/20004.png",
+   "icon": "../images/items/20004.png"
+  },
+  {
+   "equipId": 20009,
+   "key": "DA_Artifact_GoldCollector",
+   "name": "金币收集者",
+   "nickname": null,
+   "otherNames": [
+    "收集者"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "攻击和技能会处决生命值低于最大生命值12%的目标。处决有33%几率掉落1金币。<br><tftitemrules>唯一 - 每个弈子仅可装备1件</tftitemrules>",
+   "effectAttr": "【AD】+35%【DIST】【CRIT】+20%",
+   "formula": null,
+   "image": "images/items/20009.png",
+   "icon": "../images/items/20009.png"
+  },
+  {
+   "equipId": 20010,
+   "key": "DA_Artifact_ZhonyasParadox",
+   "name": "中娅悖论",
+   "nickname": "金身",
+   "otherNames": [
+    "中娅"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "每场战斗仅触发一次：当携带者降至40%生命值时，进入持续3秒的免疫伤害状态和不可被选取状态。<br><tftitemrules>唯一 - 每个弈子仅可装备1件</tftitemrules>",
+   "effectAttr": "【AP】+25%【DIST】【ARMOR】+25【DIST】【MR】+25",
+   "formula": null,
+   "image": "images/items/20010.png",
+   "icon": "../images/items/20010.png"
+  },
+  {
+   "equipId": 20011,
+   "key": "DA_Artifact_Hullcrusher",
+   "name": "碎舰者",
+   "nickname": null,
+   "otherNames": [
+    "破舰者"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "战斗开始时：如果邻格内没有己方弈子，获得400生命值、10%物理加成和10%法术加成。",
+   "effectAttr": "【ARMOR】+60【DIST】【MR】+60",
+   "formula": null,
+   "image": "images/items/20011.png",
+   "icon": "../images/items/20011.png"
+  },
+  {
+   "equipId": 20017,
+   "key": "DA_Artifact_MogulsMail",
+   "name": "大亨之铠",
+   "nickname": null,
+   "otherNames": [
+    "大亨"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "在承受伤害时提供1护甲、1魔抗和5生命值，这个效果至多叠加至35次。<br>在满层时，提供【GOLD】1金币并且每11秒继续提供【GOLD】1金币。<br><tftitemrules>唯一 - 每位弈子仅可装备1件</tftitemrules>",
+   "effectAttr": "【HP】+300",
+   "formula": null,
+   "image": "images/items/20017.png",
+   "icon": "../images/items/20017.png"
+  },
+  {
+   "equipId": 20101,
+   "key": "DA_Artifact_GamblersBlade",
+   "name": "投机者之刃",
+   "nickname": null,
+   "otherNames": [
+    "投机者"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "获得1%x你金币存款的额外攻击速度（在30金币时达到最大值）。<br>每次攻击有6%几率掉落1金币。<br><tftitemrules>唯一 - 每位英雄仅可装备1件</tftitemrules>",
+   "effectAttr": "【AS】+55%",
+   "formula": null,
+   "image": "images/items/20101.png",
+   "icon": "../images/items/20101.png"
+  },
+  {
+   "equipId": 30002,
+   "key": "DA_Item_Artifact_TalismanOfAscension",
+   "name": "飞升护符",
+   "nickname": "金丹",
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "在22秒后，获得100%最大生命值、12法力回复和120%伤害增幅，持续到战斗环节结束。",
+   "effectAttr": "【AD】+20%【DIST】【AP】+20%【DIST】【HP】+450",
+   "formula": null,
+   "image": "images/items/30002.png",
+   "icon": "../images/items/30002.png"
+  },
+  {
+   "equipId": 30004,
+   "key": "DA_Artifact_Fishbones",
+   "name": "鱼骨头",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "携带者的攻击会瞄准随机的敌人。获得+2攻击距离。",
+   "effectAttr": "【AD】+25%【DIST】【AS】+25%",
+   "formula": null,
+   "image": "images/items/30004.png",
+   "icon": "../images/items/30004.png"
+  },
+  {
+   "equipId": 30007,
+   "key": "DA_Artifact_Mittens",
+   "name": "连指手套",
+   "nickname": null,
+   "otherNames": [
+    "连指"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "将携带者缩小，为其提供移动速度提升并免疫缓速、灼烧、以及重伤。<br><tftitemrules>缓速：降低攻击速度。</tftitemrules><tftitemrules>灼烧：每秒造成目标一部分最大生命值的真实伤害。</tftitemrules><tftitemrules>重伤：降低受到的治疗效果。</tftitemrules>",
+   "effectAttr": "【AS】+65%【DIST】【DA】+15%",
+   "formula": null,
+   "image": "images/items/30007.png",
+   "icon": "../images/items/30007.png"
+  },
+  {
+   "equipId": 30009,
+   "key": "DA_Artifact_RapidFireCannon",
+   "name": "疾射火炮",
+   "nickname": null,
+   "otherNames": [
+    "火炮"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "获得+1攻击距离，并且这个距离会在携带者每击败一个敌人时提升1。",
+   "effectAttr": "【AS】+55%【DIST】【DA】+5%",
+   "formula": null,
+   "image": "images/items/30009.png",
+   "icon": "../images/items/30009.png"
+  },
+  {
+   "equipId": 30012,
+   "key": "DA_Artifact_SilvermereDawn",
+   "name": "密银黎明",
+   "nickname": null,
+   "otherNames": [
+    "密银"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "为携带者提供免疫晕眩，并且携带者的攻击可以使目标晕眩0.8秒。<br>携带者的攻击速度被锁定在0.5。",
+   "effectAttr": "【AD】+150%【DIST】【ARMOR】+30【DIST】【MR】+30【DIST】【SV】+30%",
+   "formula": null,
+   "image": "images/items/30012.png",
+   "icon": "../images/items/30012.png"
+  },
+  {
+   "equipId": 30013,
+   "key": "TFT_Item_Artifact_ProwlersClaw",
+   "name": "暗行者之爪",
+   "nickname": null,
+   "otherNames": [
+    "暗爪",
+    "跳刀"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "在击杀一个目标后，摆脱负面效果并冲刺到4格内相距最远的那个目标处。下两次暴击攻击造成50%额外暴击伤害。<br><tftitemrules>该装备云顶已移除，金铲铲正常。</tftitemrules>",
+   "effectAttr": "【AD】+35%【DIST】【CRIT】+45%【DIST】【HP】+300",
+   "formula": null,
+   "image": "images/items/30013.png",
+   "icon": "../images/items/30013.png"
+  },
+  {
+   "equipId": 30016,
+   "key": "DA_Artifact_BlightingJewel",
+   "name": "枯萎珠宝",
+   "nickname": null,
+   "otherNames": [
+    "枯萎"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "造成魔法伤害时会将目标的魔抗削减3。如果目标的魔抗是0，则转而为携带者提供4法力值。<br><tftitemrules>技能伤害每0.5秒仅能在每个敌人身上触发一次此效果。</tftitemrules>",
+   "effectAttr": "【AP】+30%【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/30016.png",
+   "icon": "../images/items/30016.png"
+  },
+  {
+   "equipId": 30017,
+   "key": "DA_Artifact_WitsEnd",
+   "name": "智慧末刃",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "攻击造成25/45/65/85/100额外魔法伤害。治疗携带者，数额为造成所有魔法伤害的25%。<br><tftitemrules>此伤害基于阶段提升。</tftitemrules>",
+   "effectAttr": "【HP】+300【DIST】【ARMOR】+20【DIST】【MR】+20【DIST】【AS】+25%",
+   "formula": null,
+   "image": "images/items/30017.png",
+   "icon": "../images/items/30017.png"
+  },
+  {
+   "equipId": 30019,
+   "key": "DA_Artifact_LichBane",
+   "name": "巫妖之祸",
+   "nickname": null,
+   "otherNames": [
+    "巫妖"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "携带者在每次技能施放后的第一次攻击造成250/350/500/600/700额外魔法伤害。<br><tftitemrules>这个伤害基于阶段而提升。</tftitemrules>",
+   "effectAttr": "【AP】+55%【DIST】【AS】+10%",
+   "formula": null,
+   "image": "images/items/30019.png",
+   "icon": "../images/items/30019.png"
+  },
+  {
+   "equipId": 30020,
+   "key": "DA_Artifact_LightshieldCrest",
+   "name": "光盾徽章",
+   "nickname": null,
+   "otherNames": [
+    "光盾"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "每3秒，为生命值百分比最低的那个友军提供护盾，护盾值相当于携带者70%的护甲与魔抗总和，持续5秒。<br>阵亡时，将这个护盾效果提供给所有友军。",
+   "effectAttr": "【ARMOR】+55【DIST】【MR】+55",
+   "formula": null,
+   "image": "images/items/30020.png",
+   "icon": "../images/items/30020.png"
+  },
+  {
+   "equipId": 30021,
+   "key": "DA_Artifact_SeekersArmguard",
+   "name": "探索者的护臂",
+   "nickname": null,
+   "otherNames": [
+    "护臂"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "参与击杀后会使携带者的护甲、魔抗和法术加成提升20。",
+   "effectAttr": "【AP】+25%【DIST】【ARMOR】+10【DIST】【MR】+10【DIST】【SV】+20%",
+   "formula": null,
+   "image": "images/items/30021.png",
+   "icon": "../images/items/30021.png"
+  },
+  {
+   "equipId": 30011,
+   "key": "DA_Artifact_LudensTempest",
+   "name": "卢登的激荡",
+   "nickname": null,
+   "otherNames": [
+    "卢登"
+   ],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "在击杀目标时，会对与目标相距最近的两个敌人造成魔法伤害，伤害值为过量伤害的100%外加130。",
+   "effectAttr": "【AD】+55%【DIST】【AP】+55%",
+   "formula": null,
+   "image": "images/items/30011.png",
+   "icon": "../images/items/30011.png"
+  },
+  {
+   "equipId": 20003,
+   "key": "DA_Artifact_Manazane",
+   "name": "魔蕴",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "在战斗中首次施放技能后，在5秒内持续回复共110法力值。<br><tftitemrules>唯一 - 每个弈子仅可装备1件</tftitemrules>",
+   "effectAttr": "【AD】+15%【DIST】【AP】+15%【DIST】【MANAREGEN】+1",
+   "formula": null,
+   "image": "images/items/20003.png",
+   "icon": "../images/items/20003.png"
+  },
+  {
+   "equipId": 30018,
+   "key": "DA_Artifact_ForbiddenIdol",
+   "name": "禁忌雕像",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "护盾效果会将其40%的护盾值转化为最大生命值作为替代。",
+   "effectAttr": "【HP】+500【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/30018.png",
+   "icon": "../images/items/30018.png"
+  },
+  {
+   "equipId": 30006,
+   "key": "DA_Artifact_HorizonFocus",
+   "name": "视界专注",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "aoen",
+   "typeLabel": "奥恩神器",
+   "effect": "将一名敌人眩晕时会引发闪电对其进行打击，造成相当于其30%最大生命值的魔法伤害。<br><tftitemrules>该装备金铲铲已移除，云顶正常。</tftitemrules>",
+   "effectAttr": "【ARMOR】+20【DIST】【HP】+250【DIST】【MR】+20【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/30006.png",
+   "icon": "../images/items/30006.png"
+  },
+  {
+   "equipId": 1519,
+   "key": "DA_DeathbladeRadiant",
+   "name": "光明版死亡之刃",
+   "nickname": null,
+   "otherNames": [
+    "杀人剑",
+    "光明杀人剑",
+    "锐利之刃",
+    "光明锐利之刃"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "<tftitemrules>它在敌人面前发光。或在朋友面前。或在任何活着的东西面前，真的。</tftitemrules>",
+   "effectAttr": "【AD】+100%【DIST】【DA】+20%",
+   "formula": null,
+   "image": "images/items/1519.png",
+   "icon": "../images/items/1519.png"
+  },
+  {
+   "equipId": 1521,
+   "key": "DA_GiantSlayer_Radiant",
+   "name": "光明版巨人杀手",
+   "nickname": null,
+   "otherNames": [
+    "巨杀",
+    "光明巨杀",
+    "巨人捕手",
+    "光明巨人捕手"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "对抗坦克时获得30%额外伤害增幅。",
+   "effectAttr": "【AD】+30%【DIST】【AP】+30%【DIST】【AS】+30%【DIST】【DA】+30%",
+   "formula": null,
+   "image": "images/items/1521.png",
+   "icon": "../images/items/1521.png"
+  },
+  {
+   "equipId": 1523,
+   "key": "DA_HextechGunbladeRadiant",
+   "name": "光明版海克斯科技枪刃",
+   "nickname": null,
+   "otherNames": [
+    "科技枪",
+    "光明科技枪"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "为生命值百分比最低的友军提供相当于造成伤害40%的治疗。",
+   "effectAttr": "【AD】+40%【DIST】【AP】+40%【DIST】【MANAREGEN】+2【DIST】【SV】+30%",
+   "formula": null,
+   "image": "images/items/1523.png",
+   "icon": "../images/items/1523.png"
+  },
+  {
+   "equipId": 1525,
+   "key": "DA_SpearOfShojinRadiant",
+   "name": "光明版朔极之矛",
+   "nickname": null,
+   "otherNames": [
+    "青龙刀",
+    "光明青龙刀"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "每次攻击提供10 <TFTRadiantItemBonus>额外法力值</TFTRadiantItemBonus>。",
+   "effectAttr": "【AD】+30%【DIST】【AP】+30%【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/1525.png",
+   "icon": "../images/items/1525.png"
+  },
+  {
+   "equipId": 1527,
+   "key": "DA_EdgeOfNightRadiant",
+   "name": "光明版夜之锋刃",
+   "nickname": null,
+   "otherNames": [
+    "夜刃",
+    "光明夜刃",
+    "复活甲",
+    "光明复活甲"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "在40%生命值时，短暂变为不可被选取状态、摆脱负面效果并<TFTRadiantItemBonus>治疗所有已损失生命值</TFTRadiantItemBonus>。",
+   "effectAttr": "【AD】+30%【DIST】【AP】+30%【DIST】【AS】+30%【DIST】【ARMOR】+40",
+   "formula": null,
+   "image": "images/items/1527.png",
+   "icon": "../images/items/1527.png"
+  },
+  {
+   "equipId": 1529,
+   "key": "DA_BloodthirsterRadiant",
+   "name": "光明版饮血剑",
+   "nickname": null,
+   "otherNames": [
+    "汲取剑",
+    "光明汲取剑",
+    "饮血",
+    "光明饮血"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "每场战斗仅触发1次：在50%生命值时，获得一个护盾，护盾值相当于携带者60%的最大生命值，至多持续5秒。",
+   "effectAttr": "【AD】+40%【DIST】【AP】+40%【DIST】【MR】+40【DIST】【SV】+40%",
+   "formula": null,
+   "image": "images/items/1529.png",
+   "icon": "../images/items/1529.png"
+  },
+  {
+   "equipId": 1618,
+   "key": "DA_SteraksGageRadiant",
+   "name": "光明版斯特拉克的挑战护手",
+   "nickname": null,
+   "otherNames": [
+    "血手",
+    "光明血手",
+    "挑战护手",
+    "光明挑战护手"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "在60%生命值时，获得相当于携带者80%最大生命值的护盾值，在6秒内快速衰减。",
+   "effectAttr": "【AD】+90%【DIST】【HP】+600",
+   "formula": null,
+   "image": "images/items/1618.png",
+   "icon": "../images/items/1618.png"
+  },
+  {
+   "equipId": 1535,
+   "key": "DA_InfinityEdgeRadiant",
+   "name": "光明版无尽之刃",
+   "nickname": null,
+   "otherNames": [
+    "无尽",
+    "光明无尽"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "获得<TFTKeyword>技能暴击</TFTKeyword>。<br><tftitemrules>技能暴击：技能伤害可以造成暴击。额外的【技能暴击】提供10%暴击伤害。</tftitemrules>",
+   "effectAttr": "【AD】+75%【DIST】【CRIT】+75%",
+   "formula": null,
+   "image": "images/items/1535.png",
+   "icon": "../images/items/1535.png"
+  },
+  {
+   "equipId": 1624,
+   "key": "DA_RedBuffRadiant",
+   "name": "光明版红霸符",
+   "nickname": null,
+   "otherNames": [
+    "红BUFF",
+    "光明红BUFF",
+    "红buff",
+    "光明红buff"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "攻击和技能的伤害对敌人们造成持续5秒的2<TFTRadiantItemBonus>%</TFTRadiantItemBonus><TFTKeyword>灼烧</TFTKeyword>效果和33%<TFTKeyword>重伤</TFTKeyword>效果。<br><tftitemrules>灼烧：每秒造成目标一部分最大生命值的真实伤害</tftitemrules><tftitemrules>重伤：降低受到的治疗效果</tftitemrules>",
+   "effectAttr": "【AS】+80%【DIST】【DA】+6%",
+   "formula": null,
+   "image": "images/items/1624.png",
+   "icon": "../images/items/1624.png"
+  },
+  {
+   "equipId": 1539,
+   "key": "DA_GuinsoosRagebladeRadiant",
+   "name": "光明版鬼索的狂暴之刃",
+   "nickname": null,
+   "otherNames": [
+    "羊刀",
+    "光明羊刀"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "每秒获得16<TFTRadiantItemBonus>%</TFTRadiantItemBonus>可叠加的攻击速度。",
+   "effectAttr": "【AP】+20%【DIST】【AS】+25%",
+   "formula": null,
+   "image": "images/items/1539.png",
+   "icon": "../images/items/1539.png"
+  },
+  {
+   "equipId": 31009,
+   "key": "DA_VoidStaffRadiant",
+   "name": "光明版虚空之杖",
+   "nickname": null,
+   "otherNames": [
+    "法穿棒",
+    "光明法穿棒",
+    "虚空杖",
+    "光明虚空杖",
+    "法穿",
+    "光明法穿"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "攻击和技能伤害都会对目标施加持续<TFTRadiantItemBonus>至战斗环节结束</TFTRadiantItemBonus>的30%<TFTKeyword>魔抗击碎</TFTKeyword>。这个效果不会叠加。<br><tftitemrules>魔抗击碎：降低魔法抗性</tftitemrules>",
+   "effectAttr": "【AP】+75%【DIST】【AS】+30%【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/31009.png",
+   "icon": "../images/items/31009.png"
+  },
+  {
+   "equipId": 1543,
+   "key": "DA_TitansResolve_Radiant",
+   "name": "光明版泰坦的坚决",
+   "nickname": null,
+   "otherNames": [
+    "泰坦",
+    "光明泰坦"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "在攻击或承受伤害时获得4%物理加成和4%法术加成，至多可叠加25次。<br>在叠满层数后，获得20%伤害增幅，并获得控制免疫效果。",
+   "effectAttr": "【AS】+20%【DIST】【ARMOR】+40",
+   "formula": null,
+   "image": "images/items/1543.png",
+   "icon": "../images/items/1543.png"
+  },
+  {
+   "equipId": 31011,
+   "key": "DA_KrakensFury_Radiant",
+   "name": "光明版海妖之怒",
+   "nickname": null,
+   "otherNames": [
+    "海妖",
+    "光明海妖"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "每次普攻提供7<TFTRadiantItemBonus>%</TFTRadiantItemBonus>可叠加物理加成，最多叠加15次。攻击15次后，获得30%攻击速度。",
+   "effectAttr": "【AD】+20%【DIST】【AS】+20%【DIST】【MR】+40",
+   "formula": null,
+   "image": "images/items/31011.png",
+   "icon": "../images/items/31011.png"
+  },
+  {
+   "equipId": 1619,
+   "key": "DA_NashorsToothRadiant",
+   "name": "光明版纳什之牙",
+   "nickname": null,
+   "otherNames": [
+    "纳什",
+    "光明纳什"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "每次普攻提供4额外法力值，如果暴击则提升至6额外法力值。",
+   "effectAttr": "【AP】+30%【DIST】【AS】+20%【DIST】【CRIT】+40%【DIST】【HP】+300",
+   "formula": null,
+   "image": "images/items/1619.png",
+   "icon": "../images/items/1619.png"
+  },
+  {
+   "equipId": 1551,
+   "key": "DA_LastWhisperRadiant",
+   "name": "光明版最后的轻语",
+   "nickname": null,
+   "otherNames": [
+    "破甲弓",
+    "光明破甲弓",
+    "轻语",
+    "光明轻语",
+    "穿甲弓",
+    "光明穿甲弓"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "攻击和技能伤害都会对目标施加持续<TFTRadiantItemBonus>至战斗环节结束</TFTRadiantItemBonus>的30%<TFTKeyword>护甲击碎</TFTKeyword>。这个效果不会叠加。<br><tftitemrules>护甲击碎：降低护甲值</tftitemrules>",
+   "effectAttr": "【AD】+45%【DIST】【AS】+40%【DIST】【CRIT】+40%",
+   "formula": null,
+   "image": "images/items/1551.png",
+   "icon": "../images/items/1551.png"
+  },
+  {
+   "equipId": 1553,
+   "key": "DA_RabadonsDeathcap_Radiant",
+   "name": "光明版灭世者的死亡之帽",
+   "nickname": null,
+   "otherNames": [
+    "帽子",
+    "光明帽子",
+    "班克斯的魔法帽",
+    "光明班克斯的魔法帽"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "<tftitemrules>它见证过——并释放过——奇迹和灾难。</tftitemrules>",
+   "effectAttr": "【AP】+100%【DIST】【DA】+30%",
+   "formula": null,
+   "image": "images/items/1553.png",
+   "icon": "../images/items/1553.png"
+  },
+  {
+   "equipId": 1555,
+   "key": "DA_ArchangelsStaffRadiant",
+   "name": "光明版大天使之杖",
+   "nickname": null,
+   "otherNames": [
+    "大天使",
+    "光明大天使"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "战斗开始：在战斗期间，每5秒获得40<TFTRadiantItemBonus>%</TFTRadiantItemBonus>法术加成。",
+   "effectAttr": "【AP】+60%【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/1555.png",
+   "icon": "../images/items/1555.png"
+  },
+  {
+   "equipId": 1620,
+   "key": "DA_CrownguardRadiant",
+   "name": "光明版冕卫",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "战斗开始时：获得持续8秒的相当于50<TFTRadiantItemBonus>%</TFTRadiantItemBonus>最大生命值的护盾值。在护盾到期时，获得50<TFTRadiantItemBonus>%法术加成</TFTRadiantItemBonus>。",
+   "effectAttr": "【AP】+40%【DIST】【ARMOR】+40【DIST】【HP】+200",
+   "formula": null,
+   "image": "images/items/1620.png",
+   "icon": "../images/items/1620.png"
+  },
+  {
+   "equipId": 1559,
+   "key": "DA_IonicSparkRadiant",
+   "name": "光明版离子火花",
+   "nickname": null,
+   "otherNames": [
+    "离子",
+    "光明离子"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "对2格内的敌人们施加30%<TFTKeyword>魔抗击碎</TFTKeyword>。在敌人施放一次技能时，对该敌人造成相当于其300%法力值消耗的魔法伤害。<br><tftitemrules>魔抗击碎：降低魔法抗性</tftitemrules>",
+   "effectAttr": "【AP】+30%【DIST】【HP】+500【DIST】【MR】+70",
+   "formula": null,
+   "image": "images/items/1559.png",
+   "icon": "../images/items/1559.png"
+  },
+  {
+   "equipId": 1561,
+   "key": "DA_MorellonomiconRadiant",
+   "name": "光明版莫雷洛秘典",
+   "nickname": null,
+   "otherNames": [
+    "鬼书",
+    "光明鬼书"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "攻击和技能的伤害对敌人们造成持续10秒的2<TFTRadiantItemBonus>%</TFTRadiantItemBonus>灼烧效果和33%重伤效果。<br><tftitemrules>灼烧：每秒造成目标一部分最大生命值的真实伤害</tftitemrules><tftitemrules>重伤：降低受到的治疗效果</tftitemrules>",
+   "effectAttr": "【AP】+35%【DIST】【HP】+300【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/1561.png",
+   "icon": "../images/items/1561.png"
+  },
+  {
+   "equipId": 1565,
+   "key": "DA_JeweledGauntletRadiant",
+   "name": "光明版珠光护手",
+   "nickname": null,
+   "otherNames": [
+    "法爆",
+    "光明法爆"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "获得<TFTKeyword>技能暴击</TFTKeyword>。<br><tftitemrules>技能暴击：技能伤害可以造成暴击。额外的【技能暴击】提供10%暴击伤害。</tftitemrules>",
+   "effectAttr": "【AP】+75%【DIST】【CRIT】+75%",
+   "formula": null,
+   "image": "images/items/1565.png",
+   "icon": "../images/items/1565.png"
+  },
+  {
+   "equipId": 1567,
+   "key": "DA_BlueBuffRadiant",
+   "name": "光明版蓝霸符",
+   "nickname": null,
+   "otherNames": [
+    "蓝BUFF",
+    "光明蓝BUFF",
+    "蓝buff",
+    "光明蓝buff"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "从所有来源获得20%额外物理加成和法术加成。",
+   "effectAttr": "【AD】+30%【DIST】【AP】+30%【DIST】【MANAREGEN】+10",
+   "formula": null,
+   "image": "images/items/1567.png",
+   "icon": "../images/items/1567.png"
+  },
+  {
+   "equipId": 1616,
+   "key": "DA_ProtectorsVowRadiant",
+   "name": "光明版圣盾使的誓约",
+   "nickname": null,
+   "otherNames": [
+    "冰甲",
+    "光明冰甲"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "战斗开始时：获得40法力值。<br>生命值达到40%时，获得30<TFTRadiantItemBonus>法力值</TFTRadiantItemBonus>和相当于<TFTRadiantItemBonus>最大生命值</TFTRadiantItemBonus>50%的护盾值。",
+   "effectAttr": "【ARMOR】+50【DIST】【MR】+50【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/1616.png",
+   "icon": "../images/items/1616.png"
+  },
+  {
+   "equipId": 1621,
+   "key": "DA_AdaptiveHelm_Radiant",
+   "name": "光明版适应性头盔",
+   "nickname": null,
+   "otherNames": [
+    "头盔",
+    "光明头盔"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "从所有来源中获得额外的30%法力值。携带者获得基于其角色定位的一个额外加成：<br>坦克和战士：获得80护甲和魔抗。<br>其它角色定位：获得40%物理加成和法术加成。",
+   "effectAttr": "【MR】+40【DIST】【MANAREGEN】+7",
+   "formula": null,
+   "image": "images/items/1621.png",
+   "icon": "../images/items/1621.png"
+  },
+  {
+   "equipId": 31013,
+   "key": "DA_SpiritVisage_Radiant",
+   "name": "光明版振奋盔甲",
+   "nickname": null,
+   "otherNames": [
+    "绿甲",
+    "光明绿甲",
+    "振奋",
+    "光明振奋"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "每秒回复4<TFTRadiantItemBonus>%</TFTRadiantItemBonus>已损失生命值。",
+   "effectAttr": "【HP】+700【DIST】【MANAREGEN】+4【DIST】【DR】+15%",
+   "formula": null,
+   "image": "images/items/31013.png",
+   "icon": "../images/items/31013.png"
+  },
+  {
+   "equipId": 1577,
+   "key": "DA_HandOfJusticeRadiant",
+   "name": "光明版正义之手",
+   "nickname": null,
+   "otherNames": [
+    "正义",
+    "光明正义"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "获得2个效果：• 35%物理加成和35%法术加成。• 30%全能吸血。<br>生命值高于50%时，物理加成和法术加成翻倍。生命值低于50%时，全能吸血翻倍。",
+   "effectAttr": "【CRIT】+40%【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/1577.png",
+   "icon": "../images/items/1577.png"
+  },
+  {
+   "equipId": 1579,
+   "key": "DA_BrambleVestRadiant",
+   "name": "光明版棘刺背心",
+   "nickname": null,
+   "otherNames": [
+    "反甲",
+    "光明反甲"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "获得12%最大生命值。<br>使来自攻击的伤害降低10%。在被任一攻击命中时，对邻格所有敌人造成200魔法伤害。<br><tftitemrules>冷却时间：</tftitemrules>2<tftitemrules>秒</tftitemrules>",
+   "effectAttr": "【ARMOR】+100",
+   "formula": null,
+   "image": "images/items/1579.png",
+   "icon": "../images/items/1579.png"
+  },
+  {
+   "equipId": 1581,
+   "key": "DA_GargoyleStoneplate_Radiant",
+   "name": "光明版石像鬼石板甲",
+   "nickname": null,
+   "otherNames": [
+    "板甲",
+    "光明板甲",
+    "石像鬼",
+    "光明石像鬼"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "每有一个敌人以携带者为目标，携带者就会获得20护甲和20魔抗。",
+   "effectAttr": "【HP】+400【DIST】【ARMOR】+50【DIST】【MR】+50",
+   "formula": null,
+   "image": "images/items/1581.png",
+   "icon": "../images/items/1581.png"
+  },
+  {
+   "equipId": 1583,
+   "key": "DA_SunfireCape_Radiant",
+   "name": "光明版日炎斗篷",
+   "nickname": null,
+   "otherNames": [
+    "日炎",
+    "光明日炎"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "获得16%最大生命值。<br>每过2秒，对2格内的一名敌人施加持续10秒的2<TFTRadiantItemBonus>%</TFTRadiantItemBonus><TFTKeyword>灼烧</TFTKeyword>效果和33%<TFTKeyword>重伤</TFTKeyword>效果。<br><tftitemrules>灼烧：每秒造成目标一部分最大生命值的真实伤害</tftitemrules><tftitemrules>重伤：降低受到的治疗效果。</tftitemrules>",
+   "effectAttr": "【ARMOR】+40【DIST】【HP】+300",
+   "formula": null,
+   "image": "images/items/1583.png",
+   "icon": "../images/items/1583.png"
+  },
+  {
+   "equipId": 1625,
+   "key": "DA_SteadfastHeartRadiant",
+   "name": "光明版坚定之心",
+   "nickname": null,
+   "otherNames": [
+    "心之刚",
+    "光明心之刚"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "获得10%伤害减免。在高于50%生命值时，转而获得30%伤害减免。",
+   "effectAttr": "【HP】+500【DIST】【ARMOR】+40【DIST】【CRIT】+40%",
+   "formula": null,
+   "image": "images/items/1625.png",
+   "icon": "../images/items/1625.png"
+  },
+  {
+   "equipId": 30044,
+   "key": "DA_DragonsClawRadiant",
+   "name": "光明版巨龙之爪",
+   "nickname": null,
+   "otherNames": [
+    "龙牙",
+    "光明龙牙"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "获得28%最大生命值。<br>每2秒，回复5%最大生命值。",
+   "effectAttr": "【MR】+120",
+   "formula": null,
+   "image": "images/items/30044.png",
+   "icon": "../images/items/30044.png"
+  },
+  {
+   "equipId": 1623,
+   "key": "DA_EvenshroudRadiant",
+   "name": "光明版薄暮法袍",
+   "nickname": null,
+   "otherNames": [
+    "法袍",
+    "光明法袍",
+    "薄暮",
+    "光明薄暮"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "3格内的敌人们会被施加30%<TFTKeyword>护甲击碎</TFTKeyword>。在战斗的最初20<TFTRadiantItemBonus>秒</TFTRadiantItemBonus>获得50<TFTRadiantItemBonus>护甲和魔抗</TFTRadiantItemBonus>。<br><tftitemrules>护甲击碎：降低护甲值</tftitemrules>",
+   "effectAttr": "【HP】+500【DIST】【MR】+40",
+   "formula": null,
+   "image": "images/items/1623.png",
+   "icon": "../images/items/1623.png"
+  },
+  {
+   "equipId": 1595,
+   "key": "DA_QuicksilverRadiant",
+   "name": "光明版水银",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "战斗开始时：获得持续45秒的控制免疫效果。<br>每秒获得6%可叠加的攻击速度。",
+   "effectAttr": "【AS】+40%【DIST】【CRIT】+40%【DIST】【MR】+40",
+   "formula": null,
+   "image": "images/items/1595.png",
+   "icon": "../images/items/1595.png"
+  },
+  {
+   "equipId": 1597,
+   "key": "DA_WarmogsArmorRadiant",
+   "name": "光明版狂徒铠甲",
+   "nickname": null,
+   "otherNames": [
+    "狂徒",
+    "光明狂徒"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "获得36%最大生命值。",
+   "effectAttr": "【HP】+1200",
+   "formula": null,
+   "image": "images/items/1597.png",
+   "icon": "../images/items/1597.png"
+  },
+  {
+   "equipId": 1617,
+   "key": "DA_StrikersFlailRadiant",
+   "name": "光明版强袭者的链枷",
+   "nickname": null,
+   "otherNames": [
+    "破防者",
+    "光明破防者",
+    "破防",
+    "光明破防"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "暴击提供持续5秒的10%伤害增幅，可叠加至多4次。",
+   "effectAttr": "【AS】+20%【DIST】【CRIT】+40%【DIST】【HP】+300【DIST】【DA】+20%",
+   "formula": null,
+   "image": "images/items/1617.png",
+   "icon": "../images/items/1617.png"
+  },
+  {
+   "equipId": 1607,
+   "key": "DA_ThiefsGlovesRadiant",
+   "name": "光明版窃贼手套",
+   "nickname": null,
+   "otherNames": [
+    "偷偷",
+    "光明偷偷",
+    "秘法手套",
+    "光明秘法手套"
+   ],
+   "type2": "guangming",
+   "typeLabel": "光明装备",
+   "effect": "每一回合：装备2件随机<TFTRadiantItemBonus>光明</TFTRadiantItemBonus>武器。<br><tftitemrules>[需要用掉3个装备格。]</tftitemrules>",
+   "effectAttr": "【CRIT】+20%【DIST】【HP】+150",
+   "formula": null,
+   "image": "images/items/1607.png",
+   "icon": "../images/items/1607.png"
+  },
+  {
+   "equipId": 32311,
+   "key": "DA_LuckyItemChest",
+   "name": "幸运装备宝箱",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "remove",
+   "typeLabel": "宝箱/特殊道具",
+   "effect": "用在一个弈子身上即可开启一个武器库，包含为其特别定制的装备。<br><tftitemrules>这些装备都是基于该弈子的推荐装备。</tftitemrules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/32311.png",
+   "icon": "../images/items/32311.png"
+  },
+  {
+   "equipId": 32312,
+   "key": "TFT_Consumable_RecommendedArmoryRadiant",
+   "name": "光明版幸运装备宝箱",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "remove",
+   "typeLabel": "宝箱/特殊道具",
+   "effect": "用在一个弈子身上即可开启一个特别适合该弈子的<TFTRadiantItemBonus>光明</TFTRadiantItemBonus>武器库。<br><rules>这些装备都是基于弈子的推荐装备。</rules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/32312.png",
+   "icon": "../images/items/32312.png"
+  },
+  {
+   "equipId": 32314,
+   "key": "DA_SalvagerUpgrade18",
+   "name": "打捞术",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "remove",
+   "typeLabel": "宝箱/特殊道具",
+   "effect": "你备战席的任何弈子都会被移除装备，且这些装备会被拆解。<Set18CharmUpgrade>获得</Set18CharmUpgrade>2<Set18CharmUpgrade>金币。</Set18CharmUpgrade>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/32314.png",
+   "icon": "../images/items/32314.png"
+  },
+  {
+   "equipId": 33035,
+   "key": "DA_18_EmblemCoven",
+   "name": "魔女纹章",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "zhuanzhi2",
+   "typeLabel": "特殊纹章(不可合成)",
+   "effect": "携带者获得【魔女】羁绊。",
+   "effectAttr": "【HP】+150",
+   "formula": null,
+   "image": "images/items/33035.png",
+   "icon": "../images/items/33035.png"
+  },
+  {
+   "equipId": 33036,
+   "key": "DA_18_EmblemFloraFatalis",
+   "name": "绝命花妖纹章",
+   "nickname": null,
+   "otherNames": [
+    "花妖转"
+   ],
+   "type2": "zhuanzhi2",
+   "typeLabel": "特殊纹章(不可合成)",
+   "effect": "携带者获得【绝命花妖】羁绊。",
+   "effectAttr": "【HP】+250【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/33036.png",
+   "icon": "../images/items/33036.png"
+  },
+  {
+   "equipId": 33047,
+   "key": "DA_18_EmblemFloraFatalisAugment",
+   "name": "绝命花妖纹章",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "zhuanzhi2",
+   "typeLabel": "特殊纹章(不可合成)",
+   "effect": "携带者获得【绝命花妖羁绊】。<br><TFTRadiantItemBonus>携带者从【绝命花妖】羁绊中获得的增益提高50%。</TFTRadiantItemBonus>",
+   "effectAttr": "【HP】+250【DIST】【MANAREGEN】+2",
+   "formula": null,
+   "image": "images/items/33047.png",
+   "icon": "../images/items/33047.png"
+  },
+  {
+   "equipId": 33038,
+   "key": "DA_18_EmblemDefender",
+   "name": "护卫纹章",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "zhuanzhi2",
+   "typeLabel": "特殊纹章(不可合成)",
+   "effect": "携带者获得【护卫】羁绊。<br>战斗开始时：每有1名友军在开战时位于前排，获得6%攻击速度。",
+   "effectAttr": "【ARMOR】+30【DIST】【MR】+30",
+   "formula": null,
+   "image": "images/items/33038.png",
+   "icon": "../images/items/33038.png"
+  },
+  {
+   "equipId": 33039,
+   "key": "DA_18_EmblemJuggernaut",
+   "name": "主宰纹章",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "zhuanzhi2",
+   "typeLabel": "特殊纹章(不可合成)",
+   "effect": "携带者获得【主宰】羁绊。<br>每当1个【主宰】阵亡，获得10法力值。",
+   "effectAttr": "【HP】+250",
+   "formula": null,
+   "image": "images/items/33039.png",
+   "icon": "../images/items/33039.png"
+  },
+  {
+   "equipId": 33037,
+   "key": "DA_PhantomEmblem18",
+   "name": "幻影纹章",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "remove",
+   "typeLabel": "宝箱/特殊道具",
+   "effect": "获得1个你层级最高羁绊的临时的纹章。",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/33037.png",
+   "icon": "../images/items/33037.png"
+  },
+  {
+   "equipId": 33044,
+   "key": "DA_HealthPotion18",
+   "name": "生命药水",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "other",
+   "typeLabel": "药水/消耗品",
+   "effect": "携带者的生命值降至50%时，在3秒内治疗750生命值。<br><tftitemrules>[单次使用 - 这个装备会在战斗中激活后被摧毁。]</tftitemrules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/33044.png",
+   "icon": "../images/items/33044.png"
+  },
+  {
+   "equipId": 33054,
+   "key": "DA_HealthPotion18_Radiant",
+   "name": "光明版生命药水",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "other",
+   "typeLabel": "药水/消耗品",
+   "effect": "携带者的生命值降至50%时，在3秒内治疗自身850生命值，治疗友军150生命值。<br><tftitemrules>[单次使用 - 这个装备会在战斗中激活后被摧毁。]</tftitemrules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/33054.png",
+   "icon": "../images/items/33054.png"
+  },
+  {
+   "equipId": 33055,
+   "key": "DA_ManaPotion18",
+   "name": "法力药水",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "other",
+   "typeLabel": "药水/消耗品",
+   "effect": "携带者获得20法力值。施放技能时，在5秒内回复80法力值。<br><tftitemrules>[单次使用 - 这个装备会在战斗中激活后被摧毁。]</tftitemrules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/33055.png",
+   "icon": "../images/items/33055.png"
+  },
+  {
+   "equipId": 33051,
+   "key": "DA_ManaPotion18_Radiant",
+   "name": "光明版法力药水",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "other",
+   "typeLabel": "药水/消耗品",
+   "effect": "携带者获得20法力值。施放技能时，在5秒内回复自身90法力值，回复友军10法力值。<br><tftitemrules>[单次使用 - 这个装备会在战斗中激活后被摧毁。]</tftitemrules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/33051.png",
+   "icon": "../images/items/33051.png"
+  },
+  {
+   "equipId": 33053,
+   "key": "DA_BlastPotion18",
+   "name": "爆炸药水",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "other",
+   "typeLabel": "药水/消耗品",
+   "effect": "战斗开始8秒后，击飞3格范围内的敌人1.75秒。<br><tftitemrules>[单次使用 - 这个装备会在战斗中激活后被摧毁。]</tftitemrules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/33053.png",
+   "icon": "../images/items/33053.png"
+  },
+  {
+   "equipId": 33046,
+   "key": "DA_BlastPotion18_Radiant",
+   "name": "光明版爆炸药水",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "other",
+   "typeLabel": "药水/消耗品",
+   "effect": "战斗开始8秒后，击飞4格范围内的敌人2秒。<br><tftitemrules>[单次使用 - 这个装备会在战斗中激活后被摧毁。]</tftitemrules>",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/33046.png",
+   "icon": "../images/items/33046.png"
+  },
+  {
+   "equipId": 32544,
+   "key": "DA_Riftbeast18_Selector",
+   "name": "阿尔法印记",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "daoju",
+   "typeLabel": "峡谷道具",
+   "effect": "选择1个【峡谷野怪】使其获得它独特的霸符，成为【阿尔法之怪】！",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/32544.png",
+   "icon": "../images/items/32544.png"
+  },
+  {
+   "equipId": 32545,
+   "key": "DA_CUSTOM_1",
+   "name": "毛绒绒大朋友",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "daoju",
+   "typeLabel": "峡谷道具",
+   "effect": "约德尔标识，非游戏道具",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/32545.png",
+   "icon": "../images/items/32545.png"
+  },
+  {
+   "equipId": 32546,
+   "key": "DA_CUSTOM_2",
+   "name": "毛绒绒大朋友",
+   "nickname": null,
+   "otherNames": [],
+   "type2": "daoju",
+   "typeLabel": "峡谷道具",
+   "effect": "约德尔标识，非游戏道具",
+   "effectAttr": "",
+   "formula": null,
+   "image": "images/items/32546.png",
+   "icon": "../images/items/32546.png"
+  }
+ ],
+ "dataWarnings": [],
+ "generatedFrom": "E:\\projects\\pycharmProjects\\jcc_robot\\workspace\\scrape_info\\v18.3b\\chess_info\\items.json"
+}

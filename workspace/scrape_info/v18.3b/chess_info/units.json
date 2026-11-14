@@ -1,0 +1,2723 @@
+{
+ "version": "18.3b",
+ "source": "datatft.com",
+ "count": 65,
+ "units": [
+  {
+   "chessId": 918007,
+   "key": "DA_18_LeBlanc",
+   "name": "乐芙兰",
+   "title": "诡术妖姬",
+   "otherNames": [
+    "妖姬"
+   ],
+   "price": 2,
+   "races": [
+    "永恒之森"
+   ],
+   "jobs": [
+    "法师"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 30,
+    "magic": 40,
+    "spellBlock": 30,
+    "attackRange": 4,
+    "attackSpeed": "0.7",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "550/990/1782",
+    "attackData": "30/45/68"
+   },
+   "skillName": "镜花水月",
+   "skillDetail": "被动：在玩家对战结束后，你最强的那个【乐芙兰】有10%/15%/30%/100%的几率生成你场上一个友军的1星复制品，每次参与击杀后提升4%。<br>主动：向当前目标发射一个镜像，从而造成<magicDamage>260/390/615/1045 (【AP】)</magicDamage>魔法伤害，并对邻格的敌人们造成<magicDamage>100/150/230/390 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>复制几率：15%</div><div class='skill-text-white2'>[10%/<span class='skill-text-white1'>15%</span>/30%/100%]</div></div><div class='skill-flex'><div>伤害：<magicDamage>390 (【AP】)</magicDamage></div><div class='skill-text-white2'>[260/<span class='skill-text-white1'>390</span>/615/1045]</div></div><div class='skill-flex'><div>次要伤害：<magicDamage>150 (【AP】)</magicDamage></div><div class='skill-text-white2'>[100/<span class='skill-text-white1'>150</span>/230/390]</div></div>",
+   "recEquip": "565,619,525",
+   "image": "images/units/918007.jpg",
+   "liveStats": {
+    "place3": 3.7577,
+    "won": 13.6,
+    "rate3": 48.12,
+    "count": 473731,
+    "top4": 50.7,
+    "place": 4.461,
+    "key": "DA_18_LeBlanc"
+   }
+  },
+  {
+   "chessId": 918009,
+   "key": "DA_Fiddlesticks18",
+   "name": "费德提克",
+   "title": "远古恐惧",
+   "otherNames": [
+    "草人"
+   ],
+   "price": 3,
+   "races": [
+    "绝命花妖"
+   ],
+   "jobs": [
+    "护卫",
+    "法师"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 55,
+    "magic": 90,
+    "spellBlock": 55,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "1000/1800/3240",
+    "attackData": "50/75/113"
+   },
+   "skillName": "收获",
+   "skillDetail": "使3个相距最近的敌人的魔抗降低10。然后在2秒里持续从它们身上汲取生命力，从而治疗自身<scaleHealth>410/485/850 (【AP】)</scaleHealth>生命值并在此期间持续对每个敌人造成共<magicDamage>70/105/170 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>治疗量：<scaleHealth>485 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[410/<span class='skill-text-white1'>485</span>/850]</div></div><div class='skill-flex'><div>伤害：<magicDamage>105 (【AP】)</magicDamage></div><div class='skill-text-white2'>[70/<span class='skill-text-white1'>105</span>/170]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918009.jpg",
+   "liveStats": {
+    "place3": 3.2074,
+    "won": 12.3,
+    "rate3": 10.91,
+    "count": 1126910,
+    "top4": 51.5,
+    "place": 4.4288,
+    "key": "DA_Fiddlesticks18"
+   }
+  },
+  {
+   "chessId": 918010,
+   "key": "DA_18_Kayle",
+   "name": "凯尔",
+   "title": "正义天使",
+   "otherNames": [
+    "天使"
+   ],
+   "price": 2,
+   "races": [
+    "日蚀骑士"
+   ],
+   "jobs": [
+    "迅捷射手"
+   ],
+   "role": "魔法专家",
+   "stats": {
+    "armor": 30,
+    "magic": 0,
+    "spellBlock": 30,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "550/990/1782",
+    "attackData": "10/15/23"
+   },
+   "skillName": "太阳裁决",
+   "skillDetail": "被动：【凯尔】基于其星级获得飞升，并获得可叠加的增益。<br>第1次飞升： 普攻造成<magicDamage>62/92/105/115 (【AP】)</magicDamage>额外魔法伤害。<br>第2次飞升： 普攻对命中的敌人施加持续2秒的20%<TFTKeyword>魔抗击碎</TFTKeyword>。<br>第3次飞升： 普攻发射冲击波，对命中的所有其他弈子造成<magicDamage>35/35/35/45 (【AP】)</magicDamage>魔法伤害。<br>第4次飞升： 获得无限距离。每第3次焰浪变得更大。<br><rules>魔抗击碎：降低魔抗值</rules><div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>92 (【AP】)</magicDamage></div><div class='skill-text-white2'>[62/<span class='skill-text-white1'>92</span>/105/115]</div></div><div class='skill-flex'><div>次要伤害：<magicDamage>35 (【AP】)</magicDamage></div><div class='skill-text-white2'>[35/<span class='skill-text-white1'>35</span>/35/45]</div></div>",
+   "recEquip": "521,539,565",
+   "image": "images/units/918010.jpg",
+   "liveStats": {
+    "place3": 4.5814,
+    "won": 9.1,
+    "rate3": 43.39,
+    "count": 117363,
+    "top4": 45.9,
+    "place": 4.7501,
+    "key": "DA_18_Kayle"
+   }
+  },
+  {
+   "chessId": 918011,
+   "key": "DA_18_MasterYi_AD",
+   "name": "易",
+   "title": "无极剑圣",
+   "otherNames": [
+    "剑圣"
+   ],
+   "price": 3,
+   "races": [
+    "灵魂莲华"
+   ],
+   "jobs": [
+    "魔战士"
+   ],
+   "role": "物理专家",
+   "stats": {
+    "armor": 55,
+    "magic": 3,
+    "spellBlock": 55,
+    "attackRange": 1,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "850/1530/2754",
+    "attackData": "60/90/135"
+   },
+   "skillName": "无极剑道",
+   "skillDetail": "被动：每第三次攻击为双重打击。参与击杀时，获得爆发性的移动速度。<br>【魔战士】【AD】：双重打击提供15% (【AP】)可叠加的攻击速度。<div class='skill-divider'></div><div class='skill-flex'><div>攻击速度：15% (【AP】) = 12% + <magicDamage>3% (【AP】)</magicDamage></div><div class='skill-text-white2'>&nbsp;</div></div>",
+   "recEquip": "529,539,613",
+   "image": "images/units/918011.jpg",
+   "liveStats": {
+    "place3": 3.923,
+    "won": 9.3,
+    "rate3": 49.47,
+    "count": 101659,
+    "top4": 46.6,
+    "place": 4.6981,
+    "key": "DA_18_MasterYi_AD"
+   }
+  },
+  {
+   "chessId": 918012,
+   "key": "DA_18_Alistar",
+   "name": "阿利斯塔",
+   "title": "牛头酋长",
+   "otherNames": [
+    "牛头",
+    "牛牛"
+   ],
+   "price": 2,
+   "races": [
+    "永恒之森"
+   ],
+   "jobs": [
+    "斗士"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 45,
+    "magic": 90,
+    "spellBlock": 45,
+    "attackRange": 1,
+    "attackSpeed": "0.6",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "950/1710/3078",
+    "attackData": "50/75/113"
+   },
+   "skillName": "凯旋怒吼",
+   "skillDetail": "怒吼，回复<scaleHealth>306/376/476/872 (【HP】【AP】)</scaleHealth>生命值，净化限制效果，并为生命值最低的两名友军回复<scaleHealth>80/105/130/155 (【AP】)</scaleHealth>生命值。然后猛击当前目标，造成<magicDamage>180/270/420/715 (【AP】)</magicDamage>魔法伤害和1.5秒晕眩。<div class='skill-divider'></div><div class='skill-flex'><div>治疗量：<scaleHealth>376 (【HP】【AP】)</scaleHealth> = <scaleHealth>8% (【HP】)</scaleHealth> + <scaleHealth>300 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[230/<span class='skill-text-white1'>300</span>/400/500]</div></div><div class='skill-flex'><div>友军治疗量：<scaleHealth>105 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[80/<span class='skill-text-white1'>105</span>/130/155]</div></div><div class='skill-flex'><div>伤害：<magicDamage>270 (【AP】)</magicDamage></div><div class='skill-text-white2'>[180/<span class='skill-text-white1'>270</span>/420/715]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918012.jpg",
+   "liveStats": {
+    "place3": 3.6674,
+    "won": 14.0,
+    "rate3": 27.52,
+    "count": 606232,
+    "top4": 50.0,
+    "place": 4.4769,
+    "key": "DA_18_Alistar"
+   }
+  },
+  {
+   "chessId": 918015,
+   "key": "DA_18_Sivir",
+   "name": "希维尔",
+   "title": "战争女神",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "野兽之灵"
+   ],
+   "jobs": [
+    "猎人"
+   ],
+   "role": "物理术师",
+   "stats": {
+    "armor": 40,
+    "magic": 40,
+    "spellBlock": 40,
+    "attackRange": 4,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "850/1530/3754",
+    "attackData": "50/75/113"
+   },
+   "skillName": "回旋之刃",
+   "skillDetail": "投掷一把巨大的十字刃，它会对当前敌人造成<physicalDamage>205/305/1150 (【AD】【AP】)</physicalDamage>物理伤害，并在附近敌人之间弹跳8次，每次弹跳造成<physicalDamage>41/61/460 (【AD】【AP】)</physicalDamage>物理伤害。当这个技能击杀了一个敌人，它会额外弹跳3/3/6次。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[15/<span class='skill-text-white1'>20</span>/100]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>305 (【AD】【AP】)</physicalDamage> = <physicalDamage>285 (【AD】)</physicalDamage> + <magicDamage>20 (【AP】)</magicDamage></div><div class='skill-text-white2'>[190/<span class='skill-text-white1'>285</span>/1050]</div></div><div class='skill-flex'><div>弹射伤害：<physicalDamage>61 (【AD】【AP】)</physicalDamage> = <TFTBonus>20%</TFTBonus> × <physicalDamage>305 (【AD】【AP】)</physicalDamage></div><div class='skill-text-white2'>&nbsp;</div></div>",
+   "recEquip": "535,551,525",
+   "image": "images/units/918015.jpg",
+   "liveStats": {
+    "place3": 1.2038,
+    "won": 14.1,
+    "rate3": 0.44,
+    "count": 770961,
+    "top4": 48.8,
+    "place": 4.5212,
+    "key": "DA_18_Sivir"
+   }
+  },
+  {
+   "chessId": 918016,
+   "key": "DA_18_Soraka",
+   "name": "索拉卡",
+   "title": "众星之子",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "绝命花妖"
+   ],
+   "jobs": [
+    "裁决使"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 40,
+    "magic": 30,
+    "spellBlock": 40,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "850/1530/3754",
+    "attackData": "30/45/68"
+   },
+   "skillName": "流星坠落",
+   "skillDetail": "召唤一颗星星落在当前目标身上，从而造成<magicDamage>225/335/1000 (【AP】)</magicDamage>魔法伤害。如果此前曾有一颗星星落至其上，则额外召唤3颗星星，每颗造成<magicDamage>100/150/1000 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>335 (【AP】)</magicDamage></div><div class='skill-text-white2'>[225/<span class='skill-text-white1'>335</span>/1000]</div></div><div class='skill-flex'><div>次要伤害：<magicDamage>150 (【AP】)</magicDamage></div><div class='skill-text-white2'>[100/<span class='skill-text-white1'>150</span>/1000]</div></div>",
+   "recEquip": "565,619,619",
+   "image": "images/units/918016.jpg",
+   "liveStats": {
+    "place3": 1.2416,
+    "won": 12.9,
+    "rate3": 0.41,
+    "count": 784691,
+    "top4": 53.9,
+    "place": 4.3047,
+    "key": "DA_18_Soraka"
+   }
+  },
+  {
+   "chessId": 918017,
+   "key": "DA_18_Teemo",
+   "name": "提莫",
+   "title": "迅捷斥候",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "约德尔人和朋友"
+   ],
+   "jobs": [
+    "神谕"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 30,
+    "magic": 50,
+    "spellBlock": 30,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "550/990/1782",
+    "attackData": "35/53/79"
+   },
+   "skillName": "内有真菌",
+   "skillDetail": "投掷2簇蘑菇，对相距最近的3个敌人造成<magicDamage>55/82/130/215 (【AP】)</magicDamage>魔法伤害。然后猛摔出一个巨型蘑菇，对目标造成<magicDamage>135/200/310/515 (【AP】)</magicDamage>魔法伤害。<br>每次施放有10%/12%/15%/20%几率搜寻到一个额外的蘑菇，可供收集以获得额外效果。<br>红蘑菇： 1次刷新<rules>(已搜寻到的红蘑菇：</rules><TFTAttribute attributeID=\"TFTSpellAttributes.Stack\" style=\"Rules\"/><rules>)</rules><br>绿蘑菇： 1小小英雄生命值<rules>(已搜寻到的绿蘑菇：</rules> <TFTAttribute style=\"rules\" attributeID=\"TFTCalculationAttributes.GenericCalc1\"/><rules>)</rules><br>黄蘑菇： 2经验值<rules>(已搜寻到的黄蘑菇：</rules> <TFTAttribute style=\"rules\" attributeID=\"TFTCalculationAttributes.GenericCalc2\"/><rules>)</rules><div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>82 (【AP】)</magicDamage></div><div class='skill-text-white2'>[55/<span class='skill-text-white1'>82</span>/130/215]</div></div><div class='skill-flex'><div>巨型蘑菇伤害：<magicDamage>200 (【AP】)</magicDamage></div><div class='skill-text-white2'>[135/<span class='skill-text-white1'>200</span>/310/515]</div></div><div class='skill-flex'><div>采集几率：12%</div><div class='skill-text-white2'>[10%/<span class='skill-text-white1'>12%</span>/15%/20%]</div></div>",
+   "recEquip": "565,619,619",
+   "image": "images/units/918017.jpg",
+   "liveStats": {
+    "place3": 3.8656,
+    "won": 12.4,
+    "rate3": 30.75,
+    "count": 252901,
+    "top4": 51.1,
+    "place": 4.4404,
+    "key": "DA_18_Teemo"
+   }
+  },
+  {
+   "chessId": 918018,
+   "key": "DA_18_Tristana",
+   "name": "崔丝塔娜",
+   "title": "麦林炮手",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "花仙子",
+    "约德尔人和朋友"
+   ],
+   "jobs": [
+    "猎人"
+   ],
+   "role": "物理射手",
+   "stats": {
+    "armor": 35,
+    "magic": 60,
+    "spellBlock": 35,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "650/1170/2106",
+    "attackData": "55/83/124"
+   },
+   "skillName": "爆炸火花",
+   "skillDetail": "将一个爆炸火花吸附到目标上，持续4秒。生效期间，获得无限射程和60% (【AP】)攻击速度。持续时间结束后，爆炸火花会爆炸并造成由2格内的所有敌人间分摊的伤害，伤害值为<physicalDamage>160/240/385 (【AD】)</physicalDamage>物理伤害+施放期间每次攻击提供额外<physicalDamage>10/15/25 (【AD】)</physicalDamage>物理伤害。<br><rules>如果携带爆炸火花的敌人阵亡，那么爆炸火花会吸附至【崔丝塔娜】的新目标。</rules><div class='skill-divider'></div><div class='skill-flex'><div>攻击速度：60% (【AP】) = 40% + <magicDamage>20% (【AP】)</magicDamage></div><div class='skill-text-white2'>&nbsp;</div></div><div class='skill-flex'><div>伤害：<physicalDamage>240 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[160/<span class='skill-text-white1'>240</span>/385]</div></div><div class='skill-flex'><div>每次攻击的额外伤害：<physicalDamage>15 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[10/<span class='skill-text-white1'>15</span>/25]</div></div>",
+   "recEquip": "539,535,31010",
+   "image": "images/units/918018.jpg",
+   "liveStats": {
+    "place3": 4.0792,
+    "won": 9.1,
+    "rate3": 21.52,
+    "count": 155175,
+    "top4": 41.3,
+    "place": 4.9553,
+    "key": "DA_18_Tristana"
+   }
+  },
+  {
+   "chessId": 918019,
+   "key": "DA_18_Warwick",
+   "name": "沃里克",
+   "title": "祖安怒兽",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "黑荆棘"
+   ],
+   "jobs": [
+    "狂战士"
+   ],
+   "role": "物理战士",
+   "stats": {
+    "armor": 45,
+    "magic": 40,
+    "spellBlock": 45,
+    "attackRange": 1,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "750/1350/2430",
+    "attackData": "45/68/101"
+   },
+   "skillName": "野兽之口",
+   "skillDetail": "撕咬当前目标，造成<physicalDamage>230/345/535/915 (【AD】)</physicalDamage>物理伤害，并治疗自身<scaleHealth>25% (【AP】)</scaleHealth>造成伤害的生命值。获得持续到战斗结束的20%攻击速度。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<physicalDamage>345 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[230/<span class='skill-text-white1'>345</span>/535/915]</div></div><div class='skill-flex'><div>治疗量：<scaleHealth>25% (【AP】)</scaleHealth></div><div class='skill-text-white2'>&nbsp;</div></div>",
+   "recEquip": "529,618,613",
+   "image": "images/units/918019.jpg",
+   "liveStats": {
+    "place3": 4.2823,
+    "won": 7.9,
+    "rate3": 53.56,
+    "count": 86423,
+    "top4": 48.6,
+    "place": 4.6465,
+    "key": "DA_18_Warwick"
+   }
+  },
+  {
+   "chessId": 918022,
+   "key": "DA_18_Ashe",
+   "name": "艾希",
+   "title": "寒冰射手",
+   "otherNames": [
+    "寒冰"
+   ],
+   "price": 5,
+   "races": [
+    "灵魂莲华"
+   ],
+   "jobs": [
+    "猎人"
+   ],
+   "role": "物理术师",
+   "stats": {
+    "armor": 45,
+    "magic": 80,
+    "spellBlock": 45,
+    "attackRange": 5,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 20,
+    "lifeData": "900/1620/6916",
+    "attackData": "75/113/169"
+   },
+   "skillName": "灵魂裂隙",
+   "skillDetail": "沿敌人最多的那条直线发射一支箭矢，造成<physicalDamage>465/700/1000 (【AD】)</physicalDamage>物理伤害，这个伤害每命中一个敌人就会衰减80%/80%/40%(最低为20%)。<br>这支箭矢会留下一道持续3/3/20秒的痕迹，对其中的敌人每秒造成<physicalDamage>11/17/220 (【AD】【AP】)</physicalDamage>+<physicalDamage>2%/3%/10%</physicalDamage>最大生命值物理伤害，并施加20%<TFTKeyword>缓速</TFTKeyword>效果。<br><rules>缓速：降低攻击速度</rules><div class='skill-divider'></div><div class='skill-flex'><div>伤害：<physicalDamage>700 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[465/<span class='skill-text-white1'>700</span>/1000]</div></div><div class='skill-flex'><div>裂隙伤害：【AP】</div><div class='skill-text-white2'>[2/<span class='skill-text-white1'>3</span>/20]</div></div><div class='skill-flex'><div>裂隙伤害：<physicalDamage>17 (【AD】【AP】)</physicalDamage> = <physicalDamage>14 (【AD】)</physicalDamage> + <magicDamage>3 (【AP】)</magicDamage></div><div class='skill-text-white2'>[9/<span class='skill-text-white1'>14</span>/200]</div></div><div class='skill-flex'><div>裂隙最大生命值伤害：<physicalDamage>3%</physicalDamage></div><div class='skill-text-white2'>[2%/<span class='skill-text-white1'>3%</span>/10%]</div></div>",
+   "recEquip": "551,624,525",
+   "image": "images/units/918022.jpg",
+   "liveStats": {
+    "place3": 1.0304,
+    "won": 19.4,
+    "rate3": 0.11,
+    "count": 704566,
+    "top4": 57.2,
+    "place": 4.06,
+    "key": "DA_18_Ashe"
+   }
+  },
+  {
+   "chessId": 918025,
+   "key": "DA_18_Morgana",
+   "name": "莫甘娜",
+   "title": "堕落天使",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "魔女"
+   ],
+   "jobs": [
+    "神谕"
+   ],
+   "role": "魔法战士",
+   "stats": {
+    "armor": 60,
+    "magic": 65,
+    "spellBlock": 60,
+    "attackRange": 2,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "1100/1980/4564",
+    "attackData": "45/68/101"
+   },
+   "skillName": "枯萎诅咒",
+   "skillDetail": "被动：获得25%全能吸血。<br>主动：向附近3个敌人发射一道黑暗震波，造成<magicDamage>60/90/500 (【AP】)</magicDamage>魔法伤害并诅咒他们4秒。然后，生成一个半径2格的枯萎地带，持续相同时长并且每秒造成<magicDamage>33/50/500 (【AP】)</magicDamage>魔法伤害。被诅咒的敌人们受到<magicDamage>22/33/240 (【AP】)</magicDamage>x诅咒数的额外伤害。<div class='skill-divider'></div><div class='skill-flex'><div>初始伤害：<magicDamage>90 (【AP】)</magicDamage></div><div class='skill-text-white2'>[60/<span class='skill-text-white1'>90</span>/500]</div></div><div class='skill-flex'><div>地带伤害：<magicDamage>50 (【AP】)</magicDamage></div><div class='skill-text-white2'>[33/<span class='skill-text-white1'>50</span>/500]</div></div><div class='skill-flex'><div>额外诅咒伤害：<magicDamage>33 (【AP】)</magicDamage></div><div class='skill-text-white2'>[22/<span class='skill-text-white1'>33</span>/240]</div></div>",
+   "recEquip": "555,561,31008",
+   "image": "images/units/918025.jpg",
+   "liveStats": {
+    "place3": 1.1634,
+    "won": 12.7,
+    "rate3": 1.38,
+    "count": 535491,
+    "top4": 50.1,
+    "place": 4.4996,
+    "key": "DA_18_Morgana"
+   }
+  },
+  {
+   "chessId": 918032,
+   "key": "DA_Amumu18",
+   "name": "阿木木",
+   "title": "殇之木乃伊",
+   "otherNames": [
+    "木木"
+   ],
+   "price": 4,
+   "races": [
+    "地狱火"
+   ],
+   "jobs": [
+    "主宰"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 60,
+    "magic": 125,
+    "spellBlock": 60,
+    "attackRange": 1,
+    "attackSpeed": "0.7",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "1300/2340/5212",
+    "attackData": "70/105/158"
+   },
+   "skillName": "勃然大怒",
+   "skillDetail": "被动：每秒回复<scaleHealth>53/58/152 (【AP】【HP】)</scaleHealth>生命值并对1格内的敌人们造成<magicDamage>12/18/150 (【AP】)</magicDamage>魔法伤害。<br>主动：对2格内的敌人造成<magicDamage>100/150/2000 (【AP】)</magicDamage>魔法伤害和1/1/6秒晕眩，如果目标处于<TFTKeyword>灼烧</TFTKeyword>状态则延长至1.5/1.5/9秒。<br><rules>灼烧：每秒造成目标一部分最大生命值的真实伤害。</rules><div class='skill-divider'></div><div class='skill-flex'><div>治疗量：<scaleHealth>58 (【AP】【HP】)</scaleHealth> = <scaleHealth>2.5% (【HP】)</scaleHealth> + <scaleHealth>25 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[2.5%/<span class='skill-text-white1'>2.5%</span>/4%] + [20/<span class='skill-text-white1'>25</span>/100]</div></div><div class='skill-flex'><div>被动伤害：<magicDamage>18 (【AP】)</magicDamage></div><div class='skill-text-white2'>[12/<span class='skill-text-white1'>18</span>/150]</div></div><div class='skill-flex'><div>伤害：<magicDamage>150 (【AP】)</magicDamage></div><div class='skill-text-white2'>[100/<span class='skill-text-white1'>150</span>/2000]</div></div><div class='skill-flex'><div>晕眩时长：1.5</div><div class='skill-text-white2'>[1.5/<span class='skill-text-white1'>1.5</span>/9]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918032.jpg",
+   "liveStats": {
+    "place3": 1.2122,
+    "won": 14.4,
+    "rate3": 0.08,
+    "count": 1959621,
+    "top4": 53.0,
+    "place": 4.3243,
+    "key": "DA_Amumu18"
+   }
+  },
+  {
+   "chessId": 918033,
+   "key": "DA_18_Rammus",
+   "name": "拉莫斯",
+   "title": "披甲龙龟",
+   "otherNames": [
+    "龙龟"
+   ],
+   "price": 3,
+   "races": [
+    "约德尔人和朋友"
+   ],
+   "jobs": [
+    "护卫"
+   ],
+   "role": "物理坦克",
+   "stats": {
+    "armor": 50,
+    "magic": 80,
+    "spellBlock": 50,
+    "attackRange": 1,
+    "attackSpeed": "0.6",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "1100/1980/3564",
+    "attackData": "50/75/113"
+   },
+   "skillName": "尖刺防御",
+   "skillDetail": "嘲讽，从而强迫附近的敌人们攻击该弈子。获得持续4秒的<magicDamage>400/550/725 (【AP】)</magicDamage>护盾值和60护甲与魔抗。<br>护盾被打破时，对2格内的敌人造成<physicalDamage>50/75/120 (【ARMOR】【MR】)</physicalDamage>物理伤害。<div class='skill-divider'></div><div class='skill-flex'><div>护盾值：<magicDamage>550 (【AP】)</magicDamage></div><div class='skill-text-white2'>[400/<span class='skill-text-white1'>550</span>/725]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>75 (【ARMOR】【MR】)</physicalDamage> = <physicalDamage>75% (【ARMOR】)</physicalDamage> + <physicalDamage>75% (【MR】)</physicalDamage></div><div class='skill-text-white2'>[50%/<span class='skill-text-white1'>75%</span>/120%] + [50%/<span class='skill-text-white1'>75%</span>/120%]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918033.jpg",
+   "liveStats": {
+    "place3": 3.5402,
+    "won": 12.1,
+    "rate3": 48.89,
+    "count": 404235,
+    "top4": 50.5,
+    "place": 4.4712,
+    "key": "DA_18_Rammus"
+   }
+  },
+  {
+   "chessId": 918043,
+   "key": "DA_Karma18",
+   "name": "卡尔玛",
+   "title": "天启者",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "灵魂莲华"
+   ],
+   "jobs": [
+    "法师"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 25,
+    "magic": 40,
+    "spellBlock": 25,
+    "attackRange": 4,
+    "attackSpeed": "0.7",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "500/900/1620",
+    "attackData": "25/38/56"
+   },
+   "skillName": "宿业羁绊",
+   "skillDetail": "系住当前目标，在1.5秒里持续造成<magicDamage>280/420/630/1070 (【AP】)</magicDamage>魔法伤害。随后在其周围释放一道能量爆裂，对半径1格内的所有敌人造成<magicDamage>125/185/300/515 (【AP】)</magicDamage>魔法伤害，并施加持续2秒的30%的<TFTKeyword>减速</TFTKeyword>效果。<br><rules>减速：降低攻击速度</rules><div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>420 (【AP】)</magicDamage></div><div class='skill-text-white2'>[280/<span class='skill-text-white1'>420</span>/630/1070]</div></div><div class='skill-flex'><div>爆发伤害：<magicDamage>185 (【AP】)</magicDamage></div><div class='skill-text-white2'>[125/<span class='skill-text-white1'>185</span>/300/515]</div></div>",
+   "recEquip": "565,619,525",
+   "image": "images/units/918043.jpg",
+   "liveStats": {
+    "place3": 4.5384,
+    "won": 9.7,
+    "rate3": 8.68,
+    "count": 369035,
+    "top4": 47.8,
+    "place": 4.6515,
+    "key": "DA_Karma18"
+   }
+  },
+  {
+   "chessId": 918044,
+   "key": "DA_Taric18",
+   "name": "塔里克",
+   "title": "瓦洛兰之盾",
+   "otherNames": null,
+   "price": 5,
+   "races": [
+    "宝石骑士"
+   ],
+   "jobs": [
+    "重装战士"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 65,
+    "magic": 65,
+    "spellBlock": 65,
+    "attackRange": 1,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "1300/2340/8212",
+    "attackData": "55/83/124"
+   },
+   "skillName": "翡翠辉耀",
+   "skillDetail": "被动：【塔里克】或其绑定的友军首次跌到50%生命值以下时，两人身上会释放翡翠能量，为3格内的友军提供持续3/3/99秒的<scaleHealth>270/345/11300 (【HP】)</scaleHealth>护盾值。<br>主动：回复<scaleHealth>275/450/3000 (【AP】)</scaleHealth>生命值。【塔里克】和其绑定的友军的下2次攻击造成<magicDamage>100/150/1000 (【AP】)</magicDamage>额外魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>护盾值：<scaleHealth>345 (【HP】)</scaleHealth> = <scaleHealth>15% (【HP】)</scaleHealth> + 150</div><div class='skill-text-white2'>[15%/<span class='skill-text-white1'>15%</span>/100%] + [75/<span class='skill-text-white1'>150</span>/10000]</div></div><div class='skill-flex'><div>治疗量：<scaleHealth>450 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[275/<span class='skill-text-white1'>450</span>/3000]</div></div><div class='skill-flex'><div>伤害：<magicDamage>150 (【AP】)</magicDamage></div><div class='skill-text-white2'>[100/<span class='skill-text-white1'>150</span>/1000]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918044.jpg",
+   "liveStats": {
+    "place3": 1.0302,
+    "won": 20.4,
+    "rate3": 0.04,
+    "count": 1072656,
+    "top4": 58.2,
+    "place": 3.9988,
+    "key": "DA_Taric18"
+   }
+  },
+  {
+   "chessId": 918045,
+   "key": "DA_18_Veigar",
+   "name": "维迦",
+   "title": "邪恶小法师",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "黑荆棘",
+    "约德尔人和朋友"
+   ],
+   "jobs": [
+    "法师"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 25,
+    "magic": 30,
+    "spellBlock": 25,
+    "attackRange": 4,
+    "attackSpeed": "0.7",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "500/900/1620",
+    "attackData": "25/38/56"
+   },
+   "skillName": "能量爆裂",
+   "skillDetail": "向目标发射一记巨大震波，造成<magicDamage>200/300/450/765 (【AP】)</magicDamage>魔法伤害，若其生命值低于30%最大生命值，则提升至<magicDamage>300/450/675/1015 (【AP】)</magicDamage>。<br>若目标阵亡，则永久获得2%法术加成。<br>当前加成：<TFTAttribute attributeID=\"TFTSpellAttributes.Stack\" precision=\"0\"/>% 【AP】<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>300 (【AP】)</magicDamage></div><div class='skill-text-white2'>[200/<span class='skill-text-white1'>300</span>/450/765]</div></div><div class='skill-flex'><div>低生命值伤害：<magicDamage>450 (【AP】)</magicDamage></div><div class='skill-text-white2'>[300/<span class='skill-text-white1'>450</span>/675/1015]</div></div>",
+   "recEquip": "565,619,619",
+   "image": "images/units/918045.jpg",
+   "liveStats": {
+    "place3": 4.2038,
+    "won": 14.0,
+    "rate3": 51.72,
+    "count": 582433,
+    "top4": 52.8,
+    "place": 4.3496,
+    "key": "DA_18_Veigar"
+   }
+  },
+  {
+   "chessId": 918051,
+   "key": "DA_18_Caitlyn",
+   "name": "凯特琳",
+   "title": "皮城女警",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "魔女"
+   ],
+   "jobs": [
+    "猎人"
+   ],
+   "role": "物理专家",
+   "stats": {
+    "armor": 30,
+    "magic": 3,
+    "spellBlock": 30,
+    "attackRange": 4,
+    "attackSpeed": "0.7",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "550/990/1782",
+    "attackData": "50/75/113"
+   },
+   "skillName": "爆头",
+   "skillDetail": "被动：每第三次攻击会被替换为一次爆头，造成<physicalDamage>210/315/515/875 (【AD】【AP】)</physicalDamage>物理伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[20/<span class='skill-text-white1'>30</span>/45/75]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>315 (【AD】【AP】)</physicalDamage> = <physicalDamage>285 (【AD】)</physicalDamage> + <magicDamage>30 (【AP】)</magicDamage></div><div class='skill-text-white2'>[190/<span class='skill-text-white1'>285</span>/470/800]</div></div>",
+   "recEquip": "539,535,31010",
+   "image": "images/units/918051.jpg",
+   "liveStats": {
+    "place3": 4.4082,
+    "won": 6.5,
+    "rate3": 50.04,
+    "count": 95129,
+    "top4": 35.0,
+    "place": 5.3769,
+    "key": "DA_18_Caitlyn"
+   }
+  },
+  {
+   "chessId": 918054,
+   "key": "DA_18_Malphite",
+   "name": "墨菲特",
+   "title": "熔岩巨兽",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "黑荆棘",
+    "魔岩巨兽"
+   ],
+   "jobs": [],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 70,
+    "magic": 80,
+    "spellBlock": 70,
+    "attackRange": 1,
+    "attackSpeed": "0.55",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "1300/2340/5212",
+    "attackData": "70/105/158"
+   },
+   "skillName": "石化树皮",
+   "skillDetail": "获得持续4秒的<magicDamage>700/850/2000 (【AP】)</magicDamage>护盾值，并进入石化状态。护盾被打破时，释放一道黑暗能量波，对2/2/3格内的敌人们造成<magicDamage>82/123/3399 (【AP】【ARMOR】【MR】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>护盾值：<magicDamage>850 (【AP】)</magicDamage></div><div class='skill-text-white2'>[700/<span class='skill-text-white1'>850</span>/2000]</div></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[40/<span class='skill-text-white1'>60</span>/2000]</div></div><div class='skill-flex'><div>伤害：<magicDamage>123 (【AP】【ARMOR】【MR】)</magicDamage> = <magicDamage>60 (【AP】)</magicDamage> + <magicDamage>45% (【ARMOR】)</magicDamage> + <magicDamage>45% (【MR】)</magicDamage></div><div class='skill-text-white2'>[30%/<span class='skill-text-white1'>45%</span>/999%] + [30%/<span class='skill-text-white1'>45%</span>/999%]</div></div>",
+   "recEquip": "581,581,597",
+   "image": "images/units/918054.jpg",
+   "liveStats": {
+    "place3": 1.2676,
+    "won": 9.5,
+    "rate3": 0.74,
+    "count": 512094,
+    "top4": 49.2,
+    "place": 4.5766,
+    "key": "DA_18_Malphite"
+   }
+  },
+  {
+   "chessId": 918057,
+   "key": "DA_18_Maokai",
+   "name": "茂凯",
+   "title": "扭曲树精",
+   "otherNames": null,
+   "price": 5,
+   "races": [
+    "远古树精"
+   ],
+   "jobs": [
+    "主宰"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 60,
+    "magic": 100,
+    "spellBlock": 60,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "1150/2070/7726",
+    "attackData": "80/120/180"
+   },
+   "skillName": "播种",
+   "skillDetail": "被动：每格挡650/650/300伤害后，一株树苗会跳向附近的一名敌人并造成<magicDamage>7%/7%/75% (【HP】)</magicDamage>魔法伤害。阵亡时，3/5/10株树苗会跳出。<br>主动：对目标造成<magicDamage>6%/6%/100% (【HP】)</magicDamage>魔法伤害并回复<scaleHealth>330/400/2000 (【AP】)</scaleHealth>+<scaleHealth>10%/10%/100%</scaleHealth>已损失生命值。<div class='skill-divider'></div><div class='skill-flex'><div>树苗伤害：<magicDamage>7% (【HP】)</magicDamage></div><div class='skill-text-white2'>[7%/<span class='skill-text-white1'>7%</span>/75%]</div></div><div class='skill-flex'><div>阵亡时树苗：5</div><div class='skill-text-white2'>[3/<span class='skill-text-white1'>5</span>/10]</div></div><div class='skill-flex'><div>主动伤害：<magicDamage>6% (【HP】)</magicDamage></div><div class='skill-text-white2'>[6%/<span class='skill-text-white1'>6%</span>/100%]</div></div><div class='skill-flex'><div>治疗量：<scaleHealth>400 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[330/<span class='skill-text-white1'>400</span>/2000]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918057.jpg",
+   "liveStats": {
+    "place3": 1.039,
+    "won": 20.2,
+    "rate3": 0.05,
+    "count": 1109066,
+    "top4": 55.2,
+    "place": 4.1348,
+    "key": "DA_18_Maokai"
+   }
+  },
+  {
+   "chessId": 918060,
+   "key": "DA_18_Elise",
+   "name": "伊莉丝",
+   "title": "蜘蛛女皇",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "魔女"
+   ],
+   "jobs": [
+    "重装战士"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 45,
+    "magic": 70,
+    "spellBlock": 45,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 20,
+    "lifeData": "900/1620/2916",
+    "attackData": "20/30/45"
+   },
+   "skillName": "蜘蛛女皇",
+   "skillDetail": "变身为蜘蛛，并获得<scaleHealth>375/475/725/975</scaleHealth>最大生命值。处于蜘蛛形态时的攻击造成<magicDamage>35/50/80/110 (【AP】)</magicDamage>额外魔法伤害，并治疗自身<scaleHealth>55/90/170/250 (【AP】)</scaleHealth>生命值。后续施放提供在4秒内持续衰减的175%攻击速度。<div class='skill-divider'></div><div class='skill-flex'><div>蜘蛛生命值：<scaleHealth>475</scaleHealth></div><div class='skill-text-white2'>[375/<span class='skill-text-white1'>475</span>/725/975]</div></div><div class='skill-flex'><div>伤害：<magicDamage>50 (【AP】)</magicDamage></div><div class='skill-text-white2'>[35/<span class='skill-text-white1'>50</span>/80/110]</div></div><div class='skill-flex'><div>治疗量：<scaleHealth>90 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[55/<span class='skill-text-white1'>90</span>/170/250]</div></div>",
+   "recEquip": "555,539,613",
+   "image": "images/units/918060.jpg",
+   "liveStats": {
+    "place3": 4.5279,
+    "won": 10.0,
+    "rate3": 18.68,
+    "count": 161703,
+    "top4": 35.0,
+    "place": 5.3155,
+    "key": "DA_18_Elise"
+   }
+  },
+  {
+   "chessId": 918069,
+   "key": "DA_18_Cassiopeia",
+   "name": "卡西奥佩娅",
+   "title": "魔蛇之拥",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "魔女"
+   ],
+   "jobs": [
+    "法师"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 35,
+    "magic": 30,
+    "spellBlock": 35,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "650/1170/2106",
+    "attackData": "30/45/68"
+   },
+   "skillName": "瘟毒爆炸",
+   "skillDetail": "向目标和相距最近未中毒的敌人投毒，从而在15秒里持续造成<magicDamage>420/630/1020 (【AP】)</magicDamage>魔法伤害。这个毒可以叠加。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>630 (【AP】)</magicDamage></div><div class='skill-text-white2'>[420/<span class='skill-text-white1'>630</span>/1020]</div></div>",
+   "recEquip": "565,619,619",
+   "image": "images/units/918069.jpg",
+   "liveStats": {
+    "place3": 3.5674,
+    "won": 13.3,
+    "rate3": 23.03,
+    "count": 352410,
+    "top4": 50.8,
+    "place": 4.4527,
+    "key": "DA_18_Cassiopeia"
+   }
+  },
+  {
+   "chessId": 918076,
+   "key": "DA_Nidalee18_AP",
+   "name": "奈德丽",
+   "title": "狂野女猎手",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "野兽之灵"
+   ],
+   "jobs": [
+    "魔战士"
+   ],
+   "role": "魔法射手",
+   "stats": {
+    "armor": 30,
+    "magic": 45,
+    "spellBlock": 30,
+    "attackRange": 5,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "850/1530/3754",
+    "attackData": "35/53/79"
+   },
+   "skillName": "标枪投掷",
+   "skillDetail": "【魔战士】【AP】：下3次攻击获得150%攻击速度。这些攻击被替换为标枪，造成<magicDamage>170/255/2000 (【AP】)</magicDamage>魔法伤害。第3次攻击转而瞄准相距最远且携带最少装备的那个敌人，并造成<magicDamage>330/500/3000 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>255 (【AP】)</magicDamage></div><div class='skill-text-white2'>[170/<span class='skill-text-white1'>255</span>/2000]</div></div><div class='skill-flex'><div>最终伤害：<magicDamage>500 (【AP】)</magicDamage></div><div class='skill-text-white2'>[330/<span class='skill-text-white1'>500</span>/3000]</div></div>",
+   "recEquip": "539,565,619",
+   "image": "images/units/918076.jpg",
+   "liveStats": {
+    "place3": 1.3877,
+    "won": 8.4,
+    "rate3": 0.85,
+    "count": 713235,
+    "top4": 53.9,
+    "place": 4.3776,
+    "key": "DA_Nidalee18_AP"
+   }
+  },
+  {
+   "chessId": 918081,
+   "key": "DA_18_Ezreal",
+   "name": "伊泽瑞尔",
+   "title": "探险家",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "永恒之森"
+   ],
+   "jobs": [
+    "裁决使"
+   ],
+   "role": "物理术师",
+   "stats": {
+    "armor": 40,
+    "magic": 30,
+    "spellBlock": 40,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "850/1530/3754",
+    "attackData": "45/68/101"
+   },
+   "skillName": "自然之怒",
+   "skillDetail": "闪烁远离当前目标，对其造成<physicalDamage>250/375/1200 (【AD】)</physicalDamage>物理伤害，并获得<magicDamage>30%/30%/100% (【AP】)</magicDamage>攻击速度。<br>每第四次施放时，会消耗来自【自然之怒】的攻击速度，并释放一道贯穿最大的敌群的震波来造成<physicalDamage>385/580/2500 (【AD】)</physicalDamage>物理伤害，它每穿过一个敌人就会降低25%伤害(最低为50%)。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<physicalDamage>375 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[250/<span class='skill-text-white1'>375</span>/1200]</div></div><div class='skill-flex'><div>攻击速度：<magicDamage>30% (【AP】)</magicDamage></div><div class='skill-text-white2'>[30%/<span class='skill-text-white1'>30%</span>/100%]</div></div><div class='skill-flex'><div>强化伤害：<physicalDamage>580 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[385/<span class='skill-text-white1'>580</span>/2500]</div></div>",
+   "recEquip": "519,551,525",
+   "image": "images/units/918081.jpg",
+   "liveStats": {
+    "place3": 1.4859,
+    "won": 14.2,
+    "rate3": 0.47,
+    "count": 571820,
+    "top4": 51.0,
+    "place": 4.4202,
+    "key": "DA_18_Ezreal"
+   }
+  },
+  {
+   "chessId": 918083,
+   "key": "DA_18_Yorick",
+   "name": "约里克",
+   "title": "牧魂人",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "灵魂莲华"
+   ],
+   "jobs": [
+    "主宰",
+    "召唤师"
+   ],
+   "role": "物理坦克",
+   "stats": {
+    "armor": 35,
+    "magic": 110,
+    "spellBlock": 35,
+    "attackRange": 1,
+    "attackSpeed": "0.6",
+    "crit": 0.25,
+    "startMagic": 50,
+    "lifeData": "650/1170/2106",
+    "attackData": "50/75/113"
+   },
+   "skillName": "临终仪式",
+   "skillDetail": "被动：阵亡时，生成一个拥有<scaleHealth>330/530/880/1748 (【HP】)</scaleHealth>最大生命值的【夜幽游灵】，并且它会立即进行嘲讽从而迫使敌人们对其进行攻击。<br>主动：回复<scaleHealth>280/325/435/545 (【AP】)</scaleHealth>生命值并打击目标，造成<physicalDamage>150/225/340/575 (【AP】)</physicalDamage>物理伤害。<div class='skill-divider'></div><div class='skill-flex'><div>【灵魂行者】生命值：<scaleHealth>530 (【HP】)</scaleHealth> = <scaleHealth>20% (【HP】)</scaleHealth> + <scaleHealth>400</scaleHealth></div><div class='skill-text-white2'>[200/<span class='skill-text-white1'>400</span>/750/1100]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>225 (【AP】)</physicalDamage></div><div class='skill-text-white2'>[150/<span class='skill-text-white1'>225</span>/340/575]</div></div><div class='skill-flex'><div>治疗量：<scaleHealth>325 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[280/<span class='skill-text-white1'>325</span>/435/545]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918083.jpg",
+   "liveStats": {
+    "place3": 4.4661,
+    "won": 11.1,
+    "rate3": 3.47,
+    "count": 991529,
+    "top4": 48.3,
+    "place": 4.5961,
+    "key": "DA_18_Yorick"
+   }
+  },
+  {
+   "chessId": 918084,
+   "key": "DA_18_Akali_AD",
+   "name": "阿卡丽",
+   "title": "离群之刺",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "地狱火"
+   ],
+   "jobs": [
+    "魔战士",
+    "狂战士"
+   ],
+   "role": "物理战士",
+   "stats": {
+    "armor": 35,
+    "magic": 25,
+    "spellBlock": 35,
+    "attackRange": 1,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "650/1170/2106",
+    "attackData": "40/60/90"
+   },
+   "skillName": "苦无打击",
+   "skillDetail": "【魔战士】【AD】：对目标发射一连串苦无，造成<physicalDamage>155/235/405/685 (【AD】【AP】)</physicalDamage>物理伤害。如果目标处于<TFTKeyword>灼烧</TFTKeyword>状态，则额外造成<physicalDamage>35/52/80/135 (【AD】)</physicalDamage>伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[10/<span class='skill-text-white1'>15</span>/25/40]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>235 (【AD】【AP】)</physicalDamage> = <physicalDamage>220 (【AD】)</physicalDamage> + <magicDamage>15 (【AP】)</magicDamage></div><div class='skill-text-white2'>[145/<span class='skill-text-white1'>220</span>/380/645]</div></div><div class='skill-flex'><div>额外伤害：<physicalDamage>52 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[35/<span class='skill-text-white1'>52</span>/80/135]</div></div>",
+   "recEquip": "529,618,613",
+   "image": "images/units/918084.jpg",
+   "liveStats": {
+    "place3": 4.6822,
+    "won": 8.7,
+    "rate3": 28.61,
+    "count": 118778,
+    "top4": 40.4,
+    "place": 5.0456,
+    "key": "DA_18_Akali_AD"
+   }
+  },
+  {
+   "chessId": 918085,
+   "key": "DA_18_Kennen",
+   "name": "凯南",
+   "title": "狂暴之心",
+   "otherNames": null,
+   "price": 5,
+   "races": [
+    "地狱火"
+   ],
+   "jobs": [
+    "裁决使"
+   ],
+   "role": "魔法刺客",
+   "stats": {
+    "armor": 60,
+    "magic": 40,
+    "spellBlock": 60,
+    "attackRange": 2,
+    "attackSpeed": "0.85",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "1200/2160/7888",
+    "attackData": "50/75/113"
+   },
+   "skillName": "火焰风暴",
+   "skillDetail": "蓄力，每有一名被<TFTKeyword>灼烧</TFTKeyword>的敌人便获得15%法术加成。随后，获得持续2.5秒的<magicDamage>250/350/3000 (【AP】)</magicDamage>护盾值，然后冲刺穿过附近的一群敌人，对每个敌人造成<magicDamage>80/120/1500 (【AP】)</magicDamage>魔法伤害。<br>冲刺后，释放一场半径2格的火焰风暴，在2秒内持续造成共计<magicDamage>475/715/5000 (【AP】)</magicDamage>魔法伤害，由所有被命中的敌人均摊。<div class='skill-divider'></div><div class='skill-flex'><div>护盾值：<magicDamage>350 (【AP】)</magicDamage></div><div class='skill-text-white2'>[250/<span class='skill-text-white1'>350</span>/3000]</div></div><div class='skill-flex'><div>伤害：<magicDamage>120 (【AP】)</magicDamage></div><div class='skill-text-white2'>[80/<span class='skill-text-white1'>120</span>/1500]</div></div><div class='skill-flex'><div>火焰风暴伤害：<magicDamage>715 (【AP】)</magicDamage></div><div class='skill-text-white2'>[475/<span class='skill-text-white1'>715</span>/5000]</div></div>",
+   "recEquip": "615,577,565",
+   "image": "images/units/918085.jpg",
+   "liveStats": {
+    "place3": 1.0203,
+    "won": 20.3,
+    "rate3": 0.05,
+    "count": 1087828,
+    "top4": 58.8,
+    "place": 3.9714,
+    "key": "DA_18_Kennen"
+   }
+  },
+  {
+   "chessId": 918089,
+   "key": "DA_18_Leona",
+   "name": "蕾欧娜",
+   "title": "曙光女神",
+   "otherNames": [
+    "日女",
+    "女坦"
+   ],
+   "price": 1,
+   "races": [
+    "日蚀骑士"
+   ],
+   "jobs": [
+    "护卫"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 40,
+    "magic": 90,
+    "spellBlock": 40,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "750/1350/2430",
+    "attackData": "50/75/113"
+   },
+   "skillName": "护盾猛击",
+   "skillDetail": "被动：在战斗开始时获得<magicDamage>60/80/100/130 (【AP】)</magicDamage>额外护甲和魔抗，在12秒内持续衰减。<br>主动：猛击当前目标，造成<magicDamage>60/108/162/320 (【ARMOR】)</magicDamage>魔法伤害和1.5秒晕眩。<div class='skill-divider'></div><div class='skill-flex'><div>衰减双抗：<magicDamage>80 (【AP】)</magicDamage></div><div class='skill-text-white2'>[60/<span class='skill-text-white1'>80</span>/100/130]</div></div><div class='skill-flex'><div>伤害：<magicDamage>108 (【ARMOR】)</magicDamage></div><div class='skill-text-white2'>[60/<span class='skill-text-white1'>108</span>/162/320]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918089.jpg",
+   "liveStats": {
+    "place3": 4.7443,
+    "won": 8.4,
+    "rate3": 49.95,
+    "count": 186912,
+    "top4": 44.6,
+    "place": 4.8215,
+    "key": "DA_18_Leona"
+   }
+  },
+  {
+   "chessId": 918096,
+   "key": "DA_KogMaw18_AD",
+   "name": "克格莫",
+   "title": "深渊巨口",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "帝王斑蝶"
+   ],
+   "jobs": [
+    "魔战士",
+    "神谕"
+   ],
+   "role": "物理术师",
+   "stats": {
+    "armor": 35,
+    "magic": 55,
+    "spellBlock": 35,
+    "attackRange": 4,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 15,
+    "lifeData": "650/1170/2106",
+    "attackData": "40/60/90"
+   },
+   "skillName": "天降重炮",
+   "skillDetail": "【魔战士】【AD】：向目标和相距最近的一个其他敌人喷射酸液，造成<physicalDamage>165/250/425 (【AD】【AP】)</physicalDamage>物理伤害。低于50%最大生命值的敌人们转而受到<physicalDamage>231/350/595 (【AD】【AP】)</physicalDamage>物理伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[20/<span class='skill-text-white1'>30</span>/50]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>250 (【AD】【AP】)</physicalDamage> = <physicalDamage>220 (【AD】)</physicalDamage> + <magicDamage>30 (【AP】)</magicDamage></div><div class='skill-text-white2'>[145/<span class='skill-text-white1'>220</span>/375]</div></div><div class='skill-flex'><div>最低生命值伤害：<physicalDamage>350 (【AD】【AP】)</physicalDamage> = <TFTBonus>140%</TFTBonus> × (<physicalDamage>220 (【AD】)</physicalDamage> + <magicDamage>30 (【AP】)</magicDamage>)</div><div class='skill-text-white2'>[145/<span class='skill-text-white1'>220</span>/375] + [20/<span class='skill-text-white1'>30</span>/50]</div></div>",
+   "recEquip": "565,553,525",
+   "image": "images/units/918096.jpg",
+   "liveStats": {
+    "place3": 3.701,
+    "won": 8.3,
+    "rate3": 2.81,
+    "count": 697261,
+    "top4": 54.2,
+    "place": 4.372,
+    "key": "DA_KogMaw18_AD"
+   }
+  },
+  {
+   "chessId": 918098,
+   "key": "DA_18_Shen",
+   "name": "慎",
+   "title": "暮光之眼",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "地狱火"
+   ],
+   "jobs": [
+    "护卫"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 45,
+    "magic": 90,
+    "spellBlock": 45,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "900/1620/2916",
+    "attackData": "50/75/113"
+   },
+   "skillName": "忍法！气合盾",
+   "skillDetail": "为【慎】提供<magicDamage>350/430/550/700 (【AP】)</magicDamage>护盾值，以及为其附近1个受到伤害的友军提供<magicDamage>200/275/375/0 (【AP】)</magicDamage>护盾值，均持续4秒。两者接下来的3次攻击获得40%攻击速度并造成<magicDamage>35/55/80/135 (【AP】)</magicDamage>额外魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>自身护盾值：<magicDamage>430 (【AP】)</magicDamage></div><div class='skill-text-white2'>[350/<span class='skill-text-white1'>430</span>/550/700]</div></div><div class='skill-flex'><div>友军护盾值：<magicDamage>275 (【AP】)</magicDamage></div><div class='skill-text-white2'>[200/<span class='skill-text-white1'>275</span>/375/0]</div></div><div class='skill-flex'><div>伤害：<magicDamage>55 (【AP】)</magicDamage></div><div class='skill-text-white2'>[35/<span class='skill-text-white1'>55</span>/80/135]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918098.jpg",
+   "liveStats": {
+    "place3": 4.3721,
+    "won": 10.2,
+    "rate3": 4.84,
+    "count": 272762,
+    "top4": 43.4,
+    "place": 4.8485,
+    "key": "DA_18_Shen"
+   }
+  },
+  {
+   "chessId": 918099,
+   "key": "DA_Lux18_Base",
+   "name": "拉克丝",
+   "title": "光辉女郎",
+   "otherNames": null,
+   "price": 5,
+   "races": [
+    "自然之力！大元素使"
+   ],
+   "jobs": [],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 40,
+    "magic": 70,
+    "spellBlock": 40,
+    "attackRange": 5,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 20,
+    "lifeData": "900/1620/6916",
+    "attackData": "40/60/90"
+   },
+   "skillName": "终极闪光",
+   "skillDetail": "被动：施放时，所有与【拉克丝】拥有同一羁绊的己方弈子获得<magicDamage>3/3/100 (【AP】)</magicDamage>法力值。<br>主动：向最大的敌群发射一道激光，造成<magicDamage>375/565/6500 (【AP】)</magicDamage>魔法伤害，每命中一个敌人，该伤害衰减25%/25%/10%。<div class='skill-divider'></div><div class='skill-flex'><div>法力值：<magicDamage>3 (【AP】)</magicDamage></div><div class='skill-text-white2'>[3/<span class='skill-text-white1'>3</span>/100]</div></div><div class='skill-flex'><div>伤害：<magicDamage>565 (【AP】)</magicDamage></div><div class='skill-text-white2'>[375/<span class='skill-text-white1'>565</span>/6500]</div></div><div class='skill-flex'><div>伤害衰减：25%</div><div class='skill-text-white2'>[25%/<span class='skill-text-white1'>25%</span>/10%]</div></div>",
+   "recEquip": "565,619,525",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.0,
+    "won": 18.0,
+    "rate3": 0.16,
+    "count": 7461,
+    "top4": 70.5,
+    "place": 3.5301,
+    "key": "DA_Lux18_Base"
+   }
+  },
+  {
+   "chessId": 918103,
+   "key": "DA_18_Ahri",
+   "name": "阿狸",
+   "title": "九尾妖狐",
+   "otherNames": [
+    "狐狸"
+   ],
+   "price": 4,
+   "races": [
+    "灵魂莲华"
+   ],
+   "jobs": [
+    "法师"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 40,
+    "magic": 100,
+    "spellBlock": 40,
+    "attackRange": 4,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 20,
+    "lifeData": "850/1530/3754",
+    "attackData": "40/60/90"
+   },
+   "skillName": "灵魄炸弹",
+   "skillDetail": "对4格内被最多敌人环绕的那个位置发射一颗灵魄炸弹。它对半径3格内的敌人造成<magicDamage>455/685/3500 (【AP】)</magicDamage>魔法伤害，与中心的距离每增加1格，该伤害就会衰减21%。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>685 (【AP】)</magicDamage></div><div class='skill-text-white2'>[455/<span class='skill-text-white1'>685</span>/3500]</div></div>",
+   "recEquip": "565,619,525",
+   "image": "images/units/918103.jpg",
+   "liveStats": {
+    "place3": 1.2925,
+    "won": 12.4,
+    "rate3": 1.03,
+    "count": 612860,
+    "top4": 52.9,
+    "place": 4.3645,
+    "key": "DA_18_Ahri"
+   }
+  },
+  {
+   "chessId": 918107,
+   "key": "DA_18_Rengar",
+   "name": "雷恩加尔",
+   "title": "傲之追猎者",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "宿敌"
+   ],
+   "jobs": [],
+   "role": "物理战士",
+   "stats": {
+    "armor": 55,
+    "magic": 50,
+    "spellBlock": 55,
+    "attackRange": 1,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 10,
+    "lifeData": "900/1620/2916",
+    "attackData": "60/90/135"
+   },
+   "skillName": "残忍无情",
+   "skillDetail": "跳向3格内生命值百分比最低的那个敌人并刺击，从而造成<physicalDamage>255/385/615 (【AD】)</physicalDamage>物理伤害。然后治疗<scaleHealth>60/90/150 (【AP】)</scaleHealth> 生命值，治疗量基于已损失的生命值至多到 <scaleHealth>120/180/300 (【AP】)</scaleHealth>。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<physicalDamage>385 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[255/<span class='skill-text-white1'>385</span>/615]</div></div><div class='skill-flex'><div>最小治疗量：<scaleHealth>90 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[60/<span class='skill-text-white1'>90</span>/150]</div></div><div class='skill-flex'><div>最大治疗量：<scaleHealth>180 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[120/<span class='skill-text-white1'>180</span>/300]</div></div>",
+   "recEquip": "529,618,613",
+   "image": "images/units/918107.jpg",
+   "liveStats": {
+    "place3": 3.8982,
+    "won": 11.8,
+    "rate3": 70.11,
+    "count": 121064,
+    "top4": 48.4,
+    "place": 4.5968,
+    "key": "DA_18_Rengar"
+   }
+  },
+  {
+   "chessId": 918110,
+   "key": "DA_18_Varus",
+   "name": "韦鲁斯",
+   "title": "惩戒之箭",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "地狱火"
+   ],
+   "jobs": [
+    "迅捷射手"
+   ],
+   "role": "物理术师",
+   "stats": {
+    "armor": 25,
+    "magic": 120,
+    "spellBlock": 25,
+    "attackRange": 4,
+    "attackSpeed": "0.7",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "500/900/1620",
+    "attackData": "40/60/90"
+   },
+   "skillName": "穿刺之箭",
+   "skillDetail": "蓄力，然后向目标所在且敌人最多的一条直线射出箭矢。它对命中的敌人造成<physicalDamage>445/670/1070/1815 (【AD】【AP】)</physicalDamage>物理伤害，每穿过一个敌人，该伤害降低40%(最低为40%)。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[30/<span class='skill-text-white1'>45</span>/70/115]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>670 (【AD】【AP】)</physicalDamage> = <physicalDamage>625 (【AD】)</physicalDamage> + <magicDamage>45 (【AP】)</magicDamage></div><div class='skill-text-white2'>[415/<span class='skill-text-white1'>625</span>/1000/1700]</div></div>",
+   "recEquip": "535,551,525",
+   "image": "images/units/918110.jpg",
+   "liveStats": {
+    "place3": 4.6836,
+    "won": 7.9,
+    "rate3": 6.73,
+    "count": 530221,
+    "top4": 53.2,
+    "place": 4.4375,
+    "key": "DA_18_Varus"
+   }
+  },
+  {
+   "chessId": 918113,
+   "key": "DA_18_Sejuani",
+   "name": "瑟庄妮",
+   "title": "北地之怒",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "日蚀骑士"
+   ],
+   "jobs": [
+    "主宰"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 45,
+    "magic": 100,
+    "spellBlock": 45,
+    "attackRange": 1,
+    "attackSpeed": "0.6",
+    "crit": 0.25,
+    "startMagic": 40,
+    "lifeData": "900/1620/2916",
+    "attackData": "50/75/113"
+   },
+   "skillName": "烈阳之怒",
+   "skillDetail": "获得持续4秒的<scaleHealth>315/340/365/741 (【HP】【AP】)</scaleHealth>护盾值。然后在一个锥形范围内进行顺劈以造成<magicDamage>90/135/205/345 (【AP】)</magicDamage>魔法伤害，并沿直线进行打击，对被命中的敌人们造成<magicDamage>120/180/270/460 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>护盾值：<scaleHealth>340 (【HP】【AP】)</scaleHealth> = <scaleHealth>10% (【HP】)</scaleHealth> + <magicDamage>250 (【AP】)</magicDamage></div><div class='skill-text-white2'>[225/<span class='skill-text-white1'>250</span>/275/300]</div></div><div class='skill-flex'><div>锥形伤害：<magicDamage>135 (【AP】)</magicDamage></div><div class='skill-text-white2'>[90/<span class='skill-text-white1'>135</span>/205/345]</div></div><div class='skill-flex'><div>直线伤害：<magicDamage>180 (【AP】)</magicDamage></div><div class='skill-text-white2'>[120/<span class='skill-text-white1'>180</span>/270/460]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918113.jpg",
+   "liveStats": {
+    "place3": 4.474,
+    "won": 10.1,
+    "rate3": 20.7,
+    "count": 447148,
+    "top4": 45.1,
+    "place": 4.7593,
+    "key": "DA_18_Sejuani"
+   }
+  },
+  {
+   "chessId": 918119,
+   "key": "DA_Draven18",
+   "name": "德莱文",
+   "title": "荣耀行刑官",
+   "otherNames": [
+    "德子"
+   ],
+   "price": 5,
+   "races": [
+    "赏金猎人"
+   ],
+   "jobs": [],
+   "role": "物理射手",
+   "stats": {
+    "armor": 45,
+    "magic": 110,
+    "spellBlock": 45,
+    "attackRange": 5,
+    "attackSpeed": "0.85",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "900/1620/6916",
+    "attackData": "48/72/108"
+   },
+   "skillName": "冷血追命",
+   "skillDetail": "被动：对距离内的随机敌人进行攻击并对其施加一层流血效果，在12秒里持续造成共<physicalDamage>140/210/3000 (【AD】)</physicalDamage>物理伤害。每次攻击还有<magicDamage>12% (【AP】)</magicDamage>几率造成50%/50%/900%额外物理伤害并转而施加2层流血效果。<br>主动：朝流血层数最多的敌人投掷两把巨斧。对被命中的敌人造成<physicalDamage>100/150/400 (【AD】)</physicalDamage>物理伤害并消耗他们的流血效果，即刻造成剩余伤害。然后巨斧返回，对被命中的敌人造成<physicalDamage>30/45/100 (【AD】)</physicalDamage>物理伤害。<div class='skill-divider'></div><div class='skill-flex'><div>流血伤害：<physicalDamage>210 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[140/<span class='skill-text-white1'>210</span>/3000]</div></div><div class='skill-flex'><div>往程巨斧伤害：<physicalDamage>150 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[100/<span class='skill-text-white1'>150</span>/400]</div></div><div class='skill-flex'><div>返程巨斧伤害：<physicalDamage>45 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[30/<span class='skill-text-white1'>45</span>/100]</div></div>",
+   "recEquip": "539,535,31010",
+   "image": "images/units/918119.jpg",
+   "liveStats": {
+    "place3": 1.0582,
+    "won": 21.7,
+    "rate3": 0.27,
+    "count": 441966,
+    "top4": 51.8,
+    "place": 4.2723,
+    "key": "DA_Draven18"
+   }
+  },
+  {
+   "chessId": 918120,
+   "key": "DA_18_Hecarim",
+   "name": "赫卡里姆",
+   "title": "战争之影",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "永恒之森"
+   ],
+   "jobs": [
+    "重装战士"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 50,
+    "magic": 110,
+    "spellBlock": 50,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "1100/1980/3564",
+    "attackData": "50/75/113"
+   },
+   "skillName": "恐惧之灵",
+   "skillDetail": "获得持续3秒的50护甲与魔抗，并在此期间持续回复<scaleHealth>375/475/685 (【AP】)</scaleHealth>生命值。向相距最近的3名敌人派出幽魂骑兵，从而对其造成<magicDamage>80/120/195 (【AP】)</magicDamage>魔法伤害和1.5/1.5/1.75秒晕眩。<div class='skill-divider'></div><div class='skill-flex'><div>治疗量：<scaleHealth>475 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[375/<span class='skill-text-white1'>475</span>/685]</div></div><div class='skill-flex'><div>伤害：<magicDamage>120 (【AP】)</magicDamage></div><div class='skill-text-white2'>[80/<span class='skill-text-white1'>120</span>/195]</div></div><div class='skill-flex'><div>晕眩时长：1.5</div><div class='skill-text-white2'>[1.5/<span class='skill-text-white1'>1.5</span>/1.75]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918120.jpg",
+   "liveStats": {
+    "place3": 3.5073,
+    "won": 10.7,
+    "rate3": 16.77,
+    "count": 503095,
+    "top4": 45.7,
+    "place": 4.7232,
+    "key": "DA_18_Hecarim"
+   }
+  },
+  {
+   "chessId": 918121,
+   "key": "DA_18_KhaZix",
+   "name": "卡兹克",
+   "title": "虚空掠夺者",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "宿敌"
+   ],
+   "jobs": [],
+   "role": "魔法刺客",
+   "stats": {
+    "armor": 55,
+    "magic": 25,
+    "spellBlock": 55,
+    "attackRange": 1,
+    "attackSpeed": "0.85",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "950/1710/3078",
+    "attackData": "40/60/90"
+   },
+   "skillName": "品尝恐惧",
+   "skillDetail": "跃向3格内相距最远的敌人，对其造成<magicDamage>265/370/535 (【AP】)</magicDamage>魔法伤害。如果其邻格没有其友军，则转而造成<magicDamage>285/410/605 (【AP】)</magicDamage>魔法伤害并获得10法力值。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>370 (【AP】)</magicDamage></div><div class='skill-text-white2'>[265/<span class='skill-text-white1'>370</span>/535]</div></div><div class='skill-flex'><div>孤立无援伤害：<magicDamage>410 (【AP】)</magicDamage></div><div class='skill-text-white2'>[285/<span class='skill-text-white1'>410</span>/605]</div></div>",
+   "recEquip": "615,577,565",
+   "image": "images/units/918121.jpg",
+   "liveStats": {
+    "place3": 3.7729,
+    "won": 12.5,
+    "rate3": 60.03,
+    "count": 247475,
+    "top4": 50.6,
+    "place": 4.4831,
+    "key": "DA_18_KhaZix"
+   }
+  },
+  {
+   "chessId": 918131,
+   "key": "DA_18_Diana",
+   "name": "黛安娜",
+   "title": "皎月女神",
+   "otherNames": [
+    "皎月"
+   ],
+   "price": 3,
+   "races": [
+    "月蚀骑士"
+   ],
+   "jobs": [
+    "狂战士",
+    "重装战士"
+   ],
+   "role": "魔法战士",
+   "stats": {
+    "armor": 50,
+    "magic": 40,
+    "spellBlock": 50,
+    "attackRange": 1,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "850/1530/2754",
+    "attackData": "30/45/68"
+   },
+   "skillName": "苍白屏障",
+   "skillDetail": "获得持续2秒的150/275/500护盾值，并放出6颗月光法球，由2格内的所有敌人分摊，每颗造成<magicDamage>75/115/180 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>115 (【AP】)</magicDamage></div><div class='skill-text-white2'>[75/<span class='skill-text-white1'>115</span>/180]</div></div><div class='skill-flex'><div>护盾值：275</div><div class='skill-text-white2'>[150/<span class='skill-text-white1'>275</span>/500]</div></div>",
+   "recEquip": "577,565,617",
+   "image": "images/units/918131.jpg",
+   "liveStats": {
+    "place3": 3.3807,
+    "won": 10.1,
+    "rate3": 5.81,
+    "count": 1006776,
+    "top4": 51.8,
+    "place": 4.4572,
+    "key": "DA_18_Diana"
+   }
+  },
+  {
+   "chessId": 918143,
+   "key": "DA_18_Zyra",
+   "name": "婕拉",
+   "title": "荆棘之兴",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "荆棘之兴"
+   ],
+   "jobs": [
+    "召唤师"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 40,
+    "magic": 45,
+    "spellBlock": 40,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "850/1530/3754",
+    "attackData": "40/60/90"
+   },
+   "skillName": "狂野生长",
+   "skillDetail": "在战场周围生成2/2/4株植物，它们会攻击相距最近的敌人10次。每次攻击造成<magicDamage>35/53/225 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>53 (【AP】)</magicDamage></div><div class='skill-text-white2'>[35/<span class='skill-text-white1'>53</span>/225]</div></div>",
+   "recEquip": "561,525,31008",
+   "image": "images/units/918143.jpg",
+   "liveStats": {
+    "place3": 1.1708,
+    "won": 12.4,
+    "rate3": 0.43,
+    "count": 928436,
+    "top4": 52.4,
+    "place": 4.3795,
+    "key": "DA_18_Zyra"
+   }
+  },
+  {
+   "chessId": 918150,
+   "key": "DA_18_GnarSmall",
+   "name": "纳尔",
+   "title": "迷失之牙",
+   "otherNames": null,
+   "price": 5,
+   "races": [
+    "永恒之森",
+    "约德尔人和朋友"
+   ],
+   "jobs": [
+    "斗士"
+   ],
+   "role": "物理专家",
+   "stats": {
+    "armor": 55,
+    "magic": 70,
+    "spellBlock": 55,
+    "attackRange": 2,
+    "attackSpeed": "0.9",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "900/1620/6916",
+    "attackData": "100/150/225"
+   },
+   "skillName": "狂怒基因",
+   "skillDetail": "被动：每秒获得5/5/50怒气并且每次攻击提供5/5/20怒气。<br>主动：变形为【巨型纳尔】并跃至3格内最大的敌群。然后，对2/2/10格内的敌人们造成<physicalDamage>100/150/2000 (【AD】)</physicalDamage>物理伤害，将其护甲和魔抗降低<magicDamage>15/20/250 (【AP】)</magicDamage>，并令其晕眩1/1/15秒。【巨型纳尔】获得400/600/15000生命值，并将其技能替换为“抓投”。<br>抓投：抓住目标并将其投向相距最远的那个敌人，对主要目标造成<physicalDamage>380/570/9000 (【AD】)</physicalDamage>物理伤害，并对途经的敌人造成<physicalDamage>135/205/4500 (【AD】)</physicalDamage>物理伤害。如果目标是最后存活的1名敌人，则转而将其抛出战场。<div class='skill-divider'></div><div class='skill-flex'><div>跃击伤害: <physicalDamage>150 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[100/<span class='skill-text-white1'>150</span>/2000]</div></div><div class='skill-flex'><div>双抗削减：<magicDamage>20 (【AP】)</magicDamage></div><div class='skill-text-white2'>[15/<span class='skill-text-white1'>20</span>/250]</div></div><div class='skill-flex'><div>变形生命值：600</div><div class='skill-text-white2'>[400/<span class='skill-text-white1'>600</span>/15000]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>570 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[380/<span class='skill-text-white1'>570</span>/9000]</div></div><div class='skill-flex'><div>次要伤害：<physicalDamage>205 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[135/<span class='skill-text-white1'>205</span>/4500]</div></div>",
+   "recEquip": "529,618,613",
+   "image": "images/units/918150.jpg",
+   "liveStats": {
+    "place3": 1.0424,
+    "won": 18.6,
+    "rate3": 0.11,
+    "count": 578237,
+    "top4": 59.2,
+    "place": 3.9783,
+    "key": "DA_18_GnarSmall"
+   }
+  },
+  {
+   "chessId": 918164,
+   "key": "DA_18_Camille",
+   "name": "卡蜜尔",
+   "title": "青钢影",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "魔女"
+   ],
+   "jobs": [
+    "狂战士"
+   ],
+   "role": "物理战士",
+   "stats": {
+    "armor": 40,
+    "magic": 25,
+    "spellBlock": 40,
+    "attackRange": 1,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "700/1260/2268",
+    "attackData": "40/60/90"
+   },
+   "skillName": "防御横扫",
+   "skillDetail": "切割目标，造成<physicalDamage>160/240/400/680 (【AD】【AP】)</physicalDamage>物理伤害，并获得持续2秒的60/90/200/310护盾值。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[10/<span class='skill-text-white1'>15</span>/25/40]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>240 (【AD】【AP】)</physicalDamage> = <physicalDamage>225 (【AD】)</physicalDamage> + <magicDamage>15 (【AP】)</magicDamage></div><div class='skill-text-white2'>[150/<span class='skill-text-white1'>225</span>/375/640]</div></div><div class='skill-flex'><div>护盾：90</div><div class='skill-text-white2'>[60/<span class='skill-text-white1'>90</span>/200/310]</div></div>",
+   "recEquip": "529,618,613",
+   "image": "images/units/918164.jpg",
+   "liveStats": {
+    "place3": 4.692,
+    "won": 6.1,
+    "rate3": 41.19,
+    "count": 79306,
+    "top4": 31.9,
+    "place": 5.5662,
+    "key": "DA_18_Camille"
+   }
+  },
+  {
+   "chessId": 918254,
+   "key": "DA_Vi18",
+   "name": "蔚",
+   "title": "皮城执法官",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "野兽之灵"
+   ],
+   "jobs": [
+    "主宰"
+   ],
+   "role": "物理坦克",
+   "stats": {
+    "armor": 50,
+    "magic": 60,
+    "spellBlock": 50,
+    "attackRange": 1,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "1100/1980/3564",
+    "attackData": "45/68/101"
+   },
+   "skillName": "狂怒之拳",
+   "skillDetail": "被动：攻击时，回复<scaleHealth>22 (【HP】)</scaleHealth>生命值。<br>主动：发出一声原始怒吼，从而回复<scaleHealth>200/265/360 (【AP】)</scaleHealth>生命值。然后获得85%/100%/125%攻击速度、15%伤害减免和控制免疫效果，持续3秒。<div class='skill-divider'></div><div class='skill-flex'><div>被动治疗量：<scaleHealth>22 (【HP】)</scaleHealth> = <scaleHealth>2% (【HP】)</scaleHealth></div><div class='skill-text-white2'>&nbsp;</div></div><div class='skill-flex'><div>治疗量：<scaleHealth>265 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[200/<span class='skill-text-white1'>265</span>/360]</div></div><div class='skill-flex'><div>攻击速度：100%</div><div class='skill-text-white2'>[85%/<span class='skill-text-white1'>100%</span>/125%]</div></div>",
+   "recEquip": "581,581,597",
+   "image": "images/units/918254.jpg",
+   "liveStats": {
+    "place3": 3.5091,
+    "won": 11.4,
+    "rate3": 3.43,
+    "count": 1411286,
+    "top4": 49.9,
+    "place": 4.5168,
+    "key": "DA_Vi18"
+   }
+  },
+  {
+   "chessId": 918268,
+   "key": "DA_18_Azir",
+   "name": "阿兹尔",
+   "title": "沙漠皇帝",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "黑荆棘"
+   ],
+   "jobs": [
+    "裁决使",
+    "召唤师"
+   ],
+   "role": "魔法射手",
+   "stats": {
+    "armor": 35,
+    "magic": 35,
+    "spellBlock": 35,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "650/1170/2106",
+    "attackData": "30/45/68"
+   },
+   "skillName": "沙兵现身",
+   "skillDetail": "接下来的6次攻击获得150%攻击速度并召唤2个士兵。这些攻击会被替换为指令，来命令每个士兵进行攻击，每次攻击造成<magicDamage>46/69/110 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>69 (【AP】)</magicDamage></div><div class='skill-text-white2'>[46/<span class='skill-text-white1'>69</span>/110]</div></div>",
+   "recEquip": "521,539,565",
+   "image": "images/units/918268.jpg",
+   "liveStats": {
+    "place3": 3.4202,
+    "won": 11.1,
+    "rate3": 23.54,
+    "count": 754466,
+    "top4": 50.4,
+    "place": 4.495,
+    "key": "DA_18_Azir"
+   }
+  },
+  {
+   "chessId": 918421,
+   "key": "DA_18_RekSai",
+   "name": "雷克塞",
+   "title": "虚空遁地兽",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "黑荆棘"
+   ],
+   "jobs": [
+    "斗士"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 40,
+    "magic": 100,
+    "spellBlock": 40,
+    "attackRange": 1,
+    "attackSpeed": "0.55",
+    "crit": 0.25,
+    "startMagic": 40,
+    "lifeData": "700/1260/2268",
+    "attackData": "50/75/113"
+   },
+   "skillName": "破土而出",
+   "skillDetail": "被动：每秒回复<scaleHealth>17/21/27/61 (【HP】)</scaleHealth>生命值，施放技能后的3秒内该效果变为3倍。<br>主动：冲出地面，使邻格的敌人们晕眩1秒并对其造成<magicDamage>70/105/160/270 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>治疗量：<scaleHealth>21 (【HP】)</scaleHealth> = <scaleHealth>1% (【HP】)</scaleHealth> + <scaleHealth>14</scaleHealth></div><div class='skill-text-white2'>[10/<span class='skill-text-white1'>14</span>/20/26]</div></div><div class='skill-flex'><div>伤害：<magicDamage>105 (【AP】)</magicDamage></div><div class='skill-text-white2'>[70/<span class='skill-text-white1'>105</span>/160/270]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918421.jpg",
+   "liveStats": {
+    "place3": 4.1264,
+    "won": 12.1,
+    "rate3": 52.94,
+    "count": 494958,
+    "top4": 51.3,
+    "place": 4.4563,
+    "key": "DA_18_RekSai"
+   }
+  },
+  {
+   "chessId": 918427,
+   "key": "DA_18_Ivern",
+   "name": "艾翁",
+   "title": "翠神",
+   "otherNames": null,
+   "price": 5,
+   "races": [
+    "翠神"
+   ],
+   "jobs": [],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 55,
+    "magic": 80,
+    "spellBlock": 55,
+    "attackRange": 3,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 50,
+    "lifeData": "1000/1800/7240",
+    "attackData": "60/90/135"
+   },
+   "skillName": "种豆得瓜",
+   "skillDetail": "被动：来自这个技能的护盾值可以通过<TFTKeyword>技能暴击</TFTKeyword>来产生暴击。<br>主动：为2/2/10名友军提供185/350/3000 (【AP】【DA】)护盾和10%/15%/100%伤害增幅，持续6秒。随后对其邻格的敌人们造成<magicDamage>155/235/2000 (【AP】)</magicDamage>魔法伤害。施放6次后，该技能还会为目标提供100%可叠加的攻击速度。<div class='skill-divider'></div><div class='skill-flex'><div>护盾值：350 (【AP】【DA】)</div><div class='skill-text-white2'>[185/<span class='skill-text-white1'>350</span>/3000]</div></div><div class='skill-flex'><div>伤害增幅：15%</div><div class='skill-text-white2'>[10%/<span class='skill-text-white1'>15%</span>/100%]</div></div><div class='skill-flex'><div>伤害：<magicDamage>235 (【AP】)</magicDamage></div><div class='skill-text-white2'>[155/<span class='skill-text-white1'>235</span>/2000]</div></div>",
+   "recEquip": "565,619,525",
+   "image": "images/units/918427.jpg",
+   "liveStats": {
+    "place3": 1.0115,
+    "won": 23.2,
+    "rate3": 0.06,
+    "count": 901685,
+    "top4": 59.5,
+    "place": 3.9006,
+    "key": "DA_18_Ivern"
+   }
+  },
+  {
+   "chessId": 918497,
+   "key": "DA_18_Rakan",
+   "name": "洛",
+   "title": "幻翎",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "花仙子"
+   ],
+   "jobs": [
+    "主宰",
+    "重装战士"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 35,
+    "magic": 105,
+    "spellBlock": 35,
+    "attackRange": 1,
+    "attackSpeed": "0.6",
+    "crit": 0.25,
+    "startMagic": 35,
+    "lifeData": "700/1260/2268",
+    "attackData": "45/68/101"
+   },
+   "skillName": "登场之舞",
+   "skillDetail": "获得持续4秒的<magicDamage>270/320/415/490 (【AP】)</magicDamage>护盾值。然后为本回合造成伤害最高的友军提供在4秒内持续衰减的<magicDamage>90%/100%/130%/160% (【AP】)</magicDamage>%攻击速度。<div class='skill-divider'></div><div class='skill-flex'><div>护盾值：<magicDamage>320 (【AP】)</magicDamage></div><div class='skill-text-white2'>[270/<span class='skill-text-white1'>320</span>/415/490]</div></div><div class='skill-flex'><div>攻击速度：<magicDamage>100% (【AP】)</magicDamage></div><div class='skill-text-white2'>[90%/<span class='skill-text-white1'>100%</span>/130%/160%]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918497.jpg",
+   "liveStats": {
+    "place3": 4.6898,
+    "won": 11.7,
+    "rate3": 5.93,
+    "count": 633644,
+    "top4": 43.8,
+    "place": 4.8047,
+    "key": "DA_18_Rakan"
+   }
+  },
+  {
+   "chessId": 918498,
+   "key": "DA_18_Xayah",
+   "name": "霞",
+   "title": "逆羽",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "永恒之森",
+    "花仙子"
+   ],
+   "jobs": [
+    "迅捷射手"
+   ],
+   "role": "物理射手",
+   "stats": {
+    "armor": 25,
+    "magic": 50,
+    "spellBlock": 25,
+    "attackRange": 4,
+    "attackSpeed": "0.7",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "450/810/1458",
+    "attackData": "45/68/101"
+   },
+   "skillName": "致死羽衣",
+   "skillDetail": "下5次攻击获得50%攻击速度。这些攻击会被替换为羽刃，造成<physicalDamage>68/102/155/165 (【AD】)</physicalDamage>物理伤害和<magicDamage>2 (【AP】)</magicDamage>护甲削减。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<physicalDamage>102 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[68/<span class='skill-text-white1'>102</span>/155/165]</div></div><div class='skill-flex'><div>护甲削减：<magicDamage>2 (【AP】)</magicDamage></div><div class='skill-text-white2'>&nbsp;</div></div>",
+   "recEquip": "539,535,31010",
+   "image": "images/units/918498.jpg",
+   "liveStats": {
+    "place3": 4.8707,
+    "won": 9.5,
+    "rate3": 19.87,
+    "count": 214579,
+    "top4": 44.2,
+    "place": 4.8393,
+    "key": "DA_18_Xayah"
+   }
+  },
+  {
+   "chessId": 918516,
+   "key": "DA_18_Ornn",
+   "name": "奥恩",
+   "title": "山隐之焰",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "永恒之森"
+   ],
+   "jobs": [
+    "护卫"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 40,
+    "magic": 100,
+    "spellBlock": 40,
+    "attackRange": 1,
+    "attackSpeed": "0.6",
+    "crit": 0.25,
+    "startMagic": 40,
+    "lifeData": "700/1260/2268",
+    "attackData": "40/60/90"
+   },
+   "skillName": "风箱炎息",
+   "skillDetail": "主动：获得持续4秒的<magicDamage>400/460/550/640 (【AP】)</magicDamage>护盾值，并对一个锥形范围内的敌人造成<magicDamage>200/300/450/765 (【AP】)</magicDamage>魔法伤害。<br>任务：每场玩家对战，【奥恩】将已格挡的伤害储存为【锻炉能量】，在3星时提高85%。他每次获得足够的【锻炉能量】时，就会获得1个【神器锻造器】。<rules>（锻炉能量：</rules><TFTAttribute attributeID=\"TFTSpellAttributes.Stack\" style=\"Rules\"/><rules>/</rules><TFTAttribute attributeID=\"TFTCalculationAttributes.GenericCalc1\" style=\"Rules\"/><rules>）</rules><div class='skill-divider'></div><div class='skill-flex'><div>护盾值：<magicDamage>460 (【AP】)</magicDamage></div><div class='skill-text-white2'>[400/<span class='skill-text-white1'>460</span>/550/640]</div></div><div class='skill-flex'><div>伤害：<magicDamage>300 (【AP】)</magicDamage></div><div class='skill-text-white2'>[200/<span class='skill-text-white1'>300</span>/450/765]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918516.jpg",
+   "liveStats": {
+    "place3": 4.2238,
+    "won": 12.7,
+    "rate3": 48.25,
+    "count": 679617,
+    "top4": 50.5,
+    "place": 4.4849,
+    "key": "DA_18_Ornn"
+   }
+  },
+  {
+   "chessId": 918523,
+   "key": "DA_18_Aphelios",
+   "name": "厄斐琉斯",
+   "title": "残月之肃",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "月蚀骑士"
+   ],
+   "jobs": [
+    "迅捷射手"
+   ],
+   "role": "物理射手",
+   "stats": {
+    "armor": 40,
+    "magic": 70,
+    "spellBlock": 40,
+    "attackRange": 4,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 20,
+    "lifeData": "850/1530/3754",
+    "attackData": "60/90/135"
+   },
+   "skillName": "月光对影",
+   "skillDetail": "装备断魄，并在2秒内对目标连续挥击6次，每次造成<physicalDamage>70/105/850 (【AD】)</physicalDamage>物理伤害。<br>攻势结束后，发射一道月光，造成<physicalDamage>490/735/5225 (【AD】【AP】)</physicalDamage>物理伤害，由半径2格内的所有敌人分摊。<div class='skill-divider'></div><div class='skill-flex'><div>挥击：6次 = 5 + 每20%额外【AS】1次</div><div class='skill-text-white2'>&nbsp;</div></div><div class='skill-flex'><div>挥击伤害：<physicalDamage>105 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[70/<span class='skill-text-white1'>105</span>/850]</div></div><div class='skill-flex'><div>月光爆炸伤害：【AP】</div><div class='skill-text-white2'>[40/<span class='skill-text-white1'>60</span>/225]</div></div><div class='skill-flex'><div>月光爆炸伤害：<physicalDamage>735 (【AD】【AP】)</physicalDamage> = <physicalDamage>675 (【AD】)</physicalDamage> + <magicDamage>60 (【AP】)</magicDamage></div><div class='skill-text-white2'>[450/<span class='skill-text-white1'>675</span>/5000]</div></div>",
+   "recEquip": "539,535,31010",
+   "image": "images/units/918523.jpg",
+   "liveStats": {
+    "place3": 1.1845,
+    "won": 9.3,
+    "rate3": 0.94,
+    "count": 714865,
+    "top4": 54.3,
+    "place": 4.3478,
+    "key": "DA_18_Aphelios"
+   }
+  },
+  {
+   "chessId": 918804,
+   "key": "DA_18_Yunara",
+   "name": "芸阿娜",
+   "title": "不破之誓",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "灵魂莲华"
+   ],
+   "jobs": [
+    "裁决使"
+   ],
+   "role": "物理术师",
+   "stats": {
+    "armor": 30,
+    "magic": 35,
+    "spellBlock": 30,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "550/990/1782",
+    "attackData": "42/63/95"
+   },
+   "skillName": "灵蕴拳",
+   "skillDetail": "冲刺并向当前目标发射一颗法球，造成<physicalDamage>170/255/395/670 (【AD】【AP】)</physicalDamage>物理伤害并分裂，对附近的2名敌人造成<physicalDamage>60/89/138/235 (【AD】【AP】)</physicalDamage>物理伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[10/<span class='skill-text-white1'>15</span>/25/40]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>255 (【AD】【AP】)</physicalDamage> = <physicalDamage>240 (【AD】)</physicalDamage> + <magicDamage>15 (【AP】)</magicDamage></div><div class='skill-text-white2'>[160/<span class='skill-text-white1'>240</span>/370/630]</div></div><div class='skill-flex'><div>次要伤害：<physicalDamage>89 (【AD】【AP】)</physicalDamage> = <TFTBonus>35%</TFTBonus> × (<physicalDamage>240 (【AD】)</physicalDamage> + <magicDamage>15 (【AP】)</magicDamage>)</div><div class='skill-text-white2'>[160/<span class='skill-text-white1'>240</span>/370/630] + [10/<span class='skill-text-white1'>15</span>/25/40]</div></div>",
+   "recEquip": "535,551,525",
+   "image": "images/units/918804.jpg",
+   "liveStats": {
+    "place3": 4.38,
+    "won": 10.1,
+    "rate3": 18.66,
+    "count": 219710,
+    "top4": 45.8,
+    "place": 4.7559,
+    "key": "DA_18_Yunara"
+   }
+  },
+  {
+   "chessId": 918875,
+   "key": "DA_18_Sett",
+   "name": "瑟提",
+   "title": "腕豪",
+   "otherNames": [
+    "劲夫"
+   ],
+   "price": 4,
+   "races": [
+    "灵魂莲华"
+   ],
+   "jobs": [
+    "斗士"
+   ],
+   "role": "物理坦克",
+   "stats": {
+    "armor": 60,
+    "magic": 135,
+    "spellBlock": 60,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 60,
+    "lifeData": "1200/2160/4888",
+    "attackData": "80/120/180"
+   },
+   "skillName": "蓄意轰拳",
+   "skillDetail": "被动：每场战斗中首次跌至40%最大生命值以下时，获得100法力值。<br>主动：蓄力打出一记重拳，从而快速回复<scaleHealth>369/419/2144 (【HP】【AP】)</scaleHealth>生命值，随后在一个大型锥形范围内造成<physicalDamage>222/297/5072 (【HP】【AD】)</physicalDamage>物理伤害。<div class='skill-divider'></div><div class='skill-flex'><div>治疗量：<scaleHealth>419 (【HP】【AP】)</scaleHealth> = <scaleHealth>12% (【HP】)</scaleHealth> + <scaleHealth>275 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[225/<span class='skill-text-white1'>275</span>/2000]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>297 (【HP】【AD】)</physicalDamage> = <physicalDamage>6% (【HP】)</physicalDamage> + <physicalDamage>225 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[150/<span class='skill-text-white1'>225</span>/5000]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918875.jpg",
+   "liveStats": {
+    "place3": 1.235,
+    "won": 10.9,
+    "rate3": 0.7,
+    "count": 697443,
+    "top4": 50.8,
+    "place": 4.4749,
+    "key": "DA_18_Sett"
+   }
+  },
+  {
+   "chessId": 918876,
+   "key": "DA_18_Lillia",
+   "name": "莉莉娅",
+   "title": "含羞蓓蕾",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "花仙子"
+   ],
+   "jobs": [
+    "护卫"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 60,
+    "magic": 140,
+    "spellBlock": 60,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 40,
+    "lifeData": "1300/2340/5212",
+    "attackData": "40/60/90"
+   },
+   "skillName": "夜阑谣",
+   "skillDetail": "回复<scaleHealth>350/525/800 (【AP】)</scaleHealth>生命值，并向附近的敌人们放出4只蝴蝶。在命中敌人时造成<magicDamage>90/135/2000 (【AP】)</magicDamage>魔法伤害并施加1.5/1.75/8秒昏睡。如果目标受到的伤害达到1000，则会醒来并额外受到<magicDamage>10%</magicDamage>最大生命值的魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>治疗量：<scaleHealth>525 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[350/<span class='skill-text-white1'>525</span>/800]</div></div><div class='skill-flex'><div>伤害：<magicDamage>135 (【AP】)</magicDamage></div><div class='skill-text-white2'>[90/<span class='skill-text-white1'>135</span>/2000]</div></div><div class='skill-flex'><div>昏睡时长：1.75</div><div class='skill-text-white2'>[1.5/<span class='skill-text-white1'>1.75</span>/8]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918876.jpg",
+   "liveStats": {
+    "place3": 1.4011,
+    "won": 11.7,
+    "rate3": 0.58,
+    "count": 337543,
+    "top4": 47.7,
+    "place": 4.6055,
+    "key": "DA_18_Lillia"
+   }
+  },
+  {
+   "chessId": 918954,
+   "key": "DA_18_Kobuko",
+   "name": "可酷伯",
+   "title": "可酷伯",
+   "otherNames": [
+    "胖猫"
+   ],
+   "price": 1,
+   "races": [
+    "约德尔人和朋友"
+   ],
+   "jobs": [
+    "斗士"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 40,
+    "magic": 90,
+    "spellBlock": 40,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "700/1260/2268",
+    "attackData": "55/83/124"
+   },
+   "skillName": "生命之舞",
+   "skillDetail": "在2秒里持续回复共<scaleHealth>314/364/509/818 (【HP】【AP】)</scaleHealth>生命值。下一次攻击被替换为猛击，造成<magicDamage>140/175/220/348 (【HP】【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>治疗量：<scaleHealth>364 (【HP】【AP】)</scaleHealth> = <scaleHealth>7% (【HP】)</scaleHealth> + <scaleHealth>315 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[265/<span class='skill-text-white1'>315</span>/460/575]</div></div><div class='skill-flex'><div>伤害：<magicDamage>175 (【HP】【AP】)</magicDamage> = <magicDamage>10% (【HP】)</magicDamage> + <magicDamage>105 (【AP】)</magicDamage></div><div class='skill-text-white2'>[70/<span class='skill-text-white1'>105</span>/150/0]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918954.jpg",
+   "liveStats": {
+    "place3": 4.9099,
+    "won": 10.0,
+    "rate3": 27.6,
+    "count": 99658,
+    "top4": 45.3,
+    "place": 4.7659,
+    "key": "DA_18_Kobuko"
+   }
+  },
+  {
+   "chessId": 918955,
+   "key": "DA_18_Alune",
+   "name": "拉露恩",
+   "title": "拉露恩",
+   "otherNames": null,
+   "price": 5,
+   "races": [
+    "月华神女",
+    "月蚀骑士"
+   ],
+   "jobs": [
+    "法师"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 45,
+    "magic": 35,
+    "spellBlock": 45,
+    "attackRange": 4,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "900/1620/6916",
+    "attackData": "40/60/90"
+   },
+   "skillName": "月之降临",
+   "skillDetail": "向3个最近的敌人降下9枚月光碎片，每枚造成<magicDamage>55/83/500 (【AP】)</magicDamage>魔法伤害。<br>满月时，月曜降临，造成由所有敌人分摊的<magicDamage>2350/3600/7500 (【AP】)</magicDamage>魔法伤害。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>83 (【AP】)</magicDamage></div><div class='skill-text-white2'>[55/<span class='skill-text-white1'>83</span>/500]</div></div><div class='skill-flex'><div>满月伤害：<magicDamage>3600 (【AP】)</magicDamage></div><div class='skill-text-white2'>[2350/<span class='skill-text-white1'>3600</span>/7500]</div></div>",
+   "recEquip": "565,619,525",
+   "image": "images/units/918955.jpg",
+   "liveStats": {
+    "place3": 1.0396,
+    "won": 20.2,
+    "rate3": 0.12,
+    "count": 540791,
+    "top4": 65.3,
+    "place": 3.695,
+    "key": "DA_18_Alune"
+   }
+  },
+  {
+   "chessId": 918989,
+   "key": "DA_18_Sentry",
+   "name": "苍蓝哨戒",
+   "title": "驻灵",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "峡谷野怪"
+   ],
+   "jobs": [
+    "神谕"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 25,
+    "magic": 70,
+    "spellBlock": 25,
+    "attackRange": 4,
+    "attackSpeed": "0.8",
+    "crit": 0.25,
+    "startMagic": 30,
+    "lifeData": "500/900/1620",
+    "attackData": "35/53/79"
+   },
+   "skillName": "蔚蓝激光",
+   "skillDetail": "开始每秒消耗35%最大法力值，并对目标引导一道激光。引导期间，每秒对其造成<magicDamage>160/240/360/615 (【AP】)</magicDamage>魔法伤害，并使其魔法抗性降低3。<br>青霸符：每引导4秒，就会获得2法力回复。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>240 (【AP】)</magicDamage></div><div class='skill-text-white2'>[160/<span class='skill-text-white1'>240</span>/360/615]</div></div>",
+   "recEquip": "567,565,553",
+   "image": "images/units/918989.jpg",
+   "liveStats": {
+    "place3": 4.4287,
+    "won": 9.9,
+    "rate3": 14.0,
+    "count": 411115,
+    "top4": 51.2,
+    "place": 4.4818,
+    "key": "DA_18_Sentry"
+   }
+  },
+  {
+   "chessId": 918990,
+   "key": "DA_Cinderling18",
+   "name": "绯红树怪",
+   "title": "绯红树怪",
+   "otherNames": null,
+   "price": 1,
+   "races": [
+    "峡谷野怪"
+   ],
+   "jobs": [
+    "猎人"
+   ],
+   "role": "物理术师",
+   "stats": {
+    "armor": 25,
+    "magic": 50,
+    "spellBlock": 25,
+    "attackRange": 4,
+    "attackSpeed": "0.7",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "500/900/1620",
+    "attackData": "40/60/90"
+   },
+   "skillName": "刃叶",
+   "skillDetail": "召唤五片锋利如剃刀的叶子，朝当前目标聚拢，造成总计<physicalDamage>340/510/770/1315 (【AD】【AP】)</physicalDamage>物理伤害，并施加持续4秒的20%<TFTKeyword>重伤</TFTKeyword>效果和1%<TFTKeyword>灼烧</TFTKeyword>效果。<br>绯红霸符：【绯红树怪】每次技能施放获得22%物理加成。<br><rules>重伤：降低受到的治疗效果。</rules><br><rules>灼烧：每秒造成目标一部分最大生命值的真实伤害。</rules><div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[30/<span class='skill-text-white1'>45</span>/70/115]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>510 (【AD】【AP】)</physicalDamage> = <physicalDamage>465 (【AD】)</physicalDamage> + <magicDamage>45 (【AP】)</magicDamage></div><div class='skill-text-white2'>[310/<span class='skill-text-white1'>465</span>/700/1200]</div></div>",
+   "recEquip": "539,535,525",
+   "image": "images/units/918990.jpg",
+   "liveStats": {
+    "place3": 4.4836,
+    "won": 6.6,
+    "rate3": 23.0,
+    "count": 173540,
+    "top4": 45.4,
+    "place": 4.7946,
+    "key": "DA_Cinderling18"
+   }
+  },
+  {
+   "chessId": 918991,
+   "key": "DA_Gromp18_AP",
+   "name": "魔沼蛙",
+   "title": "魔沼蛙",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "峡谷野怪"
+   ],
+   "jobs": [
+    "魔战士"
+   ],
+   "role": "魔法术师",
+   "stats": {
+    "armor": 30,
+    "magic": 45,
+    "spellBlock": 30,
+    "attackRange": 4,
+    "attackSpeed": "0.7",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "550/990/1782",
+    "attackData": "30/45/68"
+   },
+   "skillName": "打嗝泡泡",
+   "skillDetail": "【魔战士】【AP】：向当前目标吐出一团毒泡泡，在命中第一名敌人时爆炸，造成<magicDamage>225/340/535/910 (【AP】)</magicDamage>魔法伤害。半径1格内的敌人将在3秒里持续受到<magicDamage>175/265/410/700 (【AP】)</magicDamage>魔法伤害。<br>紫霸符：每5秒，【魔沼蛙】获得30%法术加成。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<magicDamage>340 (【AP】)</magicDamage></div><div class='skill-text-white2'>[225/<span class='skill-text-white1'>340</span>/535/910]</div></div><div class='skill-flex'><div>范围伤害：<magicDamage>265 (【AP】)</magicDamage></div><div class='skill-text-white2'>[175/<span class='skill-text-white1'>265</span>/410/700]</div></div>",
+   "recEquip": "565,619,619",
+   "image": "images/units/918991.jpg",
+   "liveStats": {
+    "place3": 4.8127,
+    "won": 5.2,
+    "rate3": 30.46,
+    "count": 72961,
+    "top4": 44.3,
+    "place": 4.8751,
+    "key": "DA_Gromp18_AP"
+   }
+  },
+  {
+   "chessId": 918992,
+   "key": "DA_Murkwolf18",
+   "name": "暗影狼",
+   "title": "暗影狼",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "峡谷野怪"
+   ],
+   "jobs": [
+    "狂战士"
+   ],
+   "role": "物理刺客",
+   "stats": {
+    "armor": 40,
+    "magic": 40,
+    "spellBlock": 40,
+    "attackRange": 1,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "700/1260/2268",
+    "attackData": "50/75/113"
+   },
+   "skillName": "撕裂之爪",
+   "skillDetail": "跃向3格内生命值最低的敌人，造成<physicalDamage>120/180/270/455 (【AD】【AP】)</physicalDamage>物理伤害。接下来的2次攻击获得175%攻击速度并造成<physicalDamage>65/100/160/275 (【AD】)</physicalDamage>额外物理伤害。<br>灰霸符：获得【技能暴击】和25%暴击几率，基于已损失生命值至多提升至75%。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[20/<span class='skill-text-white1'>30</span>/45/75]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>180 (【AD】【AP】)</physicalDamage> = <physicalDamage>150 (【AD】)</physicalDamage> + <magicDamage>30 (【AP】)</magicDamage></div><div class='skill-text-white2'>[100/<span class='skill-text-white1'>150</span>/225/380]</div></div><div class='skill-flex'><div>强化伤害：<physicalDamage>100 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[65/<span class='skill-text-white1'>100</span>/160/275]</div></div>",
+   "recEquip": "529,618,613",
+   "image": "images/units/918992.jpg",
+   "liveStats": {
+    "place3": 4.2796,
+    "won": 6.8,
+    "rate3": 35.18,
+    "count": 151188,
+    "top4": 48.3,
+    "place": 4.65,
+    "key": "DA_Murkwolf18"
+   }
+  },
+  {
+   "chessId": 918993,
+   "key": "DA_Krug18",
+   "name": "远古石甲虫",
+   "title": "石甲虫",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "峡谷野怪"
+   ],
+   "jobs": [
+    "斗士"
+   ],
+   "role": "物理坦克",
+   "stats": {
+    "armor": 40,
+    "magic": 135,
+    "spellBlock": 40,
+    "attackRange": 1,
+    "attackSpeed": "0.6",
+    "crit": 0.25,
+    "startMagic": 80,
+    "lifeData": "1100/1980/3564",
+    "attackData": "55/83/124"
+   },
+   "skillName": "岩之摇滚",
+   "skillDetail": "被动：阵亡时，分裂成两个【小型石甲虫】，每个拥有<scaleHealth>182/232/312 (【HP】)</scaleHealth>生命值，并且它们会立即进行嘲讽从而迫使敌人们对其进行攻击。<br>主动：获得<scaleHealth>175/225/325 (【AP】)</scaleHealth>最大生命值，然后滚向目标，从而造成<physicalDamage>223/288/423 (【AD】【HP】)</physicalDamage>伤害。<br>蓝灰霸符：阵亡时，【石甲虫】和【小型石甲虫】为友军提供8%最大生命值的护盾值。<div class='skill-divider'></div><div class='skill-flex'><div>【小型石甲虫】生命值：<scaleHealth>232 (【HP】)</scaleHealth> = <scaleHealth>12% (【HP】)</scaleHealth> + <scaleHealth>100</scaleHealth></div><div class='skill-text-white2'>[50/<span class='skill-text-white1'>100</span>/180]</div></div><div class='skill-flex'><div>额外生命值：<scaleHealth>225 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[175/<span class='skill-text-white1'>225</span>/325]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>288 (【AD】【HP】)</physicalDamage> = <physicalDamage>8% (【HP】)</physicalDamage> + <physicalDamage>200 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[135/<span class='skill-text-white1'>200</span>/335]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918993.jpg",
+   "liveStats": {
+    "place3": 3.7768,
+    "won": 9.3,
+    "rate3": 10.84,
+    "count": 594384,
+    "top4": 50.2,
+    "place": 4.5314,
+    "key": "DA_Krug18"
+   }
+  },
+  {
+   "chessId": 918994,
+   "key": "DA_Scuttlecrab18",
+   "name": "峡谷迅捷蟹",
+   "title": "迅捷蟹",
+   "otherNames": null,
+   "price": 2,
+   "races": [
+    "峡谷野怪"
+   ],
+   "jobs": [
+    "主宰"
+   ],
+   "role": "物理坦克",
+   "stats": {
+    "armor": 45,
+    "magic": 100,
+    "spellBlock": 45,
+    "attackRange": 1,
+    "attackSpeed": "0.65",
+    "crit": 0.25,
+    "startMagic": 40,
+    "lifeData": "950/1710/3078",
+    "attackData": "50/75/113"
+   },
+   "skillName": "这种快乐你懂吗？",
+   "skillDetail": "被动：攻击被替换为一次舞蹈，对邻格的所有敌人造成<physicalDamage>50/75/112.5/168.75 (【AD】)</physicalDamage>物理伤害。<br>主动：钻入地下，获得15%伤害减免，持续3秒，并在此期间持续回复<scaleHealth>325/400/675/850 (【AP】)</scaleHealth>生命值。<br>绿霸符：当友军跌下50%生命值时，其回复15%最大生命值。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：<physicalDamage>75 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[50/<span class='skill-text-white1'>75</span>/112.5/168.75]</div></div><div class='skill-flex'><div>治疗量：<scaleHealth>400 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[325/<span class='skill-text-white1'>400</span>/675/850]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918994.jpg",
+   "liveStats": {
+    "place3": 4.4511,
+    "won": 10.8,
+    "rate3": 12.34,
+    "count": 585876,
+    "top4": 46.0,
+    "place": 4.6968,
+    "key": "DA_Scuttlecrab18"
+   }
+  },
+  {
+   "chessId": 918995,
+   "key": "DA_CrimsonRaptor18",
+   "name": "深红锋喙鸟",
+   "title": "锋喙鸟",
+   "otherNames": null,
+   "price": 3,
+   "races": [
+    "峡谷野怪"
+   ],
+   "jobs": [
+    "召唤师",
+    "迅捷射手"
+   ],
+   "role": "物理射手",
+   "stats": {
+    "armor": 35,
+    "magic": 60,
+    "spellBlock": 35,
+    "attackRange": 4,
+    "attackSpeed": "0.75",
+    "crit": 0.25,
+    "startMagic": 20,
+    "lifeData": "650/1170/2106",
+    "attackData": "55/83/124"
+   },
+   "skillName": "鸟群之家",
+   "skillDetail": "在附近召唤4只不可被选取的【小锋喙鸟】，持续<magicDamage>5.0 (【AP】)</magicDamage>秒。每次【深红锋喙鸟】攻击时，【小锋喙鸟】也会攻击同一敌人，造成<physicalDamage>22/33/48 (【AD】)</physicalDamage>物理伤害。<br>橙霸符：造成物理伤害时会使敌人的护甲降低2。<div class='skill-divider'></div><div class='skill-flex'><div>持续时长：<magicDamage>5.0 (【AP】)</magicDamage></div><div class='skill-text-white2'>&nbsp;</div></div><div class='skill-flex'><div>伤害：<physicalDamage>33 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[22/<span class='skill-text-white1'>33</span>/48]</div></div>",
+   "recEquip": "539,31010,551",
+   "image": "images/units/918995.jpg",
+   "liveStats": {
+    "place3": 4.3462,
+    "won": 8.6,
+    "rate3": 4.68,
+    "count": 176934,
+    "top4": 49.9,
+    "place": 4.5715,
+    "key": "DA_CrimsonRaptor18"
+   }
+  },
+  {
+   "chessId": 918996,
+   "key": "DA_Brambleback18",
+   "name": "绯红印记树怪",
+   "title": "绯红印记树怪",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "峡谷野怪"
+   ],
+   "jobs": [
+    "狂战士"
+   ],
+   "role": "物理战士",
+   "stats": {
+    "armor": 65,
+    "magic": 40,
+    "spellBlock": 65,
+    "attackRange": 1,
+    "attackSpeed": "0.55",
+    "crit": 0.25,
+    "startMagic": 0,
+    "lifeData": "1100/1980/4564",
+    "attackData": "120/180/270"
+   },
+   "skillName": "猩红之怒",
+   "skillDetail": "被动：当目标阵亡时，跃至下个目标，从而造成<physicalDamage>155/235/1000 (【AD】)</physicalDamage>物理伤害。<br>主动：获得持续8秒的80%/80%/300%物理加成。在此期间，无视45%/45%/90% (【AP】)护甲。<br>红霸符：攻击1%灼烧敌人并治疗【绯红印记树怪】4%最大生命值。<div class='skill-divider'></div><div class='skill-flex'><div>跃击伤害：<physicalDamage>235 (【AD】)</physicalDamage></div><div class='skill-text-white2'>[155/<span class='skill-text-white1'>235</span>/1000]</div></div><div class='skill-flex'><div>额外攻击伤害：80%</div><div class='skill-text-white2'>[80%/<span class='skill-text-white1'>80%</span>/300%]</div></div><div class='skill-flex'><div>无视护甲：45% (【AP】) = 20% + <magicDamage>25% (【AP】)</magicDamage></div><div class='skill-text-white2'>[25%/<span class='skill-text-white1'>25%</span>/70%]</div></div>",
+   "recEquip": "529,618,613",
+   "image": "images/units/918996.jpg",
+   "liveStats": {
+    "place3": 1.2989,
+    "won": 9.0,
+    "rate3": 1.06,
+    "count": 265935,
+    "top4": 52.9,
+    "place": 4.4029,
+    "key": "DA_Brambleback18"
+   }
+  },
+  {
+   "chessId": 918997,
+   "key": "DA_Sentinel18",
+   "name": "苍蓝雕纹魔像",
+   "title": "苍蓝雕纹魔像",
+   "otherNames": null,
+   "price": 4,
+   "races": [
+    "峡谷野怪"
+   ],
+   "jobs": [
+    "重装战士",
+    "神谕"
+   ],
+   "role": "魔法坦克",
+   "stats": {
+    "armor": 60,
+    "magic": 150,
+    "spellBlock": 60,
+    "attackRange": 1,
+    "attackSpeed": "0.6",
+    "crit": 0.25,
+    "startMagic": 60,
+    "lifeData": "1300/2340/5212",
+    "attackData": "75/113/169"
+   },
+   "skillName": "蔚蓝冲击波",
+   "skillDetail": "获得持续4秒的<scaleHealth>480/580/2130 (【AP】【HP】)</scaleHealth>护盾值。猛击地面，向敌人最密集的方向发出一道裂隙。被命中的敌人会被短暂击飞，受到<magicDamage>100/150/3500 (【AP】)</magicDamage>魔法伤害和10<TFTKeyword>破法</TFTKeyword>。<br>蓝霸符：【苍蓝雕纹魔像】每次施放技能时，友军们就会获得2法力回复。<br><rules>破法：提升下一次技能施放的法力消耗。</rules><div class='skill-divider'></div><div class='skill-flex'><div>护盾值：<scaleHealth>580 (【AP】【HP】)</scaleHealth> = <scaleHealth>10% (【HP】)</scaleHealth> + <scaleHealth>450 (【AP】)</scaleHealth></div><div class='skill-text-white2'>[350/<span class='skill-text-white1'>450</span>/2000]</div></div><div class='skill-flex'><div>伤害：<magicDamage>150 (【AP】)</magicDamage></div><div class='skill-text-white2'>[100/<span class='skill-text-white1'>150</span>/3500]</div></div>",
+   "recEquip": "581,31012,597",
+   "image": "images/units/918997.jpg",
+   "liveStats": {
+    "place3": 1.1683,
+    "won": 12.8,
+    "rate3": 0.15,
+    "count": 1611495,
+    "top4": 52.7,
+    "place": 4.3662,
+    "key": "DA_Sentinel18"
+   }
+  },
+  {
+   "chessId": 918998,
+   "key": "DA_18_ElderDragon",
+   "name": "远古巨龙",
+   "title": "远古巨龙",
+   "otherNames": [
+    "大龙"
+   ],
+   "price": 5,
+   "races": [
+    "顶级掠食者",
+    "峡谷野怪"
+   ],
+   "jobs": [],
+   "role": "物理战士",
+   "stats": {
+    "armor": 75,
+    "magic": 60,
+    "spellBlock": 75,
+    "attackRange": 2,
+    "attackSpeed": "0.5",
+    "crit": 0.25,
+    "startMagic": 20,
+    "lifeData": "1800/3240/9832",
+    "attackData": "125/188/281"
+   },
+   "skillName": "绝伦火热",
+   "skillDetail": "被动：普攻对目标邻格的敌人们造成75%/75%/100%伤害。<br>主动：变成免疫伤害状态并飞到空中。在返程时，对所有敌人造成1.25/1.25/99秒晕眩，获得15%/15%/100%全能吸血，并对他们施加持续3/3/99秒的【引燃】。被【引燃】的敌人每秒受到<physicalDamage>2%/2%/20%</physicalDamage>最大生命值的物理伤害。将该技能替换为【烈焰吐息】并立刻施放它。<br>烈焰吐息：对贯穿目标的一条敌人最多的直线喷吐火焰，从而造成<physicalDamage>305/465/7200 (【AD】【AP】)</physicalDamage>物理伤害，每经过1名敌人该伤害衰减20%(最低至20%)。对那些敌人施加持续3/3/99秒的【引燃】。<br>远古巨龙霸符：对低于12%生命值的敌人造成伤害时会将其处决。<div class='skill-divider'></div><div class='skill-flex'><div>伤害：【AP】</div><div class='skill-text-white2'>[20/<span class='skill-text-white1'>30</span>/200]</div></div><div class='skill-flex'><div>伤害：<physicalDamage>465 (【AD】【AP】)</physicalDamage> = <physicalDamage>435 (【AD】)</physicalDamage> + <magicDamage>30 (【AP】)</magicDamage></div><div class='skill-text-white2'>[285/<span class='skill-text-white1'>435</span>/7000]</div></div>",
+   "recEquip": "529,618,613",
+   "image": "images/units/918998.jpg",
+   "liveStats": {
+    "place3": 1.023,
+    "won": 21.0,
+    "rate3": 0.2,
+    "count": 494253,
+    "top4": 54.0,
+    "place": 4.1737,
+    "key": "DA_18_ElderDragon"
+   }
+  }
+ ],
+ "extraUnits": [
+  {
+   "chessId": 918099,
+   "key": "DA_18_Lux_Inferno",
+   "name": "拉克丝 地狱火",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.0205,
+    "won": 26.9,
+    "rate3": 0.15,
+    "count": 95041,
+    "top4": 64.2,
+    "place": 3.6297,
+    "key": "DA_18_Lux_Inferno"
+   },
+   "isMonster": false
+  },
+  {
+   "chessId": 918099,
+   "key": "DA_18_Lux_Primal",
+   "name": "拉克丝 野兽之灵",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.038,
+    "won": 22.8,
+    "rate3": 0.09,
+    "count": 85590,
+    "top4": 67.0,
+    "place": 3.5744,
+    "key": "DA_18_Lux_Primal"
+   },
+   "isMonster": false
+  },
+  {
+   "chessId": 918099,
+   "key": "DA_Lux18_Blackthorn",
+   "name": "拉克丝 黑荆棘",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.0667,
+    "won": 27.1,
+    "rate3": 0.04,
+    "count": 74249,
+    "top4": 70.5,
+    "place": 3.361,
+    "key": "DA_Lux18_Blackthorn"
+   },
+   "isMonster": false
+  },
+  {
+   "chessId": 918099,
+   "key": "DA_18_Lux_Elderwood",
+   "name": "拉克丝 永恒之森",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.0933,
+    "won": 25.6,
+    "rate3": 0.1,
+    "count": 73293,
+    "top4": 66.9,
+    "place": 3.5318,
+    "key": "DA_18_Lux_Elderwood"
+   },
+   "isMonster": false
+  },
+  {
+   "chessId": 918099,
+   "key": "DA_18_Lux_Moonbeam",
+   "name": "拉克丝 月蚀骑士",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.06,
+    "won": 24.4,
+    "rate3": 0.07,
+    "count": 72933,
+    "top4": 71.9,
+    "place": 3.345,
+    "key": "DA_18_Lux_Moonbeam"
+   },
+   "isMonster": false
+  },
+  {
+   "chessId": 918099,
+   "key": "DA_Lux18_Blossom",
+   "name": "拉克丝 灵魂莲华",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.0496,
+    "won": 21.5,
+    "rate3": 0.21,
+    "count": 58458,
+    "top4": 64.3,
+    "place": 3.7184,
+    "key": "DA_Lux18_Blossom"
+   },
+   "isMonster": false
+  },
+  {
+   "chessId": 918099,
+   "key": "DA_18_Lux_Coven",
+   "name": "拉克丝 魔女",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.0261,
+    "won": 20.9,
+    "rate3": 0.97,
+    "count": 31374,
+    "top4": 44.4,
+    "place": 4.7015,
+    "key": "DA_18_Lux_Coven"
+   },
+   "isMonster": false
+  },
+  {
+   "chessId": 918099,
+   "key": "DA_18_Lux_Fae",
+   "name": "拉克丝 花仙子",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.0,
+    "won": 22.0,
+    "rate3": 0.27,
+    "count": 13118,
+    "top4": 60.5,
+    "place": 3.9033,
+    "key": "DA_18_Lux_Fae"
+   },
+   "isMonster": false
+  },
+  {
+   "chessId": 918099,
+   "key": "DA_18_Lux_Sunbeam",
+   "name": "拉克丝 日蚀骑士",
+   "image": "images/units/918099.jpg",
+   "liveStats": {
+    "place3": 1.25,
+    "won": 26.3,
+    "rate3": 0.15,
+    "count": 5446,
+    "top4": 66.4,
+    "place": 3.5881,
+    "key": "DA_18_Lux_Sunbeam"
+   },
+   "isMonster": false
+  }
+ ],
+ "fetchedAt": "2026-10-04 02:43:43"
+}

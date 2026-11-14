@@ -1,0 +1,7126 @@
+{
+ "_note": "内存 iTableID -> 装备名称 直查表; 由 scripts/gen_equip_name_map.py 从 equip_id_map.json (table_to_equip + by_name + client_name) + items.json 合成, 配对积累/内存配置表更新后重跑本脚本更新。alias=True 的条目只用来显示名字, 不参与名字->tableId 反查 (同名多 ID, 见 mem_provider.equip_table_of)",
+ "table": {
+  "1003": {
+   "equipId": 503,
+   "name": "无用大棒",
+   "type2": "part"
+  },
+  "1001": {
+   "equipId": 501,
+   "name": "暴风大剑",
+   "type2": "part"
+  },
+  "1009": {
+   "equipId": 509,
+   "name": "拳套",
+   "type2": "part"
+  },
+  "1004": {
+   "equipId": 504,
+   "name": "女神之泪",
+   "type2": "part"
+  },
+  "1007": {
+   "equipId": 507,
+   "name": "巨人腰带",
+   "type2": "part"
+  },
+  "2010": {
+   "equipId": 539,
+   "name": "鬼索的狂暴之刃",
+   "type2": "common"
+  },
+  "2028": {
+   "equipId": 581,
+   "name": "石像鬼石板甲",
+   "type2": "common"
+  },
+  "2034": {
+   "equipId": 597,
+   "name": "狂徒铠甲",
+   "type2": "common"
+  },
+  "2001": {
+   "equipId": 535,
+   "name": "无尽之刃",
+   "type2": "common"
+  },
+  "1006": {
+   "equipId": 506,
+   "name": "负极斗篷",
+   "type2": "part"
+  },
+  "2027": {
+   "equipId": 579,
+   "name": "棘刺背心",
+   "type2": "common"
+  },
+  "2031": {
+   "equipId": 609,
+   "name": "巨龙之爪",
+   "type2": "common"
+  },
+  "2046": {
+   "equipId": 521,
+   "name": "巨人杀手",
+   "type2": "common"
+  },
+  "2017": {
+   "equipId": 555,
+   "name": "大天使之杖",
+   "type2": "common"
+  },
+  "1002": {
+   "equipId": 502,
+   "name": "反曲之弓",
+   "type2": "part"
+  },
+  "1005": {
+   "equipId": 505,
+   "name": "锁子甲",
+   "type2": "part"
+  },
+  "1008": {
+   "equipId": 508,
+   "name": "金铲铲",
+   "type2": "part"
+  },
+  "1010": {
+   "equipId": 31000,
+   "name": "金锅锅",
+   "type2": "part"
+  },
+  "2003": {
+   "equipId": 610,
+   "name": "海克斯科技枪刃",
+   "type2": "common"
+  },
+  "2004": {
+   "equipId": 525,
+   "name": "朔极之矛",
+   "type2": "common"
+  },
+  "2005": {
+   "equipId": 615,
+   "name": "夜之锋刃",
+   "type2": "common"
+  },
+  "2007": {
+   "equipId": 618,
+   "name": "斯特拉克的挑战护手",
+   "type2": "common"
+  },
+  "2009": {
+   "equipId": 624,
+   "name": "红霸符",
+   "type2": "common"
+  },
+  "2011": {
+   "equipId": 31008,
+   "name": "虚空之杖",
+   "type2": "common"
+  },
+  "2012": {
+   "equipId": 613,
+   "name": "泰坦的坚决",
+   "type2": "common"
+  },
+  "2013": {
+   "equipId": 31010,
+   "name": "海妖之怒",
+   "type2": "common"
+  },
+  "2014": {
+   "equipId": 619,
+   "name": "纳什之牙",
+   "type2": "common"
+  },
+  "2018": {
+   "equipId": 620,
+   "name": "冕卫",
+   "type2": "common"
+  },
+  "2019": {
+   "equipId": 611,
+   "name": "离子火花",
+   "type2": "common"
+  },
+  "2020": {
+   "equipId": 561,
+   "name": "莫雷洛秘典",
+   "type2": "common"
+  },
+  "2022": {
+   "equipId": 567,
+   "name": "蓝霸符",
+   "type2": "common"
+  },
+  "2023": {
+   "equipId": 616,
+   "name": "圣盾使的誓约",
+   "type2": "common"
+  },
+  "2024": {
+   "equipId": 621,
+   "name": "适应性头盔",
+   "type2": "common"
+  },
+  "2025": {
+   "equipId": 31012,
+   "name": "振奋盔甲",
+   "type2": "common"
+  },
+  "2029": {
+   "equipId": 583,
+   "name": "日炎斗篷",
+   "type2": "common"
+  },
+  "2032": {
+   "equipId": 623,
+   "name": "薄暮法袍",
+   "type2": "common"
+  },
+  "2036": {
+   "equipId": 608,
+   "name": "金铲铲冠冕",
+   "type2": "common"
+  },
+  "2037": {
+   "equipId": 551,
+   "name": "最后的轻语",
+   "type2": "common"
+  },
+  "2038": {
+   "equipId": 565,
+   "name": "珠光护手",
+   "type2": "common"
+  },
+  "2039": {
+   "equipId": 577,
+   "name": "正义之手",
+   "type2": "common"
+  },
+  "2040": {
+   "equipId": 625,
+   "name": "坚定之心",
+   "type2": "common"
+  },
+  "2041": {
+   "equipId": 595,
+   "name": "水银",
+   "type2": "common"
+  },
+  "2042": {
+   "equipId": 617,
+   "name": "强袭者的链枷",
+   "type2": "common"
+  },
+  "2047": {
+   "equipId": 31002,
+   "name": "金锅锅冠冕",
+   "type2": "common"
+  },
+  "2048": {
+   "equipId": 31003,
+   "name": "金锅铲冠冕",
+   "type2": "common"
+  },
+  "2059": {
+   "equipId": 1535,
+   "name": "光明版无尽之刃",
+   "type2": "guangming"
+  },
+  "2060": {
+   "equipId": 1523,
+   "name": "光明版海克斯科技枪刃",
+   "type2": "guangming"
+  },
+  "2061": {
+   "equipId": 1525,
+   "name": "光明版朔极之矛",
+   "type2": "guangming"
+  },
+  "2062": {
+   "equipId": 1527,
+   "name": "光明版夜之锋刃",
+   "type2": "guangming"
+  },
+  "2064": {
+   "equipId": 1618,
+   "name": "光明版斯特拉克的挑战护手",
+   "type2": "guangming"
+  },
+  "2065": {
+   "equipId": 1624,
+   "name": "光明版红霸符",
+   "type2": "guangming"
+  },
+  "2066": {
+   "equipId": 1539,
+   "name": "光明版鬼索的狂暴之刃",
+   "type2": "guangming"
+  },
+  "2067": {
+   "equipId": 31009,
+   "name": "光明版虚空之杖",
+   "type2": "guangming"
+  },
+  "2068": {
+   "equipId": 1543,
+   "name": "光明版泰坦的坚决",
+   "type2": "guangming"
+  },
+  "2069": {
+   "equipId": 31011,
+   "name": "光明版海妖之怒",
+   "type2": "guangming"
+  },
+  "2070": {
+   "equipId": 1619,
+   "name": "光明版纳什之牙",
+   "type2": "guangming"
+  },
+  "2072": {
+   "equipId": 1555,
+   "name": "光明版大天使之杖",
+   "type2": "guangming"
+  },
+  "2073": {
+   "equipId": 1620,
+   "name": "光明版冕卫",
+   "type2": "guangming"
+  },
+  "2074": {
+   "equipId": 1559,
+   "name": "光明版离子火花",
+   "type2": "guangming"
+  },
+  "2075": {
+   "equipId": 1561,
+   "name": "光明版莫雷洛秘典",
+   "type2": "guangming"
+  },
+  "2076": {
+   "equipId": 1567,
+   "name": "光明版蓝霸符",
+   "type2": "guangming"
+  },
+  "2077": {
+   "equipId": 1616,
+   "name": "光明版圣盾使的誓约",
+   "type2": "guangming"
+  },
+  "2078": {
+   "equipId": 1621,
+   "name": "光明版适应性头盔",
+   "type2": "guangming"
+  },
+  "2079": {
+   "equipId": 31013,
+   "name": "光明版振奋盔甲",
+   "type2": "guangming"
+  },
+  "2080": {
+   "equipId": 1579,
+   "name": "光明版棘刺背心",
+   "type2": "guangming"
+  },
+  "2081": {
+   "equipId": 1581,
+   "name": "光明版石像鬼石板甲",
+   "type2": "guangming"
+  },
+  "2082": {
+   "equipId": 1583,
+   "name": "光明版日炎斗篷",
+   "type2": "guangming"
+  },
+  "2083": {
+   "equipId": 30044,
+   "name": "光明版巨龙之爪",
+   "type2": "guangming"
+  },
+  "2084": {
+   "equipId": 1623,
+   "name": "光明版薄暮法袍",
+   "type2": "guangming"
+  },
+  "2085": {
+   "equipId": 1597,
+   "name": "光明版狂徒铠甲",
+   "type2": "guangming"
+  },
+  "2086": {
+   "equipId": 1551,
+   "name": "光明版最后的轻语",
+   "type2": "guangming"
+  },
+  "2087": {
+   "equipId": 1565,
+   "name": "光明版珠光护手",
+   "type2": "guangming"
+  },
+  "2088": {
+   "equipId": 1577,
+   "name": "光明版正义之手",
+   "type2": "guangming"
+  },
+  "2089": {
+   "equipId": 1625,
+   "name": "光明版坚定之心",
+   "type2": "guangming"
+  },
+  "2090": {
+   "equipId": 1595,
+   "name": "光明版水银",
+   "type2": "guangming"
+  },
+  "2091": {
+   "equipId": 1617,
+   "name": "光明版强袭者的链枷",
+   "type2": "guangming"
+  },
+  "2109": {
+   "equipId": 30009,
+   "name": "疾射火炮",
+   "type2": "aoen"
+  },
+  "2111": {
+   "equipId": 31005,
+   "name": "斯塔缇克电刃",
+   "type2": "aoen"
+  },
+  "2121": {
+   "equipId": 33031,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg"
+  },
+  "2196": {
+   "equipId": 31006,
+   "name": "巨型九头蛇",
+   "type2": "aoen"
+  },
+  "3028": {
+   "equipId": 32314,
+   "name": "打捞术",
+   "type2": "remove"
+  },
+  "3029": {
+   "equipId": 32311,
+   "name": "幸运装备宝箱",
+   "type2": "remove"
+  },
+  "3030": {
+   "equipId": 32312,
+   "name": "光明版幸运装备宝箱",
+   "type2": "remove"
+  },
+  "3134": {
+   "equipId": 30013,
+   "name": "暗行者之爪",
+   "type2": "aoen"
+  },
+  "4024": {
+   "equipId": 33027,
+   "name": "裁决使纹章",
+   "type2": "zhuanzhiJgg"
+  },
+  "4314": {
+   "equipId": 33032,
+   "name": "重装战士纹章",
+   "type2": "zhuanzhiJgg"
+  },
+  "4315": {
+   "equipId": 33028,
+   "name": "斗士纹章",
+   "type2": "zhuanzhiJgg"
+  },
+  "4404": {
+   "equipId": 33024,
+   "name": "永恒之森纹章",
+   "type2": "zhuanzhi"
+  },
+  "4718": {
+   "equipId": 33030,
+   "name": "迅捷射手纹章",
+   "type2": "zhuanzhiJgg"
+  },
+  "4721": {
+   "equipId": 33038,
+   "name": "护卫纹章",
+   "type2": "zhuanzhi2"
+  },
+  "4918": {
+   "equipId": 33039,
+   "name": "主宰纹章",
+   "type2": "zhuanzhi2"
+  },
+  "6052": {
+   "equipId": 20017,
+   "name": "大亨之铠",
+   "type2": "aoen"
+  },
+  "6057": {
+   "equipId": 20004,
+   "name": "三相之力",
+   "type2": "aoen"
+  },
+  "6058": {
+   "equipId": 20003,
+   "name": "魔蕴",
+   "type2": "aoen"
+  },
+  "6059": {
+   "equipId": 20009,
+   "name": "金币收集者",
+   "type2": "aoen"
+  },
+  "6060": {
+   "equipId": 20010,
+   "name": "中娅悖论",
+   "type2": "aoen"
+  },
+  "6061": {
+   "equipId": 20011,
+   "name": "碎舰者",
+   "type2": "aoen"
+  },
+  "6065": {
+   "equipId": 20101,
+   "name": "投机者之刃",
+   "type2": "aoen"
+  },
+  "6067": {
+   "equipId": 30002,
+   "name": "飞升护符",
+   "type2": "aoen"
+  },
+  "6069": {
+   "equipId": 30004,
+   "name": "鱼骨头",
+   "type2": "aoen"
+  },
+  "6070": {
+   "equipId": 30007,
+   "name": "连指手套",
+   "type2": "aoen"
+  },
+  "6071": {
+   "equipId": 30011,
+   "name": "卢登的激荡",
+   "type2": "aoen"
+  },
+  "6072": {
+   "equipId": 30012,
+   "name": "密银黎明",
+   "type2": "aoen"
+  },
+  "6075": {
+   "equipId": 30017,
+   "name": "智慧末刃",
+   "type2": "aoen"
+  },
+  "6076": {
+   "equipId": 30018,
+   "name": "禁忌雕像",
+   "type2": "aoen"
+  },
+  "6079": {
+   "equipId": 30006,
+   "name": "视界专注",
+   "type2": "aoen"
+  },
+  "6083": {
+   "equipId": 30016,
+   "name": "枯萎珠宝",
+   "type2": "aoen"
+  },
+  "6084": {
+   "equipId": 30021,
+   "name": "探索者的护臂",
+   "type2": "aoen"
+  },
+  "6085": {
+   "equipId": 30020,
+   "name": "光盾徽章",
+   "type2": "aoen"
+  },
+  "6086": {
+   "equipId": 30019,
+   "name": "巫妖之祸",
+   "type2": "aoen"
+  },
+  "6087": {
+   "equipId": 31004,
+   "name": "纳沃利烁刃",
+   "type2": "aoen"
+  },
+  "6089": {
+   "equipId": 31007,
+   "name": "顽强不屈",
+   "type2": "aoen"
+  },
+  "6091": {
+   "equipId": 20044,
+   "name": "黎明核心",
+   "type2": "aoen"
+  },
+  "6092": {
+   "equipId": 32346,
+   "name": "黎明圣盾",
+   "type2": "aoen"
+  },
+  "6093": {
+   "equipId": 32349,
+   "name": "黄昏圣盾",
+   "type2": "aoen"
+  },
+  "6094": {
+   "equipId": 32345,
+   "name": "虚空护手",
+   "type2": "aoen"
+  },
+  "6096": {
+   "equipId": 32347,
+   "name": "恶火小斧",
+   "type2": "aoen"
+  },
+  "6098": {
+   "equipId": 32351,
+   "name": "永恒契约",
+   "type2": "aoen"
+  },
+  "9456": {
+   "equipId": 32544,
+   "name": "阿尔法印记",
+   "type2": "daoju"
+  },
+  "9464": {
+   "equipId": 33044,
+   "name": "生命药水",
+   "type2": "other"
+  },
+  "9465": {
+   "equipId": 33054,
+   "name": "光明版生命药水",
+   "type2": "other"
+  },
+  "9468": {
+   "equipId": 33055,
+   "name": "法力药水",
+   "type2": "other"
+  },
+  "9469": {
+   "equipId": 33051,
+   "name": "光明版法力药水",
+   "type2": "other"
+  },
+  "41101": {
+   "equipId": 33019,
+   "name": "灵魂莲华纹章",
+   "type2": "zhuanzhi"
+  },
+  "41212": {
+   "equipId": 33022,
+   "name": "花仙子纹章",
+   "type2": "zhuanzhi"
+  },
+  "41715": {
+   "equipId": 33034,
+   "name": "狂战士纹章",
+   "type2": "zhuanzhiJgg"
+  },
+  "41802": {
+   "equipId": 33025,
+   "name": "黑荆棘纹章",
+   "type2": "zhuanzhi"
+  },
+  "41803": {
+   "equipId": 33035,
+   "name": "魔女纹章",
+   "type2": "zhuanzhi2"
+  },
+  "41805": {
+   "equipId": 33021,
+   "name": "约德尔人和朋友纹章",
+   "type2": "zhuanzhi"
+  },
+  "41806": {
+   "equipId": 33023,
+   "name": "地狱火纹章",
+   "type2": "zhuanzhi"
+  },
+  "41807": {
+   "equipId": 33026,
+   "name": "野兽之灵纹章",
+   "type2": "zhuanzhi"
+  },
+  "41808": {
+   "equipId": 33020,
+   "name": "月蚀骑士纹章",
+   "type2": "zhuanzhi"
+  },
+  "41816": {
+   "equipId": 33033,
+   "name": "猎人纹章",
+   "type2": "zhuanzhiJgg"
+  },
+  "41820": {
+   "equipId": 33029,
+   "name": "神谕纹章",
+   "type2": "zhuanzhiJgg"
+  },
+  "2045": {
+   "equipId": 519,
+   "name": "死亡之刃",
+   "type2": "common"
+  },
+  "2006": {
+   "equipId": 529,
+   "name": "饮血剑",
+   "type2": "common"
+  },
+  "2016": {
+   "equipId": 553,
+   "name": "灭世者的死亡之帽",
+   "type2": "common"
+  },
+  "2044": {
+   "equipId": 607,
+   "name": "窃贼手套",
+   "type2": "common"
+  },
+  "2093": {
+   "equipId": 1519,
+   "name": "光明版死亡之刃",
+   "type2": "guangming"
+  },
+  "2094": {
+   "equipId": 1521,
+   "name": "光明版巨人杀手",
+   "type2": "guangming"
+  },
+  "2063": {
+   "equipId": 1529,
+   "name": "光明版饮血剑",
+   "type2": "guangming"
+  },
+  "2071": {
+   "equipId": 1553,
+   "name": "光明版灭世者的死亡之帽",
+   "type2": "guangming"
+  },
+  "2092": {
+   "equipId": 1607,
+   "name": "光明版窃贼手套",
+   "type2": "guangming"
+  },
+  "6054": {
+   "equipId": 20002,
+   "name": "死亡蔑视",
+   "type2": "aoen"
+  },
+  "41810": {
+   "equipId": 33036,
+   "name": "绝命花妖纹章",
+   "type2": "zhuanzhi2"
+  },
+  "9467": {
+   "equipId": 33046,
+   "name": "光明版爆炸药水",
+   "type2": "other"
+  },
+  "9466": {
+   "equipId": 33053,
+   "name": "爆炸药水",
+   "type2": "other"
+  },
+  "3003": {
+   "equipId": null,
+   "name": "装备拆卸器",
+   "type2": "consumable"
+  },
+  "3002": {
+   "equipId": null,
+   "name": "装备重铸器",
+   "type2": "consumable"
+  },
+  "41812": {
+   "equipId": 33038,
+   "name": "护卫纹章",
+   "type2": "zhuanzhi2",
+   "alias": true
+  },
+  "41809": {
+   "equipId": 33019,
+   "name": "灵魂莲华纹章",
+   "type2": "zhuanzhi",
+   "alias": true
+  },
+  "41815": {
+   "equipId": 33030,
+   "name": "迅捷射手纹章",
+   "type2": "zhuanzhiJgg",
+   "alias": true
+  },
+  "3010": {
+   "equipId": null,
+   "name": "次级英雄复制器",
+   "type2": "consumable"
+  },
+  "41819": {
+   "equipId": 33031,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "alias": true
+  },
+  "1101": {
+   "equipId": null,
+   "name": "暴风大剑",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "1102": {
+   "equipId": null,
+   "name": "反曲之弓",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "1103": {
+   "equipId": null,
+   "name": "无用大棒",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "1104": {
+   "equipId": null,
+   "name": "女神之泪",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "1105": {
+   "equipId": null,
+   "name": "锁子甲",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "1106": {
+   "equipId": null,
+   "name": "负极斗篷",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "1107": {
+   "equipId": null,
+   "name": "巨人腰带",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "1108": {
+   "equipId": null,
+   "name": "金铲铲",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "1109": {
+   "equipId": null,
+   "name": "拳套",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "2058": {
+   "equipId": null,
+   "name": "目标假人",
+   "type2": null,
+   "source": "client"
+  },
+  "2101": {
+   "equipId": null,
+   "name": "无尽之刃",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2103": {
+   "equipId": null,
+   "name": "海克斯科技枪刃",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2104": {
+   "equipId": null,
+   "name": "朔极之矛",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2105": {
+   "equipId": null,
+   "name": "夜之锋刃",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2106": {
+   "equipId": null,
+   "name": "汲取剑",
+   "type2": null,
+   "source": "client"
+  },
+  "2107": {
+   "equipId": null,
+   "name": "基克的先驱",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2108": {
+   "equipId": null,
+   "name": "潜行者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2110": {
+   "equipId": null,
+   "name": "鬼索的狂暴之刃",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2112": {
+   "equipId": null,
+   "name": "泰坦的坚决",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2113": {
+   "equipId": null,
+   "name": "卢安娜的飓风",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2114": {
+   "equipId": null,
+   "name": "兹若特传送门",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2115": {
+   "equipId": null,
+   "name": "剑士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2116": {
+   "equipId": null,
+   "name": "班克斯的魔法帽",
+   "type2": null,
+   "source": "client"
+  },
+  "2117": {
+   "equipId": null,
+   "name": "大天使之杖",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2118": {
+   "equipId": null,
+   "name": "钢铁烈阳之匣",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2119": {
+   "equipId": null,
+   "name": "离子火花",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2120": {
+   "equipId": null,
+   "name": "莫雷洛秘典",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2122": {
+   "equipId": null,
+   "name": "蓝霸符",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2123": {
+   "equipId": null,
+   "name": "圣盾使的誓约",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2124": {
+   "equipId": null,
+   "name": "能量圣杯",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2125": {
+   "equipId": null,
+   "name": "救赎",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2126": {
+   "equipId": null,
+   "name": "仙灵纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2127": {
+   "equipId": null,
+   "name": "棘刺背心",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2128": {
+   "equipId": null,
+   "name": "石像鬼石板甲",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2129": {
+   "equipId": null,
+   "name": "日炎斗篷",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2130": {
+   "equipId": null,
+   "name": "骑士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2131": {
+   "equipId": null,
+   "name": "巨龙之爪",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2132": {
+   "equipId": null,
+   "name": "灵风",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2133": {
+   "equipId": null,
+   "name": "游侠纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2134": {
+   "equipId": null,
+   "name": "狂徒铠甲",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2135": {
+   "equipId": null,
+   "name": "北地纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2136": {
+   "equipId": null,
+   "name": "金铲铲冠冕",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2137": {
+   "equipId": null,
+   "name": "最后的轻语",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2138": {
+   "equipId": null,
+   "name": "珠光护手",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2139": {
+   "equipId": null,
+   "name": "正义之手",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2140": {
+   "equipId": null,
+   "name": "静止法衣",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2141": {
+   "equipId": null,
+   "name": "水银",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2142": {
+   "equipId": null,
+   "name": "破防者",
+   "type2": null,
+   "source": "client"
+  },
+  "2144": {
+   "equipId": null,
+   "name": "秘法手套",
+   "type2": null,
+   "source": "client"
+  },
+  "2145": {
+   "equipId": null,
+   "name": "锐利之刃",
+   "type2": null,
+   "source": "client"
+  },
+  "2146": {
+   "equipId": null,
+   "name": "巨人捕手",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2147": {
+   "equipId": null,
+   "name": "约德尔人纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2193": {
+   "equipId": null,
+   "name": "红霸符",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2194": {
+   "equipId": null,
+   "name": "荆棘之甲",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2195": {
+   "equipId": null,
+   "name": "肃静",
+   "type2": null,
+   "source": "client"
+  },
+  "2197": {
+   "equipId": null,
+   "name": "降星之刀",
+   "type2": null,
+   "source": "client"
+  },
+  "2198": {
+   "equipId": null,
+   "name": "神圣之刃",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2199": {
+   "equipId": null,
+   "name": "幻影之舞",
+   "type2": null,
+   "source": "client"
+  },
+  "2200": {
+   "equipId": null,
+   "name": "卢登的回声",
+   "type2": null,
+   "source": "client"
+  },
+  "2807": {
+   "equipId": null,
+   "name": "基克的先驱",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2809": {
+   "equipId": null,
+   "name": "疾射火炮",
+   "type2": "aoen",
+   "source": "client",
+   "alias": true
+  },
+  "2810": {
+   "equipId": null,
+   "name": "鬼索的狂暴之刃",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2811": {
+   "equipId": null,
+   "name": "斯塔缇克电刃",
+   "type2": "aoen",
+   "source": "client",
+   "alias": true
+  },
+  "2813": {
+   "equipId": null,
+   "name": "卢安娜的飓风",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2814": {
+   "equipId": null,
+   "name": "兹若特传送门",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2818": {
+   "equipId": null,
+   "name": "钢铁烈阳之匣",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2822": {
+   "equipId": null,
+   "name": "蓝霸符",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2824": {
+   "equipId": null,
+   "name": "能量圣杯",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2832": {
+   "equipId": null,
+   "name": "灵风",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2834": {
+   "equipId": null,
+   "name": "狂徒铠甲",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "2840": {
+   "equipId": null,
+   "name": "静止法衣",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2846": {
+   "equipId": null,
+   "name": "巨人捕手",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2864": {
+   "equipId": null,
+   "name": "光明版基克的先驱",
+   "type2": null,
+   "source": "client"
+  },
+  "2865": {
+   "equipId": null,
+   "name": "光明版疾射火炮",
+   "type2": null,
+   "source": "client"
+  },
+  "2866": {
+   "equipId": null,
+   "name": "光明版鬼索的狂暴之刃",
+   "type2": "guangming",
+   "source": "client",
+   "alias": true
+  },
+  "2867": {
+   "equipId": null,
+   "name": "光明版斯塔缇克狂热",
+   "type2": null,
+   "source": "client"
+  },
+  "2869": {
+   "equipId": null,
+   "name": "光明版卢安娜的飓风",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "2870": {
+   "equipId": null,
+   "name": "光明版兹若特传送门",
+   "type2": null,
+   "source": "client"
+  },
+  "2873": {
+   "equipId": null,
+   "name": "光明版钢铁烈阳之匣",
+   "type2": null,
+   "source": "client"
+  },
+  "2876": {
+   "equipId": null,
+   "name": "光明版蓝霸符",
+   "type2": "guangming",
+   "source": "client",
+   "alias": true
+  },
+  "2878": {
+   "equipId": null,
+   "name": "光明版能量圣杯",
+   "type2": null,
+   "source": "client"
+  },
+  "2884": {
+   "equipId": null,
+   "name": "光明版灵风",
+   "type2": null,
+   "source": "client"
+  },
+  "2885": {
+   "equipId": null,
+   "name": "光明版狂徒铠甲",
+   "type2": "guangming",
+   "source": "client",
+   "alias": true
+  },
+  "2889": {
+   "equipId": null,
+   "name": "光明版静止法衣",
+   "type2": null,
+   "source": "client"
+  },
+  "2894": {
+   "equipId": null,
+   "name": "光明版巨人捕手",
+   "type2": null,
+   "source": "client"
+  },
+  "3001": {
+   "equipId": null,
+   "name": "英雄复制器",
+   "type2": null,
+   "source": "client"
+  },
+  "3004": {
+   "equipId": null,
+   "name": "灌铅骰子",
+   "type2": null,
+   "source": "client"
+  },
+  "3005": {
+   "equipId": null,
+   "name": "纹章之书",
+   "type2": null,
+   "source": "client"
+  },
+  "3007": {
+   "equipId": null,
+   "name": "基础装备锻造器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "3008": {
+   "equipId": null,
+   "name": "成装锻造器",
+   "type2": null,
+   "source": "client"
+  },
+  "3009": {
+   "equipId": null,
+   "name": "神器装备锻造器",
+   "type2": null,
+   "source": "client"
+  },
+  "3014": {
+   "equipId": null,
+   "name": "商店回溯器",
+   "type2": null,
+   "source": "client"
+  },
+  "3015": {
+   "equipId": null,
+   "name": "辅助装锻造器",
+   "type2": null,
+   "source": "client"
+  },
+  "3016": {
+   "equipId": null,
+   "name": "免费刷新道具",
+   "type2": null,
+   "source": "client"
+  },
+  "3017": {
+   "equipId": null,
+   "name": "五费刷新道具",
+   "type2": null,
+   "source": "client"
+  },
+  "3018": {
+   "equipId": null,
+   "name": "推荐装备选择器",
+   "type2": null,
+   "source": "client"
+  },
+  "3019": {
+   "equipId": null,
+   "name": "金制拆卸器",
+   "type2": null,
+   "source": "client"
+  },
+  "3020": {
+   "equipId": null,
+   "name": "杰作升级",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "3021": {
+   "equipId": null,
+   "name": "战利品",
+   "type2": null,
+   "source": "client"
+  },
+  "3022": {
+   "equipId": null,
+   "name": "传承之物",
+   "type2": null,
+   "source": "client"
+  },
+  "3023": {
+   "equipId": null,
+   "name": "皮城装备锻造器",
+   "type2": null,
+   "source": "client"
+  },
+  "3024": {
+   "equipId": null,
+   "name": "祖安装备锻造器",
+   "type2": null,
+   "source": "client"
+  },
+  "3025": {
+   "equipId": null,
+   "name": "古代装备锻造器",
+   "type2": null,
+   "source": "client"
+  },
+  "3026": {
+   "equipId": null,
+   "name": "魔像军团",
+   "type2": null,
+   "source": "client"
+  },
+  "3027": {
+   "equipId": null,
+   "name": "基础装备锻造器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "3031": {
+   "equipId": null,
+   "name": "金币神器装备锻造器",
+   "type2": null,
+   "source": "client"
+  },
+  "3032": {
+   "equipId": null,
+   "name": "核心位幸运装备宝箱",
+   "type2": null,
+   "source": "client"
+  },
+  "3101": {
+   "equipId": null,
+   "name": "妮蔻之助",
+   "type2": null,
+   "source": "client"
+  },
+  "3104": {
+   "equipId": null,
+   "name": "快速成长培养皿",
+   "type2": null,
+   "source": "client"
+  },
+  "3105": {
+   "equipId": null,
+   "name": "再来一次",
+   "type2": null,
+   "source": "client"
+  },
+  "3106": {
+   "equipId": null,
+   "name": "基兰的时光之瓶",
+   "type2": null,
+   "source": "client"
+  },
+  "3107": {
+   "equipId": null,
+   "name": "基兰的时光之瓶2",
+   "type2": null,
+   "source": "client"
+  },
+  "3110": {
+   "equipId": null,
+   "name": "次级英雄复制器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "3111": {
+   "equipId": null,
+   "name": "装备拆卸器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "3112": {
+   "equipId": null,
+   "name": "重铸器",
+   "type2": null,
+   "source": "client"
+  },
+  "3126": {
+   "equipId": null,
+   "name": "次级忠诚符文",
+   "type2": null,
+   "source": "client"
+  },
+  "3127": {
+   "equipId": null,
+   "name": "忠诚符文",
+   "type2": null,
+   "source": "client"
+  },
+  "3130": {
+   "equipId": null,
+   "name": "命运骰子",
+   "type2": null,
+   "source": "client"
+  },
+  "3131": {
+   "equipId": null,
+   "name": "不完美的灵魂王冠",
+   "type2": null,
+   "source": "client"
+  },
+  "3132": {
+   "equipId": null,
+   "name": "灵魂王冠",
+   "type2": null,
+   "source": "client"
+  },
+  "3133": {
+   "equipId": null,
+   "name": "火箭助推铁拳",
+   "type2": null,
+   "source": "client"
+  },
+  "3406": {
+   "equipId": null,
+   "name": "拉亚斯特的拥抱",
+   "type2": null,
+   "source": "client"
+  },
+  "3407": {
+   "equipId": null,
+   "name": "凯隐的解脱",
+   "type2": null,
+   "source": "client"
+  },
+  "3710": {
+   "equipId": null,
+   "name": "美味点心",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "3711": {
+   "equipId": null,
+   "name": "黯灵精华",
+   "type2": null,
+   "source": "client"
+  },
+  "3713": {
+   "equipId": null,
+   "name": "可重用装备拆卸器",
+   "type2": null,
+   "source": "client"
+  },
+  "3720": {
+   "equipId": null,
+   "name": "神龙赐福",
+   "type2": null,
+   "source": "client"
+  },
+  "3820": {
+   "equipId": null,
+   "name": "至尊选择器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4001": {
+   "equipId": null,
+   "name": "K/DA纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4002": {
+   "equipId": null,
+   "name": "爵士乐纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4003": {
+   "equipId": null,
+   "name": "高能流行纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4004": {
+   "equipId": null,
+   "name": "乡村音乐纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4006": {
+   "equipId": null,
+   "name": "8比特纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4007": {
+   "equipId": null,
+   "name": "真实伤害纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4008": {
+   "equipId": null,
+   "name": "朋克纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4010": {
+   "equipId": null,
+   "name": "EMO纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4011": {
+   "equipId": null,
+   "name": "心之钢纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4012": {
+   "equipId": null,
+   "name": "五杀摇滚纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4016": {
+   "equipId": null,
+   "name": "舞者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4019": {
+   "equipId": null,
+   "name": "大腕射手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4021": {
+   "equipId": null,
+   "name": "音浪突袭者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4022": {
+   "equipId": null,
+   "name": "耀光使纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4023": {
+   "equipId": null,
+   "name": "刀锋领主纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4025": {
+   "equipId": null,
+   "name": "护卫纹章<color=#000000></color>",
+   "type2": null,
+   "source": "client"
+  },
+  "4026": {
+   "equipId": null,
+   "name": "疾射枪手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4027": {
+   "equipId": null,
+   "name": "法师纹章<color=#000000></color>",
+   "type2": null,
+   "source": "client"
+  },
+  "4028": {
+   "equipId": null,
+   "name": "超级粉丝纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4029": {
+   "equipId": null,
+   "name": "秘术护卫纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4030": {
+   "equipId": null,
+   "name": "偶像应援灯",
+   "type2": null,
+   "source": "client"
+  },
+  "4108": {
+   "equipId": null,
+   "name": "潜行者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4109": {
+   "equipId": null,
+   "name": "潜行者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4115": {
+   "equipId": null,
+   "name": "剑士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4116": {
+   "equipId": null,
+   "name": "剑士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4121": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "4122": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "4126": {
+   "equipId": null,
+   "name": "仙灵纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4127": {
+   "equipId": null,
+   "name": "仙灵纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4130": {
+   "equipId": null,
+   "name": "骑士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4131": {
+   "equipId": null,
+   "name": "骑士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4133": {
+   "equipId": null,
+   "name": "游侠纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4134": {
+   "equipId": null,
+   "name": "游侠纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4135": {
+   "equipId": null,
+   "name": "北地纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4136": {
+   "equipId": null,
+   "name": "北地纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4147": {
+   "equipId": null,
+   "name": "约德尔人纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4148": {
+   "equipId": null,
+   "name": "约德尔人纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4301": {
+   "equipId": null,
+   "name": "源计划纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4302": {
+   "equipId": null,
+   "name": "星之守护者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4303": {
+   "equipId": null,
+   "name": "奥德赛纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4304": {
+   "equipId": null,
+   "name": "未来战士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4305": {
+   "equipId": null,
+   "name": "太空海盗纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4306": {
+   "equipId": null,
+   "name": "星神纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4307": {
+   "equipId": null,
+   "name": "暗星纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4312": {
+   "equipId": null,
+   "name": "战地机甲纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4316": {
+   "equipId": null,
+   "name": "狙神纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4317": {
+   "equipId": null,
+   "name": "强袭枪手纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4318": {
+   "equipId": null,
+   "name": "剑士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4319": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "4320": {
+   "equipId": null,
+   "name": "圣盾使纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4321": {
+   "equipId": null,
+   "name": "突袭者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4322": {
+   "equipId": null,
+   "name": "爆破专家纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4323": {
+   "equipId": null,
+   "name": "破法战士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4324": {
+   "equipId": null,
+   "name": "秘术师纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4401": {
+   "equipId": null,
+   "name": "天神纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4402": {
+   "equipId": null,
+   "name": "决斗大师纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4405": {
+   "equipId": null,
+   "name": "魔法师纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4406": {
+   "equipId": null,
+   "name": "重装战士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "4407": {
+   "equipId": null,
+   "name": "三国猛将纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4408": {
+   "equipId": null,
+   "name": "突袭者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4409": {
+   "equipId": null,
+   "name": "腥红之月纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4410": {
+   "equipId": null,
+   "name": "玉剑仙纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4412": {
+   "equipId": null,
+   "name": "福星纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4415": {
+   "equipId": null,
+   "name": "灵魂莲华明昼纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4419": {
+   "equipId": null,
+   "name": "宗师纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4420": {
+   "equipId": null,
+   "name": "斗士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "4424": {
+   "equipId": null,
+   "name": "神盾使纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4425": {
+   "equipId": null,
+   "name": "秘术师纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4428": {
+   "equipId": null,
+   "name": "龙魂纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4429": {
+   "equipId": null,
+   "name": "裁决使纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "4430": {
+   "equipId": null,
+   "name": "战神纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4431": {
+   "equipId": null,
+   "name": "摄魂使纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4501": {
+   "equipId": null,
+   "name": "压岁钱",
+   "type2": null,
+   "source": "client"
+  },
+  "4601": {
+   "equipId": null,
+   "name": "战斗学院纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4602": {
+   "equipId": null,
+   "name": "炼金科技纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4603": {
+   "equipId": null,
+   "name": "发明家纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4604": {
+   "equipId": null,
+   "name": "赏金猎人纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4605": {
+   "equipId": null,
+   "name": "精密发条纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4606": {
+   "equipId": null,
+   "name": "执法官纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4607": {
+   "equipId": null,
+   "name": "极客纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4608": {
+   "equipId": null,
+   "name": "帝国纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4609": {
+   "equipId": null,
+   "name": "保镖纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4610": {
+   "equipId": null,
+   "name": "变异战士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4611": {
+   "equipId": null,
+   "name": "圣盾使纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4612": {
+   "equipId": null,
+   "name": "黑魔法师纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4613": {
+   "equipId": null,
+   "name": "学者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4614": {
+   "equipId": null,
+   "name": "突袭者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4615": {
+   "equipId": null,
+   "name": "社交名流纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4617": {
+   "equipId": null,
+   "name": "辛迪加纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4618": {
+   "equipId": null,
+   "name": "挑战者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4619": {
+   "equipId": null,
+   "name": "狙神纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4620": {
+   "equipId": null,
+   "name": "格斗家纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4701": {
+   "equipId": null,
+   "name": "星界龙纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4704": {
+   "equipId": null,
+   "name": "金鳞龙纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4705": {
+   "equipId": null,
+   "name": "幽影龙纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4706": {
+   "equipId": null,
+   "name": "玉龙纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4707": {
+   "equipId": null,
+   "name": "幻镜龙纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4708": {
+   "equipId": null,
+   "name": "屠龙勇士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4709": {
+   "equipId": null,
+   "name": "冒险家纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4710": {
+   "equipId": null,
+   "name": "风暴龙纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4713": {
+   "equipId": null,
+   "name": "怒翼龙纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4714": {
+   "equipId": null,
+   "name": "神龙尊者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4715": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "4716": {
+   "equipId": null,
+   "name": "魔导师纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4717": {
+   "equipId": null,
+   "name": "突袭者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4719": {
+   "equipId": null,
+   "name": "强袭炮手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4720": {
+   "equipId": null,
+   "name": "格斗家纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4722": {
+   "equipId": null,
+   "name": "秘术师纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4725": {
+   "equipId": null,
+   "name": "狂刃战士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4726": {
+   "equipId": null,
+   "name": "重骑兵纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4801": {
+   "equipId": null,
+   "name": "幻灵战队纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4802": {
+   "equipId": null,
+   "name": "平民英雄纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4803": {
+   "equipId": null,
+   "name": "小天才纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4804": {
+   "equipId": null,
+   "name": "星之守护者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4806": {
+   "equipId": null,
+   "name": "福牛守护者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4807": {
+   "equipId": null,
+   "name": "战斗机甲纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4810": {
+   "equipId": null,
+   "name": "地下魔盗团纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4811": {
+   "equipId": null,
+   "name": "AI程序纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4812": {
+   "equipId": null,
+   "name": "源计划：激光特工纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4813": {
+   "equipId": null,
+   "name": "混沌战士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4814": {
+   "equipId": null,
+   "name": "黑客纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4815": {
+   "equipId": null,
+   "name": "淘气包纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4816": {
+   "equipId": null,
+   "name": "灵能使纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4817": {
+   "equipId": null,
+   "name": "决斗大师纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4818": {
+   "equipId": null,
+   "name": "强袭枪手纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4819": {
+   "equipId": null,
+   "name": "护卫纹章",
+   "type2": "zhuanzhi2",
+   "source": "client",
+   "alias": true
+  },
+  "4820": {
+   "equipId": null,
+   "name": "吉祥物纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4821": {
+   "equipId": null,
+   "name": "爱心使者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4825": {
+   "equipId": null,
+   "name": "斗士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "4826": {
+   "equipId": null,
+   "name": "情报特工纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4827": {
+   "equipId": null,
+   "name": "秘术卫士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4828": {
+   "equipId": null,
+   "name": "精英战士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4901": {
+   "equipId": null,
+   "name": "皮尔特沃夫纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4902": {
+   "equipId": null,
+   "name": "弗雷尔卓德纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4904": {
+   "equipId": null,
+   "name": "恕瑞玛纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4905": {
+   "equipId": null,
+   "name": "艾欧尼亚纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4906": {
+   "equipId": null,
+   "name": "巨神峰纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4908": {
+   "equipId": null,
+   "name": "祖安纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4909": {
+   "equipId": null,
+   "name": "德玛西亚纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4910": {
+   "equipId": null,
+   "name": "虚空纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4911": {
+   "equipId": null,
+   "name": "诺克萨斯纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4912": {
+   "equipId": null,
+   "name": "暗影岛纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4917": {
+   "equipId": null,
+   "name": "潜行者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4919": {
+   "equipId": null,
+   "name": "挑战者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4921": {
+   "equipId": null,
+   "name": "堡垒卫士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4922": {
+   "equipId": null,
+   "name": "格斗家纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4923": {
+   "equipId": null,
+   "name": "神谕者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4925": {
+   "equipId": null,
+   "name": "亡眼射手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "4926": {
+   "equipId": null,
+   "name": "枪手纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4927": {
+   "equipId": null,
+   "name": "裁决战士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "4928": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "4929": {
+   "equipId": null,
+   "name": "司令纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5801": {
+   "equipId": null,
+   "name": "弹簧式疾射火炮",
+   "type2": null,
+   "source": "client"
+  },
+  "5802": {
+   "equipId": null,
+   "name": "溢出错误//巨人捕手",
+   "type2": null,
+   "source": "client"
+  },
+  "5803": {
+   "equipId": null,
+   "name": "更加静止法衣",
+   "type2": null,
+   "source": "client"
+  },
+  "5804": {
+   "equipId": null,
+   "name": "跳线启动的朔极之矛",
+   "type2": null,
+   "source": "client"
+  },
+  "5805": {
+   "equipId": null,
+   "name": "感应式供电的狂徒铠甲",
+   "type2": null,
+   "source": "client"
+  },
+  "5806": {
+   "equipId": null,
+   "name": "非确定正义之手",
+   "type2": null,
+   "source": "client"
+  },
+  "5807": {
+   "equipId": null,
+   "name": "超频的日炎斗篷",
+   "type2": null,
+   "source": "client"
+  },
+  "5808": {
+   "equipId": null,
+   "name": "磁化的离子火花",
+   "type2": null,
+   "source": "client"
+  },
+  "5809": {
+   "equipId": null,
+   "name": "链锯汲取剑",
+   "type2": null,
+   "source": "client"
+  },
+  "5810": {
+   "equipId": null,
+   "name": "少年泰坦的坚决",
+   "type2": null,
+   "source": "client"
+  },
+  "5901": {
+   "equipId": null,
+   "name": "微光注射器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5902": {
+   "equipId": null,
+   "name": "适应性植入",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5903": {
+   "equipId": null,
+   "name": "不稳定炼金罐",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5904": {
+   "equipId": null,
+   "name": "海克斯科技外骨骼",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5905": {
+   "equipId": null,
+   "name": "烈性生化器皿",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5906": {
+   "equipId": null,
+   "name": "机械手臂",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5911": {
+   "equipId": null,
+   "name": "缩小模块",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5912": {
+   "equipId": null,
+   "name": "机器导弹集群",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5913": {
+   "equipId": null,
+   "name": "自动化修理",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5914": {
+   "equipId": null,
+   "name": "点金器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "5915": {
+   "equipId": null,
+   "name": "充能",
+   "type2": null,
+   "source": "client"
+  },
+  "5916": {
+   "equipId": null,
+   "name": "能量",
+   "type2": null,
+   "source": "client"
+  },
+  "5917": {
+   "equipId": null,
+   "name": "纳什男爵之首",
+   "type2": null,
+   "source": "client"
+  },
+  "5918": {
+   "equipId": null,
+   "name": "折射光束",
+   "type2": null,
+   "source": "client"
+  },
+  "6001": {
+   "equipId": null,
+   "name": "基克的先驱",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "6002": {
+   "equipId": null,
+   "name": "兰顿之兆",
+   "type2": null,
+   "source": "client"
+  },
+  "6003": {
+   "equipId": null,
+   "name": "能量圣杯",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "6004": {
+   "equipId": null,
+   "name": "静止法衣",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "6005": {
+   "equipId": null,
+   "name": "兹若特传送门",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "6006": {
+   "equipId": null,
+   "name": "钢铁烈阳之匣",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "6007": {
+   "equipId": null,
+   "name": "灵风",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "6008": {
+   "equipId": null,
+   "name": "黑曜石切割者",
+   "type2": null,
+   "source": "client"
+  },
+  "6009": {
+   "equipId": null,
+   "name": "军团圣盾",
+   "type2": null,
+   "source": "client"
+  },
+  "6010": {
+   "equipId": null,
+   "name": "殉道美德",
+   "type2": null,
+   "source": "client"
+  },
+  "6011": {
+   "equipId": null,
+   "name": "女妖面纱",
+   "type2": null,
+   "source": "client"
+  },
+  "6012": {
+   "equipId": null,
+   "name": "无用大宝石",
+   "type2": null,
+   "source": "client"
+  },
+  "6013": {
+   "equipId": null,
+   "name": "辅助手套",
+   "type2": null,
+   "source": "client"
+  },
+  "6014": {
+   "equipId": null,
+   "name": "永恒烈焰",
+   "type2": null,
+   "source": "client"
+  },
+  "6015": {
+   "equipId": null,
+   "name": "骑士之誓",
+   "type2": null,
+   "source": "client"
+  },
+  "6016": {
+   "equipId": null,
+   "name": "月石再生器",
+   "type2": null,
+   "source": "client"
+  },
+  "6018": {
+   "equipId": null,
+   "name": "不稳定的财宝箱",
+   "type2": null,
+   "source": "client"
+  },
+  "6073": {
+   "equipId": null,
+   "name": "暗行者之爪",
+   "type2": "aoen",
+   "source": "client",
+   "alias": true
+  },
+  "6080": {
+   "equipId": null,
+   "name": "疾射火炮",
+   "type2": "aoen",
+   "source": "client",
+   "alias": true
+  },
+  "6088": {
+   "equipId": null,
+   "name": "斯塔缇克电刃",
+   "type2": "aoen",
+   "source": "client",
+   "alias": true
+  },
+  "6090": {
+   "equipId": null,
+   "name": "巨型九头蛇",
+   "type2": "aoen",
+   "source": "client",
+   "alias": true
+  },
+  "6099": {
+   "equipId": null,
+   "name": "暗裔之镰",
+   "type2": null,
+   "source": "client"
+  },
+  "6100": {
+   "equipId": null,
+   "name": "暗裔之盾",
+   "type2": null,
+   "source": "client"
+  },
+  "6101": {
+   "equipId": null,
+   "name": "暗裔之弓",
+   "type2": null,
+   "source": "client"
+  },
+  "6102": {
+   "equipId": null,
+   "name": "暗裔之杖",
+   "type2": null,
+   "source": "client"
+  },
+  "6103": {
+   "equipId": null,
+   "name": "金猪钱罐",
+   "type2": null,
+   "source": "client"
+  },
+  "6105": {
+   "equipId": null,
+   "name": "凯尔的光明崇拜",
+   "type2": null,
+   "source": "client"
+  },
+  "6106": {
+   "equipId": null,
+   "name": "锤石的灯笼",
+   "type2": null,
+   "source": "client"
+  },
+  "6107": {
+   "equipId": null,
+   "name": "阿狸的光环",
+   "type2": null,
+   "source": "client"
+  },
+  "6108": {
+   "equipId": null,
+   "name": "艾克的耐心",
+   "type2": null,
+   "source": "client"
+  },
+  "6109": {
+   "equipId": null,
+   "name": "亚索的剑艺",
+   "type2": null,
+   "source": "client"
+  },
+  "6110": {
+   "equipId": null,
+   "name": "索拉卡的奇迹",
+   "type2": null,
+   "source": "client"
+  },
+  "6111": {
+   "equipId": null,
+   "name": "韦鲁斯的执念",
+   "type2": null,
+   "source": "client"
+  },
+  "6112": {
+   "equipId": null,
+   "name": "伊芙琳的本能",
+   "type2": null,
+   "source": "client"
+  },
+  "6901": {
+   "equipId": null,
+   "name": "德玛西亚王冠",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "6902": {
+   "equipId": null,
+   "name": "杰作升级",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "6903": {
+   "equipId": null,
+   "name": "知识卷轴",
+   "type2": null,
+   "source": "client"
+  },
+  "9001": {
+   "equipId": null,
+   "name": "电子舞曲选择器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9004": {
+   "equipId": null,
+   "name": "电子舞曲选择器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9005": {
+   "equipId": null,
+   "name": "电子舞曲选择器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9006": {
+   "equipId": null,
+   "name": "电子舞曲选择器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9011": {
+   "equipId": null,
+   "name": "轰击墨纹",
+   "type2": null,
+   "source": "client"
+  },
+  "9012": {
+   "equipId": null,
+   "name": "活力墨纹",
+   "type2": null,
+   "source": "client"
+  },
+  "9013": {
+   "equipId": null,
+   "name": "狂怒墨纹",
+   "type2": null,
+   "source": "client"
+  },
+  "9014": {
+   "equipId": null,
+   "name": "猛毒墨纹",
+   "type2": null,
+   "source": "client"
+  },
+  "9015": {
+   "equipId": null,
+   "name": "原力墨纹",
+   "type2": null,
+   "source": "client"
+  },
+  "9016": {
+   "equipId": null,
+   "name": "守护墨纹",
+   "type2": null,
+   "source": "client"
+  },
+  "9017": {
+   "equipId": null,
+   "name": "力量护符",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9018": {
+   "equipId": null,
+   "name": "速度护符",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9019": {
+   "equipId": null,
+   "name": "援助护符",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9020": {
+   "equipId": null,
+   "name": "急速卷轴",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9021": {
+   "equipId": null,
+   "name": "原力卷轴",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9022": {
+   "equipId": null,
+   "name": "轻灵之书",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9023": {
+   "equipId": null,
+   "name": "力量之书",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9024": {
+   "equipId": null,
+   "name": "登神护身符",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9025": {
+   "equipId": null,
+   "name": "修补之书",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9026": {
+   "equipId": null,
+   "name": "力量护符",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9027": {
+   "equipId": null,
+   "name": "速度护符",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9028": {
+   "equipId": null,
+   "name": "援助护符",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9029": {
+   "equipId": null,
+   "name": "急速卷轴",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9030": {
+   "equipId": null,
+   "name": "原力卷轴",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9031": {
+   "equipId": null,
+   "name": "轻灵之书",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9032": {
+   "equipId": null,
+   "name": "力量之书",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9033": {
+   "equipId": null,
+   "name": "登神护身符",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9034": {
+   "equipId": null,
+   "name": "修补之书",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9035": {
+   "equipId": null,
+   "name": "登神护身符（测试专用）",
+   "type2": null,
+   "source": "client"
+  },
+  "9036": {
+   "equipId": null,
+   "name": "一个轻食点心",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9037": {
+   "equipId": null,
+   "name": "花仙女王的冠冕",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9038": {
+   "equipId": null,
+   "name": "永恒虔诚之铠",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9039": {
+   "equipId": null,
+   "name": "永恒君王的冠冕",
+   "type2": null,
+   "source": "client"
+  },
+  "9040": {
+   "equipId": null,
+   "name": "女王卫士之铠",
+   "type2": null,
+   "source": "client"
+  },
+  "9041": {
+   "equipId": null,
+   "name": "命运之子符印",
+   "type2": null,
+   "source": "client"
+  },
+  "9042": {
+   "equipId": null,
+   "name": "被诅咒的鬼索的狂暴之刃",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9043": {
+   "equipId": null,
+   "name": "被诅咒的海克斯科技枪刃",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9044": {
+   "equipId": null,
+   "name": "被诅咒的水银",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9045": {
+   "equipId": null,
+   "name": "巨人腰带",
+   "type2": "part",
+   "source": "client",
+   "alias": true
+  },
+  "9050": {
+   "equipId": null,
+   "name": "失稳炼金罐",
+   "type2": null,
+   "source": "client"
+  },
+  "9051": {
+   "equipId": null,
+   "name": "失稳炼金罐 II",
+   "type2": null,
+   "source": "client"
+  },
+  "9052": {
+   "equipId": null,
+   "name": "完美失稳炼金罐",
+   "type2": null,
+   "source": "client"
+  },
+  "9053": {
+   "equipId": null,
+   "name": "行刑官链锯刃",
+   "type2": null,
+   "source": "client"
+  },
+  "9054": {
+   "equipId": null,
+   "name": "行刑官链锯刃 II",
+   "type2": null,
+   "source": "client"
+  },
+  "9055": {
+   "equipId": null,
+   "name": "完美行刑官链锯刃",
+   "type2": null,
+   "source": "client"
+  },
+  "9056": {
+   "equipId": null,
+   "name": "裂肉者",
+   "type2": null,
+   "source": "client"
+  },
+  "9057": {
+   "equipId": null,
+   "name": "裂肉者 II",
+   "type2": null,
+   "source": "client"
+  },
+  "9058": {
+   "equipId": null,
+   "name": "完美裂肉者",
+   "type2": null,
+   "source": "client"
+  },
+  "9059": {
+   "equipId": null,
+   "name": "皮城海克斯护甲",
+   "type2": null,
+   "source": "client"
+  },
+  "9060": {
+   "equipId": null,
+   "name": "皮城海克斯护甲 II",
+   "type2": null,
+   "source": "client"
+  },
+  "9061": {
+   "equipId": null,
+   "name": "完美皮城海克斯护甲",
+   "type2": null,
+   "source": "client"
+  },
+  "9062": {
+   "equipId": null,
+   "name": "毒素倾泻",
+   "type2": null,
+   "source": "client"
+  },
+  "9063": {
+   "equipId": null,
+   "name": "毒素倾泻 II",
+   "type2": null,
+   "source": "client"
+  },
+  "9064": {
+   "equipId": null,
+   "name": "完美毒素倾泻",
+   "type2": null,
+   "source": "client"
+  },
+  "9065": {
+   "equipId": null,
+   "name": "微光绽放",
+   "type2": null,
+   "source": "client"
+  },
+  "9066": {
+   "equipId": null,
+   "name": "微光绽放 II",
+   "type2": null,
+   "source": "client"
+  },
+  "9067": {
+   "equipId": null,
+   "name": "完美微光绽放",
+   "type2": null,
+   "source": "client"
+  },
+  "9068": {
+   "equipId": null,
+   "name": "电震军刀",
+   "type2": null,
+   "source": "client"
+  },
+  "9069": {
+   "equipId": null,
+   "name": "电震军刀 II",
+   "type2": null,
+   "source": "client"
+  },
+  "9070": {
+   "equipId": null,
+   "name": "完美电震军刀",
+   "type2": null,
+   "source": "client"
+  },
+  "9071": {
+   "equipId": null,
+   "name": "烈性病毒",
+   "type2": null,
+   "source": "client"
+  },
+  "9072": {
+   "equipId": null,
+   "name": "烈性病毒 II",
+   "type2": null,
+   "source": "client"
+  },
+  "9073": {
+   "equipId": null,
+   "name": "完美烈性病毒",
+   "type2": null,
+   "source": "client"
+  },
+  "9074": {
+   "equipId": null,
+   "name": "回收护手",
+   "type2": null,
+   "source": "client"
+  },
+  "9075": {
+   "equipId": null,
+   "name": "回收左轮枪",
+   "type2": null,
+   "source": "client"
+  },
+  "9076": {
+   "equipId": null,
+   "name": "回收装置",
+   "type2": null,
+   "source": "client"
+  },
+  "9077": {
+   "equipId": null,
+   "name": "便携异常点",
+   "type2": null,
+   "source": "client"
+  },
+  "9078": {
+   "equipId": null,
+   "name": "微缩弈子",
+   "type2": null,
+   "source": "client"
+  },
+  "9079": {
+   "equipId": null,
+   "name": "高维传家宝",
+   "type2": null,
+   "source": "client"
+  },
+  "9080": {
+   "equipId": null,
+   "name": "次级微光复制器",
+   "type2": null,
+   "source": "client"
+  },
+  "9081": {
+   "equipId": null,
+   "name": "微光复制器",
+   "type2": null,
+   "source": "client"
+  },
+  "9082": {
+   "equipId": null,
+   "name": "已没收！",
+   "type2": null,
+   "source": "client"
+  },
+  "9083": {
+   "equipId": null,
+   "name": "极地重槌",
+   "type2": null,
+   "source": "client"
+  },
+  "9084": {
+   "equipId": null,
+   "name": "御金师之杖",
+   "type2": null,
+   "source": "client"
+  },
+  "9085": {
+   "equipId": null,
+   "name": "德莱文之斧",
+   "type2": null,
+   "source": "client"
+  },
+  "9086": {
+   "equipId": null,
+   "name": "群英冠冕",
+   "type2": null,
+   "source": "client"
+  },
+  "9087": {
+   "equipId": null,
+   "name": "缩小模块",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9088": {
+   "equipId": null,
+   "name": "机器导弹集群",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9089": {
+   "equipId": null,
+   "name": "自动化修理",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9090": {
+   "equipId": null,
+   "name": "点金器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9091": {
+   "equipId": null,
+   "name": "钱钱钱！",
+   "type2": null,
+   "source": "client"
+  },
+  "9092": {
+   "equipId": null,
+   "name": "修修修！",
+   "type2": null,
+   "source": "client"
+  },
+  "9093": {
+   "equipId": null,
+   "name": "烧烧烧！",
+   "type2": null,
+   "source": "client"
+  },
+  "9094": {
+   "equipId": null,
+   "name": "极致的均衡",
+   "type2": null,
+   "source": "client"
+  },
+  "9095": {
+   "equipId": null,
+   "name": "微光注射器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9096": {
+   "equipId": null,
+   "name": "适应性植入",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9097": {
+   "equipId": null,
+   "name": "不稳定炼金罐",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9098": {
+   "equipId": null,
+   "name": "海克斯科技外骨骼",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9099": {
+   "equipId": null,
+   "name": "烈性生化器皿",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9100": {
+   "equipId": null,
+   "name": "机械手臂",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9101": {
+   "equipId": null,
+   "name": "美味点心",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9102": {
+   "equipId": null,
+   "name": "霸王指虎",
+   "type2": null,
+   "source": "client"
+  },
+  "9103": {
+   "equipId": null,
+   "name": "被诅咒的鬼索的狂暴之刃",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9104": {
+   "equipId": null,
+   "name": "被诅咒的海克斯科技枪刃",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9105": {
+   "equipId": null,
+   "name": "被诅咒的水银",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9106": {
+   "equipId": null,
+   "name": "斥力灯笼",
+   "type2": null,
+   "source": "client"
+  },
+  "9107": {
+   "equipId": null,
+   "name": "高能牙刃",
+   "type2": null,
+   "source": "client"
+  },
+  "9108": {
+   "equipId": null,
+   "name": "脉冲稳定器",
+   "type2": null,
+   "source": "client"
+  },
+  "9109": {
+   "equipId": null,
+   "name": "赛博线圈",
+   "type2": null,
+   "source": "client"
+  },
+  "9110": {
+   "equipId": null,
+   "name": "通量电容器",
+   "type2": null,
+   "source": "client"
+  },
+  "9111": {
+   "equipId": null,
+   "name": "全息弓",
+   "type2": null,
+   "source": "client"
+  },
+  "9112": {
+   "equipId": null,
+   "name": "腐化机架",
+   "type2": null,
+   "source": "client"
+  },
+  "9113": {
+   "equipId": null,
+   "name": "主理人之帽",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9114": {
+   "equipId": null,
+   "name": "主理人之帽",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9115": {
+   "equipId": null,
+   "name": "铬",
+   "type2": null,
+   "source": "client"
+  },
+  "9116": {
+   "equipId": null,
+   "name": "幻灵战队特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9117": {
+   "equipId": null,
+   "name": "战地机甲特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9120": {
+   "equipId": null,
+   "name": "圣灵使者特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9121": {
+   "equipId": null,
+   "name": "源计划特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9123": {
+   "equipId": null,
+   "name": "福牛守护者特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9127": {
+   "equipId": null,
+   "name": "街头恶魔特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9128": {
+   "equipId": null,
+   "name": "辛迪加特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9131": {
+   "equipId": null,
+   "name": "堡垒卫士特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9132": {
+   "equipId": null,
+   "name": "斗士特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9133": {
+   "equipId": null,
+   "name": "裁决使特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9134": {
+   "equipId": null,
+   "name": "人造人特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9135": {
+   "equipId": null,
+   "name": "强袭射手特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9137": {
+   "equipId": null,
+   "name": "迅捷射手特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9138": {
+   "equipId": null,
+   "name": "杀手特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9139": {
+   "equipId": null,
+   "name": "战略分析师特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9140": {
+   "equipId": null,
+   "name": "高级工程师特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9141": {
+   "equipId": null,
+   "name": "重装战士特质/职业改件",
+   "type2": null,
+   "source": "client"
+  },
+  "9142": {
+   "equipId": null,
+   "name": "喷漆罐",
+   "type2": null,
+   "source": "client"
+  },
+  "9143": {
+   "equipId": null,
+   "name": "消除器灯笼",
+   "type2": null,
+   "source": "client"
+  },
+  "9144": {
+   "equipId": null,
+   "name": "顶点尖牙",
+   "type2": null,
+   "source": "client"
+  },
+  "9145": {
+   "equipId": null,
+   "name": "脉冲消音器",
+   "type2": null,
+   "source": "client"
+  },
+  "9146": {
+   "equipId": null,
+   "name": "被劫持的赛博线圈",
+   "type2": null,
+   "source": "client"
+  },
+  "9147": {
+   "equipId": null,
+   "name": "满电量的通量电容器",
+   "type2": null,
+   "source": "client"
+  },
+  "9148": {
+   "equipId": null,
+   "name": "全息瞄准镜",
+   "type2": null,
+   "source": "client"
+  },
+  "9149": {
+   "equipId": null,
+   "name": "协调底盘",
+   "type2": null,
+   "source": "client"
+  },
+  "9150": {
+   "equipId": null,
+   "name": "金鳞·黄金收集者",
+   "type2": null,
+   "source": "client"
+  },
+  "9151": {
+   "equipId": null,
+   "name": "金鳞·御金师之杖",
+   "type2": null,
+   "source": "client"
+  },
+  "9152": {
+   "equipId": null,
+   "name": "金鳞·德莱文之斧",
+   "type2": null,
+   "source": "client"
+  },
+  "9153": {
+   "equipId": null,
+   "name": "金鳞·大亨之铠",
+   "type2": null,
+   "source": "client"
+  },
+  "9154": {
+   "equipId": null,
+   "name": "金鳞·坚定投资器",
+   "type2": null,
+   "source": "client"
+  },
+  "9155": {
+   "equipId": null,
+   "name": "金鳞·钻石之手",
+   "type2": null,
+   "source": "client"
+  },
+  "9156": {
+   "equipId": null,
+   "name": "金鳞·无用大宝石",
+   "type2": null,
+   "source": "client"
+  },
+  "9157": {
+   "equipId": null,
+   "name": "金鳞·投机者之刃",
+   "type2": null,
+   "source": "client"
+  },
+  "9158": {
+   "equipId": null,
+   "name": "金鳞·群英冠冕",
+   "type2": null,
+   "source": "client"
+  },
+  "9159": {
+   "equipId": null,
+   "name": "成长型投资",
+   "type2": null,
+   "source": "client"
+  },
+  "9160": {
+   "equipId": null,
+   "name": "赐福：体型",
+   "type2": null,
+   "source": "client"
+  },
+  "9161": {
+   "equipId": null,
+   "name": "赐福：速度",
+   "type2": null,
+   "source": "client"
+  },
+  "9162": {
+   "equipId": null,
+   "name": "至尊选择器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9163": {
+   "equipId": null,
+   "name": "花仙女王的冠冕",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9164": {
+   "equipId": null,
+   "name": "永恒虔诚之铠",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9165": {
+   "equipId": null,
+   "name": "强化果实",
+   "type2": null,
+   "source": "client"
+  },
+  "9166": {
+   "equipId": null,
+   "name": "强化果实移除器",
+   "type2": null,
+   "source": "client"
+  },
+  "9167": {
+   "equipId": null,
+   "name": "德玛西亚王冠",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9168": {
+   "equipId": null,
+   "name": "组合核心",
+   "type2": null,
+   "source": "client"
+  },
+  "9169": {
+   "equipId": null,
+   "name": "强力剑刃",
+   "type2": null,
+   "source": "client"
+  },
+  "9170": {
+   "equipId": null,
+   "name": "究极剑刃升级",
+   "type2": null,
+   "source": "client"
+  },
+  "9171": {
+   "equipId": null,
+   "name": "四周年冠冕",
+   "type2": null,
+   "source": "client"
+  },
+  "9172": {
+   "equipId": null,
+   "name": "水晶增援",
+   "type2": null,
+   "source": "client"
+  },
+  "9173": {
+   "equipId": null,
+   "name": "主唱选择器",
+   "type2": null,
+   "source": "client"
+  },
+  "9174": {
+   "equipId": null,
+   "name": "高阶重组器",
+   "type2": null,
+   "source": "client"
+  },
+  "9175": {
+   "equipId": null,
+   "name": "焰爪猫幼崽",
+   "type2": null,
+   "source": "client"
+  },
+  "9176": {
+   "equipId": null,
+   "name": "风行狐幼体",
+   "type2": null,
+   "source": "client"
+  },
+  "9177": {
+   "equipId": null,
+   "name": "踏苔蜥幼苗",
+   "type2": null,
+   "source": "client"
+  },
+  "9178": {
+   "equipId": null,
+   "name": "王冠",
+   "type2": null,
+   "source": "client"
+  },
+  "9179": {
+   "equipId": null,
+   "name": "勇气",
+   "type2": null,
+   "source": "client"
+  },
+  "9181": {
+   "equipId": null,
+   "name": "亡者的短剑",
+   "type2": null,
+   "source": "client"
+  },
+  "9182": {
+   "equipId": null,
+   "name": "大副的燧发枪",
+   "type2": null,
+   "source": "client"
+  },
+  "9183": {
+   "equipId": null,
+   "name": "酒吧指虎",
+   "type2": null,
+   "source": "client"
+  },
+  "9184": {
+   "equipId": null,
+   "name": "成堆柑橘",
+   "type2": null,
+   "source": "client"
+  },
+  "9185": {
+   "equipId": null,
+   "name": "幸运达布隆金币",
+   "type2": null,
+   "source": "client"
+  },
+  "9186": {
+   "equipId": null,
+   "name": "船长的酿造品",
+   "type2": null,
+   "source": "client"
+  },
+  "9187": {
+   "equipId": null,
+   "name": "黑市补货",
+   "type2": null,
+   "source": "client"
+  },
+  "9188": {
+   "equipId": null,
+   "name": "比尔吉沃特次级英雄复制器",
+   "type2": null,
+   "source": "client"
+  },
+  "9189": {
+   "equipId": null,
+   "name": "3%物理加成和法术加成",
+   "type2": null,
+   "source": "client"
+  },
+  "9190": {
+   "equipId": null,
+   "name": "5%物理加成和法术加成",
+   "type2": null,
+   "source": "client"
+  },
+  "9191": {
+   "equipId": null,
+   "name": "7%物理加成和法术加成",
+   "type2": null,
+   "source": "client"
+  },
+  "9192": {
+   "equipId": null,
+   "name": "4%攻击速度",
+   "type2": null,
+   "source": "client"
+  },
+  "9193": {
+   "equipId": null,
+   "name": "6%攻击速度",
+   "type2": null,
+   "source": "client"
+  },
+  "9194": {
+   "equipId": null,
+   "name": "8%攻击速度",
+   "type2": null,
+   "source": "client"
+  },
+  "9195": {
+   "equipId": null,
+   "name": "4%最大生命值",
+   "type2": null,
+   "source": "client"
+  },
+  "9196": {
+   "equipId": null,
+   "name": "6%最大生命值",
+   "type2": null,
+   "source": "client"
+  },
+  "9197": {
+   "equipId": null,
+   "name": "8%最大生命值",
+   "type2": null,
+   "source": "client"
+  },
+  "9198": {
+   "equipId": null,
+   "name": "15%物理加成和法术加成",
+   "type2": null,
+   "source": "client"
+  },
+  "9199": {
+   "equipId": null,
+   "name": "皇室外壳",
+   "type2": null,
+   "source": "client"
+  },
+  "9200": {
+   "equipId": null,
+   "name": "坚铁甲壳",
+   "type2": null,
+   "source": "client"
+  },
+  "9201": {
+   "equipId": null,
+   "name": "榨血核体",
+   "type2": null,
+   "source": "client"
+  },
+  "9202": {
+   "equipId": null,
+   "name": "喷吐棘刺",
+   "type2": null,
+   "source": "client"
+  },
+  "9203": {
+   "equipId": null,
+   "name": "肾上腺素模块",
+   "type2": null,
+   "source": "client"
+  },
+  "9204": {
+   "equipId": null,
+   "name": "掠食本能",
+   "type2": null,
+   "source": "client"
+  },
+  "9211": {
+   "equipId": null,
+   "name": "90口径绳网",
+   "type2": null,
+   "source": "client"
+  },
+  "9212": {
+   "equipId": null,
+   "name": "超频电容器",
+   "type2": null,
+   "source": "client"
+  },
+  "9213": {
+   "equipId": null,
+   "name": "调谐振荡器",
+   "type2": null,
+   "source": "client"
+  },
+  "9214": {
+   "equipId": null,
+   "name": "爆裂护盾",
+   "type2": null,
+   "source": "client"
+  },
+  "9215": {
+   "equipId": null,
+   "name": "电磁脉冲",
+   "type2": null,
+   "source": "client"
+  },
+  "9216": {
+   "equipId": null,
+   "name": "电流过载",
+   "type2": null,
+   "source": "client"
+  },
+  "9217": {
+   "equipId": null,
+   "name": "连续齿轮",
+   "type2": null,
+   "source": "client"
+  },
+  "9218": {
+   "equipId": null,
+   "name": "磁控线圈",
+   "type2": null,
+   "source": "client"
+  },
+  "9219": {
+   "equipId": null,
+   "name": "微型导弹",
+   "type2": null,
+   "source": "client"
+  },
+  "9220": {
+   "equipId": null,
+   "name": "动能屏障",
+   "type2": null,
+   "source": "client"
+  },
+  "9221": {
+   "equipId": null,
+   "name": "巨大化射线",
+   "type2": null,
+   "source": "client"
+  },
+  "9222": {
+   "equipId": null,
+   "name": "加速之门",
+   "type2": null,
+   "source": "client"
+  },
+  "9223": {
+   "equipId": null,
+   "name": "采矿钻机",
+   "type2": null,
+   "source": "client"
+  },
+  "9224": {
+   "equipId": null,
+   "name": "高级生命体",
+   "type2": null,
+   "source": "client"
+  },
+  "9225": {
+   "equipId": null,
+   "name": "回声引擎",
+   "type2": null,
+   "source": "client"
+  },
+  "9226": {
+   "equipId": null,
+   "name": "护甲消除器",
+   "type2": null,
+   "source": "client"
+  },
+  "9227": {
+   "equipId": null,
+   "name": "升级！",
+   "type2": null,
+   "source": "client"
+  },
+  "9230": {
+   "equipId": null,
+   "name": "残酷弯刀",
+   "type2": null,
+   "source": "client"
+  },
+  "9231": {
+   "equipId": null,
+   "name": "黑市炸药",
+   "type2": null,
+   "source": "client"
+  },
+  "9232": {
+   "equipId": null,
+   "name": "红包",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9233": {
+   "equipId": null,
+   "name": "红包",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9234": {
+   "equipId": null,
+   "name": "红包",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9235": {
+   "equipId": null,
+   "name": "混乱之证",
+   "type2": null,
+   "source": "client"
+  },
+  "9236": {
+   "equipId": null,
+   "name": "星界魔法",
+   "type2": null,
+   "source": "client"
+  },
+  "9237": {
+   "equipId": null,
+   "name": "强化星界魔法",
+   "type2": null,
+   "source": "client"
+  },
+  "9241": {
+   "equipId": null,
+   "name": "无人机上行链路",
+   "type2": null,
+   "source": "client"
+  },
+  "9242": {
+   "equipId": null,
+   "name": "恶意软件矩阵",
+   "type2": null,
+   "source": "client"
+  },
+  "9243": {
+   "equipId": null,
+   "name": "生物质维护器",
+   "type2": null,
+   "source": "client"
+  },
+  "9245": {
+   "equipId": null,
+   "name": "共感植入",
+   "type2": null,
+   "source": "client"
+  },
+  "9246": {
+   "equipId": null,
+   "name": "锁敌光学设备",
+   "type2": null,
+   "source": "client"
+  },
+  "9251": {
+   "equipId": null,
+   "name": "<color=#F4DE1A>无人机上行链路</color>",
+   "type2": null,
+   "source": "client"
+  },
+  "9252": {
+   "equipId": null,
+   "name": "<color=#F4DE1A>恶意软件矩阵</color>",
+   "type2": null,
+   "source": "client"
+  },
+  "9253": {
+   "equipId": null,
+   "name": "<color=#F4DE1A>生物质维护器</color>",
+   "type2": null,
+   "source": "client"
+  },
+  "9255": {
+   "equipId": null,
+   "name": "<color=#F4DE1A>共感植入</color>",
+   "type2": null,
+   "source": "client"
+  },
+  "9256": {
+   "equipId": null,
+   "name": "<color=#F4DE1A>锁敌光学设备</color>",
+   "type2": null,
+   "source": "client"
+  },
+  "9257": {
+   "equipId": null,
+   "name": "指令模块：分析",
+   "type2": null,
+   "source": "client"
+  },
+  "9259": {
+   "equipId": null,
+   "name": "指令模块：扰乱",
+   "type2": null,
+   "source": "client"
+  },
+  "9260": {
+   "equipId": null,
+   "name": "指令模块：双重打击",
+   "type2": null,
+   "source": "client"
+  },
+  "9261": {
+   "equipId": null,
+   "name": "指令模块：装配",
+   "type2": null,
+   "source": "client"
+  },
+  "9262": {
+   "equipId": null,
+   "name": "指令模块：加固",
+   "type2": null,
+   "source": "client"
+  },
+  "9264": {
+   "equipId": null,
+   "name": "指令模块：虚弱",
+   "type2": null,
+   "source": "client"
+  },
+  "9265": {
+   "equipId": null,
+   "name": "指令模块：优化",
+   "type2": null,
+   "source": "client"
+  },
+  "9268": {
+   "equipId": null,
+   "name": "指令模块：质变",
+   "type2": null,
+   "source": "client"
+  },
+  "9270": {
+   "equipId": null,
+   "name": "进攻框架",
+   "type2": null,
+   "source": "client"
+  },
+  "9271": {
+   "equipId": null,
+   "name": "重力助推器",
+   "type2": null,
+   "source": "client"
+  },
+  "9272": {
+   "equipId": null,
+   "name": "重力助推器+",
+   "type2": null,
+   "source": "client"
+  },
+  "9274": {
+   "equipId": null,
+   "name": "紧急护盾",
+   "type2": null,
+   "source": "client"
+  },
+  "9275": {
+   "equipId": null,
+   "name": "紧急护盾+",
+   "type2": null,
+   "source": "client"
+  },
+  "9277": {
+   "equipId": null,
+   "name": "重型镀层",
+   "type2": null,
+   "source": "client"
+  },
+  "9278": {
+   "equipId": null,
+   "name": "纯粹质量",
+   "type2": null,
+   "source": "client"
+  },
+  "9279": {
+   "equipId": null,
+   "name": "纳米机械",
+   "type2": null,
+   "source": "client"
+  },
+  "9281": {
+   "equipId": null,
+   "name": "反应护甲",
+   "type2": null,
+   "source": "client"
+  },
+  "9282": {
+   "equipId": null,
+   "name": "阻塞",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9283": {
+   "equipId": null,
+   "name": "冲击波",
+   "type2": null,
+   "source": "client"
+  },
+  "9284": {
+   "equipId": null,
+   "name": "铅弹",
+   "type2": null,
+   "source": "client"
+  },
+  "9285": {
+   "equipId": null,
+   "name": "铅弹+",
+   "type2": null,
+   "source": "client"
+  },
+  "9286": {
+   "equipId": null,
+   "name": "铅弹++",
+   "type2": null,
+   "source": "client"
+  },
+  "9288": {
+   "equipId": null,
+   "name": "镭射弹道",
+   "type2": null,
+   "source": "client"
+  },
+  "9289": {
+   "equipId": null,
+   "name": "榨血植入",
+   "type2": null,
+   "source": "client"
+  },
+  "9290": {
+   "equipId": null,
+   "name": "榨血植入+",
+   "type2": null,
+   "source": "client"
+  },
+  "9291": {
+   "equipId": null,
+   "name": "熔穿",
+   "type2": null,
+   "source": "client"
+  },
+  "9292": {
+   "equipId": null,
+   "name": "射手框架",
+   "type2": null,
+   "source": "client"
+  },
+  "9293": {
+   "equipId": null,
+   "name": "双发快射",
+   "type2": null,
+   "source": "client"
+  },
+  "9294": {
+   "equipId": null,
+   "name": "三连轰",
+   "type2": null,
+   "source": "client"
+  },
+  "9296": {
+   "equipId": null,
+   "name": "动力强化",
+   "type2": null,
+   "source": "client"
+  },
+  "9297": {
+   "equipId": null,
+   "name": "动力强化+",
+   "type2": null,
+   "source": "client"
+  },
+  "9298": {
+   "equipId": null,
+   "name": "破甲弹",
+   "type2": null,
+   "source": "client"
+  },
+  "9300": {
+   "equipId": null,
+   "name": "破甲弹+",
+   "type2": null,
+   "source": "client"
+  },
+  "9301": {
+   "equipId": null,
+   "name": "分裂弹",
+   "type2": null,
+   "source": "client"
+  },
+  "9302": {
+   "equipId": null,
+   "name": "分裂弹+",
+   "type2": null,
+   "source": "client"
+  },
+  "9303": {
+   "equipId": null,
+   "name": "精密准镜",
+   "type2": null,
+   "source": "client"
+  },
+  "9304": {
+   "equipId": null,
+   "name": "精密准镜+",
+   "type2": null,
+   "source": "client"
+  },
+  "9305": {
+   "equipId": null,
+   "name": "精密准镜++",
+   "type2": null,
+   "source": "client"
+  },
+  "9306": {
+   "equipId": null,
+   "name": "辅助瞄准",
+   "type2": null,
+   "source": "client"
+  },
+  "9308": {
+   "equipId": null,
+   "name": "动力框架",
+   "type2": null,
+   "source": "client"
+  },
+  "9309": {
+   "equipId": null,
+   "name": "觅心者",
+   "type2": null,
+   "source": "client"
+  },
+  "9310": {
+   "equipId": null,
+   "name": "觅心者+",
+   "type2": null,
+   "source": "client"
+  },
+  "9311": {
+   "equipId": null,
+   "name": "觅心者++",
+   "type2": null,
+   "source": "client"
+  },
+  "9313": {
+   "equipId": null,
+   "name": "坦克克星",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9314": {
+   "equipId": null,
+   "name": "穿甲弹",
+   "type2": null,
+   "source": "client"
+  },
+  "9315": {
+   "equipId": null,
+   "name": "穿甲弹+",
+   "type2": null,
+   "source": "client"
+  },
+  "9316": {
+   "equipId": null,
+   "name": "潜藏爆炸",
+   "type2": null,
+   "source": "client"
+  },
+  "9317": {
+   "equipId": null,
+   "name": "爆炸范围",
+   "type2": null,
+   "source": "client"
+  },
+  "9318": {
+   "equipId": null,
+   "name": "爆炸范围+",
+   "type2": null,
+   "source": "client"
+  },
+  "9319": {
+   "equipId": null,
+   "name": "爆炸范围++",
+   "type2": null,
+   "source": "client"
+  },
+  "9320": {
+   "equipId": null,
+   "name": "共鸣引爆",
+   "type2": null,
+   "source": "client"
+  },
+  "9321": {
+   "equipId": null,
+   "name": "冷却介质",
+   "type2": null,
+   "source": "client"
+  },
+  "9322": {
+   "equipId": null,
+   "name": "冷却介质+",
+   "type2": null,
+   "source": "client"
+  },
+  "9323": {
+   "equipId": null,
+   "name": "虚空系数",
+   "type2": null,
+   "source": "client"
+  },
+  "9324": {
+   "equipId": null,
+   "name": "裂变",
+   "type2": null,
+   "source": "client"
+  },
+  "9325": {
+   "equipId": null,
+   "name": "阻塞",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9326": {
+   "equipId": null,
+   "name": "裂变+",
+   "type2": null,
+   "source": "client"
+  },
+  "9327": {
+   "equipId": null,
+   "name": "裂变++",
+   "type2": null,
+   "source": "client"
+  },
+  "9328": {
+   "equipId": null,
+   "name": "调试",
+   "type2": null,
+   "source": "client"
+  },
+  "9329": {
+   "equipId": null,
+   "name": "霸天机甲变形器",
+   "type2": null,
+   "source": "client"
+  },
+  "9331": {
+   "equipId": null,
+   "name": "冰爆护甲",
+   "type2": null,
+   "source": "client"
+  },
+  "9332": {
+   "equipId": null,
+   "name": "炽烈短弓",
+   "type2": null,
+   "source": "client"
+  },
+  "9333": {
+   "equipId": null,
+   "name": "无情砍削",
+   "type2": null,
+   "source": "client"
+  },
+  "9335": {
+   "equipId": null,
+   "name": "UwU魔爆炮",
+   "type2": null,
+   "source": "client"
+  },
+  "9336": {
+   "equipId": null,
+   "name": "歼灭者",
+   "type2": null,
+   "source": "client"
+  },
+  "9337": {
+   "equipId": null,
+   "name": "战兔十字弩",
+   "type2": null,
+   "source": "client"
+  },
+  "9338": {
+   "equipId": null,
+   "name": "火箭狂潮",
+   "type2": null,
+   "source": "client"
+  },
+  "9339": {
+   "equipId": null,
+   "name": "旋风切割器",
+   "type2": null,
+   "source": "client"
+  },
+  "9340": {
+   "equipId": null,
+   "name": "耀光力场",
+   "type2": null,
+   "source": "client"
+  },
+  "9341": {
+   "equipId": null,
+   "name": "雌狮之怨",
+   "type2": null,
+   "source": "client"
+  },
+  "9342": {
+   "equipId": null,
+   "name": "附灵飞弹",
+   "type2": null,
+   "source": "client"
+  },
+  "9343": {
+   "equipId": null,
+   "name": "触手重击",
+   "type2": null,
+   "source": "client"
+  },
+  "9344": {
+   "equipId": null,
+   "name": "回响蝠刃",
+   "type2": null,
+   "source": "client"
+  },
+  "9345": {
+   "equipId": null,
+   "name": "深度冻结",
+   "type2": null,
+   "source": "client"
+  },
+  "9346": {
+   "equipId": null,
+   "name": "进化余烬射击",
+   "type2": null,
+   "source": "client"
+  },
+  "9347": {
+   "equipId": null,
+   "name": "OwO魔爆炮",
+   "type2": null,
+   "source": "client"
+  },
+  "9348": {
+   "equipId": null,
+   "name": "幻灵启示录",
+   "type2": null,
+   "source": "client"
+  },
+  "9349": {
+   "equipId": null,
+   "name": "战兔至尊弩炮",
+   "type2": null,
+   "source": "client"
+  },
+  "9350": {
+   "equipId": null,
+   "name": "不息气旋",
+   "type2": null,
+   "source": "client"
+  },
+  "9351": {
+   "equipId": null,
+   "name": "日蚀之刻",
+   "type2": null,
+   "source": "client"
+  },
+  "9352": {
+   "equipId": null,
+   "name": "薇恩的炫彩战刃",
+   "type2": null,
+   "source": "client"
+  },
+  "9353": {
+   "equipId": null,
+   "name": "全能武器",
+   "type2": null,
+   "source": "client"
+  },
+  "9354": {
+   "equipId": null,
+   "name": "闪光原型",
+   "type2": null,
+   "source": "client"
+  },
+  "9355": {
+   "equipId": null,
+   "name": "破损原型",
+   "type2": null,
+   "source": "client"
+  },
+  "9356": {
+   "equipId": null,
+   "name": "泄露原型",
+   "type2": null,
+   "source": "client"
+  },
+  "9357": {
+   "equipId": null,
+   "name": "烈阳格",
+   "type2": null,
+   "source": "client"
+  },
+  "9358": {
+   "equipId": null,
+   "name": "宇宙格",
+   "type2": null,
+   "source": "client"
+  },
+  "9359": {
+   "equipId": null,
+   "name": "增速格",
+   "type2": null,
+   "source": "client"
+  },
+  "9360": {
+   "equipId": null,
+   "name": "星光格",
+   "type2": null,
+   "source": "client"
+  },
+  "9361": {
+   "equipId": null,
+   "name": "风暴格",
+   "type2": null,
+   "source": "client"
+  },
+  "9362": {
+   "equipId": null,
+   "name": "冰晶格",
+   "type2": null,
+   "source": "client"
+  },
+  "9363": {
+   "equipId": null,
+   "name": "猛狮之殇",
+   "type2": null,
+   "source": "client"
+  },
+  "9364": {
+   "equipId": null,
+   "name": "微型复制器",
+   "type2": null,
+   "source": "client"
+  },
+  "9365": {
+   "equipId": null,
+   "name": "异常突变",
+   "type2": null,
+   "source": "client"
+  },
+  "9366": {
+   "equipId": null,
+   "name": "口袋重组器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9367": {
+   "equipId": null,
+   "name": "特攻队员选择器",
+   "type2": null,
+   "source": "client"
+  },
+  "9368": {
+   "equipId": null,
+   "name": "3个次级英雄复制器",
+   "type2": null,
+   "source": "client"
+  },
+  "9369": {
+   "equipId": null,
+   "name": "6个次级英雄复制器",
+   "type2": null,
+   "source": "client"
+  },
+  "9370": {
+   "equipId": null,
+   "name": "2个装备拆卸器",
+   "type2": null,
+   "source": "client"
+  },
+  "9380": {
+   "equipId": null,
+   "name": "赐福：财富",
+   "type2": null,
+   "source": "client"
+  },
+  "9381": {
+   "equipId": null,
+   "name": "赐福：兴盛",
+   "type2": null,
+   "source": "client"
+  },
+  "9382": {
+   "equipId": null,
+   "name": "赐福：兴盛+",
+   "type2": null,
+   "source": "client"
+  },
+  "9400": {
+   "equipId": null,
+   "name": "炼金变异球果",
+   "type2": null,
+   "source": "client"
+  },
+  "9410": {
+   "equipId": null,
+   "name": "德玛西亚秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9411": {
+   "equipId": null,
+   "name": "德玛西亚科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9412": {
+   "equipId": null,
+   "name": "约德尔人秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9413": {
+   "equipId": null,
+   "name": "约德尔人科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9414": {
+   "equipId": null,
+   "name": "比尔吉沃特秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9415": {
+   "equipId": null,
+   "name": "比尔吉沃特科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9416": {
+   "equipId": null,
+   "name": "弗雷尔卓德秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9417": {
+   "equipId": null,
+   "name": "弗雷尔卓德科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9418": {
+   "equipId": null,
+   "name": "艾欧尼亚秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9419": {
+   "equipId": null,
+   "name": "艾欧尼亚科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9420": {
+   "equipId": null,
+   "name": "以绪塔尔秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9421": {
+   "equipId": null,
+   "name": "以绪塔尔科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9422": {
+   "equipId": null,
+   "name": "诺克萨斯秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9423": {
+   "equipId": null,
+   "name": "诺克萨斯科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9424": {
+   "equipId": null,
+   "name": "皮尔特沃夫秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9425": {
+   "equipId": null,
+   "name": "皮尔特沃夫科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9426": {
+   "equipId": null,
+   "name": "暗影岛秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9427": {
+   "equipId": null,
+   "name": "暗影岛科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9428": {
+   "equipId": null,
+   "name": "巨神峰秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9429": {
+   "equipId": null,
+   "name": "巨神峰科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9430": {
+   "equipId": null,
+   "name": "虚空秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9431": {
+   "equipId": null,
+   "name": "虚空科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9432": {
+   "equipId": null,
+   "name": "祖安秩序钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9433": {
+   "equipId": null,
+   "name": "祖安科技钥匙",
+   "type2": null,
+   "source": "client"
+  },
+  "9434": {
+   "equipId": null,
+   "name": "成长战刃",
+   "type2": null,
+   "source": "client"
+  },
+  "9435": {
+   "equipId": null,
+   "name": "发明家之心",
+   "type2": null,
+   "source": "client"
+  },
+  "9436": {
+   "equipId": null,
+   "name": "生命值补剂",
+   "type2": null,
+   "source": "client"
+  },
+  "9437": {
+   "equipId": null,
+   "name": "护甲和魔抗补剂",
+   "type2": null,
+   "source": "client"
+  },
+  "9438": {
+   "equipId": null,
+   "name": "法术加成补剂",
+   "type2": null,
+   "source": "client"
+  },
+  "9439": {
+   "equipId": null,
+   "name": "法力回复补剂",
+   "type2": null,
+   "source": "client"
+  },
+  "9450": {
+   "equipId": null,
+   "name": "物理加成补剂",
+   "type2": null,
+   "source": "client"
+  },
+  "9451": {
+   "equipId": null,
+   "name": "攻击速度补剂",
+   "type2": null,
+   "source": "client"
+  },
+  "9452": {
+   "equipId": null,
+   "name": "灵龟赐福",
+   "type2": null,
+   "source": "client"
+  },
+  "9453": {
+   "equipId": null,
+   "name": "蛮熊赐福",
+   "type2": null,
+   "source": "client"
+  },
+  "9454": {
+   "equipId": null,
+   "name": "猛虎赐福",
+   "type2": null,
+   "source": "client"
+  },
+  "9455": {
+   "equipId": null,
+   "name": "凤凰赐福",
+   "type2": null,
+   "source": "client"
+  },
+  "9470": {
+   "equipId": null,
+   "name": "随机基础装备",
+   "type2": null,
+   "source": "client"
+  },
+  "9471": {
+   "equipId": null,
+   "name": "随机成装",
+   "type2": null,
+   "source": "client"
+  },
+  "9472": {
+   "equipId": null,
+   "name": "随机纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "9473": {
+   "equipId": null,
+   "name": "口袋重组器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9474": {
+   "equipId": null,
+   "name": "天祈卷轴",
+   "type2": null,
+   "source": "client"
+  },
+  "9475": {
+   "equipId": null,
+   "name": "野兽卷轴",
+   "type2": null,
+   "source": "client"
+  },
+  "9781": {
+   "equipId": null,
+   "name": "备用零件",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9791": {
+   "equipId": null,
+   "name": "画龙点睛！",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9801": {
+   "equipId": null,
+   "name": "微型维修机器人",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9811": {
+   "equipId": null,
+   "name": "禁魔杵",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9821": {
+   "equipId": null,
+   "name": "坦克克星",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9831": {
+   "equipId": null,
+   "name": "喷火器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9841": {
+   "equipId": null,
+   "name": "自毁按钮",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9851": {
+   "equipId": null,
+   "name": "机械重组！",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9866": {
+   "equipId": null,
+   "name": "50生命值",
+   "type2": null,
+   "source": "client"
+  },
+  "9867": {
+   "equipId": null,
+   "name": "6个幸运装备宝箱",
+   "type2": null,
+   "source": "client"
+  },
+  "9868": {
+   "equipId": null,
+   "name": "光明装备假人",
+   "type2": null,
+   "source": "client"
+  },
+  "9869": {
+   "equipId": null,
+   "name": "3个光明版幸运装备宝箱",
+   "type2": null,
+   "source": "client"
+  },
+  "9870": {
+   "equipId": null,
+   "name": "3个成装锻造器",
+   "type2": null,
+   "source": "client"
+  },
+  "9871": {
+   "equipId": null,
+   "name": "7个心之钢纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "9872": {
+   "equipId": null,
+   "name": "心之钢特质/职业数+3",
+   "type2": null,
+   "source": "client"
+  },
+  "9873": {
+   "equipId": null,
+   "name": "乡村音乐特质/职业数+3",
+   "type2": null,
+   "source": "client"
+  },
+  "9874": {
+   "equipId": null,
+   "name": "真实伤害特质/职业数+2",
+   "type2": null,
+   "source": "client"
+  },
+  "9875": {
+   "equipId": null,
+   "name": "K/DA特质/职业数+3",
+   "type2": null,
+   "source": "client"
+  },
+  "9876": {
+   "equipId": null,
+   "name": "6个乡村音乐纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "9877": {
+   "equipId": null,
+   "name": "7个真实伤害纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "9878": {
+   "equipId": null,
+   "name": "7个K/DA纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "9879": {
+   "equipId": null,
+   "name": "乡村乐英雄",
+   "type2": null,
+   "source": "client"
+  },
+  "9880": {
+   "equipId": null,
+   "name": "66个次级英雄复制器",
+   "type2": null,
+   "source": "client"
+  },
+  "9881": {
+   "equipId": null,
+   "name": "26个次级英雄复制器",
+   "type2": null,
+   "source": "client"
+  },
+  "9882": {
+   "equipId": null,
+   "name": "2星扎克，阿萝拉，厄加特，以及莎弥拉",
+   "type2": null,
+   "source": "client"
+  },
+  "9883": {
+   "equipId": null,
+   "name": "法衣假人",
+   "type2": null,
+   "source": "client"
+  },
+  "9884": {
+   "equipId": null,
+   "name": "带着2个【圣盾】的魔像",
+   "type2": null,
+   "source": "client"
+  },
+  "9885": {
+   "equipId": null,
+   "name": "召唤蜂拥",
+   "type2": null,
+   "source": "client"
+  },
+  "9886": {
+   "equipId": null,
+   "name": "带着2个【基克的先驱】的假人",
+   "type2": null,
+   "source": "client"
+  },
+  "9887": {
+   "equipId": null,
+   "name": "带着2个【钢铁烈阳之匣】的假人",
+   "type2": null,
+   "source": "client"
+  },
+  "9888": {
+   "equipId": null,
+   "name": "棱彩道标",
+   "type2": null,
+   "source": "client"
+  },
+  "9889": {
+   "equipId": null,
+   "name": "众细胞之父",
+   "type2": null,
+   "source": "client"
+  },
+  "9890": {
+   "equipId": null,
+   "name": "+1至所有特质/职业",
+   "type2": null,
+   "source": "client"
+  },
+  "9891": {
+   "equipId": null,
+   "name": "光明武器",
+   "type2": null,
+   "source": "client"
+  },
+  "9892": {
+   "equipId": null,
+   "name": "神器",
+   "type2": null,
+   "source": "client"
+  },
+  "9893": {
+   "equipId": null,
+   "name": "所有双基础装备",
+   "type2": null,
+   "source": "client"
+  },
+  "9894": {
+   "equipId": null,
+   "name": "9件基础装备",
+   "type2": null,
+   "source": "client"
+  },
+  "9895": {
+   "equipId": null,
+   "name": "1费弈子",
+   "type2": null,
+   "source": "client"
+  },
+  "9896": {
+   "equipId": null,
+   "name": "2费弈子",
+   "type2": null,
+   "source": "client"
+  },
+  "9897": {
+   "equipId": null,
+   "name": "3费弈子",
+   "type2": null,
+   "source": "client"
+  },
+  "9898": {
+   "equipId": null,
+   "name": "4费弈子",
+   "type2": null,
+   "source": "client"
+  },
+  "9899": {
+   "equipId": null,
+   "name": "5费弈子",
+   "type2": null,
+   "source": "client"
+  },
+  "9901": {
+   "equipId": null,
+   "name": "备用零件",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9921": {
+   "equipId": null,
+   "name": "画龙点睛！",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9931": {
+   "equipId": null,
+   "name": "微型维修机器人",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9941": {
+   "equipId": null,
+   "name": "禁魔杵",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9951": {
+   "equipId": null,
+   "name": "坦克克星",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9961": {
+   "equipId": null,
+   "name": "喷火器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9971": {
+   "equipId": null,
+   "name": "自毁按钮",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9981": {
+   "equipId": null,
+   "name": "机械重组！",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9982": {
+   "equipId": null,
+   "name": "一个轻食点心",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9983": {
+   "equipId": null,
+   "name": "一个轻食点心",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9984": {
+   "equipId": null,
+   "name": "一个轻食点心",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9985": {
+   "equipId": null,
+   "name": "一个轻食点心",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "9986": {
+   "equipId": null,
+   "name": "口袋重组器",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "10001": {
+   "equipId": null,
+   "name": "魄罗传送器",
+   "type2": null,
+   "source": "client"
+  },
+  "10002": {
+   "equipId": null,
+   "name": "次级魄罗传送器",
+   "type2": null,
+   "source": "client"
+  },
+  "10003": {
+   "equipId": null,
+   "name": "微型魄罗传送器",
+   "type2": null,
+   "source": "client"
+  },
+  "10004": {
+   "equipId": null,
+   "name": "飞升英雄特质/职业拆卸器",
+   "type2": null,
+   "source": "client"
+  },
+  "10005": {
+   "equipId": null,
+   "name": "飞升英雄特质/职业选择器",
+   "type2": null,
+   "source": "client"
+  },
+  "10010": {
+   "equipId": null,
+   "name": "魄罗装备传送器",
+   "type2": null,
+   "source": "client"
+  },
+  "21110": {
+   "equipId": null,
+   "name": "鬼索的狂暴之刃",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "21111": {
+   "equipId": null,
+   "name": "斯塔缇克电刃",
+   "type2": "aoen",
+   "source": "client",
+   "alias": true
+  },
+  "21112": {
+   "equipId": null,
+   "name": "泰坦的坚决",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "21113": {
+   "equipId": null,
+   "name": "卢安娜的飓风",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "21122": {
+   "equipId": null,
+   "name": "蓝霸符",
+   "type2": "common",
+   "source": "client",
+   "alias": true
+  },
+  "21125": {
+   "equipId": null,
+   "name": "救赎",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "21166": {
+   "equipId": null,
+   "name": "光明版鬼索的狂暴之刃",
+   "type2": "guangming",
+   "source": "client",
+   "alias": true
+  },
+  "21167": {
+   "equipId": null,
+   "name": "光明版斯塔缇克电刃",
+   "type2": null,
+   "source": "client"
+  },
+  "21168": {
+   "equipId": null,
+   "name": "光明版泰坦的坚决",
+   "type2": "guangming",
+   "source": "client",
+   "alias": true
+  },
+  "21169": {
+   "equipId": null,
+   "name": "光明版卢安娜的飓风",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "21176": {
+   "equipId": null,
+   "name": "光明版蓝霸符",
+   "type2": "guangming",
+   "source": "client",
+   "alias": true
+  },
+  "21179": {
+   "equipId": null,
+   "name": "光明版救赎",
+   "type2": null,
+   "source": "client"
+  },
+  "40001": {
+   "equipId": null,
+   "name": "FPX纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "40002": {
+   "equipId": null,
+   "name": "IG纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "40003": {
+   "equipId": null,
+   "name": "EDG纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "40004": {
+   "equipId": null,
+   "name": "T1纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "40007": {
+   "equipId": null,
+   "name": "上单纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "40008": {
+   "equipId": null,
+   "name": "打野纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "40009": {
+   "equipId": null,
+   "name": "中路纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "40010": {
+   "equipId": null,
+   "name": "下路纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41102": {
+   "equipId": null,
+   "name": "天将纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41103": {
+   "equipId": null,
+   "name": "青花瓷纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41104": {
+   "equipId": null,
+   "name": "永恒之森纹章",
+   "type2": "zhuanzhi",
+   "source": "client",
+   "alias": true
+  },
+  "41106": {
+   "equipId": null,
+   "name": "山海绘卷纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41107": {
+   "equipId": null,
+   "name": "幽魂纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41108": {
+   "equipId": null,
+   "name": "天龙之子纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41109": {
+   "equipId": null,
+   "name": "剪纸仙灵纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41110": {
+   "equipId": null,
+   "name": "墨之影纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41111": {
+   "equipId": null,
+   "name": "夜幽纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41112": {
+   "equipId": null,
+   "name": "吉星纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41113": {
+   "equipId": null,
+   "name": "武仙子纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41114": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41115": {
+   "equipId": null,
+   "name": "擎天卫纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41117": {
+   "equipId": null,
+   "name": "狙神纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41118": {
+   "equipId": null,
+   "name": "决斗大师纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41120": {
+   "equipId": null,
+   "name": "圣贤纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41121": {
+   "equipId": null,
+   "name": "斗士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41122": {
+   "equipId": null,
+   "name": "护卫纹章",
+   "type2": "zhuanzhi2",
+   "source": "client",
+   "alias": true
+  },
+  "41125": {
+   "equipId": null,
+   "name": "死神纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41126": {
+   "equipId": null,
+   "name": "神谕者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41130": {
+   "equipId": null,
+   "name": "初始布局1",
+   "type2": null,
+   "source": "client"
+  },
+  "41131": {
+   "equipId": null,
+   "name": "初始布局2",
+   "type2": null,
+   "source": "client"
+  },
+  "41132": {
+   "equipId": null,
+   "name": "初始布局3",
+   "type2": null,
+   "source": "client"
+  },
+  "41133": {
+   "equipId": null,
+   "name": "初始布局4",
+   "type2": null,
+   "source": "client"
+  },
+  "41134": {
+   "equipId": null,
+   "name": "初始布局5",
+   "type2": null,
+   "source": "client"
+  },
+  "41135": {
+   "equipId": null,
+   "name": "初始布局6",
+   "type2": null,
+   "source": "client"
+  },
+  "41136": {
+   "equipId": null,
+   "name": "初始布局7",
+   "type2": null,
+   "source": "client"
+  },
+  "41137": {
+   "equipId": null,
+   "name": "初始布局8",
+   "type2": null,
+   "source": "client"
+  },
+  "41138": {
+   "equipId": null,
+   "name": "初始布局9",
+   "type2": null,
+   "source": "client"
+  },
+  "41139": {
+   "equipId": null,
+   "name": "幸存格",
+   "type2": null,
+   "source": "client"
+  },
+  "41140": {
+   "equipId": null,
+   "name": "嘲讽格",
+   "type2": null,
+   "source": "client"
+  },
+  "41141": {
+   "equipId": null,
+   "name": "灵体格",
+   "type2": null,
+   "source": "client"
+  },
+  "41142": {
+   "equipId": null,
+   "name": "灼烧格",
+   "type2": null,
+   "source": "client"
+  },
+  "41143": {
+   "equipId": null,
+   "name": "投掷格",
+   "type2": null,
+   "source": "client"
+  },
+  "41144": {
+   "equipId": null,
+   "name": "战线格",
+   "type2": null,
+   "source": "client"
+  },
+  "41145": {
+   "equipId": null,
+   "name": "飞爪格",
+   "type2": null,
+   "source": "client"
+  },
+  "41146": {
+   "equipId": null,
+   "name": "金鳞格",
+   "type2": null,
+   "source": "client"
+  },
+  "41147": {
+   "equipId": null,
+   "name": "虚空格",
+   "type2": null,
+   "source": "client"
+  },
+  "41148": {
+   "equipId": null,
+   "name": "嘀嘀格",
+   "type2": null,
+   "source": "client"
+  },
+  "41149": {
+   "equipId": null,
+   "name": "战争财宝格",
+   "type2": null,
+   "source": "client"
+  },
+  "41150": {
+   "equipId": null,
+   "name": "地雷格",
+   "type2": null,
+   "source": "client"
+  },
+  "41151": {
+   "equipId": null,
+   "name": "眩晕格",
+   "type2": null,
+   "source": "client"
+  },
+  "41152": {
+   "equipId": null,
+   "name": "射线格",
+   "type2": null,
+   "source": "client"
+  },
+  "41153": {
+   "equipId": null,
+   "name": "镜像传送格",
+   "type2": null,
+   "source": "client"
+  },
+  "41154": {
+   "equipId": null,
+   "name": "巨像格",
+   "type2": null,
+   "source": "client"
+  },
+  "41155": {
+   "equipId": null,
+   "name": "鼓舞格",
+   "type2": null,
+   "source": "client"
+  },
+  "41156": {
+   "equipId": null,
+   "name": "日炎格",
+   "type2": null,
+   "source": "client"
+  },
+  "41157": {
+   "equipId": null,
+   "name": "神盾格",
+   "type2": null,
+   "source": "client"
+  },
+  "41158": {
+   "equipId": null,
+   "name": "淬炼格",
+   "type2": null,
+   "source": "client"
+  },
+  "41159": {
+   "equipId": null,
+   "name": "铁匠格",
+   "type2": null,
+   "source": "client"
+  },
+  "41160": {
+   "equipId": null,
+   "name": "浪人格",
+   "type2": null,
+   "source": "client"
+  },
+  "41161": {
+   "equipId": null,
+   "name": "百炼成金格",
+   "type2": null,
+   "source": "client"
+  },
+  "41162": {
+   "equipId": null,
+   "name": "百战格",
+   "type2": null,
+   "source": "client"
+  },
+  "41163": {
+   "equipId": null,
+   "name": "突进格",
+   "type2": null,
+   "source": "client"
+  },
+  "41164": {
+   "equipId": null,
+   "name": "赏金格",
+   "type2": null,
+   "source": "client"
+  },
+  "41165": {
+   "equipId": null,
+   "name": "燃魂格",
+   "type2": null,
+   "source": "client"
+  },
+  "41166": {
+   "equipId": null,
+   "name": "灵风格",
+   "type2": null,
+   "source": "client"
+  },
+  "41167": {
+   "equipId": null,
+   "name": "飓风格",
+   "type2": null,
+   "source": "client"
+  },
+  "41180": {
+   "equipId": null,
+   "name": "大亨格",
+   "type2": null,
+   "source": "client"
+  },
+  "41181": {
+   "equipId": null,
+   "name": "火力格",
+   "type2": null,
+   "source": "client"
+  },
+  "41182": {
+   "equipId": null,
+   "name": "法力格",
+   "type2": null,
+   "source": "client"
+  },
+  "41184": {
+   "equipId": null,
+   "name": "神谕格",
+   "type2": null,
+   "source": "client"
+  },
+  "41185": {
+   "equipId": null,
+   "name": "挽弓格",
+   "type2": null,
+   "source": "client"
+  },
+  "41186": {
+   "equipId": null,
+   "name": "生长格",
+   "type2": null,
+   "source": "client"
+  },
+  "41201": {
+   "equipId": null,
+   "name": "冰霜纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41203": {
+   "equipId": null,
+   "name": "小蜜蜂纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41205": {
+   "equipId": null,
+   "name": "时间学派纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41206": {
+   "equipId": null,
+   "name": "魔神使者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41207": {
+   "equipId": null,
+   "name": "诅咒女巫纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41208": {
+   "equipId": null,
+   "name": "命运之子纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41209": {
+   "equipId": null,
+   "name": "炎魔纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41210": {
+   "equipId": null,
+   "name": "次元术士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41211": {
+   "equipId": null,
+   "name": "咖啡甜心纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41213": {
+   "equipId": null,
+   "name": "复苏者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41214": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41216": {
+   "equipId": null,
+   "name": "重装战士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41217": {
+   "equipId": null,
+   "name": "强袭枪手纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41218": {
+   "equipId": null,
+   "name": "猎手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41219": {
+   "equipId": null,
+   "name": "堡垒卫士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41220": {
+   "equipId": null,
+   "name": "术师纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41221": {
+   "equipId": null,
+   "name": "狂暴战士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41222": {
+   "equipId": null,
+   "name": "魔战士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41223": {
+   "equipId": null,
+   "name": "换形师纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41224": {
+   "equipId": null,
+   "name": "学者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41301": {
+   "equipId": null,
+   "name": "黑色玫瑰纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41302": {
+   "equipId": null,
+   "name": "蓝发小队纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41303": {
+   "equipId": null,
+   "name": "铁血征服者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41304": {
+   "equipId": null,
+   "name": "野火帮纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41305": {
+   "equipId": null,
+   "name": "家人纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41306": {
+   "equipId": null,
+   "name": "试验品纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41307": {
+   "equipId": null,
+   "name": "执法官纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41308": {
+   "equipId": null,
+   "name": "海克斯机械纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41309": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41310": {
+   "equipId": null,
+   "name": "狙神纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41311": {
+   "equipId": null,
+   "name": "炮手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41312": {
+   "equipId": null,
+   "name": "伏击专家纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41313": {
+   "equipId": null,
+   "name": "先知纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41314": {
+   "equipId": null,
+   "name": "格斗家纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41315": {
+   "equipId": null,
+   "name": "哨兵纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41316": {
+   "equipId": null,
+   "name": "搏击手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41317": {
+   "equipId": null,
+   "name": "监察纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41318": {
+   "equipId": null,
+   "name": "极客纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41319": {
+   "equipId": null,
+   "name": "迅击战士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41320": {
+   "equipId": null,
+   "name": "皮城学院纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41323": {
+   "equipId": null,
+   "name": "统领纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41401": {
+   "equipId": null,
+   "name": "幻灵战队纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41402": {
+   "equipId": null,
+   "name": "战地机甲纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41404": {
+   "equipId": null,
+   "name": "执事纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41405": {
+   "equipId": null,
+   "name": "圣灵使者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41406": {
+   "equipId": null,
+   "name": "源计划纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41408": {
+   "equipId": null,
+   "name": "福牛守护者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41412": {
+   "equipId": null,
+   "name": "街头恶魔纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41413": {
+   "equipId": null,
+   "name": "辛迪加纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41416": {
+   "equipId": null,
+   "name": "堡垒卫士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41417": {
+   "equipId": null,
+   "name": "斗士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41418": {
+   "equipId": null,
+   "name": "裁决使纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41419": {
+   "equipId": null,
+   "name": "人造人纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41420": {
+   "equipId": null,
+   "name": "强袭射手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41422": {
+   "equipId": null,
+   "name": "迅捷射手纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41423": {
+   "equipId": null,
+   "name": "杀手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41424": {
+   "equipId": null,
+   "name": "战略分析师纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41425": {
+   "equipId": null,
+   "name": "高级工程师纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41426": {
+   "equipId": null,
+   "name": "重装战士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41501": {
+   "equipId": null,
+   "name": "假面摔角手纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41502": {
+   "equipId": null,
+   "name": "战斗学院纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41510": {
+   "equipId": null,
+   "name": "水晶玫瑰纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41511": {
+   "equipId": null,
+   "name": "至高天纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41512": {
+   "equipId": null,
+   "name": "斗魂战士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41513": {
+   "equipId": null,
+   "name": "星之守护者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41514": {
+   "equipId": null,
+   "name": "兵王纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41516": {
+   "equipId": null,
+   "name": "护卫纹章",
+   "type2": "zhuanzhi2",
+   "source": "client",
+   "alias": true
+  },
+  "41517": {
+   "equipId": null,
+   "name": "裁决使者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41518": {
+   "equipId": null,
+   "name": "刀锋领主纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41519": {
+   "equipId": null,
+   "name": "主宰纹章",
+   "type2": "zhuanzhi2",
+   "source": "client",
+   "alias": true
+  },
+  "41520": {
+   "equipId": null,
+   "name": "重量级斗士纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41521": {
+   "equipId": null,
+   "name": "决斗大师纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41522": {
+   "equipId": null,
+   "name": "天才纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41523": {
+   "equipId": null,
+   "name": "圣盾使纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41524": {
+   "equipId": null,
+   "name": "司令纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41525": {
+   "equipId": null,
+   "name": "狙神纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41526": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41601": {
+   "equipId": null,
+   "name": "比尔吉沃特纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41602": {
+   "equipId": null,
+   "name": "德玛西亚纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41603": {
+   "equipId": null,
+   "name": "弗雷尔卓德纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41604": {
+   "equipId": null,
+   "name": "艾欧尼亚纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41605": {
+   "equipId": null,
+   "name": "以绪塔尔纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41606": {
+   "equipId": null,
+   "name": "诺克萨斯纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41607": {
+   "equipId": null,
+   "name": "皮尔特沃夫纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41611": {
+   "equipId": null,
+   "name": "虚空纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41612": {
+   "equipId": null,
+   "name": "约德尔人纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41613": {
+   "equipId": null,
+   "name": "祖安纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41614": {
+   "equipId": null,
+   "name": "斗士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41615": {
+   "equipId": null,
+   "name": "耀光使纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41616": {
+   "equipId": null,
+   "name": "护卫纹章",
+   "type2": "zhuanzhi2",
+   "source": "client",
+   "alias": true
+  },
+  "41617": {
+   "equipId": null,
+   "name": "枪手纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41618": {
+   "equipId": null,
+   "name": "神谕者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41619": {
+   "equipId": null,
+   "name": "主宰纹章",
+   "type2": "zhuanzhi2",
+   "source": "client",
+   "alias": true
+  },
+  "41620": {
+   "equipId": null,
+   "name": "狙神纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41621": {
+   "equipId": null,
+   "name": "迅击战士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41622": {
+   "equipId": null,
+   "name": "裁决战士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41623": {
+   "equipId": null,
+   "name": "法师纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41624": {
+   "equipId": null,
+   "name": "征服者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41625": {
+   "equipId": null,
+   "name": "神盾使纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41701": {
+   "equipId": null,
+   "name": "幻灵战队纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41702": {
+   "equipId": null,
+   "name": "法官纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41703": {
+   "equipId": null,
+   "name": "木灵族纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41704": {
+   "equipId": null,
+   "name": "暗星纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41706": {
+   "equipId": null,
+   "name": "新星特攻队纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41707": {
+   "equipId": null,
+   "name": "海魔人纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41708": {
+   "equipId": null,
+   "name": "灵能特工纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41709": {
+   "equipId": null,
+   "name": "太空律动纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41710": {
+   "equipId": null,
+   "name": "观星者纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41711": {
+   "equipId": null,
+   "name": "未来战士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41712": {
+   "equipId": null,
+   "name": "堡垒卫士纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41713": {
+   "equipId": null,
+   "name": "斗士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41714": {
+   "equipId": null,
+   "name": "挑战者纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41716": {
+   "equipId": null,
+   "name": "游侠纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41717": {
+   "equipId": null,
+   "name": "狙神纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "41718": {
+   "equipId": null,
+   "name": "牧羊人纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41719": {
+   "equipId": null,
+   "name": "重装战士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41720": {
+   "equipId": null,
+   "name": "旅人纹章",
+   "type2": null,
+   "source": "client"
+  },
+  "41801": {
+   "equipId": null,
+   "name": "永恒之森纹章",
+   "type2": "zhuanzhi",
+   "source": "client",
+   "alias": true
+  },
+  "41804": {
+   "equipId": null,
+   "name": "花仙子纹章",
+   "type2": "zhuanzhi",
+   "source": "client",
+   "alias": true
+  },
+  "41811": {
+   "equipId": null,
+   "name": "斗士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41813": {
+   "equipId": null,
+   "name": "重装战士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41814": {
+   "equipId": null,
+   "name": "主宰纹章",
+   "type2": "zhuanzhi2",
+   "source": "client",
+   "alias": true
+  },
+  "41817": {
+   "equipId": null,
+   "name": "狂战士纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41818": {
+   "equipId": null,
+   "name": "裁决使纹章",
+   "type2": "zhuanzhiJgg",
+   "source": "client",
+   "alias": true
+  },
+  "41821": {
+   "equipId": null,
+   "name": "绝命花妖纹章",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "96001": {
+   "equipId": null,
+   "name": "海克斯闪现背包",
+   "type2": null,
+   "source": "client"
+  },
+  "96002": {
+   "equipId": null,
+   "name": "海克斯能量权杖",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "96003": {
+   "equipId": null,
+   "name": "海克斯无人机终端",
+   "type2": null,
+   "source": "client"
+  },
+  "96004": {
+   "equipId": null,
+   "name": "海克斯扭曲力场",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "96005": {
+   "equipId": null,
+   "name": "海克斯护盾头盔",
+   "type2": null,
+   "source": "client"
+  },
+  "96006": {
+   "equipId": null,
+   "name": "海克斯试作型激光枪",
+   "type2": null,
+   "source": "client"
+  },
+  "96007": {
+   "equipId": null,
+   "name": "海克斯汲能指环",
+   "type2": null,
+   "source": "client"
+  },
+  "96008": {
+   "equipId": null,
+   "name": "聚魂之心",
+   "type2": null,
+   "source": "client"
+  },
+  "96009": {
+   "equipId": null,
+   "name": "锯齿利刃",
+   "type2": null,
+   "source": "client"
+  },
+  "96010": {
+   "equipId": null,
+   "name": "威压之剑",
+   "type2": null,
+   "source": "client"
+  },
+  "96011": {
+   "equipId": null,
+   "name": "自适应植入",
+   "type2": null,
+   "source": "client"
+  },
+  "96012": {
+   "equipId": null,
+   "name": "微光试剂",
+   "type2": null,
+   "source": "client"
+  },
+  "96013": {
+   "equipId": null,
+   "name": "海克斯科技外骨骼",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "96014": {
+   "equipId": null,
+   "name": "烈性生化器皿",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "96016": {
+   "equipId": null,
+   "name": "伏击之爪",
+   "type2": null,
+   "source": "client"
+  },
+  "96017": {
+   "equipId": null,
+   "name": "冰霜之心",
+   "type2": null,
+   "source": "client"
+  },
+  "96018": {
+   "equipId": null,
+   "name": "守护天使",
+   "type2": null,
+   "source": "client"
+  },
+  "96019": {
+   "equipId": null,
+   "name": "荆棘之甲",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "96020": {
+   "equipId": null,
+   "name": "巨型九头蛇",
+   "type2": "aoen",
+   "source": "client",
+   "alias": true
+  },
+  "96021": {
+   "equipId": null,
+   "name": "神圣之刃",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "96023": {
+   "equipId": null,
+   "name": "海克斯能量权杖",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "96024": {
+   "equipId": null,
+   "name": "海克斯能量权杖",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "99001": {
+   "equipId": null,
+   "name": "海克斯扭曲力场",
+   "type2": null,
+   "source": "client",
+   "alias": true
+  },
+  "99002": {
+   "equipId": null,
+   "name": "主角选择器",
+   "type2": null,
+   "source": "client"
+  },
+  "99003": {
+   "equipId": null,
+   "name": "神器重铸器",
+   "type2": null,
+   "source": "client"
+  },
+  "99004": {
+   "equipId": null,
+   "name": "不稳定的飞升装置",
+   "type2": null,
+   "source": "client"
+  }
+ }
+}
