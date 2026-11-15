@@ -358,8 +358,17 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
                         _txt = "等级"
                     else:
                         _txt = "?"
+                    # 用户 m01824: 星级字牌原来按默认 "y1-17" 起画, 20px 字 + 黑底牌
+                    # 会整个压在徽记框上, 把星星图标盖死 -> 量出字高, 整块抬到徽记框上方,
+                    # 留 7px 缝: 宁可离远一点, 也不能糊住"星级判据的物理锚点"。
+                    try:
+                        _th = pen.textbbox((0, 0), _txt, font=font_star,
+                                           stroke_width=2)[3]
+                    except Exception:  # noqa: BLE001
+                        _th = 22
+                    _ly = max(2, bb[1] - _th - 13)
                     n_badge += _stroke(bb, _C_STAR, _txt, width=2, text_color=_C_STAR_TXT,
-                                       font=font_star, plate=True)
+                                       font=font_star, plate=True, label_y=_ly)
 
     if _on("OVERLAY_SHOW_BLOOD_BAR"):
         for area in ("board", "bench"):

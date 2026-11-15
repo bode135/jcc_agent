@@ -500,9 +500,19 @@ def bar_stars(arr, bar) -> int | None:
 #   没徽记也不是小小英雄 -> 这根"血条"是误检 (草地色块/顶栏装饰/HUD 元素),
 #   实测 bench_forge.png 里 (1124,84) 那根就是一片绿色藤蔓被 color 法当成血条。
 BADGE_WIN = (-40, -12, 2, 12)      # 相对血条 (x1,y1,x2,y2) 的搜索窗: (左, 上, 右, 下)
-BADGE_AREA_RANGE = (40, 600)       # 彩色 chevron 像素面积 (实测 1★ 48~128, 2★ 193~215)
+#: 彩色 chevron 像素面积**按星级分开**。实测: 1★ 48~128 (可酷伯 87、乐芙兰真徽记 55)、
+#: 2★ 193~215 (芸阿娜 215)、3★ 样本少故放宽。
+#: 旧口径是一条宽区间 (40~600) 取"面积最大"的连通域 → 1★ 棋子的真徽记 (面积 55) 会被
+#: 相邻棋子身体/装备图标拼成的大块 (面积 201) 压过, 于是徽记框画到别的棋子上、又大又偏左,
+#: 视觉上就是"框歪了/向左倾斜" (用户 m01874 报的乐芙兰那个框)。
+BADGE_AREA_RANGE_BY_STARS = {1: (40, 165), 2: (150, 280), 3: (60, 500)}
+BADGE_AREA_RANGE = (40, 600)       # 兜底区间 (星级不在上表时用)
 BADGE_H_RANGE = (8, 30)
 BADGE_W_RANGE = (6, 32)
+#: 徽记宽高比。三个模板: 1★ chevron 21×22 (0.95) / 2★ 菱形 19×17 (1.12) / 3★ chevron 25×18 (1.39);
+#: 实测真徽记 8~23 宽 × 12~23 高, 比值都在 0.6~1.2。加这条是为了排掉"长扁条"假候选
+#: (乐芙兰那根血条窗口里有 32×10 面积 136 的扁块, 单看面积比真徽记 55 还大)。
+BADGE_ASPECT_RANGE = (0.45, 1.8)
 BADGE_DY_MAX = 12                  # 徽记竖向中心与血条竖向中心的最大偏差 (实测 0~6)
 #: 血条必须带星级徽记才算真棋子血条 (关掉就回到"有绿条就认"的旧宽松口径, 易误检)。
 BAR_REQUIRE_BADGE = True
@@ -567,11 +577,16 @@ def star_badge(arr: np.ndarray, bar) -> tuple[int | None, tuple | None]:
         n, _labels, stats, _ = cv2.connectedComponentsWithStats(mask)
         for i in range(1, n):
             x, y, w, h, area = (int(v) for v in stats[i])
-            if not (BADGE_AREA_RANGE[0] <= area <= BADGE_AREA_RANGE[1]):
+            # 面积范围按**这一类的星级**取: 1★ 徽记比 2★/3★ 小一半, 用同一条宽区间会
+            # 让 1★ 候选被大块杂色连通域压过 (见 BADGE_AREA_RANGE_BY_STARS 注释)。
+            a_lo, a_hi = BADGE_AREA_RANGE_BY_STARS.get(stars, BADGE_AREA_RANGE)
+            if not (a_lo <= area <= a_hi):
                 continue
             if not (BADGE_H_RANGE[0] <= h <= BADGE_H_RANGE[1]):
                 continue
             if not (BADGE_W_RANGE[0] <= w <= BADGE_W_RANGE[1]):
+                continue
+            if not (BADGE_ASPECT_RANGE[0] <= w / h <= BADGE_ASPECT_RANGE[1]):
                 continue
             cy = wy1 + y + h / 2
             if abs(cy - bar_cy) > BADGE_DY_MAX:
