@@ -1,6 +1,6 @@
 # jcc_robot_by_img
 
-**纯图色的游戏视觉脚手架** —— 只靠截图，就能完成「看懂画面 → 算出点哪 → 点下去并复核 → 把结果画回屏幕」。
+**纯图色的游戏视觉脚手架** —— 只靠截图，把游戏画面转成结构化文本，喂给 Agent 让它看得懂画面、能实时给你建议；需要动手时，也有一层带像素复核的点击 / 拖拽可用。
 
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
