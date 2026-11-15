@@ -137,7 +137,7 @@ def _pos_of_center(center) -> str:
 
 
 def _stars_label(stars) -> str:
-    return ("★" * int(stars)) if stars else "-"
+    return (f"{int(stars)}星") if stars else "-"
 
 
 class Observer:

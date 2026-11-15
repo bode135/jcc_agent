@@ -407,7 +407,7 @@ def to_markdown(snap: dict, *, title: str | None = None,
     if "board" in snap:
         rows = []
         for u in snap["board"]:
-            star = f"{u['stars']}★" if u.get("stars") else _EMPTY
+            star = f"{u['stars']}星" if u.get("stars") else _EMPTY
             rows.append([_val(u.get("cell")), _val(u.get("name")), _conf(u),
                          star, _val(u.get("races")), _val(u.get("jobs")),
                          _val(u.get("role")),
@@ -419,7 +419,7 @@ def to_markdown(snap: dict, *, title: str | None = None,
     if "bench" in snap:
         rows = []
         for u in snap["bench"]:
-            star = f"{u['stars']}★" if u.get("stars") else _EMPTY
+            star = f"{u['stars']}星" if u.get("stars") else _EMPTY
             rows.append([_val(u.get("cell")), _val(u.get("name")), _conf(u),
                          star, _val(u.get("races")), _val(u.get("jobs")),
                          " / ".join(u.get("equips") or []) or _EMPTY])

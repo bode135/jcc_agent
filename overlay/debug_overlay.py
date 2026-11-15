@@ -254,7 +254,8 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
     Args:
         size: (宽, 高), 应与目标客户区一致 (1920x1080 基准)。
         units: `recognize.yolo_units.extract_units` 返回 {"board": [], "bench": []}; 单元里若有
-               `stars` (int, 由血条条纹给出的星数) 会在名字后画 "★×N"。
+               `stars` (int, 由血条条纹给出的星数) 且 >= 2, 会以 "2★ 名字" 形式并在名字牌前缀
+               (1★ 默认不显示, 用户 m02211: 并进名字牌不占额外行数)。
         bars:  `recognize.board.extract_units` 返回 {"board": [], "bench": []} (血条)
         balls_yolo: YOLO(球权重) 检出的球 list, 每项 {box, name}; legends 同源 (小小英雄)
         balls_color: `reward_ball.find_balls()` 结果, 每项 {rect, color}
@@ -269,7 +270,7 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
     pen = ImageDraw.Draw(canvas)
     font = _font()
     font14 = font
-    font_star = _font(20)        # 徽记星级用大一号字, 实机上才看得清"1★/2★/3★"
+    font_star = _font(20)        # 英雄/状态牌用大一号字, 实机上才看得清
     font_cell = _font(12)        # 格位标签 (r1c4 / -r2c1 / slot3) 用小的, 别糊住棋子
 
     def _overlap(a, b) -> bool:
@@ -339,36 +340,23 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
     if _on("OVERLAY_SHOW_UNITS"):
         for area in ("board", "bench"):
             for u in (units or {}).get(area) or []:
-                # 名字只画 "名字 + 置信度": 星级改由血条左侧徽记的 ★ 牌显示 (用户 m01029),
-                # 同一处只画一遍, 免得名字后面的小星星和徽记牌互相打架。
+                # 星级并进名字牌 (用户 m02211: "改为 2★ 3★ 之类, 就不占行数了, 1★ 默认不显示")。
+                # 原来单独一块 ★×N 字牌会被棋盘同列 76px 行距挤进上一格棋子的框里,
+                # 并进名字牌后信息不减、也不再多占一行垂直空间。
                 label = u.get("name") or u.get("model_name") or "?"
+                _st = u.get("stars")
+                if _st and int(_st) >= 2:
+                    label = f"{int(_st)}★ " + label
                 _s = u.get("score")
                 if _s is not None:
                     label += f" {float(_s):.2f}"
                 n_units += _stroke(u.get("box"), _C_YOLO, label, below=True, text_color=_T_YOLO)
                 # ---- 星级徽记锚点 (用户 m01029: 星级得能一眼看出对错) ----
-                # 血条左侧那枚徽记就是星级的物理来源, 把它框出来 + 画大号 ★×N (黑底金字):
-                # 一旦"框对了但星画错", 一眼就能定位是徽记判据坏了还是血条配错了格。
+                # 血条左侧那枚徽记是星级的物理来源, 只描框不写字:
+                # 一旦"框对了但星数错", 一眼就能定位是徽记判据坏了还是血条配错了格。
                 bb = u.get("badge_box")
                 if bb and _on("OVERLAY_SHOW_STAR_BADGE"):
-                    _st = u.get("stars")
-                    if _st:
-                        _txt = "★" * int(_st)
-                    elif u.get("legend"):
-                        _txt = "等级"
-                    else:
-                        _txt = "?"
-                    # 用户 m01824: 星级字牌原来按默认 "y1-17" 起画, 20px 字 + 黑底牌
-                    # 会整个压在徽记框上, 把星星图标盖死 -> 量出字高, 整块抬到徽记框上方,
-                    # 留 7px 缝: 宁可离远一点, 也不能糊住"星级判据的物理锚点"。
-                    try:
-                        _th = pen.textbbox((0, 0), _txt, font=font_star,
-                                           stroke_width=2)[3]
-                    except Exception:  # noqa: BLE001
-                        _th = 22
-                    _ly = max(2, bb[1] - _th - 13)
-                    n_badge += _stroke(bb, _C_STAR, _txt, width=2, text_color=_C_STAR_TXT,
-                                       font=font_star, plate=True, label_y=_ly)
+                    n_badge += _stroke(bb, _C_STAR, "", width=2)
 
     if _on("OVERLAY_SHOW_BLOOD_BAR"):
         for area in ("board", "bench"):
