@@ -241,3 +241,4 @@ python -m scrape_comp 16278          # 抓单个阵容 → 解密棋盘 → 打�
 | 加识别项 | 照 `recognize/reward_ball.py`（HSV）或 `equipment.py`（模板库）写 `extract_xxx(img)`，到 `extract_info/extractor.py` 注册 |
 | 加动作命令 | 照 `scripts/game.py` 的 `cmd_buy` 写 `cmd_xxx`，点击走 `click_with_fallback` |
 | 接自己的决策 | `overlay_info --json` 或 `extract_info.extract(img)` 拿结构化帧，再用 `scripts.game` 执行 |
+| 改血条 / 英雄识别 | 先读 [docs/血条与hero识别.md](docs/血条与hero识别.md)（七层判定链、常量、重标定步骤），数值明细见 [docs/图色口径.md](docs/图色口径.md) |
