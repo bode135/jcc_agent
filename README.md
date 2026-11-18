@@ -15,7 +15,7 @@
 
 - **看懂画面**：一张 1920×1080 截图 → 棋子 / 血条 / 星级 / 装备 / 奖励球 / 阶段 / 商店 / 金币，结构化输出
 - **点得准**：坐标换算 + 点击兜底 + 点后像素复核，不假设哪条输入通道一定生效
-- **看得见**：把识别框实时画在游戏窗口上方的透明叠加层里，判错了一眼就能看出来
+- **看得见**：把识别框实时画在游戏窗口上方的透明叠加层里，判错了一眼就能看出来；配套一个图形客户端，勾选框决定画哪几类、每类各用多长的刷新间隔
 - **喂得动**：一帧画面直接组合成 Markdown 四表，能直接喂给 Agent
 
 适合的场景是：**给 Agent 提供「游戏画面 → 结构化文本」的能力，让 Agent 陪你玩游戏时看得懂画面、能实时给出建议。**
@@ -111,10 +111,31 @@ python -X utf8 -u tools/selfcheck.py
 python -X utf8 -u -m scripts.overlay_info --img tests/images/board_ingame.png
 # -> tempdir/overlay_info_board_ingame.png
 
+python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png
+# -> 图形客户端，右边直接预览勾选效果
+
 python -X utf8 -u -m scripts.extract_img_info --img tests/images/board_ingame.png
 python -X utf8 -u -m scripts.game units --img tests/images/board_ingame.png
 python -X utf8 -u -m scripts.frame_prompt --img tests/images/board_ingame.png
 ```
+
+### 图形客户端（勾选显示项 + 各自刷新间隔）
+
+![overlay 客户端](docs/images/overlay_client.jpg)
+
+不想改 `config.py`、也不想记参数时用它：
+
+```powershell
+python -X utf8 -u -m scripts.overlay_client --ld-index 0          # 连模拟器
+python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png   # 离线，带预览
+```
+
+- 5 个勾选项（默认全勾）：**棋子框（棋盘）/ 备战席框 / 商店（识别 + 区域框）/ 棋子身上装备 / 装备栏装备**。
+- 每项右边是它自己的**刷新间隔**（秒），填得比实测下限还小会被钳到下限并提示，下限是 棋子 0.4 / 商店 1.0 / 装备栏 1.5 / 棋子携带装备 2.5。
+- 改完按右下角 **应用**（或回车），下一个绘制节拍（≤0.5s）就按新配置跑，**不重启进程、不改 config.py**；没按应用之前怎么改都不影响正在跑的循环。
+- 间隔填错（空、非数字、≤0）整次拒绝并红字说明，不会写一半。
+- 离线模式（`--img`）右侧会实时预览「测试图 + 当前勾选的框」，勾掉哪项马上能看到对应框消失；连模拟器时框直接贴在游戏画面上，不需要预览。
+- 全都不勾 = overlay 清空，但仍然保持对局检测；非对局画面（大厅/结算）自动暂停识别，不会画出一堆假框。
 
 ### 接真实游戏
 
@@ -168,7 +189,7 @@ ph      = phase.detect(img)                    # 阶段
 ├── recognize/     识别核心（yolo_units / board / equipment / reward_ball / phase / ocr / grid）+ 模板
 ├── extract_info/  一张图 → players / shop / game
 ├── overlay/       分层透明窗 + draw_frame 纯函数 + 节拍调度
-├── scripts/       四个 CLI：extract_img_info / game / overlay_info / frame_prompt
+├── scripts/       五个 CLI：extract_img_info / game / overlay_info / overlay_client / frame_prompt
 ├── units/         原画库 + 头像匹配 + 138 张模板
 ├── train_yolo/    类别冻结表
 ├── tools/         自检 / 四个自测 / 权重下载 / 诊断探针

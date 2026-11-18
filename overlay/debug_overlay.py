@@ -287,6 +287,16 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
             return bool(show[key])
         return bool(getattr(default_config, key, False))
 
+    def _on_or(key: str, default: bool) -> bool:
+        """同 `_on`, 但 config 里没这个键时用 `default`。
+
+        用于**客户端私有开关** `OVERLAY_SHOW_BENCH_UNITS` (备战席框单独开关):
+        它不是 config 的键, 只在 show dict 里出现, 缺省视为 True 保持旧行为。
+        """
+        if show is not None and key in show:
+            return bool(show[key])
+        return bool(getattr(default_config, key, default))
+
     def _rgba(c):
         """颜色统一补 alpha=255 (RGBA 画布上 3 元组在部分 Pillow 版本会报错)。"""
         c = tuple(c)
@@ -337,8 +347,16 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
         if _hp.get("x") is not None and _hp.get("y") is not None:
             _hero_pts.append((float(_hp["x"]), float(_hp["y"])))
 
-    if _on("OVERLAY_SHOW_UNITS"):
+    # 棋子框: 棋盘 (OVERLAY_SHOW_UNITS) 与备战席 (OVERLAY_SHOW_BENCH_UNITS) 可分开控制,
+    # 客户端 (scripts/overlay_client.py) 就是靠这两个键做"勾哪个画哪个"。
+    _u_board = _on("OVERLAY_SHOW_UNITS")
+    # 缺省回落到棋盘开关: 老调用方只传 OVERLAY_SHOW_UNITS=False 时, 备战席也不画 (行为不变);
+    # 客户端显式传 OVERLAY_SHOW_BENCH_UNITS=True 就能"只画备战席不画棋盘"。
+    _u_bench = _on_or("OVERLAY_SHOW_BENCH_UNITS", _u_board)
+    if _u_board or _u_bench:
         for area in ("board", "bench"):
+            if not (_u_board if area == "board" else _u_bench):
+                continue
             for u in (units or {}).get(area) or []:
                 # 星级并进名字牌 (用户 m02211: "改为 2★ 3★ 之类, 就不占行数了, 1★ 默认不显示")。
                 # 原来单独一块 ★×N 字牌会被棋盘同列 76px 行距挤进上一格棋子的框里,
@@ -360,6 +378,9 @@ def draw_frame(size, *, units=None, bars=None, balls=None, legends=None,
 
     if _on("OVERLAY_SHOW_BLOOD_BAR"):
         for area in ("board", "bench"):
+            # 备战席血条跟随备战席开关 (关掉备战席框时, 那一片血条框也别留)
+            if area == "bench" and not _on_or("OVERLAY_SHOW_BENCH_UNITS", True):
+                continue
             for u in (bars or {}).get(area) or []:
                 # 血条只画框不写字: 星级由左侧徽记的 ★ 牌说明, "血条"三个字会压住那枚牌
                 n_bar += _stroke(u.get("bar"), _C_BAR, "", width=2)

@@ -61,6 +61,7 @@ REQUIRED_FILES = [
     "scripts/game.py",
     "scripts/extract_img_info.py",
     "scripts/overlay_info.py",
+    "scripts/overlay_client.py",
     "control/fallback.py",
     "extract_info/extractor.py",
     "overlay/debug_overlay.py",
@@ -175,6 +176,7 @@ MODULES = [
     "control.input", "control.mouse", "control.fallback",
     "extract_info", "extract_info.extractor",
     "overlay.debug_overlay", "overlay.live_draw",
+    "scripts.overlay_client",
 ]
 
 
