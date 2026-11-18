@@ -4,10 +4,10 @@
 ------------------
 历史调用方可能 `from recognize import ocr_client` 后调 `use_remote()` / `optional()` /
 `available()`, 甚至用 `OcrBusy` 捕获取消异常。新工程 `jcc_robot_by_img` 不跑
-`scripts/ocr_server.py` 常驻服务 (也不读内存/不跨进程), 所以这里**只剩一层转发**:
+常驻 OCR 服务 (也不读内存/不跨进程), 所以这里**只剩一层转发**:
 
     * `available()` / `ensure_server()` -> 恒 False (没有远程通道可拉,
-      且**绝不**再 `subprocess.Popen([... "-m", "scripts.ocr_server"])`, 更不会等 20s);
+      且**绝不**拉起子进程, 更不会等 20s);
     * `use_remote()` -> 恒 False (告诉调用方"用本地引擎就好");
     * `recognize()` / `recognize_line()` / `recognize_region()` -> 直接转发
       `recognize.ocr` 的本地实现 (行为与直接调 ocr 完全一致, 不做任何降级);
@@ -35,7 +35,7 @@ def available() -> bool:
 
 
 def ensure_server(wait: float = 20.0) -> bool:
-    """历史: 后台拉起 `scripts.ocr_server` 并等它就绪 -> 恒 False, **不启进程、不等待**。"""
+    """历史: 后台拉起常驻 OCR 服务并等它就绪 -> 恒 False, **不启进程、不等待**。"""
     return False
 
 

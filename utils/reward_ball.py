@@ -5,9 +5,8 @@
     picked = collect_balls()          # 拾取当前画面全部奖励球, 返回拾取清单
     balls = detect_balls(img)         # 只识别, 不点 (module 单测/离线图用)
 
-2026-11-14 纯图色工程 (jcc_robot_by_img) 改造要点:
-    源工程这条链路是「内存读球优先, 图色回退」; 内存模块 (`utils/ball_mem_collect.py`)
-    本工程没有 (也不允许有), 所以那个 import 与内存球分支已整段删除, 只留图色一条路:
+改造要点 (纯图色):
+    只保留图色一条路:
         颜色法 `recognize.reward_ball.find_balls` (YOLO 球模型作可选兜底)
         + 逐球点击 + **点完复查球是否消失** (判据不是"点了没报错", 而是画面里那颗球没了)。
     排序/区域过滤/护栏这些跟"怎么读球"无关的口径全部原样保留 (理由见各函数 docstring)。

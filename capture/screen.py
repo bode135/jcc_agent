@@ -402,7 +402,7 @@ def resize(img: Image.Image, size: tuple[int, int] | None = None) -> Image.Image
 # 用户: "我就想要你打印一下截图的时间 —— 场上奕子信息提取完之后截图花多久? 备战席截图花多久?
 #        两个都分别打印出来。"
 # 口径: 一次"截图" = capture_game() + resize() 这条抓屏链路本身。
-#       点击鼠标、详情卡渲染等待 (ROSTER_CARD_DELAY)、OCR/识别、存证写盘 **都不算截图时间**。
+#       点击鼠标、详情卡渲染等待、OCR/识别、存证写盘 **都不算截图时间**。
 SHOT_GROUP_BOARD = "board"      # 场上奕子那趟
 SHOT_GROUP_BENCH = "bench"      # 备战席那趟
 SHOT_GROUP_FRAME = "整帧"        # 整帧抓拍 (initial / 截图B / 落盘帧 / final)

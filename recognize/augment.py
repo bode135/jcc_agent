@@ -150,8 +150,7 @@ def extract_card(img, idx: int) -> dict:
 
 
 # ---------------------------------------------------------------- 界面状态综合判定
-# 原实现放在 utils/augment_state.py (依赖 utils.draw_regions 的棋盘格位表); 纯图色工程
-# 不拷那两个模块, 所以判定逻辑原样搬进本模块, 棋盘 ROI 改由 recognize.grid 的格位现算。
+# 判定逻辑在本模块内实现, 棋盘 ROI 由 recognize.grid 的格位现算。
 #: 棋盘 ROI「草地绿」像素占比低于此值 = 棋盘被浮层遮罩压暗 (或黑屏/过场).
 #: 实测: 海克斯三选一卡片帧 0.36~0.45 / 正常 prep 0.66~0.99 / combat 0.99.
 BOARD_OVERLAY_GREEN_MAX = 0.60

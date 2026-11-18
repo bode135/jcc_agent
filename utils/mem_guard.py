@@ -5,8 +5,7 @@
 allocate memory for requested buffer of size 66846720`) → CRT `fatal : Memory allocation failure`
 **直接 abort** (不是 Python 异常, 所以没有 traceback, 整轮采集当场死掉)。
 
-为什么不能只看自己进程: `config.OCR_MAX_RSS_GB` 那个看门狗只管**服务进程自己的 RSS**
-(其注释也写明"那次 MemoryError 是整机内存压力, 不是 OCR 自己泄漏"), 而这次死的是**采集进程** ——
+为什么不能只看自己进程: 单个进程 RSS 正常不代表整机还够 —— 而 OOM 死的是**采集进程本身**,
 所以闸门必须读**整机**。psutil 已装, 读数失败一律返回 None/安全值, 绝不抛。
 """
 from __future__ import annotations

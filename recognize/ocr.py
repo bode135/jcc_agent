@@ -5,9 +5,7 @@
 口径 (2026-11-14 纯图色工程改造)
 --------------------------------
 新工程 `jcc_robot_by_img` **不依赖任何内存/常驻服务**, OCR 只走进程内 `rapidocr_onnxruntime`:
-- 删掉了 `scripts/ocr_server.py` 远程通道 (`_remote/_start_pullup/_demote_remote/
-  _remote_retry_or_empty` 与 `recognize.ocr_client` 依赖): 没有服务可探, 也绝不因为
-  "服务没起"打警告或重试等待;
+- 只有本地一路: 没有常驻服务要探, 也绝不因为"服务没起"打警告或重试等待;
 - `JCC_OCR_LOCAL_ONLY` 仍被识别, 但语义退化为"恒本地"(本工程只有本地一路), 保留它是为了
   兼容历史启动脚本里的环境变量, 行为与不设置一致;
 - 本地引擎初始化失败只留痕一次 (`_engine_init_error`) 并抛 `OcrEngineUnavailable`,

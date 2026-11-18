@@ -180,8 +180,7 @@ def _is_pve_round(stage: str | None) -> bool:
 def marker_present(img) -> bool:
     """野怪回合保底判据: **恒 False** (纯图色工程没有人口标志通道).
 
-    历史实现走 `recognize.population` (整合内存人口数 + 顶栏头盔模板), 新工程
-    `jcc_robot_by_img` 不拷那个模块也不再读内存 —— 这条判据直接退化为"没有这条信息":
+    新工程不读内存、也没有顶栏头盔模板 —— 这条判据直接退化为"没有这条信息":
     返回 False 只会让 `_is_pve_round(stage) and marker_present(img)` 这个兜底分支不生效,
     该帧仍沿用上面已有的 swords/cards/early-round 判定, 不会把战斗误判成准备 (只有正例
     才该返回 True, 所以恒 False 是最安全的降级)。
