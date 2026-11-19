@@ -263,3 +263,4 @@ python -m scrape_comp 16278          # 抓单个阵容 → 解密棋盘 → 打�
 | 加动作命令 | 照 `scripts/game.py` 的 `cmd_buy` 写 `cmd_xxx`，点击走 `click_with_fallback` |
 | 接自己的决策 | `overlay_info --json` 或 `extract_info.extract(img)` 拿结构化帧，再用 `scripts.game` 执行 |
 | 改血条 / 英雄识别 | 先读 [docs/血条与hero识别.md](docs/血条与hero识别.md)（七层判定链、常量、重标定步骤），数值明细见 [docs/图色口径.md](docs/图色口径.md) |
+| 优化速度 / 上并行 | [docs/性能与并行方案.md](docs/性能与并行方案.md)：各识别项实测基准、分档合计、与父项目同机对比、两路并行架构与三阶段预期 |

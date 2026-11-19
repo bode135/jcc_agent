@@ -155,6 +155,11 @@ class DefaultConfig:
     )
     # 图形学路径: 槽内白字文字 rect 的最小宽度 (px), 太小视为噪声不裁 (整槽无字)。
     SHOP_GEO_MIN_TEXT_W = 8
+    # 价格槽的免 det 快路径 (用户 2026-11-19 要求): 白掩码取"最右那段白字" -> 白二值化 -> 4x
+    # -> `ocr.recognize_line`(use_det=False)。实测同一帧 5 槽 24ms 且 5/5 读对(含原 det 路径
+    # 漏掉的槽4), 原路径 340~460ms 只读到 4 槽。关掉则回到 `recognize_region(upscale=4)` 合并带。
+    # 读不出的槽仍会自动回落原路径 (宁慢不错)。
+    SHOP_PRICE_GEO_RECOGNIZE = True
 
     # ---- 回合剩余时间本地预测缓存 (recognize/extract.RemainTimeCache, 用户口径 2026-10-17) ----
     #   开启后: 第一次在某 (回合号, 阶段) 读到 remain_time 时记入缓存, 之后同一 (回合号, 阶段) 内
@@ -225,6 +230,13 @@ class DefaultConfig:
     #   0.10 = **低阈值复核线**, 落在 (0.10, 0.55) 的格不许留 unknown, 必须按 top1 给名字并标记低置信。
     # 与 YOLO_UNITS_CONF_LOW 对齐, 两条链路同一个口径。
     MATCH_LOWCONF = 0.10
+    # ---- 头像模板匹配总开关 (用户 2026-11-19 拍板: 默认关) ----
+    # 棋子名字一律以 YOLO 为准 (父项目默认也是关的)。关掉后 `board.extract_units`
+    # 照常给血条框/星级/格位, 只是 name/score 恒为 None —— 身份由 YOLO 那条链路提供。
+    # 打开代价: 全棋子库 138 变体 x 5 尺度 x 2 翻转 的暴力比对 (单只比对 ~50ms) +
+    # GrabCut 抠图 (~31ms, iters=2)。9 只约 0.75s。
+    # 收益很低: 实测 6 根血条只有 1 根分数过 0.55 命名线, 且 bar0 把可酷伯认成蕾欧娜。
+    PORTRAIT_MATCH_ENABLED = False
     # 模板兜底 (tpl_lowconf) 专用的采信线 —— 用户 2026-10-21 阈值扫描结论。
     # 在 132 帧/963 幅 GT 的测试集上扫了 30 组 (YOLO低阈值 0.05~0.30) × (模板阈值 0.10~0.70):
     #   0.10 → 认对 936 / 错名 26 / 未命名 0

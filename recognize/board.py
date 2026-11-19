@@ -315,6 +315,11 @@ def extract_units(img, bar_method: str | None = None,
             # 占 `extract_units` 总耗时的 73% (2026-10-31 实测 1784ms 里的 1305ms)。
             # `match_cells` 让校验链路只认**关心的那一格**: 别格的名字一律留空 (不猜),
             # 位置/血条/星级照算 (`location` 与名字无关, 格位来自血条 -> 格的全局分配)。
+            # 总开关: 默认关头像模板匹配, 身份一律交给 YOLO 链路 (用户 2026-11-19);
+            # 父项目默认也是关的。关掉后 name/score 恒 None, 血条框/星级/格位照常输出。
+            if match_cells is None and not getattr(
+                    default_config, "PORTRAIT_MATCH_ENABLED", False):
+                match_cells = set()
             if match_cells is None or _cell_label(region_name, _own) in match_cells:
                 name, score = match(portrait, threshold=match_threshold)
             else:

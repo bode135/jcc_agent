@@ -161,8 +161,12 @@ def _bg_centers(ring: np.ndarray, k: int = 6) -> np.ndarray:
     return (uniq[order].astype(np.float32) * 16.0 + 8.0)
 
 
-def make_alpha(rgb: np.ndarray, iters: int = 10) -> np.ndarray:
+def make_alpha(rgb: np.ndarray, iters: int = 2) -> np.ndarray:
     """GrabCut(中心椭圆先验 + 背景色先验) 抠前景, 返回 0/255 的 uint8 掩码.
+
+    ``iters`` 默认 **2** (用户 2026-11-19 提速): 实测同一头像 iters=2 与 iters=10 的
+    前景像素 3504 vs 3503, 匹配 top3 分数**完全相同** (0.527 / 0.444 / 0.438),
+    而耗时 31ms vs 125ms —— 10 轮迭代在 2 轮后早已收敛, 多出来的 8 轮纯浪费。
 
     做法 (踩过的坑都在注释里):
       * 四边 3px 一律 GC_BGD —— 头像 crop 的边框一定是背景;

@@ -237,6 +237,13 @@ def _extract_shop_narrow(img, want: set) -> dict:
             if any(s["name"] is None for s in fast):
                 fast = None
         if fast is not None:
+            # 价格: geo/fast 两条快路径都只读名字 (price=None), 这里用免 det 快路径补上
+            # (用户 2026-11-19)。实测补 5 槽 ~28ms, 而原来走 det 合并带要 340~460ms。
+            if getattr(default_config, "SHOP_PRICE_GEO_RECOGNIZE", True):
+                _prices = _slot_prices(img, list(range(len(fast))))
+                for _i, _slot in enumerate(fast):
+                    if _slot.get("price") is None and _i in _prices:
+                        _slot["price"] = _prices[_i]
             res["shop"] = fast
         else:
             items = _timed("ocr.recognize_region(商店横带)", ocr.recognize_region, img, regions.SHOP, 1)
@@ -951,12 +958,14 @@ def _shop_geo_correct(name):
     """
     if not name:
         return None, False
-    if unit_db.find_unit(name) is not None or unit_db.find_charm(name) is not None:
-        return name, False  # 合法, 不动
     try:
         data = unit_db.load_db()
     except Exception:
         return name, False
+    # 合法性判断必须用**精确**键比对: `unit_db.find_unit` 内部走 `difflib.get_close_matches(cutoff=0.6)`,
+    # 是模糊的 —— 用它判"合法"会让"芸阿螂"这种形近错字直接被当成合法名放过 (实测 2026-11-19)。
+    if name in data["unit_by_name"] or name in data["charm_by_name"]:
+        return name, False  # 精确合法, 不动
     pool = list(data["unit_by_name"].keys()) + list(data["charm_by_name"].keys())
     same_len = [p for p in pool if len(p) == len(name) and p != name]
     if not same_len:
@@ -1048,6 +1057,74 @@ def _price_blocks(idxs: list[int]) -> list[list[int]]:
     return blocks
 
 
+def _price_text_rect_in_slot(arr, slot) -> tuple | None:
+    """在价格区内用图形学求**价格数字**的精确 rect: 从最右白列往左扫, 遇 >=10px 空隙即停.
+
+    与 `_shop_text_rect_in_slot` 正好相反 —— 名字取"最左那段", 价格取"最右那段"
+    (价格右对齐贴卡缘, 左边紧挨金币图标; 图标是金色, 被白掩码排除)。
+    """
+    x0, y0, x1, y1 = slot
+    if arr is None or arr.ndim < 2:
+        return None
+    sub = arr[y0:y1, x0:x1]
+    if sub.size == 0:
+        return None
+    m = _shop_white_mask(sub)
+    cols = np.where(m.any(axis=0))[0]
+    rows = np.where(m.any(axis=1))[0]
+    if not len(cols) or not len(rows):
+        return None
+    last = int(cols[-1])
+    start = last
+    prev = last
+    for c in cols[::-1]:
+        c = int(c)
+        if prev - c >= 10:
+            start = prev
+            break
+        prev = c
+    else:
+        start = int(cols[0])
+    return (x0 + start, y0 + int(rows.min()), x0 + last + 1, y0 + int(rows.max()) + 1)
+
+
+def _slot_prices_fast(img, idxs: list[int]) -> dict[int, int]:
+    """价格免 det 快路径: 图色定数字框 -> 白二值化 -> 4x -> `recognize_line`.
+
+    用户 2026-11-19: 名字已经做到"图色定框 + 免 det"(`extract_shop_geo`), 价格却还走
+    `recognize_region(..., upscale=4)`(含 det), 单次 340~460ms, 是商店里最后一段慢路径。
+    实测同一帧 5 槽: 本函数 **24ms 且 5/5 读对**(含原路径漏掉的槽4), 原路径 460ms 只读到 4 槽。
+    数字是单字符, 白二值化后放大 4x, 识别 score 全是 1.00。
+    """
+    arr = np.asarray(img.convert("RGB") if hasattr(img, "convert") else img)
+    out: dict[int, int] = {}
+    for idx in idxs:
+        if idx < 0 or idx >= len(regions.SHOP_SLOT_LEFTS):
+            continue
+        right = regions.SHOP_SLOT_LEFTS[idx] + regions.SHOP_SLOT_WIDTH
+        slot = (right - 60, regions.SHOP_NAME_Y, right + 35, regions.SHOP[3])
+        rect = _price_text_rect_in_slot(arr, slot)
+        if rect is None:
+            continue
+        tx0, ty0, tx1, ty1 = rect
+        crop = img.crop((tx0 - 2, ty0 - 2, tx1 + 2, ty1 + 2))
+        ca = np.asarray(crop.convert("RGB"))
+        m = _shop_white_mask(ca)
+        if int(m.sum()) < 12:
+            continue
+        buf = np.zeros((*m.shape, 3), dtype="uint8")
+        buf[m] = 255
+        bim = Image.fromarray(buf)
+        w, h = bim.size
+        if w > 0 and h > 0:
+            bim = bim.resize((w * 4, h * 4), Image.LANCZOS)
+        text, _score = ocr.recognize_line(bim)
+        digits = re.findall(r"\d", text or "")
+        if digits:
+            out[idx] = int(digits[-1])
+    return out
+
+
 def _slot_prices(img, idxs: list[int]) -> dict[int, int]:
     """缺失价格槽批量兜底: 相邻槽合并成一段做**一次** 4x 裁剪 OCR, 再按 x 归属到具体槽.
 
@@ -1066,7 +1143,14 @@ def _slot_prices(img, idxs: list[int]) -> dict[int, int]:
     用户 m00002 提速实测 (常驻 GPU 服务, frame_A_initial.png): 逐槽 2 次 0.58s -> 合并 1 次 0.24s.
     """
     out: dict[int, int] = {}
-    for block in _price_blocks(idxs):
+    left: list[int] = list(idxs)
+    # 快路径 (免 det) 先读; 读不出的槽才回落下面的 det 合并带 (宁慢不错)。
+    if getattr(default_config, "SHOP_PRICE_GEO_RECOGNIZE", True):
+        out = _slot_prices_fast(img, idxs)
+        left = [i for i in idxs if i not in out]
+        if not left:
+            return out
+    for block in _price_blocks(left):
         rect = (regions.SHOP_SLOT_LEFTS[block[0]] - 20, regions.SHOP_NAME_Y,
                 regions.SHOP_SLOT_LEFTS[block[-1]] + regions.SHOP_SLOT_WIDTH + 30,
                 regions.SHOP[3])
