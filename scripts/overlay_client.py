@@ -59,7 +59,8 @@ UI_POLL_MS = 200          # 状态栏刷新周期
 # 用会自己换行的 Label 会让窗口高度跟着跳, 所以固定成像素盒, 多出来的裁掉。
 TEXT_BOX_W = 430
 STATUS_BOX_H = 74      # 约 4 行 9pt (帧号/耗时/本次重算/贴图或错误, 长句会折行)
-SAY_BOX_H = 76         # 约 4 行 9pt
+LOG_BOX_H = 96        # 约 6 行 9pt (日志是追加的, 留高一点看得见历史)
+LOG_MAX_LINES = 200    # 超出就从头删, 防止长时间运行把内存吃满
 
 FONT = ("Microsoft YaHei UI", 10)
 FONT_TITLE = ("Microsoft YaHei UI", 12, "bold")
@@ -129,7 +130,7 @@ RECOG_ORDER = ("units", "bars", "game", "shop", "equip_bar", "board_equips", "pr
 
 # 结构化文本预览: 面板尺寸 (放在选项下方, 展开时向下延伸) + 生成节拍
 PROMPT_W = 700
-PROMPT_H = 240
+PROMPT_H = 175
 PROMPT_INTERVAL = 3.0
 
 # 两个阈值的合法区间 (UI 里填超了就钳到边界); 检出置信度下限 2026-11-21 用户指定 0.01
@@ -659,10 +660,23 @@ class App(tk.Tk):
         self.status_text = self._text_box(
             root, row=r, height=STATUS_BOX_H, color=FG_DIM, text="就绪")
         r += 1
-        self.say_text = self._text_box(
-            root, row=r, height=SAY_BOX_H, color=OK_GREEN,
-            text="改完点右下角「应用」即时生效 (下一个节拍 <=0.5s)")
+
+        # 日志区: 标题 + 右上角两个按钮 + 只追加的文本框
+        logbar = ttk.Frame(root)
+        logbar.grid(row=r, column=0, columnspan=4, sticky="ew", pady=(2, 2))
+        logbar.columnconfigure(0, weight=1)
+        ttk.Label(logbar, text="日志", style="Dim.TLabel", font=FONT_SMALL).grid(
+            row=0, column=0, sticky="w")
+        ttk.Button(logbar, text="复制日志", width=8,
+                   command=self.on_copy_log).grid(row=0, column=1, padx=(0, 4))
+        ttk.Button(logbar, text="清空日志", width=8,
+                   command=self.on_clear_log).grid(row=0, column=2)
         r += 1
+
+        self.log_text = self._text_box(
+            root, row=r, height=LOG_BOX_H, color=FG)
+        r += 1
+        self._log("改完点右下角「应用」即时生效 (下一个节拍 <=0.5s)", FG_DIM)
 
         btns = ttk.Frame(root)
         btns.grid(row=r, column=0, columnspan=4, sticky="e", pady=(10, 0))
@@ -702,7 +716,7 @@ class App(tk.Tk):
         # 预览面板建好就 grid 过一次 (又立刻 grid_remove), 列宽被撑到 PROMPT_W;
         # 收起态必须重算一次几何, 不然窗口一直留着 700px 的宽度。
         self.update_idletasks()
-        self.geometry("")
+        self.geometry(f"{self.winfo_reqwidth()}x{self.winfo_reqheight()}")
         self.bind("<Return>", lambda _e: self._apply())
 
     def _sep(self, parent, *, row: int, pady: tuple[int, int]) -> None:
@@ -795,12 +809,14 @@ class App(tk.Tk):
             self.pv_frame.grid()
         else:
             self.pv_frame.grid_remove()
-        # resizable(False, False) 会把 geometry 钉死, 内容变宽/变高必须手动重算
+        # resizable(False, False) 会把 geometry 钉死, 内容变宽/变高必须手动重算。
+        # 光调 geometry("") 不一定跟着内容走 (实测展开面板后窗口没变宽), 直接按
+        # 请求尺寸写一遍最稳。
         self.update_idletasks()
-        self.geometry("")
+        self.geometry(f"{self.winfo_reqwidth()}x{self.winfo_reqheight()}")
 
-    def _text_box(self, parent, *, row: int, height: int, color: str,
-                  text: str) -> tk.Text:
+    def _text_box(self, parent, *, row: int, height: int, color: str = FG,
+                  text: str = "") -> tk.Text:
         """固定像素大小的只读文本框.
 
         状态行/提示行的文字每 200ms 变一次、长度也不固定, 用会自己换行的 Label
@@ -824,6 +840,43 @@ class App(tk.Tk):
         widget.delete("1.0", "end")
         widget.insert("1.0", text)
         widget.configure(state="disabled")
+
+    # ---- 日志 ----
+    def _log(self, msg: str, color: str = FG) -> None:
+        """往日志框追加一行 (带时分秒), 自动滚到底, 只留最近 LOG_MAX_LINES 行."""
+        try:
+            tag = f"c{color.strip('#')}"
+            self.log_text.tag_configure(tag, foreground=color)
+            self.log_text.configure(state="normal")
+            self.log_text.insert("end", f"[{time.strftime('%H:%M:%S')}] {msg}\n", tag)
+            total = int(self.log_text.index("end-1c").split(".")[0])
+            if total > LOG_MAX_LINES:
+                self.log_text.delete("1.0", f"{total - LOG_MAX_LINES}.0")
+            self.log_text.configure(state="disabled")
+            self.log_text.see("end")
+        except tk.TclError:
+            pass
+
+    def on_copy_log(self) -> None:
+        """把日志框里的全部文本放进剪贴板."""
+        text = self.log_text.get("1.0", "end").strip()
+        if not text:
+            self._log("日志是空的, 没有可复制的", FG_DIM)
+            return
+        try:
+            self.clipboard_clear()
+            self.clipboard_append(text)
+            self.update_idletasks()       # Windows 上不 update 剪贴板可能丢
+            self._log(f"已复制日志 ({len(text.splitlines())} 行) 到剪贴板", OK_GREEN)
+        except tk.TclError as exc:
+            self._log(f"[X] 复制失败: {exc}", ERR_RED)
+
+    def on_clear_log(self) -> None:
+        """清空日志框."""
+        self.log_text.configure(state="normal")
+        self.log_text.delete("1.0", "end")
+        self.log_text.configure(state="disabled")
+        self._log("日志已清空", FG_DIM)
 
     # ---- 应用 ----
     def _apply(self) -> None:
@@ -868,10 +921,10 @@ class App(tk.Tk):
             thr[key] = v
 
         if bad:
-            self._set_text(self.say_text, "[X] 没有应用: " + "; ".join(bad), ERR_RED)
+            self._log("[X] 没有应用: " + "; ".join(bad), ERR_RED)
             return
         if len(intervals) != len(ITEMS) or len(thr) != 2:
-            self._set_text(self.say_text, "[X] 没有应用: 有间隔或阈值没填", ERR_RED)
+            self._log("[X] 没有应用: 有间隔或阈值没填", ERR_RED)
             return
         if thr["min_score"] < thr["conf"]:
             notes.append("未知阈值 < 检出置信度: 检出的框都会直接命名")
@@ -888,7 +941,7 @@ class App(tk.Tk):
             msg += " | " + "; ".join(notes)
         if self.pv_var.get():
             msg += f" | 结构化文本每 {PROMPT_INTERVAL:g}s 抽一次"
-        self._set_text(self.say_text, msg, OK_GREEN)
+        self._log(msg, OK_GREEN)
 
     def _refresh_prompt(self) -> None:
         if self._closed or not self.pv_var.get():
@@ -939,7 +992,7 @@ class App(tk.Tk):
         """
         img, no = self.worker.last_frame()
         if img is None:
-            self._set_text(self.say_text, "[!] 还没有帧可存, 等第一帧出来再点", ERR_RED)
+            self._log("[!] 还没有帧可存, 等第一帧出来再点", ERR_RED)
             return
         out = Path(default_config.PROJECT_ROOT) / "tempdir" / "frames"
         try:
@@ -948,7 +1001,7 @@ class App(tk.Tk):
             path = out / name
             img.save(path)
         except OSError as exc:
-            self._set_text(self.say_text, f"[X] 保存失败: {exc}", ERR_RED)
+            self._log(f"[X] 保存失败: {exc}", ERR_RED)
             print(f"[X] 保存失败: {exc}")
             return
         # 日志框只有 430px 宽, 绝对路径会折三行; 显示相对项目根的路径, 一行放得下
@@ -956,7 +1009,7 @@ class App(tk.Tk):
             shown = path.relative_to(Path(default_config.PROJECT_ROOT))
         except ValueError:
             shown = path
-        self._set_text(self.say_text, f"已将当前帧保存至: {shown}", OK_GREEN)
+        self._log(f"已将当前帧保存至: {shown}", OK_GREEN)
         print(f"已将当前帧保存至: {path}")
 
     def on_restart(self) -> None:
@@ -967,7 +1020,7 @@ class App(tk.Tk):
         重新探窗口 (模拟器重启过/换了个模拟器)、重新建 ORT 会话、把帧号和计数清掉。
         """
         print("[i] 重启识别…")
-        self._set_text(self.say_text, "正在重启…", FG_DIM)
+        self._log("正在重启…", FG_DIM)
         self.update_idletasks()
 
         old = self.worker
@@ -987,7 +1040,7 @@ class App(tk.Tk):
             else:
                 src, offline = _make_source(args)
         except FileNotFoundError as exc:
-            self._set_text(self.say_text, f"[X] 重启失败: {exc}", ERR_RED)
+            self._log(f"[X] 重启失败: {exc}", ERR_RED)
             return
 
         use_overlay = False
@@ -1007,7 +1060,7 @@ class App(tk.Tk):
             msg += " (离线模式)"
         elif not use_overlay:
             msg += " (没找到模拟器窗口, 只跑识别)"
-        self._set_text(self.say_text, msg, OK_GREEN)
+        self._log(msg, OK_GREEN)
         print(msg)
 
     def on_close(self) -> None:
@@ -1109,7 +1162,7 @@ def run_selftest(args) -> int:
             fails += 1
 
     def say() -> str:
-        return app.say_text.get("1.0", "end").strip()
+        return app.log_text.get("1.0", "end").strip()
 
     print("[1] 默认配置")
     show, ivs, _v = settings.snapshot()
@@ -1243,7 +1296,9 @@ def run_selftest(args) -> int:
 
     print("[10] 重启按钮")
     old_worker = app.worker
-    app.say_text.delete("1.0", "end")
+    app.log_text.configure(state="normal")
+    app.log_text.delete("1.0", "end")
+    app.log_text.configure(state="disabled")
     app.on_restart()
     check("重启换了新 worker", app.worker is not old_worker)
     check("重启有提示", "重启" in say(), say())
@@ -1258,7 +1313,9 @@ def run_selftest(args) -> int:
     app.worker.stop()
 
     print("[11] 保存帧")
-    app.say_text.delete("1.0", "end")
+    app.log_text.configure(state="normal")
+    app.log_text.delete("1.0", "end")
+    app.log_text.configure(state="disabled")
     app.on_save_frame()
     txt = say()
     check("日志里有「已将当前帧保存至」", "已将当前帧保存至:" in txt, txt)
@@ -1272,6 +1329,19 @@ def run_selftest(args) -> int:
             with _Im.open(saved) as im:
                 check("尺寸是 1920x1080", im.size == (1920, 1080), str(im.size))
             saved.unlink(missing_ok=True)
+
+    print("[12] 日志区: 复制 / 清空")
+    app.on_clear_log()
+    txt = app.log_text.get("1.0", "end").strip()
+    check("清空后只剩「日志已清空」一行", txt.endswith("日志已清空") and
+          len(txt.splitlines()) == 1, txt)
+    app._log("测试行A")
+    app._log("测试行B")
+    app.on_copy_log()
+    clip = app.clipboard_get()
+    check("剪贴板拿到刚写的行", "测试行A" in clip and "测试行B" in clip, clip[:60])
+    check("日志里记了「已复制日志」", "已复制日志" in
+          app.log_text.get("1.0", "end"), app.log_text.get("1.0", "end")[-80:])
 
     app.destroy()
     print(f"[{'OK' if fails == 0 else 'X'}] 自检{'通过' if fails == 0 else f'失败 {fails} 项'}")
