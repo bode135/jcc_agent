@@ -126,9 +126,12 @@ python -X utf8 -u -m scripts.frame_prompt --img tests/images/board_ingame.png
 不想改 `config.py`、也不想记参数时用它：
 
 ```powershell
-python -X utf8 -u -m scripts.overlay_client --ld-index 0          # 连模拟器
+python -X utf8 -u -m scripts.overlay_client                      # 直接打开，自动找模拟器窗口
+python -X utf8 -u -m scripts.overlay_client --ld-index 0         # 指定第 0 个模拟器
 python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png   # 离线，带预览
 ```
+
+不带参数时会自动探测雷电窗口；没探测到也照常打开界面（只打印 `[!] 没找到雷电模拟器窗口`，勾选框与预览仍可用）。
 
 - 5 个勾选项（默认全勾）：**棋子框（棋盘）/ 备战席框 / 商店（识别 + 区域框）/ 棋子身上装备 / 装备栏装备**。
 - 每项右边是它自己的**刷新间隔**（秒），填得比实测下限还小会被钳到下限并提示，下限是 棋子 0.4 / 商店 1.0 / 装备栏 1.5 / 棋子携带装备 2.5。
