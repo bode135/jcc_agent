@@ -507,11 +507,13 @@ class App(tk.Tk):
     """设置窗口: 勾选框 + 间隔输入 + 「应用」."""
 
     def __init__(self, settings: Settings, worker: Worker,
-                 target: dict | None, *, offline: bool = False) -> None:
+                 target: dict | None, *, offline: bool = False,
+                 args=None) -> None:
         super().__init__()
         self.settings = settings
         self.worker = worker
         self.offline = offline
+        self.args = args
         self._applied_at = "-"
         self._closed = False
         self._pv_no = -1          # 上次刷进面板的 prompt 版本号
@@ -612,8 +614,11 @@ class App(tk.Tk):
 
         head = ttk.Frame(outer)
         head.grid(row=0, column=0, sticky="ew")
+        head.columnconfigure(0, weight=1)
         ttk.Label(head, text="对局 Overlay 客户端", style="Title.TLabel").grid(
             row=0, column=0, sticky="w")
+        ttk.Button(head, text="重启", command=self.on_restart).grid(
+            row=0, column=1, rowspan=2, sticky="ne", padx=(12, 0))
 
         if self.offline:
             win_txt = "离线模式: 用测试图跑, 不连模拟器"
@@ -918,6 +923,57 @@ class App(tk.Tk):
         self.after(UI_POLL_MS, self._poll)
 
     # ---- 退出 ----
+    def on_restart(self) -> None:
+        """重启识别: 重新探测窗口 -> 重建 Worker (重新载入模型) -> 计数清零.
+
+        不用关窗口、不用重开进程。注意: 改 `config.py` 里的值**不会**因此生效 ——
+        那是 python 进程级的事 (模块常量已经载入), 这里的"重启"只针对识别这一层:
+        重新探窗口 (模拟器重启过/换了个模拟器)、重新建 ORT 会话、把帧号和计数清掉。
+        """
+        print("[i] 重启识别…")
+        self._set_text(self.say_text, "正在重启…", FG_DIM)
+        self.update_idletasks()
+
+        old = self.worker
+        try:
+            old.stop()
+        except Exception:  # noqa: BLE001 - 线程可能已经停了
+            pass
+        try:
+            debug_overlay.stop()
+        except Exception:  # noqa: BLE001
+            pass
+
+        args = self.args
+        try:
+            if args is None:                 # 自检/无参场景: 沿用原来的帧源
+                src, offline = old.frame_source, self.offline
+            else:
+                src, offline = _make_source(args)
+        except FileNotFoundError as exc:
+            self._set_text(self.say_text, f"[X] 重启失败: {exc}", ERR_RED)
+            return
+
+        use_overlay = False
+        if not offline and (args is None or not getattr(args, "no_overlay", False)):
+            ld = getattr(args, "ld_index", None) if args is not None else None
+            if debug_overlay.resolve_target(ld) is not None:
+                use_overlay = debug_overlay.start(ld)
+
+        self.offline = offline
+        self.worker = Worker(self.settings, src, use_overlay=use_overlay)
+        self.worker.start()
+        self._pv_no = -1
+        self._set_text(self.status_text, "已重启, 等第一帧…", FG_DIM)
+
+        msg = "[OK] 识别已重启"
+        if offline:
+            msg += " (离线模式)"
+        elif not use_overlay:
+            msg += " (没找到模拟器窗口, 只跑识别)"
+        self._set_text(self.say_text, msg, OK_GREEN)
+        print(msg)
+
     def on_close(self) -> None:
         if self._closed:
             return
@@ -1006,7 +1062,7 @@ def run_selftest(args) -> int:
     settings = Settings()
     src, offline = _make_source(args)
     worker = Worker(settings, src, use_overlay=False)
-    app = App(settings, worker, None, offline=True)
+    app = App(settings, worker, None, offline=True, args=args)
     app.withdraw()
     fails = 0
 
@@ -1149,6 +1205,22 @@ def run_selftest(args) -> int:
     check("非法值按下限起步", app.iv_vars["shop"].get() == "1.1",
           app.iv_vars["shop"].get())
 
+    print("[10] 重启按钮")
+    old_worker = app.worker
+    app.say_text.delete("1.0", "end")
+    app.on_restart()
+    check("重启换了新 worker", app.worker is not old_worker)
+    check("重启有提示", "重启" in say(), say())
+    for _ in range(120):                 # 等新 worker 跑出第一帧 (最多约 6s)
+        app.update()
+        if app.worker.status()["frame"] >= 1:
+            break
+        time.sleep(0.05)
+    st_re = app.worker.status()
+    check("重启后出了帧", st_re["frame"] >= 1, str(st_re["frame"]))
+    check("重启后没有错误", not st_re["errors"], str(st_re["errors"]))
+    app.worker.stop()
+
     app.destroy()
     print(f"[{'OK' if fails == 0 else 'X'}] 自检{'通过' if fails == 0 else f'失败 {fails} 项'}")
     return 0 if fails == 0 else 1
@@ -1194,7 +1266,7 @@ def main(argv=None) -> int:
         print("[!] 离线模式不建 overlay 窗口 (只跑识别与设置界面)")
 
     worker = Worker(settings, src, use_overlay=use_overlay and not offline)
-    app = App(settings, worker, target, offline=offline)
+    app = App(settings, worker, target, offline=offline, args=args)
     app.after(200, worker.start)
     if args.seconds:
         app.after(int(args.seconds * 1000), app.on_close)
