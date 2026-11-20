@@ -52,7 +52,8 @@ EMPTY_UNITS = {"board": [], "bench": []}
 
 # 只在"对局画面"里画: 大厅/登录/选英雄/结算 的界面美术会被当成球和棋子 (实测大厅帧 23 个假球)
 IN_GAME_PHASES = {"prep", "combat", "augment", "draft"}
-PHASE_INTERVAL = 2.0      # 阶段判定间隔 (phase.detect 25~48ms)
+PHASE_INTERVAL = 2.0
+GRAB_INTERVAL = 0.1      # 抓帧 + 重画 (10fps)      # 阶段判定间隔 (phase.detect 25~48ms)
 UI_POLL_MS = 200          # 状态栏刷新周期
 
 # 状态行/提示行的固定像素盒子 (见 App._text_box): 文本每 200ms 变一次,
@@ -250,7 +251,7 @@ class Settings:
 # 绘制线程
 # --------------------------------------------------------------------------- #
 class Worker(threading.Thread):
-    """后台循环: 按当前配置取帧 -> 跑到点的识别项 -> 画 -> 贴到 overlay 窗口."""
+    """后台循环: 主线程抓帧 + 重画; 每个识别项一条线程, 各按自己的间隔跑."""
 
     def __init__(self, settings: Settings, frame_source, *, use_overlay: bool = True) -> None:
         super().__init__(name="overlay-client", daemon=True)
@@ -279,6 +280,13 @@ class Worker(threading.Thread):
         self._layer: Image.Image | None = None
         self._frame_img: Image.Image | None = None
         self._layer_no = 0
+        # 多线程共享: 最新一帧 / 各识别项自己的节拍线程
+        self._latest: Image.Image | None = None
+        self._latest_lock = threading.Lock()
+        self._items: dict[str, threading.Thread] = {}
+        self._counts: dict[str, int] = {}
+        self._fresh: list[str] = []
+        self._in_game_ok = True
 
     def set_prompt(self, text: str) -> int:
         """手动抽取的结果塞进来 (面板按版本号感知变化)."""
@@ -306,70 +314,80 @@ class Worker(threading.Thread):
     # ---- 状态 (UI 轮询读) ----
     def status(self) -> dict:
         with self._lock:
-            return dict(self._status)
+            d = dict(self._status)
+            d["counts"] = dict(self._counts)
+            return d
 
     def _set_status(self, **kw) -> None:
         with self._lock:
             self._status.update(kw)
 
+    def _take_fresh(self) -> list[str]:
+        with self._lock:
+            fresh = list(self._fresh)
+            self._fresh.clear()
+            return fresh
+
     def stop(self, wait: float = 3.0) -> None:
         self._halt.set()
+        for th in list(self._items.values()):
+            if th.is_alive():
+                th.join(timeout=0.5)
         if self.is_alive():
             self.join(timeout=wait)
 
-    # ---- 主循环 ----
+    # ---- 主循环: 抓帧 + 重画 (识别在各自线程里) ----
     def run(self) -> None:
-        last_ver = -1
+        for recog in RECOG_ORDER:
+            if recog == "prompt":
+                continue          # 结构化文本只在点「抽取」时算
+            th = threading.Thread(target=self._recog_loop, args=(recog,),
+                                  name=f"recog-{recog}", daemon=True)
+            th.start()
+            self._items[recog] = th
+
+        last_grab = 0.0
         while not self._halt.is_set():
-            plan = self.settings.plan()
-            if not plan:
-                # 全不勾: 清空 overlay, 别留着上一帧的框
-                blank = Image.new("RGBA", TARGET_SIZE, (0, 0, 0, 0))
-                if self.use_overlay:
-                    debug_overlay.set_frame(blank)
-                self._set_layer(blank, self._frame_img)
-                time.sleep(0.3)
-                continue
-
-            _show, _ivs, ver = self.settings.snapshot()
-            force = ver != last_ver
-            last_ver = ver
             now = time.monotonic()
-            ts = self._state["ts"]
-            due = [k for k in RECOG_ORDER
-                   if k in plan and (force or now - float(ts.get(k, -1e9)) >= plan[k])]
+            if now - last_grab < GRAB_INTERVAL:
+                time.sleep(0.01)
+                continue
+            last_grab = now
 
-            t0 = time.monotonic()
+            plan = self.settings.plan()
             img = self._grab()
             if img is None:
-                time.sleep(1.0)
+                time.sleep(0.5)
                 continue
+            with self._latest_lock:
+                self._latest = img
 
-            if not self._in_game(img):
-                # 非对局画面: 不跑识别项, 也不留上一帧的假框
+            t0 = time.monotonic()
+            if not plan:
+                # 全不勾: 清空 overlay, 别留着上一帧的框
                 blank = Image.new("RGBA", img.size, (0, 0, 0, 0))
                 if self.use_overlay:
                     debug_overlay.set_frame(blank)
                 self._set_layer(blank, img)
                 self._set_status(cost=round(time.monotonic() - t0, 3), fresh=[],
-                                 in_game=False)
-                time.sleep(max(0.2, min(plan.values())))
+                                 in_game=True, shown=False)
                 continue
 
-            fresh: list[str] = []
-            errors: dict = {}
-            counts = dict(self.status().get("counts") or {})
-            for recog in due:
-                try:
-                    self._run(recog, img)
-                    fresh.append(recog)
-                    counts[recog] = counts.get(recog, 0) + 1
-                    ts[recog] = now
-                except Exception as exc:  # noqa: BLE001 - 单项失败沿用上一帧缓存
-                    errors[recog] = f"{type(exc).__name__}: {exc}"
+            if not self._in_game(img):
+                # 非对局画面: 不跑识别项, 也不留上一帧的假框
+                self._in_game_ok = False
+                blank = Image.new("RGBA", img.size, (0, 0, 0, 0))
+                if self.use_overlay:
+                    debug_overlay.set_frame(blank)
+                self._set_layer(blank, img)
+                self._set_status(cost=round(time.monotonic() - t0, 3), fresh=[],
+                                 in_game=False, shown=False)
+                continue
+            self._in_game_ok = True
 
             shown = False
             layer = None
+            errors: dict = {}
             try:
                 layer = self._render(img.size)
             except Exception as exc:  # noqa: BLE001
@@ -381,53 +399,85 @@ class Worker(threading.Thread):
                         shown = debug_overlay.set_frame(layer)
                     except Exception as exc:  # noqa: BLE001
                         errors["show"] = f"{type(exc).__name__}: {exc}"
-
             frame_no = int(self.status()["frame"]) + 1
             self._set_status(frame=frame_no, cost=round(time.monotonic() - t0, 3),
-                             fresh=fresh, counts=counts, errors=errors,
-                             in_game=True, shown=shown)
+                             fresh=self._take_fresh(),
+                             errors=errors, in_game=True, shown=shown)
 
-            dt = time.monotonic() - t0
-            time.sleep(max(0.05, min(plan.values()) - dt))
+    # ---- 单项节拍线程 ----
+    def _recog_loop(self, recog: str) -> None:
+        while not self._halt.is_set():
+            plan = self.settings.plan()
+            iv = plan.get(recog)
+            if iv is None or not self._in_game_ok:
+                time.sleep(0.1)
+                continue
+            with self._latest_lock:
+                img = self._latest
+            if img is None:
+                time.sleep(0.05)
+                continue
+            t0 = time.monotonic()
+            try:
+                val = self._compute(recog, img)
+            except Exception as exc:  # noqa: BLE001 - 单项失败沿用上一帧缓存
+                with self._lock:
+                    self._status["errors"] = {
+                        **(self._status.get("errors") or {}),
+                        recog: f"{type(exc).__name__}: {exc}",
+                    }
+                time.sleep(max(0.05, float(iv)))
+                continue
+            now = time.monotonic()
+            with self._lock:
+                self._state[recog] = val
+                self._state["ts"][recog] = now
+                self._counts[recog] = self._counts.get(recog, 0) + 1
+                self._fresh.append(recog)
+            time.sleep(max(0.005, float(iv) - (now - t0)))
 
     # ---- 分项识别 ----
     def _run(self, recog: str, img: Image.Image) -> None:
-        st = self._state
+        """同步跑一项并写回 state (selftest / 手动触发用)."""
+        val = self._compute(recog, img)
+        with self._lock:
+            self._state[recog] = val
+            self._state["ts"][recog] = time.monotonic()
+
+    def _compute(self, recog: str, img: Image.Image):
         if recog == "units":
             from recognize import yolo_units
             thr = self.settings.thresholds()
-            st["units"] = yolo_units.extract_units(
+            return yolo_units.extract_units(
                 img, conf=thr["conf"], min_score=thr["min_score"])
-        elif recog == "bars":
+        if recog == "bars":
             # match_cells=set(): 跳过全棋子库多尺度头像匹配 (单只 145ms, 9 只 1.3s);
             # 名字靠 YOLO 给, 这里只要血条框/星数/徽记锚点。
             from recognize import board
-            st["bars"] = board.extract_units(img, include_legend=False, match_cells=set())
-        elif recog == "game":
+            return board.extract_units(img, include_legend=False, match_cells=set())
+        if recog == "game":
             # 时间信息 + 经济信息来自同一次 OCR (InfoTypes.Game 是扁平 dict)
             from recognize import extract as rex
             from config.config import InfoTypes
-            st["game"] = rex.extract_info(img, [InfoTypes.Game]) or {}
-        elif recog == "prompt":
-            # 结构化文本预览: 与 scripts/frame_prompt 同一条链路 (snapshot -> markdown)
+            return rex.extract_info(img, [InfoTypes.Game]) or {}
+        if recog == "prompt":
             from extract_info import prompt as _prompt
-            st["prompt"] = _prompt.to_markdown(_prompt.snapshot(img))
-            st["prompt_ver"] = int(st.get("prompt_ver") or 0) + 1
-        elif recog == "shop":
+            return _prompt.to_markdown(_prompt.snapshot(img))
+        if recog == "shop":
             from recognize import extract as rex
             from config.config import InfoTypes
-            st["shop"] = rex.extract_info(img, [InfoTypes.Shop]).get("shop") or []
-        elif recog == "equip_bar":
+            return rex.extract_info(img, [InfoTypes.Shop]).get("shop") or []
+        if recog == "equip_bar":
             from recognize import equipment
-            st["equip_bar"] = equipment.extract_equipment(img) or []
-        elif recog == "board_equips":
+            return equipment.extract_equipment(img) or []
+        if recog == "board_equips":
             from recognize import equipment
             # 口径: extract_board_equips 的 units 要 board.extract_units 的结果 (含 bar/rect),
             # 传 YOLO 的 box 会静默返回空列表。
-            st["board_equips"] = equipment.extract_board_equips(
-                img, units=st.get("bars")) or []
-        else:
-            raise KeyError(recog)
+            with self._lock:
+                bars = self._state.get("bars")
+            return equipment.extract_board_equips(img, units=bars) or []
+        raise KeyError(recog)
 
     # ---- 取帧 / 阶段闸 ----
     def _grab(self) -> Image.Image | None:
@@ -460,7 +510,13 @@ class Worker(threading.Thread):
 
     # ---- 画一帧 ----
     def _render(self, size) -> Image.Image:
-        st = self._state
+        with self._lock:
+            units = self._state.get("units")
+            bars = self._state.get("bars")
+            shop = self._state.get("shop")
+            equip_bar = self._state.get("equip_bar")
+            board_equips = self._state.get("board_equips")
+            game = self._state.get("game")
         show, _ivs, _ver = self.settings.snapshot()
         # 只画用户勾的那几类: 其余显式关掉 (config 里的默认值可能是开的, 不能让它漏出来)
         draw_show = {
@@ -475,8 +531,7 @@ class Worker(threading.Thread):
             "OVERLAY_SHOW_HERO": False,
             "OVERLAY_SHOW_STAR_BADGE": True,
         }
-        units = st.get("units") or dict(EMPTY_UNITS)
-        bars = st.get("bars")
+        units = units or dict(EMPTY_UNITS)
         if bars:
             units = live_draw.merge_stars({"units": units, "bars": bars})
         return debug_overlay.draw_frame(
@@ -486,17 +541,17 @@ class Worker(threading.Thread):
             legends=[],
             balls_yolo=[],
             balls_color=[],
-            shop=st.get("shop") or [],
-            equip_bar=st.get("equip_bar") or [],
-            board_equips=st.get("board_equips") or [],
+            shop=shop or [],
+            equip_bar=equip_bar or [],
+            board_equips=board_equips or [],
             heroes=[],
             show=draw_show,
-            header=self._header(show),
+            header=self._header(show, game),
         )
 
-    def _header(self, show: dict) -> str | None:
+    def _header(self, show: dict, game: dict | None = None) -> str | None:
         """overlay 顶栏: 时间信息 / 经济信息 按勾选拼成一行 (都没勾就 None)."""
-        g = self._state.get("game") or {}
+        g = game if game is not None else (self._state.get("game") or {})
         parts: list[str] = []
         if show.get("OVERLAY_SHOW_GAME_TIME"):
             parts.append(_time_text(g))
@@ -511,9 +566,6 @@ class Worker(threading.Thread):
             return str(st.get("prompt") or ""), int(st.get("prompt_ver") or 0)
 
 
-# --------------------------------------------------------------------------- #
-# 界面
-# --------------------------------------------------------------------------- #
 class App(tk.Tk):
     """设置窗口: 勾选框 + 间隔输入 + 「应用」."""
 
@@ -1085,9 +1137,7 @@ class App(tk.Tk):
             parts.append("本次重算 " + ",".join(st["fresh"]))
         if not st["in_game"]:
             parts.append("非对局画面, 已暂停识别")
-        if not self.worker.use_overlay:
-            parts.append("未连 overlay 窗口")
-        elif st["frame"] and not st["shown"]:
+        if self.worker.use_overlay and st["frame"] and not st["shown"]:
             parts.append("贴图失败 (窗口已关?)")
         if st["errors"]:
             parts.append("错误 " + "; ".join(f"{k}={v}" for k, v in st["errors"].items()))
