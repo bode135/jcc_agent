@@ -282,6 +282,12 @@ class Worker(threading.Thread):
         self._frame_img: Image.Image | None = None
         self._layer_no = 0
 
+    def last_frame(self) -> tuple[Image.Image | None, int]:
+        """最近一帧原始画面 (未经绘制) + 帧号; 「保存帧」按钮用."""
+        with self._lock:
+            return (self._frame_img.copy() if self._frame_img is not None else None,
+                    int(self._status.get("frame") or 0))
+
     def layer(self) -> tuple[Image.Image | None, Image.Image | None, int]:
         with self._lock:
             return self._layer, self._frame_img, self._layer_no
@@ -617,8 +623,10 @@ class App(tk.Tk):
         head.columnconfigure(0, weight=1)
         ttk.Label(head, text="对局 Overlay 客户端", style="Title.TLabel").grid(
             row=0, column=0, sticky="w")
-        ttk.Button(head, text="重启", command=self.on_restart).grid(
+        ttk.Button(head, text="保存帧", command=self.on_save_frame).grid(
             row=0, column=1, rowspan=2, sticky="ne", padx=(12, 0))
+        ttk.Button(head, text="重启", command=self.on_restart).grid(
+            row=0, column=2, rowspan=2, sticky="ne", padx=(6, 0))
 
         if self.offline:
             win_txt = "离线模式: 用测试图跑, 不连模拟器"
@@ -923,6 +931,34 @@ class App(tk.Tk):
         self.after(UI_POLL_MS, self._poll)
 
     # ---- 退出 ----
+    def on_save_frame(self) -> None:
+        """把最近一帧原始画面存成 png, 路径打到日志框.
+
+        存的是**未绘制**的截图 (游戏原画面), 不是叠了框的那层 —— 拿来调参/对坐标/
+        存样本都更合适; 要带框的图用 overlay_info 的离线输出。
+        """
+        img, no = self.worker.last_frame()
+        if img is None:
+            self._set_text(self.say_text, "[!] 还没有帧可存, 等第一帧出来再点", ERR_RED)
+            return
+        out = Path(default_config.PROJECT_ROOT) / "tempdir" / "frames"
+        try:
+            out.mkdir(parents=True, exist_ok=True)
+            name = f"frame_{no:06d}_{time.strftime('%Y%m%d_%H%M%S')}.png"
+            path = out / name
+            img.save(path)
+        except OSError as exc:
+            self._set_text(self.say_text, f"[X] 保存失败: {exc}", ERR_RED)
+            print(f"[X] 保存失败: {exc}")
+            return
+        # 日志框只有 430px 宽, 绝对路径会折三行; 显示相对项目根的路径, 一行放得下
+        try:
+            shown = path.relative_to(Path(default_config.PROJECT_ROOT))
+        except ValueError:
+            shown = path
+        self._set_text(self.say_text, f"已将当前帧保存至: {shown}", OK_GREEN)
+        print(f"已将当前帧保存至: {path}")
+
     def on_restart(self) -> None:
         """重启识别: 重新探测窗口 -> 重建 Worker (重新载入模型) -> 计数清零.
 
@@ -1220,6 +1256,22 @@ def run_selftest(args) -> int:
     check("重启后出了帧", st_re["frame"] >= 1, str(st_re["frame"]))
     check("重启后没有错误", not st_re["errors"], str(st_re["errors"]))
     app.worker.stop()
+
+    print("[11] 保存帧")
+    app.say_text.delete("1.0", "end")
+    app.on_save_frame()
+    txt = say()
+    check("日志里有「已将当前帧保存至」", "已将当前帧保存至:" in txt, txt)
+    saved = None
+    if "保存至:" in txt:
+        saved = Path(txt.split("保存至:", 1)[1].strip())
+        check("文件真的存在", saved.exists(), str(saved))
+        check("是 png", saved.suffix.lower() == ".png", str(saved.suffix))
+        if saved.exists():
+            from PIL import Image as _Im
+            with _Im.open(saved) as im:
+                check("尺寸是 1920x1080", im.size == (1920, 1080), str(im.size))
+            saved.unlink(missing_ok=True)
 
     app.destroy()
     print(f"[{'OK' if fails == 0 else 'X'}] 自检{'通过' if fails == 0 else f'失败 {fails} 项'}")
