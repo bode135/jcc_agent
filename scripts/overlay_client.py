@@ -190,6 +190,8 @@ def _code_defaults() -> dict:
         "show": {it.key: True for it in ITEMS},
         "intervals": {it.key: it.interval for it in ITEMS},
         "thresholds": default_thresholds(),
+        "draw_overlay": True,     # 总开关: 是否往游戏窗口上贴透明层
+        "preview": True,          # 结构化文本面板默认展开
     }
 
 
@@ -219,6 +221,9 @@ def _clamp_section(sec) -> dict:
             except (TypeError, ValueError):
                 continue
             out["thresholds"][key] = min(max(v, rng[0]), rng[1])
+    for key in ("draw_overlay", "preview"):
+        if isinstance(sec.get(key), bool):
+            out[key] = sec[key]
     return out
 
 
@@ -242,11 +247,17 @@ def load_prefs() -> dict:
         raw = {}
     defaults = _clamp_section(raw.get("defaults"))
     user = _clamp_section(raw["user"]) if isinstance(raw.get("user"), dict) else None
-    return {"defaults": defaults, "user": user}
+    win = raw.get("window") if isinstance(raw.get("window"), dict) else None
+    return {"defaults": defaults, "user": user, "window": win}
 
 
-def save_prefs(user: dict, defaults: dict | None = None) -> None:
-    """写回 yaml. ``defaults=None`` 只更新 ``user:`` 段, 保留文件里原有的 ``defaults:``."""
+def save_prefs(user: dict | None = None, defaults: dict | None = None,
+               window: dict | None = None) -> None:
+    """写回 yaml.
+
+    传 ``None`` 的段保持文件里原样: ``save_prefs(window={...})`` 只更新窗口位置,
+    不动 ``user`` / ``defaults`` (关窗口时用)。
+    """
     mod = _yaml()
     if mod is None:
         raise RuntimeError("没装 PyYAML (pip install pyyaml), 参数无法持久化")
@@ -259,9 +270,13 @@ def save_prefs(user: dict, defaults: dict | None = None) -> None:
         old = {}
     if not isinstance(old, dict):
         old = {}
-    data = {"defaults": old.get("defaults") or _code_defaults(), "user": user}
-    if defaults is not None:
-        data["defaults"] = defaults
+    data = {
+        "defaults": old.get("defaults") if defaults is None else defaults,
+        "user": old.get("user") if user is None else user,
+        "window": old.get("window") if window is None else window,
+    }
+    if not data["defaults"]:
+        data["defaults"] = _code_defaults()
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(mod.safe_dump(data, allow_unicode=True, sort_keys=False),
                  encoding="utf-8", newline="\n")
@@ -319,7 +334,8 @@ class Settings:
         self.intervals = {it.key: float(active["intervals"].get(it.key, it.interval))
                           for it in ITEMS}
         self._thr = dict(active["thresholds"])
-        self.preview = False          # 结构化文本预览面板是否展开
+        self.draw_overlay = bool(active.get("draw_overlay", True))
+        self.preview = bool(active.get("preview", True))
         self.version = 0
 
     def snapshot(self) -> tuple[dict, dict, int]:
@@ -334,8 +350,13 @@ class Settings:
         with self._lock:
             return bool(self.preview)
 
+    def draw_overlay_on(self) -> bool:
+        with self._lock:
+            return bool(self.draw_overlay)
+
     def apply(self, show: dict, intervals: dict,
-              thresholds: dict | None = None, preview: bool | None = None) -> int:
+              thresholds: dict | None = None, preview: bool | None = None,
+              draw_overlay: bool | None = None) -> int:
         with self._lock:
             self.show = dict(show)
             self.intervals = dict(intervals)
@@ -343,6 +364,8 @@ class Settings:
                 self._thr = {**self._thr, **dict(thresholds)}
             if preview is not None:
                 self.preview = bool(preview)
+            if draw_overlay is not None:
+                self.draw_overlay = bool(draw_overlay)
             self.version += 1
             return self.version
 
@@ -513,7 +536,7 @@ class Worker(threading.Thread):
                 errors["draw"] = f"{type(exc).__name__}: {exc}"
             if layer is not None:
                 self._set_layer(layer, img)
-                if self.use_overlay:
+                if self.use_overlay and self.settings.draw_overlay_on():
                     try:
                         shown = debug_overlay.set_frame(layer)
                     except Exception as exc:  # noqa: BLE001
@@ -715,7 +738,8 @@ class App(tk.Tk):
             "conf": tk.StringVar(value=f"{thr['conf']:.2f}"),
             "min_score": tk.StringVar(value=f"{thr['min_score']:.2f}"),
         }
-        self.pv_var = tk.BooleanVar(value=False)
+        self.pv_var = tk.BooleanVar(value=self.settings.preview_on())
+        self.draw_var = tk.BooleanVar(value=self.settings.draw_overlay_on())
 
         self._build(target)
         self.protocol("WM_DELETE_WINDOW", self.on_close)
@@ -825,8 +849,14 @@ class App(tk.Tk):
         side = ttk.Frame(outer)
         side.grid(row=0, column=1, rowspan=3, sticky="nw", padx=(18, 0))
 
-        # 表头 (只有最上面一次, 两个分组共用)
+        # 总开关: 关掉只跑识别, 不往游戏窗口上贴透明层
         r = 0
+        ttk.Checkbutton(root, text="绘制 overlay（关掉只跑识别，不往游戏窗口贴图）",
+                        variable=self.draw_var).grid(
+            row=r, column=0, columnspan=4, sticky="w", pady=(0, 8))
+        r += 1
+
+        # 表头 (只有最上面一次, 两个分组共用)
         ttk.Label(root, text="显示项", font=FONT).grid(row=r, column=0, sticky="w")
         ttk.Label(root, text="刷新间隔 (秒)", font=FONT).grid(
             row=r, column=1, columnspan=2, sticky="w")
@@ -919,12 +949,14 @@ class App(tk.Tk):
         self.pv_text.configure(yscrollcommand=sb.set, state="disabled")
         inner.grid_rowconfigure(0, weight=1)
         inner.grid_columnconfigure(0, weight=1)
-        self.pv_frame.grid_remove()
+        if not self.settings.preview_on():
+            self.pv_frame.grid_remove()
 
         # 预览面板建好就 grid 过一次 (又立刻 grid_remove), 列宽被撑到 PROMPT_W;
         # 收起态必须重算一次几何, 不然窗口一直留着 700px 的宽度。
         self.update_idletasks()
         self.geometry(f"{self.winfo_reqwidth()}x{self.winfo_reqheight()}")
+        self._place_window()
         self.bind("<Return>", lambda _e: self._apply())
 
     def _sep(self, parent, *, row: int, pady: tuple[int, int]) -> None:
@@ -1229,7 +1261,9 @@ class App(tk.Tk):
             return None
         if thr["min_score"] < thr["conf"]:
             notes.append("未知阈值 < 检出置信度: 检出的框都会直接命名")
-        return show, intervals, thr, notes
+        extras = {"draw_overlay": bool(self.draw_var.get()),
+                  "preview": bool(self.pv_var.get())}
+        return show, intervals, thr, notes, extras
 
     def on_restore_defaults(self) -> None:
         """把 yaml 里 ``defaults:`` 段的参数填回界面 (不自动应用)."""
@@ -1239,6 +1273,9 @@ class App(tk.Tk):
             self.iv_vars[it.key].set(f"{d['intervals'].get(it.key, it.interval):g}")
         for key in ("conf", "min_score"):
             self.thr_vars[key].set(f"{d['thresholds'].get(key, 0.0):.2f}")
+        self.draw_var.set(bool(d.get("draw_overlay", True)))
+        self.pv_var.set(bool(d.get("preview", True)))
+        self._toggle_preview()
         self._log(f"[OK] 已恢复 {_prefs_show()} 里的默认参数, 点「应用」生效", OK_GREEN)
 
     def on_save_defaults(self) -> None:
@@ -1246,11 +1283,10 @@ class App(tk.Tk):
         got = self._collect()
         if got is None:
             return
-        show, intervals, thr, _notes = got
+        show, intervals, thr, _notes, ext = got
+        group = {"show": show, "intervals": intervals, "thresholds": thr, **ext}
         try:
-            save_prefs({"show": show, "intervals": intervals, "thresholds": thr},
-                       defaults={"show": show, "intervals": intervals,
-                                 "thresholds": thr})
+            save_prefs(group, defaults=group)
         except Exception as e:                      # noqa: BLE001
             self._log(f"[X] 存为默认失败: {e}", ERR_RED)
             return
@@ -1261,13 +1297,16 @@ class App(tk.Tk):
         got = self._collect()
         if got is None:
             return
-        show, intervals, thr, notes = got
+        show, intervals, thr, notes, ext = got
         on = [it.label for it in ITEMS if show[it.key]]
         if not on:
             notes.append("全部关闭: overlay 会清空, 但仍保持对局检测")
+        if not ext["draw_overlay"]:
+            notes.append("绘制 overlay 已关: 只跑识别, 不往游戏上贴图")
         ver = self.settings.apply(
             {it.show_key: show[it.key] for it in ITEMS}, intervals,
-            thresholds=thr, preview=bool(self.pv_var.get()))
+            thresholds=thr, preview=ext["preview"],
+            draw_overlay=ext["draw_overlay"])
         self._applied_at = time.strftime("%H:%M:%S")
         msg = f"[OK] 已应用 (v{ver} {self._applied_at}): " + \
               (", ".join(on) if on else "无显示项")
@@ -1276,7 +1315,8 @@ class App(tk.Tk):
         if self.pv_var.get():
             msg += " | 结构化文本改为手动抽取 (点「抽取」)"
         try:
-            save_prefs({"show": show, "intervals": intervals, "thresholds": thr})
+            save_prefs({"show": show, "intervals": intervals, "thresholds": thr,
+                        **ext})
             msg += " | 已记住, 下次启动沿用"
         except Exception as e:                      # noqa: BLE001
             msg += f" | 偏好保存失败: {e}"
@@ -1325,6 +1365,13 @@ class App(tk.Tk):
         self.after(UI_POLL_MS, self._poll)
 
     # ---- 退出 ----
+    def _place_window(self) -> None:
+        """按 yaml 里记的位置摆窗口; 记的位置已经不在屏幕内(换显示器/分辨率变了)就居中."""
+        w, h = self.winfo_reqwidth(), self.winfo_reqheight()
+        x, y = _pick_pos(w, h, load_prefs().get("window"),
+                         self.winfo_screenwidth(), self.winfo_screenheight())
+        self.geometry(f"{w}x{h}+{x}+{y}")
+
     def on_save_frame(self) -> None:
         """把最近一帧原始画面存成 png, 路径打到日志框.
 
@@ -1409,6 +1456,10 @@ class App(tk.Tk):
             return
         self._closed = True
         try:
+            save_prefs(window={"x": self.winfo_x(), "y": self.winfo_y()})
+        except Exception:  # noqa: BLE001
+            pass
+        try:
             self.worker.stop()
         finally:
             try:
@@ -1416,6 +1467,19 @@ class App(tk.Tk):
             except Exception:  # noqa: BLE001
                 pass
             self.destroy()
+
+
+def _pick_pos(w: int, h: int, pos, sw: int, sh: int) -> tuple[int, int]:
+    """窗口左上角该放哪: 记住的位置还看得见就用它, 否则屏幕居中偏上.
+
+    留 80px 可见边缘 —— 多显示器拔掉后记的坐标可能落在不存在的屏幕上。
+    """
+    x = (pos or {}).get("x")
+    y = (pos or {}).get("y")
+    if (isinstance(x, int) and isinstance(y, int)
+            and -w + 80 <= x <= sw - 80 and -h + 80 <= y <= sh - 80):
+        return x, y
+    return (sw - w) // 2, max(0, (sh - h) // 2 - 20)
 
 
 def _tip(widget, text: str) -> None:
@@ -1757,6 +1821,40 @@ def run_selftest(args) -> int:
     check("恢复默认把 units_bench 填回未勾选", bool(app.vars["units_bench"].get()) is False)
     check("恢复默认不会自动应用 (日志提示点应用)",
           "点「应用」生效" in app.log_text.get("1.0", "end"))
+
+    print("[14] 绘制总开关 / 预览默认勾选 / 窗口位置")
+    # 「默认」要在没有 user 段的干净 prefs 下测 (前面几段改过 pv_var)
+    _bak = _pref.read_bytes() if _pref.is_file() else None
+    _pref.unlink(missing_ok=True)
+    _clean = Settings()
+    check("结构化文本预览默认勾选", _clean.preview_on() is True)
+    check("绘制 overlay 默认勾选", _clean.draw_overlay_on() is True)
+    if _bak is not None:
+        _pref.write_bytes(_bak)
+
+    app.pv_var.set(True)
+    app.draw_var.set(False)
+    app._apply()
+    s4 = Settings()
+    check("关掉总开关后重新读回 draw_overlay=False",
+          s4.draw_overlay_on() is False)
+    check("日志提示只跑识别不贴图",
+          "只跑识别" in app.log_text.get("1.0", "end"),
+          app.log_text.get("1.0", "end")[-120:])
+    check("预览开关也进了 user 段",
+          load_prefs()["user"].get("preview") is True,
+          str((load_prefs()["user"] or {}).get("preview")))
+
+    save_prefs(window={"x": 123, "y": 77})
+    check("窗口位置写进 yaml", load_prefs()["window"] == {"x": 123, "y": 77},
+          str(load_prefs()["window"]))
+    check("记的位置直接采用", _pick_pos(800, 600, {"x": 123, "y": 77}, 1920, 1080)
+          == (123, 77), str(_pick_pos(800, 600, {"x": 123, "y": 77}, 1920, 1080)))
+    check("越界位置回落到屏幕内",
+          _pick_pos(800, 600, {"x": -99999, "y": -99999}, 1920, 1080) == (560, 220),
+          str(_pick_pos(800, 600, {"x": -99999, "y": -99999}, 1920, 1080)))
+    check("没记过位置也居中", _pick_pos(800, 600, None, 1920, 1080) == (560, 220),
+          str(_pick_pos(800, 600, None, 1920, 1080)))
 
     app.destroy()
     print(f"[{'OK' if fails == 0 else 'X'}] 自检{'通过' if fails == 0 else f'失败 {fails} 项'}")
