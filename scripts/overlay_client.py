@@ -58,7 +58,7 @@ UI_POLL_MS = 200          # 状态栏刷新周期
 # 状态行/提示行的固定像素盒子 (见 App._text_box): 文本每 200ms 变一次,
 # 用会自己换行的 Label 会让窗口高度跟着跳, 所以固定成像素盒, 多出来的裁掉。
 TEXT_BOX_W = 430
-STATUS_BOX_H = 74      # 约 4 行 9pt (帧号/耗时/本次重算/贴图或错误, 长句会折行)
+STATUS_BOX_H = 96      # 约 5 行 9pt (帧号/耗时/本次重算/贴图或错误, 长句会折行)
 LOG_BOX_H = 96        # 约 6 行 9pt (日志是追加的, 留高一点看得见历史)
 LOG_MAX_LINES = 200    # 超出就从头删, 防止长时间运行把内存吃满
 
@@ -130,8 +130,7 @@ RECOG_ORDER = ("units", "bars", "game", "shop", "equip_bar", "board_equips", "pr
 
 # 结构化文本预览: 面板尺寸 (放在选项下方, 展开时向下延伸) + 生成节拍
 PROMPT_W = 700
-PROMPT_H = 175
-PROMPT_INTERVAL = 3.0
+PROMPT_H = 150
 
 # 两个阈值的合法区间 (UI 里填超了就钳到边界); 检出置信度下限 2026-11-21 用户指定 0.01
 CONF_RANGE = (0.01, 0.95)
@@ -243,9 +242,7 @@ class Settings:
         # 星级来自血条: 只要画棋子, 血条就得跟着同一节拍算 (不画血条框, 只取星数)
         if "units" in plan:
             plan["bars"] = plan["units"]
-        # 结构化文本预览: 不画框, 但要把 prompt 一起抽出来 (全量, 最慢)
-        if self.preview_on():
-            plan["prompt"] = PROMPT_INTERVAL
+        # 结构化文本不再按节拍抽 (用户 2026-11-21: 别实时变动) —— 只在点「抽取」时算一次
         return plan
 
 
@@ -282,6 +279,13 @@ class Worker(threading.Thread):
         self._layer: Image.Image | None = None
         self._frame_img: Image.Image | None = None
         self._layer_no = 0
+
+    def set_prompt(self, text: str) -> int:
+        """手动抽取的结果塞进来 (面板按版本号感知变化)."""
+        with self._lock:
+            self._state["prompt"] = text
+            self._state["prompt_ver"] = int(self._state.get("prompt_ver") or 0) + 1
+            return int(self._state["prompt_ver"])
 
     def last_frame(self) -> tuple[Image.Image | None, int]:
         """最近一帧原始画面 (未经绘制) + 帧号; 「保存帧」按钮用."""
@@ -524,6 +528,8 @@ class App(tk.Tk):
         self._applied_at = "-"
         self._closed = False
         self._pv_no = -1          # 上次刷进面板的 prompt 版本号
+        self._extracting = False  # 「抽取」正在跑 (防重复点)
+        self._pending_extract = None   # 后台线程算完的结果, 由 _poll 取走
 
         self.title("对局 Overlay 客户端")
         self.resizable(False, False)
@@ -689,18 +695,40 @@ class App(tk.Tk):
         self._sep(root, row=r, pady=(12, 8))
         r += 1
 
-        # 结构化文本模块: 勾选框 + 紧跟其下的文本框, 中间不夹任何控件
+        # 结构化文本模块: 勾选框 -> 图片路径/抽取 -> 面板(标题行 + 文本框)
         self.pv_check = ttk.Checkbutton(
             root, text="结构化文本预览 (与 frame_prompt 同源)",
             variable=self.pv_var, command=self._toggle_preview)
         self.pv_check.grid(row=r, column=0, columnspan=4, sticky="w", pady=(0, 4))
         r += 1
 
+        prow = ttk.Frame(root)
+        prow.grid(row=r, column=0, columnspan=4, sticky="w", pady=(0, 6))
+        ttk.Label(prow, text="图片路径:", font=FONT).grid(row=0, column=0, sticky="w")
+        self.path_var = tk.StringVar()
+        self.path_entry = ttk.Entry(prow, textvariable=self.path_var, width=30)
+        self.path_entry.grid(row=0, column=1, sticky="w", padx=(6, 6))
+        self.extract_btn = ttk.Button(prow, text="抽取", width=6,
+                                      command=self.on_extract)
+        self.extract_btn.grid(row=0, column=2, sticky="w")
+        r += 1
+
         self.pv_frame = ttk.Frame(root, width=PROMPT_W, height=PROMPT_H)
         self.pv_frame.grid(row=r, column=0, columnspan=4, sticky="nw")
         self.pv_frame.grid_propagate(False)
+
+        pvhead = ttk.Frame(self.pv_frame)
+        pvhead.place(x=0, y=0, width=PROMPT_W, height=24)
+        pvhead.columnconfigure(0, weight=1)
+        ttk.Label(pvhead, text="结构化文本", style="Dim.TLabel",
+                  font=FONT_SMALL).grid(row=0, column=0, sticky="w")
+        ttk.Button(pvhead, text="复制文本", width=8,
+                   command=self.on_copy_prompt).grid(row=0, column=1, padx=(0, 4))
+        ttk.Button(pvhead, text="清空文本", width=8,
+                   command=self.on_clear_prompt).grid(row=0, column=2)
+
         inner = ttk.Frame(self.pv_frame)
-        inner.place(x=0, y=0, width=PROMPT_W, height=PROMPT_H)
+        inner.place(x=0, y=26, width=PROMPT_W, height=PROMPT_H - 26)
         self.pv_text = tk.Text(inner, font=FONT_MONO, background=BG_BOX,
                                foreground=FG, insertbackground=FG,
                                selectbackground=ACCENT, relief="flat", wrap="none",
@@ -841,6 +869,90 @@ class App(tk.Tk):
         widget.insert("1.0", text)
         widget.configure(state="disabled")
 
+    # ---- 结构化文本 ----
+    def on_extract(self) -> None:
+        """按「图片路径」抽结构化文本; 路径留空就现截一帧 (存盘) 再抽.
+
+        抽取是全量识别 (OCR + 棋子 + 装备 + 商店…), 要 2~3s, 所以放后台线程,
+        算完通过 `Worker.set_prompt` 交给面板, 不卡界面。
+        """
+        if getattr(self, "_extracting", False):
+            self._log("[!] 上一次抽取还没跑完, 等一下", FG_DIM)
+            return
+        self._extracting = True
+        self.extract_btn.configure(state="disabled")
+        raw = self.path_var.get().strip().strip('"')
+        self._log(f"抽取中… ({'现截一帧' if not raw else raw})", FG_DIM)
+
+        def work() -> None:
+            saved = None
+            try:
+                if raw:
+                    p = Path(raw)
+                    if not p.is_absolute():
+                        p = Path(default_config.PROJECT_ROOT) / p
+                    if not p.exists():
+                        raise FileNotFoundError(f"图片不存在: {p}")
+                    img = Image.open(p).convert("RGB")
+                else:
+                    img, no = self.worker.last_frame()
+                    if img is None:
+                        raise RuntimeError("还没有帧可截, 等第一帧出来再点")
+                    out = Path(default_config.PROJECT_ROOT) / "tempdir" / "frames"
+                    out.mkdir(parents=True, exist_ok=True)
+                    p = out / f"frame_{no:06d}_{time.strftime('%Y%m%d_%H%M%S')}.png"
+                    img.save(p)
+                    saved = p
+                if img.size != TARGET_SIZE:
+                    img = img.resize(TARGET_SIZE, Image.LANCZOS)
+                from extract_info import prompt as _prompt
+                text = _prompt.to_markdown(_prompt.snapshot(img))
+            except Exception as exc:  # noqa: BLE001 - 任何失败都要回到界面
+                self._pending_extract = (None, str(exc), None)
+                return
+            self._pending_extract = (text, None, saved)
+
+        threading.Thread(target=work, name="prompt-extract", daemon=True).start()
+
+    def _extract_done(self, text: str | None, err: str | None, saved) -> None:
+        self._extracting = False
+        self.extract_btn.configure(state="normal")
+        if err is not None:
+            self._log(f"[X] 抽取失败: {err}", ERR_RED)
+            return
+        if not self.pv_var.get():            # 抽出来了就把面板摊开
+            self.pv_var.set(True)
+            self._toggle_preview()
+        ver = self.worker.set_prompt(text or "")
+        self._refresh_prompt()
+        msg = "结构化文本已更新"
+        if saved is not None:
+            try:
+                msg += f" (帧已存至 {saved.relative_to(Path(default_config.PROJECT_ROOT))})"
+            except ValueError:
+                msg += f" (帧已存至 {saved})"
+        self._log(f"{msg} · v{ver}", OK_GREEN)
+
+    def on_copy_prompt(self) -> None:
+        text = self.pv_text.get("1.0", "end").strip()
+        if not text:
+            self._log("结构化文本是空的, 先点「抽取」", FG_DIM)
+            return
+        try:
+            self.clipboard_clear()
+            self.clipboard_append(text)
+            self.update_idletasks()
+            self._log(f"已复制结构化文本 ({len(text.splitlines())} 行) 到剪贴板", OK_GREEN)
+        except tk.TclError as exc:
+            self._log(f"[X] 复制失败: {exc}", ERR_RED)
+
+    def on_clear_prompt(self) -> None:
+        self.pv_text.configure(state="normal")
+        self.pv_text.delete("1.0", "end")
+        self.pv_text.configure(state="disabled")
+        self._pv_no = -1
+        self._log("结构化文本已清空", FG_DIM)
+
     # ---- 日志 ----
     def _log(self, msg: str, color: str = FG) -> None:
         """往日志框追加一行 (带时分秒), 自动滚到底, 只留最近 LOG_MAX_LINES 行."""
@@ -940,7 +1052,7 @@ class App(tk.Tk):
         if notes:
             msg += " | " + "; ".join(notes)
         if self.pv_var.get():
-            msg += f" | 结构化文本每 {PROMPT_INTERVAL:g}s 抽一次"
+            msg += " | 结构化文本改为手动抽取 (点「抽取」)"
         self._log(msg, OK_GREEN)
 
     def _refresh_prompt(self) -> None:
@@ -951,7 +1063,7 @@ class App(tk.Tk):
             return
         self._pv_no = no
         if not text:
-            text = f"点「应用」后开始抽取 (每 {PROMPT_INTERVAL:g}s 一次)"
+            text = "点下方「抽取」生成结构化文本\n(路径留空 = 现截一帧; 填了路径 = 抽那张图)"
         self.pv_text.configure(state="normal")
         self.pv_text.delete("1.0", "end")
         self.pv_text.insert("1.0", text)
@@ -961,6 +1073,10 @@ class App(tk.Tk):
     def _poll(self) -> None:
         if self._closed:
             return
+        pend = self._pending_extract
+        if pend is not None:
+            self._pending_extract = None
+            self._extract_done(*pend)
         st = self.worker.status()
         parts = [f"帧 {st['frame']}"]
         if st["frame"]:
@@ -1261,25 +1377,59 @@ def run_selftest(args) -> int:
     app.thr_vars["min_score"].set("0.45")
     app._apply()
 
-    print("[8] 结构化文本预览")
+    print("[8] 结构化文本: 手动抽取")
     app.pv_var.set(True)
     app._toggle_preview()
     app._apply()
     plan = settings.plan()
-    check("plan 里多出 prompt", "prompt" in plan, str(sorted(plan)))
+    check("prompt 不再进节拍表 (不实时)", "prompt" not in plan, str(sorted(plan)))
     check("面板已展开", bool(app.pv_frame.winfo_manager()),
           app.pv_frame.winfo_manager())
-    worker._run("prompt", worker.frame_source())
-    app._refresh_prompt()
+    # 路径空 = 现截一帧 + 存盘 + 抽取 (on_extract 是后台线程, 这里等它落地)
+    app.path_var.set("")
+    app.on_extract()
+    for _ in range(200):
+        app.update()
+        if not app._extracting:
+            break
+        time.sleep(0.05)
     txt = app.pv_text.get("1.0", "end").strip()
-    check("面板有文本且是对局快照", "对局快照" in txt, f"{len(txt)} 字")
-    check("预览版本号已更新", settings.snapshot()[2] >= v_before,
-          f"v{settings.snapshot()[2]}")
+    check("抽取出的文本是对局快照", "对局快照" in txt, f"{len(txt)} 字")
+    check("抽取后不再受 plan 控制", "prompt" not in settings.plan(), str(sorted(settings.plan())))
+    log_txt = app.log_text.get("1.0", "end")
+    check("日志里记了抽取 + 存帧", "结构化文本已更新" in log_txt and "帧已存至" in log_txt,
+          log_txt.strip().splitlines()[-1] if log_txt.strip() else "")
+    # 复制 / 清空
+    app.on_copy_prompt()
+    clip = app.clipboard_get()
+    check("复制文本进剪贴板", "对局快照" in clip, f"{len(clip)} 字")
+    app.on_clear_prompt()
+    check("清空文本后面板为空", app.pv_text.get("1.0", "end").strip() == "",
+          repr(app.pv_text.get("1.0", "end").strip()[:20]))
+    # 指定图片路径
+    app.path_var.set("tests/images/board_ingame.png")
+    app.on_extract()
+    for _ in range(200):
+        app.update()
+        if not app._extracting:
+            break
+        time.sleep(0.05)
+    txt2 = app.pv_text.get("1.0", "end").strip()
+    check("指定路径也能抽出", "对局快照" in txt2, f"{len(txt2)} 字")
+    # 不存在的路径要报错且不崩
+    app.path_var.set("tests/images/__nope__.png")
+    app.on_extract()
+    for _ in range(200):
+        app.update()
+        if not app._extracting:
+            break
+        time.sleep(0.05)
+    err_log = app.log_text.get("1.0", "end")
+    check("坏路径报错但不崩", "抽取失败" in err_log, err_log.strip().splitlines()[-1])
     app.pv_var.set(False)
     app._toggle_preview()
     app._apply()
     check("取消后收起", not app.pv_frame.winfo_manager(), app.pv_frame.winfo_manager())
-    check("plan 里没 prompt 了", "prompt" not in settings.plan(), str(sorted(settings.plan())))
 
     print("[9] 加减按钮")
     app.iv_vars["shop"].set("1.5")
