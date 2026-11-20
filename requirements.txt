@@ -17,6 +17,9 @@ psutil==7.2.2
 # 计时工具 (中日韩友好时间格式化, 源项目一直在用)
 bdtime==1.0.6
 
+# overlay 图形客户端的参数持久化 (config/overlay_client.yaml); 没装也能跑, 只是不记忆上次设置
+pyyaml==6.0.2
+
 # 爬虫 (scrape_info 抓站点基础库 / scrape_comp 抓单个阵容并解密棋盘)
 # requests: 抓 static/api.datatft.com ; cryptography: 解密 base64 + AES-128-ECB 的中文名与 teamUrl 数据集
 requests==2.34.2

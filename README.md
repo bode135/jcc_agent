@@ -119,7 +119,7 @@ python -X utf8 -u -m scripts.game units --img tests/images/board_ingame.png
 python -X utf8 -u -m scripts.frame_prompt --img tests/images/board_ingame.png
 ```
 
-### 图形客户端（深色，勾选显示项 + 逐项刷新间隔 + 结构化文本预览）
+### 图形客户端（深色，勾选显示项 + 逐项刷新间隔 + 参数持久化 + 结构化文本）
 
 ![overlay 客户端](docs/images/overlay_client.jpg)
 
@@ -150,12 +150,14 @@ python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png 
 
 **识别阈值**（也在界面上，不用改代码）
 
-- `YOLO 检出置信度` 0.01 ~ 0.95（默认 0.35，取 `config.YOLO_UNITS_CONF`）：低于它的框直接丢弃。
-- `未知 (unknown) 阈值` 0.05 ~ 0.99（默认 0.45，取 `config.YOLO_UNITS_MIN_SCORE`）：低于它的框画成 `?`，高于它的才给名字。
+- `YOLO 检出置信度` 0.01 ~ 0.95（默认 0.35）：低于它的框直接丢弃。
+- `未知 (unknown) 阈值` 0.05 ~ 0.99（默认 0.45）：低于它的框画成 `?`，高于它的才给名字。
+
+默认值存在 `config/overlay_client.yaml` 里（见下面「参数持久化」），首次生成时取 `config.YOLO_UNITS_CONF` / `YOLO_UNITS_MIN_SCORE`。
 
 **数值框旁边的 `-` / `+`**：每次 0.1（阈值行是 0.05），到上下限自动停，不会填出非法值。
 
-**结构化文本预览**：勾选框、图片路径输入框、文本框是一个模块，紧挨着放在窗口下方；勾上就在正下方展开（再点收起）。
+**结构化文本预览**：勾选框、图片路径输入框、文本框是一个模块，放在**窗口右侧**（左列已经放不下了）；勾上就在下方展开（再点收起）。
 
 - **不实时变动**：内容只在点「抽取」时算一次（全量识别 2~3s，放后台线程跑，界面不卡）。
 - **图片路径留空** = 现截一帧，先存成 `tempdir/frames/frame_*.png`（日志打相对路径），再抽这一刻的画面。
@@ -171,7 +173,32 @@ python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png 
 - **每项一条线程、互不阻塞**：棋子框 / 备战席各按 0.1s 跑，OCR 1s，棋子身上装备 2s，谁都不等谁；主线程 10fps 抓帧并按各线程的最新结果重画。所以把棋子框调成 0.1s 是真的会 0.1s 波动一次（原先是单线程串行，一轮要把所有项跑完才画，单轮 2s 上下，调 0.1s 也没用）。
 - 间隔仍是"**请求间隔**"：某项自己算得比间隔慢时，实际周期就是它的识别耗时。离线实测（1920×1080）：棋子 0.11s、血条 0.16s、商店 1.5s、装备栏 1.0s、携带装备 2.0s、重画 8fps。
 - OCR 项（时间 / 经济信息）和 YOLO 抢 GPU，YOLO 高频跑时 OCR 实测 2~3s 一次（单独跑 1.0s）——要更准就把棋子框间隔调大，两者此消彼长。
-- **日志区**（按钮行右下角上方那一块）：只追加不覆盖，每行带 `[时分秒]`，保留最近 200 行。上方「复制日志」把整段日志放进剪贴板（纯文本，方便直接贴给 AI 或贴进 issue），「清空日志」清掉重来。应用成功/失败、保存帧路径、重启结果都记在这里。
+- **日志区**（按钮行上方那一块）：只追加不覆盖，每行带 `[时分秒]`，保留最近 200 行。上方「复制日志」把整段日志放进剪贴板（纯文本，方便直接贴给 AI 或贴进 issue），「清空日志」清掉重来。应用成功/失败、保存帧路径、重启结果都记在这里。日志框本身是可编辑文本框，想抠某几行直接用鼠标选中复制。
+
+**参数持久化（`config/overlay_client.yaml`）**
+
+界面上的 7 个勾选 / 7 个间隔 / 2 个阈值不用再改 `config.py`，点按钮就能记住：
+
+| 按钮 | 作用 |
+| --- | --- |
+| **应用** | 立即生效，并把当前这组参数写进 yaml 的 `user:` 段 —— **下次打开客户端自动沿用**（比如把置信度调成 0.1，关掉再开还是 0.1） |
+| **存为默认** | 把当前这组参数写进 yaml 的 `defaults:` 段，作为"出厂默认" |
+| **恢复默认** | 把 `defaults:` 段填回界面（只填不应用，确认后自己点「应用」） |
+
+yaml 长这样，可以手改：
+
+```yaml
+defaults:            # 「恢复默认」读这一组
+  show:        {units_board: true, units_bench: true, shop: true, board_equips: true, equip_bar: true, game_time: true, game_econ: true}
+  intervals:   {units_board: 0.1, units_bench: 0.1, shop: 1.5, board_equips: 2.0, equip_bar: 1.0, game_time: 1.0, game_econ: 1.0}
+  thresholds:  {conf: 0.35, min_score: 0.45}
+user:                # 每次「应用」自动写；启动时优先用它
+  ...
+```
+
+- 手改的越界值（间隔小于下限、阈值超出区间）加载时会被钳回合法区间，不会让客户端起不来。
+- 文件被改坏或删掉也能启动：回落代码默认（间隔取 `ITEMS`、阈值取 `config.py`）。
+- 没装 PyYAML 时客户端照常跑，只是这三个按钮不持久化（会提示装 `pyyaml`）。
 - 右上角 **保存帧**：把最近一帧**原始画面**（未叠框的那张）存成 png，日志框打一行 `已将当前帧保存至: tempdir\frames\frame_000123_20261121_031025.png`，控制台打绝对路径。存的是干净帧，用来对坐标、存样本、报 bug 都合适；要带框的图用 `overlay_info --img` 的输出。
 - 右上角 **重启**：重新探测模拟器窗口、重建识别线程（重新载入 ONNX 会话）、帧号与错误计数清零；窗口和当前勾选/间隔不变。模拟器重启过、或识别线程卡住时点它，不用关客户端。
   注意 `config.py` 里的值是进程级常量，改文件后点重启**不会**生效，那种情况要关掉客户端重开。
@@ -222,7 +249,7 @@ ph      = phase.detect(img)                    # 阶段
 ```
 
 ```text
-├── config/        配置 + 装备 id/名映射 + YOLO 类别信任表
+├── config/        配置 + 装备 id/名映射 + YOLO 类别信任表 + overlay_client.yaml(客户端参数)
 ├── capture/       截图 / 找雷电 RenderWindow
 ├── control/       后台点击·拖拽·按键·adb / fallback 通道兜底
 ├── recognize/     识别核心（yolo_units / board / equipment / reward_ball / phase / ocr / grid）+ 模板

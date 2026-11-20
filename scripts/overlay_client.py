@@ -34,7 +34,9 @@ if __package__ in (None, ""):
     _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent))
 
 import argparse
+import os
 import sys
+import tempfile
 import threading
 import time
 import tkinter as tk
@@ -130,8 +132,8 @@ ITEMS: tuple[Item, ...] = (
 RECOG_ORDER = ("units", "bars", "game", "shop", "equip_bar", "board_equips", "prompt")
 
 # 结构化文本预览: 面板尺寸 (放在选项下方, 展开时向下延伸) + 生成节拍
-PROMPT_W = 700
-PROMPT_H = 150
+PROMPT_W = 640
+PROMPT_H = 560
 
 # 两个阈值的合法区间 (UI 里填超了就钳到边界); 检出置信度下限 2026-11-21 用户指定 0.01
 CONF_RANGE = (0.01, 0.95)
@@ -150,6 +152,119 @@ def default_thresholds() -> dict:
         "conf": float(getattr(default_config, "YOLO_UNITS_CONF", 0.35)),
         "min_score": float(getattr(default_config, "YOLO_UNITS_MIN_SCORE", 0.45)),
     }
+
+
+# ---- 客户端参数持久化 (config/overlay_client.yaml) ----
+PREFS_FILENAME = "overlay_client.yaml"
+
+
+def _prefs_path() -> Path:
+    """yaml 路径; 自检/测试用环境变量 JCC_CLIENT_PREFS 指到临时文件."""
+    env = os.environ.get("JCC_CLIENT_PREFS")
+    if env:
+        return Path(env)
+    return Path(default_config.PROJECT_ROOT) / "config" / PREFS_FILENAME
+
+
+def _prefs_show() -> str:
+    """给日志用的相对路径 (绝对路径 430px 宽会折三行)."""
+    p = _prefs_path()
+    try:
+        return str(p.relative_to(Path(default_config.PROJECT_ROOT)))
+    except ValueError:
+        return str(p)
+
+
+def _yaml():
+    """延迟导入 PyYAML; 没装就返回 None (客户端照常可用, 只是不持久化)."""
+    try:
+        import yaml
+        return yaml
+    except Exception:                               # noqa: BLE001
+        return None
+
+
+def _code_defaults() -> dict:
+    """代码里的出厂默认 (yaml 缺失/字段缺失时的兜底, 值来自 config.py 与 ITEMS)."""
+    return {
+        "show": {it.key: True for it in ITEMS},
+        "intervals": {it.key: it.interval for it in ITEMS},
+        "thresholds": default_thresholds(),
+    }
+
+
+def _clamp_section(sec) -> dict:
+    """把 yaml 里的一组值钳进合法区间 (手改 yaml 可能写出越界值/错类型)."""
+    out = _code_defaults()
+    if not isinstance(sec, dict):
+        return out
+    s = sec.get("show")
+    if isinstance(s, dict):
+        for it in ITEMS:
+            if it.key in s:
+                out["show"][it.key] = bool(s[it.key])
+    iv = sec.get("intervals")
+    if isinstance(iv, dict):
+        for it in ITEMS:
+            try:
+                v = float(iv.get(it.key))
+            except (TypeError, ValueError):
+                continue
+            out["intervals"][it.key] = max(it.min_interval, v)
+    th = sec.get("thresholds")
+    if isinstance(th, dict):
+        for key, rng in (("conf", CONF_RANGE), ("min_score", MIN_SCORE_RANGE)):
+            try:
+                v = float(th.get(key))
+            except (TypeError, ValueError):
+                continue
+            out["thresholds"][key] = min(max(v, rng[0]), rng[1])
+    return out
+
+
+def load_prefs() -> dict:
+    """读 ``config/overlay_client.yaml``: ``{"defaults": {...}, "user": {...}|None}``.
+
+    * ``defaults``: 点「存为默认」写进去的那一组, 也是「恢复默认」读的那一组;
+    * ``user``: 每次点「应用」自动记下来的上一组, 启动时优先用它。
+
+    文件不存在 / 被改坏 / 字段缺失 一律回落到代码默认 —— 绝不因为 yaml 写错让客户端起不来。
+    """
+    raw = {}
+    mod = _yaml()
+    try:
+        p = _prefs_path()
+        if mod is not None and p.is_file():
+            raw = mod.safe_load(p.read_text(encoding="utf-8")) or {}
+    except Exception:                               # noqa: BLE001
+        raw = {}
+    if not isinstance(raw, dict):
+        raw = {}
+    defaults = _clamp_section(raw.get("defaults"))
+    user = _clamp_section(raw["user"]) if isinstance(raw.get("user"), dict) else None
+    return {"defaults": defaults, "user": user}
+
+
+def save_prefs(user: dict, defaults: dict | None = None) -> None:
+    """写回 yaml. ``defaults=None`` 只更新 ``user:`` 段, 保留文件里原有的 ``defaults:``."""
+    mod = _yaml()
+    if mod is None:
+        raise RuntimeError("没装 PyYAML (pip install pyyaml), 参数无法持久化")
+    p = _prefs_path()
+    old = {}
+    try:
+        if p.is_file():
+            old = mod.safe_load(p.read_text(encoding="utf-8")) or {}
+    except Exception:                               # noqa: BLE001
+        old = {}
+    if not isinstance(old, dict):
+        old = {}
+    data = {"defaults": old.get("defaults") or _code_defaults(), "user": user}
+    if defaults is not None:
+        data["defaults"] = defaults
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(mod.safe_dump(data, allow_unicode=True, sort_keys=False),
+                 encoding="utf-8", newline="\n")
 
 
 PHASE_CN = {"prep": "准备", "combat": "战斗", "augment": "海克斯", "draft": "选秀"}
@@ -197,9 +312,13 @@ class Settings:
 
     def __init__(self) -> None:
         self._lock = threading.Lock()
-        self.show = {it.show_key: True for it in ITEMS}
-        self.intervals = {it.key: it.interval for it in ITEMS}
-        self._thr = default_thresholds()
+        prefs = load_prefs()
+        active = prefs["user"] or prefs["defaults"]
+        self.show = {it.show_key: bool(active["show"].get(it.key, True))
+                     for it in ITEMS}
+        self.intervals = {it.key: float(active["intervals"].get(it.key, it.interval))
+                          for it in ITEMS}
+        self._thr = dict(active["thresholds"])
         self.preview = False          # 结构化文本预览面板是否展开
         self.version = 0
 
@@ -702,6 +821,10 @@ class App(tk.Tk):
         root = ttk.Frame(outer)
         root.grid(row=2, column=0, sticky="nw")
 
+        # 右列: 结构化文本模块 (左列放不下了, 用户 2026-11-21)
+        side = ttk.Frame(outer)
+        side.grid(row=0, column=1, rowspan=3, sticky="nw", padx=(18, 0))
+
         # 表头 (只有最上面一次, 两个分组共用)
         r = 0
         ttk.Label(root, text="显示项", font=FONT).grid(row=r, column=0, sticky="w")
@@ -732,30 +855,36 @@ class App(tk.Tk):
         r += 1
 
         self.log_text = self._text_box(
-            root, row=r, height=LOG_BOX_H, color=FG)
+            root, row=r, height=LOG_BOX_H, color=FG, readonly=False)
         r += 1
         self._log("改完点右下角「应用」即时生效 (下一个节拍 <=0.5s)", FG_DIM)
 
         btns = ttk.Frame(root)
-        btns.grid(row=r, column=0, columnspan=4, sticky="e", pady=(10, 0))
+        btns.grid(row=r, column=0, columnspan=4, sticky="ew", pady=(10, 0))
+        btns.columnconfigure(0, weight=1)
+        par = ttk.Frame(btns)
+        par.grid(row=0, column=0, sticky="w")
+        ttk.Button(par, text="恢复默认", width=9,
+                   command=self.on_restore_defaults).grid(row=0, column=0, padx=(0, 6))
+        ttk.Button(par, text="存为默认", width=9,
+                   command=self.on_save_defaults).grid(row=0, column=1)
         ttk.Button(btns, text="退出", command=self.on_close).grid(
-            row=0, column=0, padx=(0, 8))
+            row=0, column=1, padx=(0, 8))
         ttk.Button(btns, text="应用", style="Accent.TButton",
-                   command=self._apply).grid(row=0, column=1)
+                   command=self._apply).grid(row=0, column=2)
         r += 1
 
         self._sep(root, row=r, pady=(12, 8))
         r += 1
 
-        # 结构化文本模块: 勾选框 -> 图片路径/抽取 -> 面板(标题行 + 文本框)
+        # 结构化文本模块 (右列): 勾选框 -> 图片路径/抽取 -> 面板(标题行 + 文本框)
         self.pv_check = ttk.Checkbutton(
-            root, text="结构化文本预览 (与 frame_prompt 同源)",
+            side, text="结构化文本预览 (与 frame_prompt 同源)",
             variable=self.pv_var, command=self._toggle_preview)
-        self.pv_check.grid(row=r, column=0, columnspan=4, sticky="w", pady=(0, 4))
-        r += 1
+        self.pv_check.grid(row=0, column=0, sticky="w", pady=(0, 4))
 
-        prow = ttk.Frame(root)
-        prow.grid(row=r, column=0, columnspan=4, sticky="w", pady=(0, 6))
+        prow = ttk.Frame(side)
+        prow.grid(row=1, column=0, sticky="w", pady=(0, 6))
         ttk.Label(prow, text="图片路径:", font=FONT).grid(row=0, column=0, sticky="w")
         self.path_var = tk.StringVar()
         self.path_entry = ttk.Entry(prow, textvariable=self.path_var, width=30)
@@ -763,10 +892,9 @@ class App(tk.Tk):
         self.extract_btn = ttk.Button(prow, text="抽取", width=6,
                                       command=self.on_extract)
         self.extract_btn.grid(row=0, column=2, sticky="w")
-        r += 1
 
-        self.pv_frame = ttk.Frame(root, width=PROMPT_W, height=PROMPT_H)
-        self.pv_frame.grid(row=r, column=0, columnspan=4, sticky="nw")
+        self.pv_frame = ttk.Frame(side, width=PROMPT_W, height=PROMPT_H)
+        self.pv_frame.grid(row=2, column=0, sticky="nw")
         self.pv_frame.grid_propagate(False)
 
         pvhead = ttk.Frame(self.pv_frame)
@@ -896,7 +1024,7 @@ class App(tk.Tk):
         self.geometry(f"{self.winfo_reqwidth()}x{self.winfo_reqheight()}")
 
     def _text_box(self, parent, *, row: int, height: int, color: str = FG,
-                  text: str = "") -> tk.Text:
+                  text: str = "", readonly: bool = True) -> tk.Text:
         """固定像素大小的只读文本框.
 
         状态行/提示行的文字每 200ms 变一次、长度也不固定, 用会自己换行的 Label
@@ -911,7 +1039,12 @@ class App(tk.Tk):
                     borderwidth=0, highlightthickness=0, padx=6, pady=4)
         t.place(x=0, y=0, width=TEXT_BOX_W, height=height)
         t.insert("1.0", text)
-        t.configure(state="disabled")
+        # readonly=True 是状态/提示框; 日志框传 False, 因为 disabled 的 Text
+        # 在 Windows 上没法用鼠标拖选 (用户 2026-11-21 要能选中复制)。
+        if readonly:
+            t.configure(state="disabled", cursor="arrow")
+        else:
+            t.configure(cursor="xterm", insertwidth=1, takefocus=True)
         return t
 
     @staticmethod
@@ -1016,7 +1149,6 @@ class App(tk.Tk):
             total = int(self.log_text.index("end-1c").split(".")[0])
             if total > LOG_MAX_LINES:
                 self.log_text.delete("1.0", f"{total - LOG_MAX_LINES}.0")
-            self.log_text.configure(state="disabled")
             self.log_text.see("end")
         except tk.TclError:
             pass
@@ -1043,13 +1175,18 @@ class App(tk.Tk):
         self._log("日志已清空", FG_DIM)
 
     # ---- 应用 ----
-    def _apply(self) -> None:
+    def _collect(self):
+        """解析界面上的 7 个勾选/间隔 + 2 个阈值.
+
+        返回 ``(show, intervals, thresholds, notes)``, ``show`` 以 ``Item.key`` 为键;
+        有非法输入时写日志并返回 ``None``。
+        """
         show: dict = {}
         intervals: dict = {}
         notes: list[str] = []
         bad: list[str] = []
         for it in ITEMS:
-            show[it.show_key] = bool(self.vars[it.key].get())
+            show[it.key] = bool(self.vars[it.key].get())
             raw = (self.iv_vars[it.key].get() or "").strip()
             try:
                 v = float(raw)
@@ -1086,18 +1223,51 @@ class App(tk.Tk):
 
         if bad:
             self._log("[X] 没有应用: " + "; ".join(bad), ERR_RED)
-            return
+            return None
         if len(intervals) != len(ITEMS) or len(thr) != 2:
             self._log("[X] 没有应用: 有间隔或阈值没填", ERR_RED)
-            return
+            return None
         if thr["min_score"] < thr["conf"]:
             notes.append("未知阈值 < 检出置信度: 检出的框都会直接命名")
+        return show, intervals, thr, notes
 
-        on = [it.label for it in ITEMS if show[it.show_key]]
+    def on_restore_defaults(self) -> None:
+        """把 yaml 里 ``defaults:`` 段的参数填回界面 (不自动应用)."""
+        d = load_prefs()["defaults"]
+        for it in ITEMS:
+            self.vars[it.key].set(bool(d["show"].get(it.key, True)))
+            self.iv_vars[it.key].set(f"{d['intervals'].get(it.key, it.interval):g}")
+        for key in ("conf", "min_score"):
+            self.thr_vars[key].set(f"{d['thresholds'].get(key, 0.0):.2f}")
+        self._log(f"[OK] 已恢复 {_prefs_show()} 里的默认参数, 点「应用」生效", OK_GREEN)
+
+    def on_save_defaults(self) -> None:
+        """把当前界面参数写进 yaml 的 ``defaults:`` 段 (以后「恢复默认」回到这里)."""
+        got = self._collect()
+        if got is None:
+            return
+        show, intervals, thr, _notes = got
+        try:
+            save_prefs({"show": show, "intervals": intervals, "thresholds": thr},
+                       defaults={"show": show, "intervals": intervals,
+                                 "thresholds": thr})
+        except Exception as e:                      # noqa: BLE001
+            self._log(f"[X] 存为默认失败: {e}", ERR_RED)
+            return
+        self._log(f"[OK] 已存为默认 ({_prefs_show()}), 下次启动与「恢复默认」都用这组",
+                  OK_GREEN)
+
+    def _apply(self) -> None:
+        got = self._collect()
+        if got is None:
+            return
+        show, intervals, thr, notes = got
+        on = [it.label for it in ITEMS if show[it.key]]
         if not on:
             notes.append("全部关闭: overlay 会清空, 但仍保持对局检测")
-        ver = self.settings.apply(show, intervals, thresholds=thr,
-                                  preview=bool(self.pv_var.get()))
+        ver = self.settings.apply(
+            {it.show_key: show[it.key] for it in ITEMS}, intervals,
+            thresholds=thr, preview=bool(self.pv_var.get()))
         self._applied_at = time.strftime("%H:%M:%S")
         msg = f"[OK] 已应用 (v{ver} {self._applied_at}): " + \
               (", ".join(on) if on else "无显示项")
@@ -1105,6 +1275,11 @@ class App(tk.Tk):
             msg += " | " + "; ".join(notes)
         if self.pv_var.get():
             msg += " | 结构化文本改为手动抽取 (点「抽取」)"
+        try:
+            save_prefs({"show": show, "intervals": intervals, "thresholds": thr})
+            msg += " | 已记住, 下次启动沿用"
+        except Exception as e:                      # noqa: BLE001
+            msg += f" | 偏好保存失败: {e}"
         self._log(msg, OK_GREEN)
 
     def _refresh_prompt(self) -> None:
@@ -1314,6 +1489,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 def run_selftest(args) -> int:
     """自检: 不起 mainloop, 不建 overlay 窗口, 直接验证 Settings/UI 交互."""
+    # 自检不能碰仓库里的 config/overlay_client.yaml, 指到一个空的临时文件
+    _pref = Path(tempfile.mkdtemp(prefix="jcc_client_selftest_")) / PREFS_FILENAME
+    os.environ["JCC_CLIENT_PREFS"] = str(_pref)
     settings = Settings()
     src, offline = _make_source(args)
     worker = Worker(settings, src, use_overlay=False)
@@ -1542,6 +1720,43 @@ def run_selftest(args) -> int:
     check("剪贴板拿到刚写的行", "测试行A" in clip and "测试行B" in clip, clip[:60])
     check("日志里记了「已复制日志」", "已复制日志" in
           app.log_text.get("1.0", "end"), app.log_text.get("1.0", "end")[-80:])
+
+    print("[13] 参数持久化: 应用即记住 / 存为默认 / 恢复默认")
+    app.vars["units_bench"].set(False)
+    app.iv_vars["shop"].set("1.2")
+    app.thr_vars["conf"].set("0.20")
+    app._apply()
+    check("应用后 yaml 文件已生成", _pref.is_file(), str(_pref))
+    saved = load_prefs()
+    check("user 段记下了 conf=0.20",
+          abs((saved["user"] or {}).get("thresholds", {}).get("conf", 0) - 0.2) < 1e-9,
+          str((saved["user"] or {}).get("thresholds")))
+    s3 = Settings()
+    check("重新构造 Settings 读回 conf=0.20",
+          abs(s3.thresholds()["conf"] - 0.2) < 1e-9, str(s3.thresholds()))
+    check("重新构造 Settings 读回 shop=1.2",
+          abs(s3.snapshot()[1]["shop"] - 1.2) < 1e-9, str(s3.snapshot()[1]))
+    check("重新构造 Settings 读回 units_bench=False",
+          s3.snapshot()[0][ITEMS[1].show_key] is False, str(s3.snapshot()[0]))
+
+    app.on_save_defaults()
+    check("日志里记了「已存为默认」", "已存为默认" in app.log_text.get("1.0", "end"))
+    d = load_prefs()["defaults"]
+    check("defaults 段 conf=0.20", abs(d["thresholds"]["conf"] - 0.2) < 1e-9,
+          str(d["thresholds"]))
+
+    # 改乱 UI, 再「恢复默认」应回到刚存的那组
+    app.vars["units_bench"].set(True)
+    app.iv_vars["shop"].set("9.9")
+    app.thr_vars["conf"].set("0.90")
+    app.on_restore_defaults()
+    check("恢复默认把 shop 填回 1.2", app.iv_vars["shop"].get() == "1.2",
+          app.iv_vars["shop"].get())
+    check("恢复默认把 conf 填回 0.20", app.thr_vars["conf"].get() == "0.20",
+          app.thr_vars["conf"].get())
+    check("恢复默认把 units_bench 填回未勾选", bool(app.vars["units_bench"].get()) is False)
+    check("恢复默认不会自动应用 (日志提示点应用)",
+          "点「应用」生效" in app.log_text.get("1.0", "end"))
 
     app.destroy()
     print(f"[{'OK' if fails == 0 else 'X'}] 自检{'通过' if fails == 0 else f'失败 {fails} 项'}")

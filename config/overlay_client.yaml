@@ -1,0 +1,23 @@
+# overlay 客户端参数 (脚本自动维护; 也可手改, 越界值会在加载时钳回合法区间)
+# defaults: 「恢复默认」读这一组; user: 每次点「应用」自动记下来, 启动时优先用它
+defaults:
+  show:
+    units_board: true
+    units_bench: true
+    shop: true
+    board_equips: true
+    equip_bar: true
+    game_time: true
+    game_econ: true
+  intervals:
+    units_board: 0.1
+    units_bench: 0.1
+    shop: 1.5
+    board_equips: 2.0
+    equip_bar: 1.0
+    game_time: 1.0
+    game_econ: 1.0
+  thresholds:
+    conf: 0.35
+    min_score: 0.45
+user: null
