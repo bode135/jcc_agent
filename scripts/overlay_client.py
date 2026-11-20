@@ -42,7 +42,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from tkinter import ttk
 
-from PIL import Image, ImageTk
+from PIL import Image
 
 from config.config import default_config
 from overlay import debug_overlay, live_draw
@@ -54,11 +54,31 @@ EMPTY_UNITS = {"board": [], "bench": []}
 IN_GAME_PHASES = {"prep", "combat", "augment", "draft"}
 PHASE_INTERVAL = 2.0      # 阶段判定间隔 (phase.detect 25~48ms)
 UI_POLL_MS = 200          # 状态栏刷新周期
-PREVIEW_W, PREVIEW_H = 640, 360   # 离线预览缩略图 (16:9)
+
+# 状态行/提示行的固定像素盒子 (见 App._text_box): 文本每 200ms 变一次,
+# 用会自己换行的 Label 会让窗口高度跟着跳, 所以固定成像素盒, 多出来的裁掉。
+TEXT_BOX_W = 430
+STATUS_BOX_H = 74      # 约 4 行 9pt (帧号/耗时/本次重算/贴图或错误, 长句会折行)
+SAY_BOX_H = 76         # 约 4 行 9pt
 
 FONT = ("Microsoft YaHei UI", 10)
 FONT_TITLE = ("Microsoft YaHei UI", 12, "bold")
 FONT_SMALL = ("Microsoft YaHei UI", 9)
+FONT_MONO = ("Cascadia Mono", 9)
+
+# ---- 深色主题 (VS Code Dark+ 近似色) ----
+BG = "#1e1e1e"          # 窗口底
+BG_BOX = "#252526"      # 输入框 / 文本框底 (比窗口略亮一层)
+BG_BTN = "#333337"
+BG_BTN_HOVER = "#3f3f46"
+FG = "#d4d4d4"          # 主文字
+FG_DIM = "#8f8f8f"      # 次要说明
+FG_TITLE = "#ffffff"
+ACCENT = "#0e639c"      # 主按钮
+ACCENT_HOVER = "#1177bb"
+BORDER = "#3c3c3c"
+OK_GREEN = "#6a9955"    # 成功提示 (暗色下的绿)
+ERR_RED = "#f48771"     # 错误提示
 
 
 @dataclass(frozen=True)
@@ -73,6 +93,7 @@ class Item:
         interval: 默认刷新间隔 (秒).
         min_interval: 间隔下限 (秒), 按实测识别耗时定.
         tip: 鼠标悬停提示.
+        group: "visual" (图色/YOLO) 或 "ocr" (OCR 读数字), 只影响界面上怎么分段.
     """
 
     key: str
@@ -82,23 +103,88 @@ class Item:
     interval: float
     min_interval: float
     tip: str = ""
+    group: str = "visual"
 
 
 ITEMS: tuple[Item, ...] = (
     Item("units_board", "棋子框 (棋盘)", "OVERLAY_SHOW_UNITS", "units",
-         0.5, 0.4, "YOLO 棋子 + 名字 + 星级, 以及血条左侧那枚星级徽记锚点"),
+         0.1, 0.05, "YOLO 棋子 + 名字 + 星级, 以及血条左侧那枚星级徽记锚点"),
     Item("units_bench", "备战席框", "OVERLAY_SHOW_BENCH_UNITS", "units",
-         0.5, 0.4, "备战席格子里的棋子 (与棋盘共用一次 YOLO 推理)"),
+         0.1, 0.05, "备战席格子里的棋子 (与棋盘共用一次 YOLO 推理)"),
     Item("shop", "商店 (识别 + 区域框)", "OVERLAY_SHOW_SHOP", "shop",
-         2.0, 1.0, "5 张卡的卡面 OCR; 勾上才会去跑 OCR, 不勾可省 ~0.6s/次"),
+         1.5, 1.0, "5 张卡的卡面 OCR; 勾上才会去跑 OCR, 不勾可省 ~0.6s/次"),
     Item("board_equips", "棋子身上装备", "OVERLAY_SHOW_BOARD_EQUIPS", "board_equips",
-         3.0, 2.5, "血条上方那几枚装备图标 (依赖血条定位, 最慢的一项)"),
+         2.0, 1.0, "血条上方那几枚装备图标 (依赖血条定位, 最慢的一项)"),
     Item("equip_bar", "装备栏装备", "OVERLAY_SHOW_EQUIP_BAR", "equip_bar",
-         2.0, 1.5, "左侧库存面板的格子与件数"),
+         1.0, 0.5, "左侧库存面板的格子与件数"),
+    # ---- OCR 信息 (同一次 OCR 读出, 分两段画到 overlay 顶栏) ----
+    Item("game_time", "时间信息 (回合/阶段/倒计时)", "OVERLAY_SHOW_GAME_TIME", "game",
+         1.0, 0.5, "OCR 读顶栏: 3-6 / 准备 / 剩余20s; 画在 overlay 最上面那行", group="ocr"),
+    Item("game_econ", "经济信息 (等级/经验/金币/刷新)", "OVERLAY_SHOW_GAME_ECON", "game",
+         1.0, 0.5, "OCR 读: Lv5 经验10/18 金币103 免费刷新10 买经验4", group="ocr"),
 )
 
-# 识别项顺序: 棋子/血条 先跑 (后面的棋子携带装备要拿血条框定位)
-RECOG_ORDER = ("units", "bars", "shop", "equip_bar", "board_equips")
+# 识别项顺序: 棋子/血条 先跑 (后面的棋子携带装备要拿血条框定位); prompt 最慢, 放最后
+RECOG_ORDER = ("units", "bars", "game", "shop", "equip_bar", "board_equips", "prompt")
+
+# 结构化文本预览: 面板尺寸 (放在选项下方, 展开时向下延伸) + 生成节拍
+PROMPT_W = 700
+PROMPT_H = 240
+PROMPT_INTERVAL = 3.0
+
+# 两个阈值的合法区间 (UI 里填超了就钳到边界); 下限是 2026-11-21 指定的 0.25
+CONF_RANGE = (0.25, 0.95)
+MIN_SCORE_RANGE = (0.05, 0.99)
+
+
+def default_thresholds() -> dict:
+    """识别阈值的初值 (UI 上可改, 改完点「应用」立即生效).
+
+    * `conf`: 检出置信度 —— 低于它的框**根本不检出**; 用户 2026-11-21 指定默认/下限都是
+      **0.25** (信任表的标定值是 0.35, 但那是标定时用的口径, 界面上以用户设的为准).
+    * `min_score`: 未知阈值 —— 检出框的分数低于它**不写名字**, 标成 unknown 走点击确认兜底.
+    """
+    return {
+        "conf": float(getattr(default_config, "YOLO_UNITS_CONF", 0.25)),
+        "min_score": float(getattr(default_config, "YOLO_UNITS_MIN_SCORE", 0.45)),
+    }
+
+
+PHASE_CN = {"prep": "准备", "combat": "战斗", "augment": "海克斯", "draft": "选秀"}
+
+
+def _phase_cn(phase) -> str:
+    s = str(phase or "")
+    if not s:
+        return "?"
+    for k, v in PHASE_CN.items():
+        if k in s:
+            return v
+    return s
+
+
+def _time_text(g: dict) -> str:
+    """时间信息一行: 「3-6 准备 剩余20s」."""
+    stage = g.get("stage") or "?-?"
+    rt = g.get("round_time")
+    rt_txt = f"剩余{rt}s" if rt is not None else "剩余?s"
+    return f"{stage} {_phase_cn(g.get('phase'))} {rt_txt}"
+
+
+def _econ_text(g: dict) -> str:
+    """经济信息一行: 「Lv5 经验10/18 金币103 免费刷新10 买经验4」."""
+    xp = g.get("xp")
+    xp_txt = (f"{xp[0]}/{xp[1]}" if isinstance(xp, (list, tuple)) and len(xp) >= 2
+              else "?/?")
+    lv = g.get("level")
+    gold = g.get("gold")
+    parts = [f"Lv{lv if lv is not None else '?'}", f"经验{xp_txt}",
+             f"金币{gold if gold is not None else '?'}"]
+    if g.get("free_refresh") is not None:
+        parts.append(f"免费刷新{g['free_refresh']}")
+    if g.get("xp_buy_cost") is not None:
+        parts.append(f"买经验{g['xp_buy_cost']}")
+    return " ".join(parts)
 
 
 # --------------------------------------------------------------------------- #
@@ -111,16 +197,31 @@ class Settings:
         self._lock = threading.Lock()
         self.show = {it.show_key: True for it in ITEMS}
         self.intervals = {it.key: it.interval for it in ITEMS}
+        self._thr = default_thresholds()
+        self.preview = False          # 结构化文本预览面板是否展开
         self.version = 0
 
     def snapshot(self) -> tuple[dict, dict, int]:
         with self._lock:
             return dict(self.show), dict(self.intervals), self.version
 
-    def apply(self, show: dict, intervals: dict) -> int:
+    def thresholds(self) -> dict:
+        with self._lock:
+            return dict(self._thr)
+
+    def preview_on(self) -> bool:
+        with self._lock:
+            return bool(self.preview)
+
+    def apply(self, show: dict, intervals: dict,
+              thresholds: dict | None = None, preview: bool | None = None) -> int:
         with self._lock:
             self.show = dict(show)
             self.intervals = dict(intervals)
+            if thresholds:
+                self._thr = {**self._thr, **dict(thresholds)}
+            if preview is not None:
+                self.preview = bool(preview)
             self.version += 1
             return self.version
 
@@ -140,6 +241,9 @@ class Settings:
         # 星级来自血条: 只要画棋子, 血条就得跟着同一节拍算 (不画血条框, 只取星数)
         if "units" in plan:
             plan["bars"] = plan["units"]
+        # 结构化文本预览: 不画框, 但要把 prompt 一起抽出来 (全量, 最慢)
+        if self.preview_on():
+            plan["prompt"] = PROMPT_INTERVAL
         return plan
 
 
@@ -169,6 +273,7 @@ class Worker(threading.Thread):
         self._state: dict = {
             "units": None, "bars": None, "shop": None,
             "equip_bar": None, "board_equips": None, "phase": None,
+            "game": None, "prompt": None, "prompt_ver": 0,
             "ts": {},
         }
         # 离线预览用: 最近一帧原图 + 最近一帧渲染层
@@ -278,12 +383,24 @@ class Worker(threading.Thread):
         st = self._state
         if recog == "units":
             from recognize import yolo_units
-            st["units"] = yolo_units.extract_units(img)
+            thr = self.settings.thresholds()
+            st["units"] = yolo_units.extract_units(
+                img, conf=thr["conf"], min_score=thr["min_score"])
         elif recog == "bars":
             # match_cells=set(): 跳过全棋子库多尺度头像匹配 (单只 145ms, 9 只 1.3s);
             # 名字靠 YOLO 给, 这里只要血条框/星数/徽记锚点。
             from recognize import board
             st["bars"] = board.extract_units(img, include_legend=False, match_cells=set())
+        elif recog == "game":
+            # 时间信息 + 经济信息来自同一次 OCR (InfoTypes.Game 是扁平 dict)
+            from recognize import extract as rex
+            from config.config import InfoTypes
+            st["game"] = rex.extract_info(img, [InfoTypes.Game]) or {}
+        elif recog == "prompt":
+            # 结构化文本预览: 与 scripts/frame_prompt 同一条链路 (snapshot -> markdown)
+            from extract_info import prompt as _prompt
+            st["prompt"] = _prompt.to_markdown(_prompt.snapshot(img))
+            st["prompt_ver"] = int(st.get("prompt_ver") or 0) + 1
         elif recog == "shop":
             from recognize import extract as rex
             from config.config import InfoTypes
@@ -362,8 +479,24 @@ class Worker(threading.Thread):
             board_equips=st.get("board_equips") or [],
             heroes=[],
             show=draw_show,
-            header=None,
+            header=self._header(show),
         )
+
+    def _header(self, show: dict) -> str | None:
+        """overlay 顶栏: 时间信息 / 经济信息 按勾选拼成一行 (都没勾就 None)."""
+        g = self._state.get("game") or {}
+        parts: list[str] = []
+        if show.get("OVERLAY_SHOW_GAME_TIME"):
+            parts.append(_time_text(g))
+        if show.get("OVERLAY_SHOW_GAME_ECON"):
+            parts.append(_econ_text(g))
+        return "  |  ".join(p for p in parts if p) or None
+
+    # ---- 结构化文本 (UI 轮询读) ----
+    def prompt_text(self) -> tuple[str, int]:
+        with self._lock:
+            st = self._state
+            return str(st.get("prompt") or ""), int(st.get("prompt_ver") or 0)
 
 
 # --------------------------------------------------------------------------- #
@@ -380,30 +513,106 @@ class App(tk.Tk):
         self.offline = offline
         self._applied_at = "-"
         self._closed = False
+        self._pv_no = -1          # 上次刷进面板的 prompt 版本号
 
         self.title("对局 Overlay 客户端")
         self.resizable(False, False)
-        try:
-            ttk.Style(self).theme_use("vista")
-        except Exception:  # noqa: BLE001 - 主题不可用就用默认
-            pass
+        self.configure(background=BG)
+        self._apply_theme()
+        self._dark_titlebar()
 
         self.vars: dict[str, tk.BooleanVar] = {}
         self.iv_vars: dict[str, tk.StringVar] = {}
+        thr = self.settings.thresholds()
+        self.thr_vars: dict[str, tk.StringVar] = {
+            "conf": tk.StringVar(value=f"{thr['conf']:.2f}"),
+            "min_score": tk.StringVar(value=f"{thr['min_score']:.2f}"),
+        }
+        self.pv_var = tk.BooleanVar(value=False)
 
         self._build(target)
         self.protocol("WM_DELETE_WINDOW", self.on_close)
         self.after(UI_POLL_MS, self._poll)
 
+    # ---- 主题 ----
+    def _apply_theme(self) -> None:
+        """深色主题.
+
+        Tk 的 `vista` 主题不允许改控件底色 (会被系统主题覆盖), 所以换成 `clam`
+        再逐个 style 配颜色 —— clam 是唯一"全部颜色都能改"的内置主题。
+        """
+        style = ttk.Style(self)
+        try:
+            style.theme_use("clam")
+        except Exception:  # noqa: BLE001 - 主题不可用就用默认
+            pass
+        style.configure(".", background=BG, foreground=FG, fieldbackground=BG_BOX,
+                        bordercolor=BORDER, lightcolor=BORDER, darkcolor=BORDER,
+                        troughcolor=BG_BOX, focuscolor=ACCENT)
+        style.configure("TFrame", background=BG)
+        style.configure("TLabel", background=BG, foreground=FG)
+        style.configure("Dim.TLabel", background=BG, foreground=FG_DIM)
+        style.configure("Title.TLabel", background=BG, foreground=FG_TITLE,
+                        font=FONT_TITLE)
+        style.configure("Section.TLabel", background=BG, foreground=FG_DIM,
+                        font=FONT_SMALL)
+        style.configure("TCheckbutton", background=BG, foreground=FG, focuscolor=BG)
+        style.map("TCheckbutton",
+                  background=[("active", BG)],
+                  foreground=[("disabled", FG_DIM)])
+        style.configure("TEntry", fieldbackground=BG_BOX, foreground=FG,
+                        insertcolor=FG, bordercolor=BORDER,
+                        lightcolor=BORDER, darkcolor=BORDER)
+        style.map("TEntry",
+                  fieldbackground=[("disabled", BG_BOX)],
+                  foreground=[("disabled", FG_DIM)])
+        style.configure("TButton", background=BG_BTN, foreground=FG,
+                        bordercolor=BORDER, lightcolor=BG_BTN, darkcolor=BG_BTN,
+                        focuscolor=BG_BTN, padding=(10, 4))
+        style.map("TButton",
+                  background=[("active", BG_BTN_HOVER), ("pressed", BG_BTN_HOVER)],
+                  foreground=[("disabled", FG_DIM)])
+        style.configure("Accent.TButton", background=ACCENT, foreground="#ffffff",
+                        bordercolor=ACCENT, lightcolor=ACCENT, darkcolor=ACCENT,
+                        padding=(14, 4))
+        style.map("Accent.TButton",
+                  background=[("active", ACCENT_HOVER), ("pressed", ACCENT_HOVER)],
+                  foreground=[("disabled", FG_DIM)])
+        style.configure("TSeparator", background=BORDER)
+        style.configure("Vertical.TScrollbar", background=BG_BTN, troughcolor=BG_BOX,
+                        bordercolor=BORDER, arrowcolor=FG_DIM)
+
+    def _dark_titlebar(self) -> None:
+        """把 Windows 标题栏也变深 (Win10 1809+ / Win11 的 DWM 属性 20).
+
+        不做这一步, 深色内容配一条白色标题栏会很突兀。失败无所谓 (老系统没有这属性)。
+        """
+        try:
+            import ctypes
+
+            GWL_EXSTYLE = -20
+            WS_EX_APPWINDOW = 0x00040000
+            hwnd = ctypes.windll.user32.GetParent(self.winfo_id()) or self.winfo_id()
+            # 让窗口在任务栏出得来 (Toplevel 默认没有), 顺手设扩展样式
+            style = ctypes.windll.user32.GetWindowLongW(hwnd, GWL_EXSTYLE)
+            ctypes.windll.user32.SetWindowLongW(
+                hwnd, GWL_EXSTYLE, style | WS_EX_APPWINDOW)
+            value = ctypes.c_int(1)
+            for attr in (20, 19):        # 20=Win11/新版, 19=Win10 1903 的旧编号
+                ctypes.windll.dwmapi.DwmSetWindowAttribute(
+                    hwnd, attr, ctypes.byref(value), ctypes.sizeof(value))
+        except Exception:  # noqa: BLE001 - 老系统/无 DWM 就算了
+            pass
+
     # ---- 布局 ----
     def _build(self, target: dict | None) -> None:
         outer = ttk.Frame(self, padding=12)
         outer.grid(row=0, column=0, sticky="nsew")
-        root = ttk.Frame(outer)
-        root.grid(row=0, column=0, sticky="nw")
 
-        ttk.Label(root, text="对局 Overlay 客户端", font=FONT_TITLE).grid(
-            row=0, column=0, columnspan=4, sticky="w")
+        head = ttk.Frame(outer)
+        head.grid(row=0, column=0, sticky="ew")
+        ttk.Label(head, text="对局 Overlay 客户端", style="Title.TLabel").grid(
+            row=0, column=0, sticky="w")
 
         if self.offline:
             win_txt = "离线模式: 用测试图跑, 不连模拟器"
@@ -412,86 +621,195 @@ class App(tk.Tk):
                        f"{target.get('w')}x{target.get('h')}")
         else:
             win_txt = "目标窗口: 未找到雷电模拟器 (可用 --img 离线看效果)"
-        ttk.Label(root, text=win_txt, font=FONT_SMALL, foreground="#555555").grid(
-            row=1, column=0, columnspan=4, sticky="w", pady=(2, 10))
+        ttk.Label(head, text=win_txt, style="Dim.TLabel", font=FONT_SMALL).grid(
+            row=1, column=0, sticky="w", pady=(2, 0))
 
-        ttk.Separator(root, orient="horizontal").grid(
-            row=2, column=0, columnspan=4, sticky="ew", pady=(0, 8))
+        self._sep(outer, row=1, pady=(8, 8))
 
-        ttk.Label(root, text="显示项", font=FONT).grid(row=3, column=0, sticky="w")
-        ttk.Label(root, text="刷新间隔 (秒)", font=FONT).grid(row=3, column=1,
-                                                        columnspan=2, sticky="w")
-        ttk.Label(root, text="下限", font=FONT_SMALL, foreground="#777777").grid(
-            row=3, column=3, sticky="w")
+        root = ttk.Frame(outer)
+        root.grid(row=2, column=0, sticky="nw")
 
-        for i, it in enumerate(ITEMS, start=4):
-            var = tk.BooleanVar(value=True)
-            self.vars[it.key] = var
-            cb = ttk.Checkbutton(root, text=it.label, variable=var)
-            cb.grid(row=i, column=0, sticky="w", pady=3)
-            _tip(cb, it.tip)
-            iv = tk.StringVar(value=f"{it.interval:.1f}")
-            self.iv_vars[it.key] = iv
-            entry = ttk.Entry(root, textvariable=iv, width=7, justify="right")
-            entry.grid(row=i, column=1, sticky="w", padx=(24, 4))
-            ttk.Label(root, text="秒", font=FONT).grid(row=i, column=2, sticky="w")
-            ttk.Label(root, text=f"{it.min_interval:.1f}", font=FONT_SMALL,
-                      foreground="#777777").grid(row=i, column=3, sticky="w", padx=(8, 0))
+        # 表头 (只有最上面一次, 两个分组共用)
+        r = 0
+        ttk.Label(root, text="显示项", font=FONT).grid(row=r, column=0, sticky="w")
+        ttk.Label(root, text="刷新间隔 (秒)", font=FONT).grid(
+            row=r, column=1, columnspan=2, sticky="w")
+        ttk.Label(root, text="说明", style="Dim.TLabel", font=FONT_SMALL).grid(
+            row=r, column=3, sticky="w")
+        r += 1
 
-        ttk.Separator(root, orient="horizontal").grid(
-            row=9, column=0, columnspan=4, sticky="ew", pady=(10, 8))
+        r = self._group(root, r, "图色 / YOLO", "visual")
+        r = self._group(root, r, "OCR 信息 (同一次顶栏 OCR, 分两段画到 overlay 顶栏)", "ocr")
+        r = self._threshold_rows(root, r)
 
-        self.status_var = tk.StringVar(value="就绪")
-        ttk.Label(root, textvariable=self.status_var, font=FONT_SMALL,
-                  foreground="#333333", wraplength=430, justify="left").grid(
-            row=10, column=0, columnspan=4, sticky="w")
+        self.status_text = self._text_box(
+            root, row=r, height=STATUS_BOX_H, color=FG_DIM, text="就绪")
+        r += 1
+        self.say_text = self._text_box(
+            root, row=r, height=SAY_BOX_H, color=OK_GREEN,
+            text="改完点右下角「应用」即时生效 (下一个节拍 <=0.5s)")
+        r += 1
 
-        self.say_var = tk.StringVar(value="改完点右下角「应用」即时生效 (下一个节拍 <=0.5s)")
-        self.say_label = ttk.Label(root, textvariable=self.say_var, font=FONT_SMALL,
-                                   foreground="#1a6b1a", wraplength=430, justify="left")
-        self.say_label.grid(row=11, column=0, columnspan=4, sticky="w",
-                            pady=(4, 12))
+        btns = ttk.Frame(root)
+        btns.grid(row=r, column=0, columnspan=4, sticky="e", pady=(10, 0))
+        ttk.Button(btns, text="退出", command=self.on_close).grid(
+            row=0, column=0, padx=(0, 8))
+        ttk.Button(btns, text="应用", style="Accent.TButton",
+                   command=self._apply).grid(row=0, column=1)
+        r += 1
 
-        right = ttk.Frame(root)
-        right.grid(row=12, column=0, columnspan=4, sticky="e")
-        ttk.Button(right, text="退出", command=self.on_close).grid(row=0, column=0,
-                                                                  padx=(0, 8))
-        apply_btn = ttk.Button(right, text="应用", command=self._apply)
-        apply_btn.grid(row=0, column=1)
-        self._apply_btn = apply_btn
+        self._sep(root, row=r, pady=(12, 8))
+        r += 1
 
-        # 离线模式: 右边多一列预览, 把测试图 + 当前勾选的框实时画出来,
-        # 这样不连模拟器也能直观看到「应用」到底改了什么。
-        self.preview = None
-        self._photo = None
-        self._pv_no = -1
-        if self.offline:
-            pv = ttk.Frame(outer)
-            pv.grid(row=0, column=1, sticky="nw", padx=(16, 0))
-            ttk.Label(pv, text="预览 (测试图 + 当前勾选的框)", font=FONT_SMALL,
-                      foreground="#555555").grid(row=0, column=0, sticky="w",
-                                                 pady=(0, 6))
-            self.preview = ttk.Label(pv, text="等第一帧...", font=FONT_SMALL,
-                                     anchor="center", background="#111111",
-                                     foreground="#CCCCCC")
-            self.preview.grid(row=1, column=0, sticky="nw")
+        # 结构化文本模块: 勾选框 + 紧跟其下的文本框, 中间不夹任何控件
+        self.pv_check = ttk.Checkbutton(
+            root, text="结构化文本预览 (与 frame_prompt 同源)",
+            variable=self.pv_var, command=self._toggle_preview)
+        self.pv_check.grid(row=r, column=0, columnspan=4, sticky="w", pady=(0, 4))
+        r += 1
 
+        self.pv_frame = ttk.Frame(root, width=PROMPT_W, height=PROMPT_H)
+        self.pv_frame.grid(row=r, column=0, columnspan=4, sticky="nw")
+        self.pv_frame.grid_propagate(False)
+        inner = ttk.Frame(self.pv_frame)
+        inner.place(x=0, y=0, width=PROMPT_W, height=PROMPT_H)
+        self.pv_text = tk.Text(inner, font=FONT_MONO, background=BG_BOX,
+                               foreground=FG, insertbackground=FG,
+                               selectbackground=ACCENT, relief="flat", wrap="none",
+                               borderwidth=0, highlightthickness=0, padx=8, pady=6)
+        self.pv_text.grid(row=0, column=0, sticky="nsew")
+        sb = ttk.Scrollbar(inner, orient="vertical", command=self.pv_text.yview)
+        sb.grid(row=0, column=1, sticky="ns")
+        self.pv_text.configure(yscrollcommand=sb.set, state="disabled")
+        inner.grid_rowconfigure(0, weight=1)
+        inner.grid_columnconfigure(0, weight=1)
+        self.pv_frame.grid_remove()
+
+        # 预览面板建好就 grid 过一次 (又立刻 grid_remove), 列宽被撑到 PROMPT_W;
+        # 收起态必须重算一次几何, 不然窗口一直留着 700px 的宽度。
+        self.update_idletasks()
+        self.geometry("")
         self.bind("<Return>", lambda _e: self._apply())
 
-    # ---- 预览 ----
-    def _update_preview(self) -> None:
-        if self.preview is None:
-            return
-        layer, frame, no = self.worker.layer()
-        if frame is None or no == self._pv_no:
-            return
-        self._pv_no = no
-        base = frame.convert("RGBA")
-        if layer is not None:
-            base = Image.alpha_composite(base, layer)
-        thumb = base.convert("RGB").resize((PREVIEW_W, PREVIEW_H), Image.LANCZOS)
-        self._photo = ImageTk.PhotoImage(thumb)
-        self.preview.configure(image=self._photo, text="")
+    def _sep(self, parent, *, row: int, pady: tuple[int, int]) -> None:
+        """1px 分隔线.
+
+        用 tk.Frame 而不是 ttk.Separator: clam 主题下 Separator 的底色由 element
+        内部画 (lightcolor/darkcolor), style.configure 改不动, 永远是浅色亮线。
+        """
+        tk.Frame(parent, height=1, background="#2f2f2f", borderwidth=0).grid(
+            row=row, column=0, columnspan=4, sticky="ew", pady=pady)
+
+    def _group(self, root, row: int, title: str, group: str) -> int:
+        """画一个分组标题 + 该组的所有显示项, 末尾补一条分隔线, 返回下一行行号."""
+        ttk.Label(root, text=title, style="Section.TLabel").grid(
+            row=row, column=0, columnspan=4, sticky="w", pady=(4, 2))
+        row += 1
+        for it in ITEMS:
+            if it.group != group:
+                continue
+            self._item_row(root, row, it)
+            row += 1
+        self._sep(root, row=row, pady=(6, 6))
+        return row + 1
+
+    def _item_row(self, root, row: int, it: Item) -> None:
+        var = tk.BooleanVar(value=True)
+        self.vars[it.key] = var
+        cb = ttk.Checkbutton(root, text=it.label, variable=var)
+        cb.grid(row=row, column=0, sticky="w", pady=2)
+        _tip(cb, it.tip)
+        iv = tk.StringVar(value=f"{it.interval:.1f}")
+        self.iv_vars[it.key] = iv
+        self._num_cell(root, row=row, var=iv, lo=it.min_interval, hi=None, step=0.1)
+        ttk.Label(root, text=f"下限 {it.min_interval:g}s", style="Dim.TLabel",
+                  font=FONT_SMALL).grid(row=row, column=3, sticky="w", padx=(10, 0))
+
+    def _threshold_rows(self, root, row: int) -> int:
+        ttk.Label(root, text="识别阈值", style="Section.TLabel").grid(
+            row=row, column=0, columnspan=4, sticky="w", pady=(2, 2))
+        row += 1
+        rows = (
+            ("conf", "YOLO 检出置信度", CONF_RANGE, "低于它的框根本不检出"),
+            ("min_score", "未知 (unknown) 阈值", MIN_SCORE_RANGE,
+             "检出框的分数低于它不写名字, 标 unknown"),
+        )
+        for key, label, rng, tip in rows:
+            lab = ttk.Label(root, text=label, font=FONT)
+            lab.grid(row=row, column=0, sticky="w", pady=2)
+            _tip(lab, tip)
+            self._num_cell(root, row=row, var=self.thr_vars[key], lo=rng[0],
+                           hi=rng[1], step=0.05, width=6)
+            ttk.Label(root, text=f"{rng[0]:g}~{rng[1]:g}", style="Dim.TLabel",
+                      font=FONT_SMALL).grid(row=row, column=3, sticky="w",
+                                            padx=(10, 0))
+            row += 1
+        self._sep(root, row=row, pady=(6, 6))
+        return row + 1
+
+    def _num_cell(self, root, *, row: int, var: tk.StringVar, lo: float,
+                  hi: float | None = None, step: float = 0.1,
+                  width: int = 7) -> None:
+        """数值框 + `-`/`+` 两个按钮 (步长 step, 钳在 lo~hi)."""
+        box = ttk.Frame(root)
+        box.grid(row=row, column=1, sticky="w", padx=(24, 4))
+        ttk.Entry(box, textvariable=var, width=width, justify="right").grid(
+            row=0, column=0)
+        ttk.Button(box, text="-", width=2, takefocus=False,
+                   command=lambda: self._bump(var, -step, lo, hi)).grid(
+            row=0, column=1, padx=(4, 0))
+        ttk.Button(box, text="+", width=2, takefocus=False,
+                   command=lambda: self._bump(var, step, lo, hi)).grid(
+            row=0, column=2, padx=(2, 0))
+
+    @staticmethod
+    def _bump(var: tk.StringVar, delta: float, lo: float,
+              hi: float | None) -> None:
+        try:
+            v = float((var.get() or "").strip())
+        except ValueError:
+            v = lo
+        v = round(v + delta, 2)
+        if hi is not None:
+            v = min(v, hi)
+        v = max(v, lo)
+        var.set(f"{v:g}")
+
+    def _toggle_preview(self) -> None:
+        """勾选只控面板显隐; 真正去抽结构化文本要等「应用」(避免勾一下就卡 2s)."""
+        if self.pv_var.get():
+            self.pv_frame.grid()
+        else:
+            self.pv_frame.grid_remove()
+        # resizable(False, False) 会把 geometry 钉死, 内容变宽/变高必须手动重算
+        self.update_idletasks()
+        self.geometry("")
+
+    def _text_box(self, parent, *, row: int, height: int, color: str,
+                  text: str) -> tk.Text:
+        """固定像素大小的只读文本框.
+
+        状态行/提示行的文字每 200ms 变一次、长度也不固定, 用会自己换行的 Label
+        会让整个窗口高度跟着跳 (用户 2026-11-21 抱怨的就是这个), 所以固定成
+        TEXT_BOX_W x height 的像素盒, 装不下的直接裁掉。
+        """
+        box = ttk.Frame(parent, width=TEXT_BOX_W, height=height)
+        box.grid(row=row, column=0, columnspan=4, sticky="w", pady=(2, 4))
+        box.grid_propagate(False)
+        t = tk.Text(box, font=FONT_SMALL, background=BG_BOX, foreground=color,
+                    insertbackground=FG, relief="flat", wrap="word",
+                    borderwidth=0, highlightthickness=0, padx=6, pady=4)
+        t.place(x=0, y=0, width=TEXT_BOX_W, height=height)
+        t.insert("1.0", text)
+        t.configure(state="disabled")
+        return t
+
+    @staticmethod
+    def _set_text(widget: tk.Text, text: str, color: str = FG) -> None:
+        widget.configure(state="normal", foreground=color)
+        widget.delete("1.0", "end")
+        widget.insert("1.0", text)
+        widget.configure(state="disabled")
 
     # ---- 应用 ----
     def _apply(self) -> None:
@@ -512,30 +830,65 @@ class App(tk.Tk):
                 continue
             if v < it.min_interval:
                 v = it.min_interval
-                self.iv_vars[it.key].set(f"{it.min_interval:.1f}")
-                notes.append(f"{it.label}: 已钳到下限 {it.min_interval:.1f}s")
+                self.iv_vars[it.key].set(f"{it.min_interval:g}")
+                notes.append(f"{it.label}: 已钳到下限 {it.min_interval:g}s")
             intervals[it.key] = v
 
+        thr: dict = {}
+        for key, label, rng in (("conf", "YOLO 检出置信度", CONF_RANGE),
+                                ("min_score", "未知阈值", MIN_SCORE_RANGE)):
+            raw = (self.thr_vars[key].get() or "").strip()
+            try:
+                v = float(raw)
+            except ValueError:
+                bad.append(f"{label}: '{raw}' 不是数字")
+                continue
+            if v < rng[0]:
+                v = rng[0]
+                self.thr_vars[key].set(f"{v:.2f}")
+                notes.append(f"{label}: 已钳到下限 {rng[0]:g}")
+            elif v > rng[1]:
+                v = rng[1]
+                self.thr_vars[key].set(f"{v:.2f}")
+                notes.append(f"{label}: 已钳到上限 {rng[1]:g}")
+            thr[key] = v
+
         if bad:
-            self.say_var.set("[X] 没有应用: " + "; ".join(bad))
-            self.say_label.configure(foreground="#b00000")
+            self._set_text(self.say_text, "[X] 没有应用: " + "; ".join(bad), ERR_RED)
             return
-        if len(intervals) != len(ITEMS):
-            self.say_var.set("[X] 没有应用: 有间隔没填")
-            self.say_label.configure(foreground="#b00000")
+        if len(intervals) != len(ITEMS) or len(thr) != 2:
+            self._set_text(self.say_text, "[X] 没有应用: 有间隔或阈值没填", ERR_RED)
             return
+        if thr["min_score"] < thr["conf"]:
+            notes.append("未知阈值 < 检出置信度: 检出的框都会直接命名")
 
         on = [it.label for it in ITEMS if show[it.show_key]]
         if not on:
             notes.append("全部关闭: overlay 会清空, 但仍保持对局检测")
-        ver = self.settings.apply(show, intervals)
+        ver = self.settings.apply(show, intervals, thresholds=thr,
+                                  preview=bool(self.pv_var.get()))
         self._applied_at = time.strftime("%H:%M:%S")
         msg = f"[OK] 已应用 (v{ver} {self._applied_at}): " + \
               (", ".join(on) if on else "无显示项")
         if notes:
             msg += " | " + "; ".join(notes)
-        self.say_var.set(msg)
-        self.say_label.configure(foreground="#1a6b1a")
+        if self.pv_var.get():
+            msg += f" | 结构化文本每 {PROMPT_INTERVAL:g}s 抽一次"
+        self._set_text(self.say_text, msg, OK_GREEN)
+
+    def _refresh_prompt(self) -> None:
+        if self._closed or not self.pv_var.get():
+            return
+        text, no = self.worker.prompt_text()
+        if no == self._pv_no:
+            return
+        self._pv_no = no
+        if not text:
+            text = f"点「应用」后开始抽取 (每 {PROMPT_INTERVAL:g}s 一次)"
+        self.pv_text.configure(state="normal")
+        self.pv_text.delete("1.0", "end")
+        self.pv_text.insert("1.0", text)
+        self.pv_text.configure(state="disabled")
 
     # ---- 状态轮询 ----
     def _poll(self) -> None:
@@ -559,8 +912,8 @@ class App(tk.Tk):
             parts.append(st["last_error"])
         if self._applied_at != "-":
             parts.append(f"上次应用 {self._applied_at}")
-        self.status_var.set(" | ".join(parts))
-        self._update_preview()
+        self._set_text(self.status_text, " | ".join(parts), FG_DIM)
+        self._refresh_prompt()
         self.after(UI_POLL_MS, self._poll)
 
     # ---- 退出 ----
@@ -592,8 +945,8 @@ def _tip(widget, text: str) -> None:
         win = tk.Toplevel(widget)
         win.wm_overrideredirect(True)
         win.wm_geometry(f"+{x}+{y}")
-        tk.Label(win, text=text, font=FONT_SMALL, background="#ffffe0",
-                 relief="solid", borderwidth=1, justify="left",
+        tk.Label(win, text=text, font=FONT_SMALL, background="#2d2d30",
+                 foreground=FG, relief="solid", borderwidth=1, justify="left",
                  wraplength=320).pack(ipadx=4, ipady=2)
         tip["win"] = win
 
@@ -662,14 +1015,20 @@ def run_selftest(args) -> int:
         if not ok:
             fails += 1
 
+    def say() -> str:
+        return app.say_text.get("1.0", "end").strip()
+
     print("[1] 默认配置")
     show, ivs, _v = settings.snapshot()
-    check("5 项全部默认勾选", all(show.values()), f"{len(show)} 项")
+    check("7 项全部默认勾选", all(show.values()), f"{len(show)} 项")
     check("默认间隔", [ivs[it.key] for it in ITEMS] == [it.interval for it in ITEMS],
           str([ivs[it.key] for it in ITEMS]))
+    thr0 = settings.thresholds()
+    check("默认阈值 conf=0.25 / unknown=0.45",
+          (thr0["conf"], thr0["min_score"]) == (0.25, 0.45), str(thr0))
     plan = settings.plan()
-    check("全勾时该跑 5 个识别项", set(plan) == {"units", "bars", "shop",
-                                                "equip_bar", "board_equips"},
+    check("全勾时该跑 6 个识别项 (预览关着不跑 prompt)",
+          set(plan) == {"units", "bars", "game", "shop", "equip_bar", "board_equips"},
           str(sorted(plan)))
 
     print("[2] 取消商店 + 只留备战席")
@@ -698,7 +1057,7 @@ def run_selftest(args) -> int:
     app.iv_vars["shop"].set("abc")
     app._apply()
     _show2, ivs2, _v2 = settings.snapshot()
-    check("非法输入不落库 (版本不变)", ivs2 == ivs, app.say_var.get())
+    check("非法输入不落库 (版本不变)", ivs2 == ivs, say())
 
     print("[5] 版本递增")
     app.iv_vars["shop"].set("1.5")
@@ -708,13 +1067,20 @@ def run_selftest(args) -> int:
 
     print("[6] 离线跑几帧")
     app.vars["shop"].set(False)          # OCR 慢, 自检不跑
+    app.vars["game_time"].set(False)
+    app.vars["game_econ"].set(False)
     for it in ITEMS:
-        if it.key != "shop":
+        if it.key not in ("shop", "game_time", "game_econ"):
             app.vars[it.key].set(True)
     app._apply()
+    # 预热: 先同步跑一遍把 ONNX/OCR 冷启动吃掉, 再清节拍表看线程自己的节拍
+    probe = worker.frame_source()
+    for _k in ("units", "bars", "equip_bar", "board_equips"):
+        worker._run(_k, probe)
+    worker._state["ts"].clear()
     worker.start()
     t0 = time.monotonic()
-    while time.monotonic() - t0 < 6.0:
+    while time.monotonic() - t0 < 10.0:
         app.update()
         time.sleep(0.05)
     st = worker.status()
@@ -728,6 +1094,59 @@ def run_selftest(args) -> int:
     check("商店没跑 (已取消勾选)", st["counts"].get("shop", 0) == 0, str(st["counts"]))
     check("无识别错误", not st["errors"], str(st["errors"]))
     worker.stop()
+
+    print("[7] 阈值钳位与回填")
+    app.iv_vars["shop"].set("1.5")       # 先把上一段故意弄坏的值修好
+    app.thr_vars["conf"].set("0.01")
+    app._apply()
+    t = settings.thresholds()
+    check("conf 钳到下限 0.25", t["conf"] == 0.25, str(t))
+    check("界面回填钳位后的值", app.thr_vars["conf"].get() == "0.25",
+          app.thr_vars["conf"].get())
+    app.thr_vars["min_score"].set("3")
+    app._apply()
+    check("unknown 钳到上限 0.99", settings.thresholds()["min_score"] == 0.99,
+          str(settings.thresholds()))
+    v_before = settings.snapshot()[2]
+    app.thr_vars["conf"].set("abc")
+    app._apply()
+    check("非法阈值不落库", settings.snapshot()[2] == v_before, say())
+    app.thr_vars["conf"].set("0.25")
+    app.thr_vars["min_score"].set("0.45")
+    app._apply()
+
+    print("[8] 结构化文本预览")
+    app.pv_var.set(True)
+    app._toggle_preview()
+    app._apply()
+    plan = settings.plan()
+    check("plan 里多出 prompt", "prompt" in plan, str(sorted(plan)))
+    check("面板已展开", bool(app.pv_frame.winfo_manager()),
+          app.pv_frame.winfo_manager())
+    worker._run("prompt", worker.frame_source())
+    app._refresh_prompt()
+    txt = app.pv_text.get("1.0", "end").strip()
+    check("面板有文本且是对局快照", "对局快照" in txt, f"{len(txt)} 字")
+    check("预览版本号已更新", settings.snapshot()[2] >= v_before,
+          f"v{settings.snapshot()[2]}")
+    app.pv_var.set(False)
+    app._toggle_preview()
+    app._apply()
+    check("取消后收起", not app.pv_frame.winfo_manager(), app.pv_frame.winfo_manager())
+    check("plan 里没 prompt 了", "prompt" not in settings.plan(), str(sorted(settings.plan())))
+
+    print("[9] 加减按钮")
+    app.iv_vars["shop"].set("1.5")
+    App._bump(app.iv_vars["shop"], 0.1, 1.0, None)
+    check("+0.1", app.iv_vars["shop"].get() == "1.6", app.iv_vars["shop"].get())
+    App._bump(app.iv_vars["shop"], -0.1, 1.0, None)
+    check("-0.1", app.iv_vars["shop"].get() == "1.5", app.iv_vars["shop"].get())
+    App._bump(app.iv_vars["shop"], -1.0, 1.0, None)
+    check("钳到下限", app.iv_vars["shop"].get() == "1", app.iv_vars["shop"].get())
+    app.iv_vars["shop"].set("abc")
+    App._bump(app.iv_vars["shop"], 0.1, 1.0, None)
+    check("非法值按下限起步", app.iv_vars["shop"].get() == "1.1",
+          app.iv_vars["shop"].get())
 
     app.destroy()
     print(f"[{'OK' if fails == 0 else 'X'}] 自检{'通过' if fails == 0 else f'失败 {fails} 项'}")

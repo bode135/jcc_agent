@@ -677,14 +677,18 @@ def last_timing() -> dict:
     return dict(_LAST_TIMING)
 
 
-def _to_cells(dets: list[dict]) -> list[dict]:
+def _to_cells(dets: list[dict], *, min_score: float | None = None) -> list[dict]:
     """框 → 格位: 先按棋盘落脚点映射, 落不上再按备战席判定点映射 (与血条法同口径).
 
     **映射不上的框直接丢弃** (宁可漏, 不可错): 实测敌方半场的奕子/UI 误检会落在 row<5,
     它们既不是"我方棋盘格"也不是"备战席格"; 混进来会污染下游的阵容/人口统计。
     丢弃数量记在 `last_stats()` 里, 便于观测模型有没有跑偏。
+
+    `min_score`: 低于它的检出框**不写名字**(name=None, 交给点击兜底), 缺省读
+    `config.YOLO_UNITS_MIN_SCORE`; 界面允许现场调, 所以留成参数。
     """
-    min_score = float(default_config.YOLO_UNITS_MIN_SCORE)
+    min_score = float(default_config.YOLO_UNITS_MIN_SCORE if min_score is None
+                      else min_score)
     board_anchor_dy = int(default_config.BOARD_BAR_TO_CELL_Y)
     stats = {"dets": len(dets), "board": 0, "bench": 0, "dropped_enemy": 0,
              "dropped_unmapped": 0, "dropped_ball": 0, "dropped_legend": 0,

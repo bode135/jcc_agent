@@ -112,14 +112,14 @@ python -X utf8 -u -m scripts.overlay_info --img tests/images/board_ingame.png
 # -> tempdir/overlay_info_board_ingame.png
 
 python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png
-# -> 图形客户端，右边直接预览勾选效果
+# -> 图形客户端，勾哪几项就画哪几项
 
 python -X utf8 -u -m scripts.extract_img_info --img tests/images/board_ingame.png
 python -X utf8 -u -m scripts.game units --img tests/images/board_ingame.png
 python -X utf8 -u -m scripts.frame_prompt --img tests/images/board_ingame.png
 ```
 
-### 图形客户端（勾选显示项 + 各自刷新间隔）
+### 图形客户端（深色，勾选显示项 + 逐项刷新间隔 + 结构化文本预览）
 
 ![overlay 客户端](docs/images/overlay_client.jpg)
 
@@ -129,17 +129,42 @@ python -X utf8 -u -m scripts.frame_prompt --img tests/images/board_ingame.png
 .\run_client.bat                                                 # 双击即可（启动器，改 PY 变量换解释器）
 python -X utf8 -u -m scripts.overlay_client                      # 直接打开，自动找模拟器窗口
 python -X utf8 -u -m scripts.overlay_client --ld-index 0         # 指定第 0 个模拟器
-python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png   # 离线，带预览
+python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png   # 离线，用测试图跑
 ```
 
-不带参数时会自动探测雷电窗口；没探测到也照常打开界面（只打印 `[!] 没找到雷电模拟器窗口`，勾选框与预览仍可用）。
+不带参数时会自动探测雷电窗口；没探测到也照常打开界面（只打印 `[!] 没找到雷电模拟器窗口`，勾选与预览仍可用）。
 
-- 5 个勾选项（默认全勾）：**棋子框（棋盘）/ 备战席框 / 商店（识别 + 区域框）/ 棋子身上装备 / 装备栏装备**。
-- 每项右边是它自己的**刷新间隔**（秒），填得比实测下限还小会被钳到下限并提示，下限是 棋子 0.4 / 商店 1.0 / 装备栏 1.5 / 棋子携带装备 2.5。
+**显示项（7 个，默认全勾）**
+
+| 分组 | 选项 | 默认间隔 | 下限 | 说明 |
+| --- | --- | --- | --- | --- |
+| 图色 / YOLO | 棋子框（棋盘） | 0.1s | 0.05s | YOLO 棋子框 + 名字 + 星级 |
+| 图色 / YOLO | 备战席框 | 0.1s | 0.05s | 备战席那 9 格 |
+| 图色 / YOLO | 商店（识别 + 区域框） | 1.5s | 1.0s | 勾了就同时识别卡牌并画商店区域框 |
+| 图色 / YOLO | 棋子身上装备 | 2.0s | 1.0s | 棋盘棋子携带的装备小图标 |
+| 图色 / YOLO | 装备栏装备 | 1.0s | 0.5s | 左侧库存面板 |
+| OCR 信息 | 时间信息（回合/阶段/倒计时） | 1.0s | 0.5s | 顶栏读 `3-6 准备 剩余20s`，画在 overlay 最上面 |
+| OCR 信息 | 经济信息（等级/经验/金币/刷新） | 1.0s | 0.5s | `Lv5 经验10/18 金币103 免费刷新10 买经验4` |
+
+两个 OCR 选项共用**同一次**顶栏 OCR（同一次截图只跑一遍数字识别），只是分别决定画哪一段。
+
+**识别阈值**（也在界面上，不用改代码）
+
+- `YOLO 检出置信度` 0.25 ~ 0.95（默认 0.25）：低于它的框直接丢弃。
+- `未知 (unknown) 阈值` 0.05 ~ 0.99（默认 0.45）：低于它的框画成 `?`，高于它的才给名字。
+
+**数值框旁边的 `-` / `+`**：每次 0.1（阈值行是 0.05），到上下限自动停，不会填出非法值。
+
+**结构化文本预览**：勾选框和它的文本框是一个模块、紧挨着放在窗口下方，勾上就在正下方展开（再点收起）。
+内容与 `python -m scripts.frame_prompt` 完全同源（`extract_info.prompt.to_markdown`），每 3 秒抽一次，深色等宽字体显示
+`# 对局快照` + 商店 / 场上 / 备战席 / 装备栏 / 玩家血量几张表 —— 这就是能直接喂给 Agent 的那段文本。
+
+**应用机制**
+
 - 改完按右下角 **应用**（或回车），下一个绘制节拍（≤0.5s）就按新配置跑，**不重启进程、不改 config.py**；没按应用之前怎么改都不影响正在跑的循环。
-- 间隔填错（空、非数字、≤0）整次拒绝并红字说明，不会写一半。
-- 离线模式（`--img`）右侧会实时预览「测试图 + 当前勾选的框」，勾掉哪项马上能看到对应框消失；连模拟器时框直接贴在游戏画面上，不需要预览。
+- 间隔填得比下限小会被钳到下限并提示；填错（空、非数字、≤0）整次拒绝并红字说明，不会写一半。
 - 全都不勾 = overlay 清空，但仍然保持对局检测；非对局画面（大厅/结算）自动暂停识别，不会画出一堆假框。
+- 间隔是"请求间隔"：某一项真的算得比它慢时，实际刷新率就是这个项的识别耗时（YOLO 棋子 40ms 左右，OCR 约 1s），不会被强行拉到间隔值。
 
 ### 接真实游戏
 
