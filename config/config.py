@@ -196,7 +196,7 @@ class DefaultConfig:
     YOLO_BALL_ONNX = PROJECT_ROOT / "models" / "yolo_v2.1_balls.onnx"     # 认"奖励球 ball" (11s 缺这个类)
     YOLO_DEBUG_ONNX = PROJECT_ROOT / "models" / "yolo_v2.1_balls.onnx"    # 调试图: 球+小小英雄 (11s 两个都缺)
     YOLO_UNITS_IMGSZ = 1280           # 必须与导出 ONNX 时的 imgsz 一致
-    YOLO_UNITS_CONF = 0.25            # 检出置信度阈值 (2026-11-21 用户指定 0.25; overlay 客户端下限同此)
+    YOLO_UNITS_CONF = 0.35            # 检出置信度阈值 (overlay 客户端可调, 下限 0.01)
     YOLO_UNITS_IOU = 0.5              # NMS IoU 阈值
     YOLO_UNITS_MIN_SCORE = 0.45       # 低于它视为"没认出类别" → name=None (不猜, 交给兜底探测)
     # ---- 信任表阈值策略 (用户 2026-10-29 m06694「做成 config 可配置, [整体/分类/混合]三策略」) ----

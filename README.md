@@ -150,8 +150,8 @@ python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png 
 
 **识别阈值**（也在界面上，不用改代码）
 
-- `YOLO 检出置信度` 0.25 ~ 0.95（默认 0.25）：低于它的框直接丢弃。
-- `未知 (unknown) 阈值` 0.05 ~ 0.99（默认 0.45）：低于它的框画成 `?`，高于它的才给名字。
+- `YOLO 检出置信度` 0.01 ~ 0.95（默认 0.35，取 `config.YOLO_UNITS_CONF`）：低于它的框直接丢弃。
+- `未知 (unknown) 阈值` 0.05 ~ 0.99（默认 0.45，取 `config.YOLO_UNITS_MIN_SCORE`）：低于它的框画成 `?`，高于它的才给名字。
 
 **数值框旁边的 `-` / `+`**：每次 0.1（阈值行是 0.05），到上下限自动停，不会填出非法值。
 

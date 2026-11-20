@@ -132,20 +132,21 @@ PROMPT_W = 700
 PROMPT_H = 240
 PROMPT_INTERVAL = 3.0
 
-# 两个阈值的合法区间 (UI 里填超了就钳到边界); 下限是 2026-11-21 指定的 0.25
-CONF_RANGE = (0.25, 0.95)
+# 两个阈值的合法区间 (UI 里填超了就钳到边界); 检出置信度下限 2026-11-21 用户指定 0.01
+CONF_RANGE = (0.01, 0.95)
 MIN_SCORE_RANGE = (0.05, 0.99)
 
 
 def default_thresholds() -> dict:
     """识别阈值的初值 (UI 上可改, 改完点「应用」立即生效).
 
-    * `conf`: 检出置信度 —— 低于它的框**根本不检出**; 用户 2026-11-21 指定默认/下限都是
-      **0.25** (信任表的标定值是 0.35, 但那是标定时用的口径, 界面上以用户设的为准).
-    * `min_score`: 未知阈值 —— 检出框的分数低于它**不写名字**, 标成 unknown 走点击确认兜底.
+    * `conf`: 检出置信度 —— 低于它的框**根本不检出**; 默认取 `config.YOLO_UNITS_CONF`
+      (0.35, 与父项目一致), 界面上可调, 下限 0.01 (2026-11-21 用户指定).
+    * `min_score`: 未知阈值 —— 检出框的分数低于它**不写名字**, 标成 unknown 走点击确认兜底;
+      默认取 `config.YOLO_UNITS_MIN_SCORE` (0.45), 与 config 默认值一致.
     """
     return {
-        "conf": float(getattr(default_config, "YOLO_UNITS_CONF", 0.25)),
+        "conf": float(getattr(default_config, "YOLO_UNITS_CONF", 0.35)),
         "min_score": float(getattr(default_config, "YOLO_UNITS_MIN_SCORE", 0.45)),
     }
 
@@ -1024,8 +1025,8 @@ def run_selftest(args) -> int:
     check("默认间隔", [ivs[it.key] for it in ITEMS] == [it.interval for it in ITEMS],
           str([ivs[it.key] for it in ITEMS]))
     thr0 = settings.thresholds()
-    check("默认阈值 conf=0.25 / unknown=0.45",
-          (thr0["conf"], thr0["min_score"]) == (0.25, 0.45), str(thr0))
+    check("默认阈值 conf=0.35 / unknown=0.45",
+          (thr0["conf"], thr0["min_score"]) == (0.35, 0.45), str(thr0))
     plan = settings.plan()
     check("全勾时该跑 6 个识别项 (预览关着不跑 prompt)",
           set(plan) == {"units", "bars", "game", "shop", "equip_bar", "board_equips"},
@@ -1097,11 +1098,11 @@ def run_selftest(args) -> int:
 
     print("[7] 阈值钳位与回填")
     app.iv_vars["shop"].set("1.5")       # 先把上一段故意弄坏的值修好
-    app.thr_vars["conf"].set("0.01")
+    app.thr_vars["conf"].set("0.001")
     app._apply()
     t = settings.thresholds()
-    check("conf 钳到下限 0.25", t["conf"] == 0.25, str(t))
-    check("界面回填钳位后的值", app.thr_vars["conf"].get() == "0.25",
+    check("conf 钳到下限 0.01", t["conf"] == 0.01, str(t))
+    check("界面回填钳位后的值", app.thr_vars["conf"].get() == "0.01",
           app.thr_vars["conf"].get())
     app.thr_vars["min_score"].set("3")
     app._apply()
@@ -1111,7 +1112,7 @@ def run_selftest(args) -> int:
     app.thr_vars["conf"].set("abc")
     app._apply()
     check("非法阈值不落库", settings.snapshot()[2] == v_before, say())
-    app.thr_vars["conf"].set("0.25")
+    app.thr_vars["conf"].set("0.35")
     app.thr_vars["min_score"].set("0.45")
     app._apply()
 
