@@ -126,6 +126,7 @@ python -X utf8 -u -m scripts.frame_prompt --img tests/images/board_ingame.png
 不想改 `config.py`、也不想记参数时用它：
 
 ```powershell
+.\run_client.bat                                                 # 双击即可（启动器，改 PY 变量换解释器）
 python -X utf8 -u -m scripts.overlay_client                      # 直接打开，自动找模拟器窗口
 python -X utf8 -u -m scripts.overlay_client --ld-index 0         # 指定第 0 个模拟器
 python -X utf8 -u -m scripts.overlay_client --img tests/images/board_ingame.png   # 离线，带预览
