@@ -62,6 +62,7 @@ from bdtime import Time
 from config.config import InfoTypes, default_config
 from recognize import augment, board, equipment, game_over, ocr, phase, regions
 from units import db as unit_db
+from utils import digit_tpl
 
 _tt = Time()  # 分步耗时的累计参考 (与 game.py 的 tt 风格一致)
 
@@ -192,6 +193,65 @@ def extract_info(img, info_type=InfoTypes.All) -> dict:
     return res
 
 
+def _tpl_enabled() -> bool:
+    """顶栏数字模板是否可用（config 开关 + 模板文件 + 熔断状态）。"""
+    if not getattr(default_config, "STAGE_DIGIT_TPL", True):
+        return False
+    if not digit_tpl.has_templates():
+        return False
+    return not digit_tpl.bypassed()
+
+
+def _read_stage_rt_tpl(img, need_stage: bool, need_rt: bool):
+    """用 0~9 字模读 stage / round_time，返回 (stage|None, round_time|None)。
+
+    失败语义: 读不到返回 None，由调用方回落 OCR —— 绝不猜。
+    告警: 连续读不到按档位打 WARN(10 次) / ERROR(25 次)，连续 30 次熔断本进程。
+    """
+    stage, tag, _ms = digit_tpl.read_stage(img)
+    logs: list[str] = []
+    if stage is None:
+        if need_stage:
+            _m = digit_tpl.note_miss("stage")
+            if _m:
+                logs.append(_m)
+    else:
+        digit_tpl.note_hit("stage")
+    rt_txt, _ms2 = digit_tpl.read_round_time(img, tag)
+    rt = None
+    if rt_txt is None:
+        if need_rt:
+            _m = digit_tpl.note_miss("round_time")
+            if _m:
+                logs.append(_m)
+    else:
+        rt = int(rt_txt)
+        digit_tpl.note_hit("round_time")
+    for line in logs:
+        print(line, flush=True)
+    return stage, rt
+
+
+def _learn_from_ocr(img, items, stage, rt, need_stage: bool, need_rt: bool) -> None:
+    """模板读不到、OCR 读到了 → 用 OCR 当老师补/替换字模（字库自学习）。
+
+    任何异常都吞掉: 学习是"锦上添花", 绝不能因为它把识别链路搞崩。
+    """
+    if not getattr(default_config, "STAGE_DIGIT_TPL_AUTO_LEARN", True):
+        return
+    if not _tpl_enabled():
+        return
+    if (need_stage and stage is None) and (need_rt and rt is None):
+        return  # OCR 自己也没读到, 没有可信标签可用
+    try:
+        added = digit_tpl.learn_from_ocr(img, items, stage, rt)
+        if added:
+            print(f"[i] 数字模板自动补字模 {added} 张 (以 OCR 为标签) —— "
+                  f"{digit_tpl.format_health()}", flush=True)
+    except Exception as exc:  # noqa: BLE001 - 学习失败不影响识别
+        print(f"[!] 数字模板自动学习异常 (已忽略): {exc!r}", flush=True)
+
+
 def _extract_narrow(img, want: set) -> dict:
     """窄带快路径: Stage/RoundTime/Phase/IsOver 只读顶栏横带与模板, **不跑整图 OCR**.
 
@@ -199,14 +259,34 @@ def _extract_narrow(img, want: set) -> dict:
     实测根因: POLL 四项 (Stage/Phase/IsOver/RoundTime) 原走整图 OCR 一次 ~1.5s, 每个动作前都付。
     这里 Stage 与 RoundTime 共用**同帧同一次**顶栏横带识别 (STAGE_BAND); Phase 走 phase.detect
     (模板匹配为主 + 一次 stage 小裁剪), IsOver 走 game_over.is_over (区域/模板, 非整图)。
+
+    Stage/RoundTime **优先走 0~9 字模** (utils/digit_tpl, 4.7ms vs OCR 235~295ms);
+    任一项读不到就回落本函数原来的顶栏横带 OCR (含横带锚定兜底), 并在回落时把
+    「OCR 读到的值」当标签自动补/替换字模 (config.STAGE_DIGIT_TPL_AUTO_LEARN)。
+    config.STAGE_DIGIT_TPL=False 即完全回到改造前行为。
     """
     res = {}
     if want & {InfoTypes.Stage, InfoTypes.RoundTime}:  # 两个字段共用一次顶栏横带识别
-        items = _timed("ocr.recognize_region(顶栏横带)", ocr.recognize_region, img, STAGE_BAND, 1)
-        if InfoTypes.Stage in want:
-            res["stage"] = extract_stage(items)
-        if InfoTypes.RoundTime in want:
-            res["round_time"] = extract_round_time(items, img)
+        need_stage = InfoTypes.Stage in want
+        need_rt = InfoTypes.RoundTime in want
+        stage = rt = None
+        if _tpl_enabled():
+            try:
+                stage, rt = _read_stage_rt_tpl(img, need_stage, need_rt)
+            except Exception as exc:  # noqa: BLE001 - 模板异常一律回落 OCR
+                print(f"[!] 数字模板异常, 回落 OCR: {exc!r}", flush=True)
+                stage = rt = None
+        if (need_stage and stage is None) or (need_rt and rt is None):
+            items = _timed("ocr.recognize_region(顶栏横带)", ocr.recognize_region, img, STAGE_BAND, 1)
+            if need_stage and stage is None:
+                stage = extract_stage(items)
+            if need_rt and rt is None:
+                rt = extract_round_time(items, img)
+            _learn_from_ocr(img, items, stage, rt, need_stage, need_rt)
+        if need_stage:
+            res["stage"] = stage
+        if need_rt:
+            res["round_time"] = rt
     if InfoTypes.Phase in want:
         ph = _timed("phase.detect", phase.detect, img)
         res["phase"] = phase.PHASE_NOTES.get(ph["phase"], ph["phase"])

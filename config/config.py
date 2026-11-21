@@ -172,6 +172,17 @@ class DefaultConfig:
     REMAIN_CACHE_COMBAT_KEEP = 5.0
     STAGE_SEARCH_REGION = (560, 0, 850, 65)  # 左界含选装备等顶栏偏左的回合号 (3-4 轮抽实测起点约605, 原620会截断)
 
+    # ---- 顶栏数字模板匹配 (utils/digit_tpl.py) ----
+    # stage(回合号) 与 round_time(倒计时) 每个动作前都读一次; 原走顶栏横带 OCR 实测 235~295ms,
+    # 改 0~9 字模后约 4.7ms (快 50 倍以上, 实测准确率 99.5%)。
+    STAGE_DIGIT_TPL = True            # True=模板优先(读不到自动回落 OCR); False=全走 OCR(回退/对比用)
+    # 模板读不到但 OCR 读到了 → 用 OCR 当老师自动补/替换字模 (攒够 3 次一致才入库;
+    # 与旧字模相似度 <0.70 的旧模板被淘汰; 每个数字硬上限 12 张, 不许无限膨胀)。
+    STAGE_DIGIT_TPL_AUTO_LEARN = True
+    # 每 N 次识别抽检一次 OCR 交叉校验 (0=关)。默认关: 开了等于把省下的 235ms 又花回去,
+    # 只在排查「模板悄悄读错」时临时打开。
+    STAGE_DIGIT_TPL_VERIFY_EVERY = 0
+
     # ---- YOLO 单次前向识别我方奕子 (recognize/yolo_units.py) ----
     # 一次前向同时给出"定位 + 身份", 比逐格点击读详情卡快一个数量级; 训练/导出见 train_yolo/。
     # ---- 动态提取策略 (用户 2026-10-18 要求 config 可控) ----
